@@ -1,51 +1,67 @@
-<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
+            <!--  Add Controls for Previewer Here  -->
             <StackPanel>
-                <Button>test button</Button>
+                <Button Classes="style1">test button</Button>
+                <Button Classes="style2">test button 2</Button>
                 <TextBox>test_text_block</TextBox>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
 
-    <!-- Add Styles Here -->
-    <Style Selector="Button">
-        <Setter Property="CornerRadius" Value="15"></Setter>
-        <Setter Property="FontSize" Value="20"></Setter>
-        <Setter Property="Background" Value="#FF914D"></Setter>
-        <Setter Property="Foreground" Value="#2E2E2E"></Setter>
-        <Setter Property="Margin" Value="5"></Setter>
-        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+    <!--  Add Styles Here  -->
+    <!--  button style 1  -->
+    <Style Selector="Button.style1">
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="Background">
+            <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                <GradientStop Color="Blue" Offset="0" />
+                <GradientStop Color="Red" Offset="1" />
+            </LinearGradientBrush>
+        </Setter>
+        <Setter Property="FontSize" Value="40" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
-    <Style Selector="Button:pointerover/template/ContentPresenter">
-        <Setter Property="Background" Value="#FFDAB9"></Setter>
-        <Setter Property="Foreground" Value="#1C1C1C"></Setter>
-        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+    <!--  button style 2  -->
+    <Style Selector="Button.style2">
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Background" Value="#FF914D" />
+        <Setter Property="Foreground" Value="#2E2E2E" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    <Style Selector="Button.style2:pointerover/template/ContentPresenter">
+        <Setter Property="Background" Value="#FFDAB9" />
+        <Setter Property="Foreground" Value="#1C1C1C" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
     <Style Selector="TextBox:focus">
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style Selector="TextBox:pointerover/template/ Border#PART_BorderElement">
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="5" />
     </Style>
     <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
         <Setter Property="Background">
-            <SolidColorBrush Color="White"/>
+            <SolidColorBrush Color="White" />
         </Setter>
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="5" />
     </Style>
     <Style Selector="PathIcon">
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style Selector="Label">
-        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="Foreground" Value="Black" />
     </Style>
-</Styles> 
+</Styles>

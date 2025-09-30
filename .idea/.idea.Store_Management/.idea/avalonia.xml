@@ -4,6 +4,8 @@
     <option name="projectPerEditor">
       <map>
         <entry key="Store/App.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Styles/Styles.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Styles/icon.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/AccountSettingPageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/AnalysePageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/BillPageView.axaml" value="Store/Store.csproj" />
@@ -14,6 +16,7 @@
         <entry key="Store/Views/MainWindow.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/ProductPageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/SettingPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/Window1.axaml" value="Store/Store.csproj" />
       </map>
     </option>
   </component>

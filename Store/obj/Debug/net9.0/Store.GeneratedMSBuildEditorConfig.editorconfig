@@ -1,4 +1,11 @@
 is_global = true
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.AvaloniaNameGeneratorViewFileNamingStrategy = NamespaceAndClassName
+build_property.AvaloniaNameGeneratorAttachDevTools = true
 build_property.TargetFramework = net9.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -13,3 +20,49 @@ build_property.EnableComHosting =
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Styles/Styles.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Styles/icon.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/AccountSettingPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/AnalysePageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/BillPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/CustomerPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/EmployeePageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/HistoryPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/HomePageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/IncomePageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/ProductPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/SettingPageView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/nguyencuong/Desktop/c\#/Đồ Án/IT008-StoreManage/Store/Views/Window1.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

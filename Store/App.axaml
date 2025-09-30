@@ -1,21 +1,22 @@
-<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Store.App"
-             xmlns:local="using:Store"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+<Application
+    RequestedThemeVariant="Default"
+    x:Class="Store.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:local="using:Store"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
-  
+
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="Styles/Styles.axaml"/>
-        <StyleInclude Source="Styles/icon.axaml"/>
+        <StyleInclude Source="Styles/Styles.axaml" />
+        <StyleInclude Source="Styles/icon.axaml" />
     </Application.Styles>
     <Application.Resources>
-        <SolidColorBrush x:Key="Firstbackground" Color="White"></SolidColorBrush>
-        <SolidColorBrush x:Key="Secondbackground" Color="GhostWhite"></SolidColorBrush>
+        <SolidColorBrush Color="White" x:Key="Firstbackground" />
+        <SolidColorBrush Color="GhostWhite" x:Key="Secondbackground" />
     </Application.Resources>
 </Application>
