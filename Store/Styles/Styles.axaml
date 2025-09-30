@@ -1,0 +1,51 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+            <StackPanel>
+                <Button>test button</Button>
+                <TextBox>test_text_block</TextBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Button">
+        <Setter Property="CornerRadius" Value="15"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Background" Value="#FF914D"></Setter>
+        <Setter Property="Foreground" Value="#2E2E2E"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+    </Style>
+    <Style Selector="Button:pointerover/template/ContentPresenter">
+        <Setter Property="Background" Value="#FFDAB9"></Setter>
+        <Setter Property="Foreground" Value="#1C1C1C"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+    </Style>
+    <Style Selector="TextBox:focus">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style Selector="TextBox:pointerover/template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="Background">
+            <SolidColorBrush Color="White"/>
+        </Setter>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    <Style Selector="PathIcon">
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style Selector="Label">
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+</Styles> 
