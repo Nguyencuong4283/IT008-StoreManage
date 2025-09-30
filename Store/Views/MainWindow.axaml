@@ -123,6 +123,30 @@
                         <TextBlock>Thu nhập</TextBlock>
                     </WrapPanel>
                 </Button>
+                <Button Command="{Binding GoEmployeeCommand}">
+                    <WrapPanel ItemSpacing="5">
+                        <PathIcon Data="{StaticResource income_icon}" />
+                        <TextBlock>Nhân sự</TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button Command="{Binding GoCustomerCommand}">
+                    <WrapPanel ItemSpacing="5">
+                        <PathIcon Data="{StaticResource income_icon}" />
+                        <TextBlock>Khách hàng</TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button Command="{Binding GoHistoryCommand}">
+                    <WrapPanel ItemSpacing="5">
+                        <PathIcon Data="{StaticResource income_icon}" />
+                        <TextBlock>Nhập kho</TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button Command="{Binding GoAccountSettingCommand}">
+                    <WrapPanel ItemSpacing="5">
+                        <PathIcon Data="{StaticResource income_icon}" />
+                        <TextBlock>Tài khoản</TextBlock>
+                    </WrapPanel>
+                </Button>
             </StackPanel>
             <Button Command="{Binding GoSettingCommand}" VerticalAlignment="Bottom">
                 <WrapPanel ItemSpacing="5">

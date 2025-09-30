@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LhiSBzSyA8M=",
+  "dgSpecHash": "Vv7tdX729VU=",
   "success": true,
-  "projectFilePath": "/Users/nguyencuong/Desktop/c#/AvaloniaApplication1/Store/Store.csproj",
+  "projectFilePath": "/Users/nguyencuong/Desktop/c#/Đồ Án/IT008-StoreManage/Store/Store.csproj",
   "expectedPackageFiles": [
     "/Users/nguyencuong/.nuget/packages/avalonia/11.3.6/avalonia.11.3.6.nupkg.sha512",
     "/Users/nguyencuong/.nuget/packages/avalonia.angle.windows.natives/2.1.25547.20250602/avalonia.angle.windows.natives.2.1.25547.20250602.nupkg.sha512",

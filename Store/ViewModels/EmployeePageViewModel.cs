@@ -1,5 +1,6 @@
 namespace Store.ViewModels;
 
-public class EmployeePageViewModel
+public class EmployeePageViewModel : ViewModelBase
 {
+    public string EmployeePage { get; set; } = "Nhân viên";
 }
