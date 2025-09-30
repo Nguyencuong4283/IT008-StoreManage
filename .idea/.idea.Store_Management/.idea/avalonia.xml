@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Store/App.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/AccountSettingPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/AnalysePageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/BillPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/CustomerPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/EmployeePageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/HistoryPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/IncomePageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/MainWindow.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/ProductPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/SettingPageView.axaml" value="Store/Store.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
