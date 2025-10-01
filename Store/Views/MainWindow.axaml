@@ -117,28 +117,28 @@
                         <TextBlock>Sản phẩm</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Classes="style2" Command="{Binding GoIncomeCommand}">
-                    <WrapPanel ItemSpacing="5">
-                        <PathIcon Data="{StaticResource income_icon}" />
-                        <TextBlock>Thu nhập</TextBlock>
-                    </WrapPanel>
-                </Button>
-                <Button Classes="style2" Command="{Binding GoEmployeeCommand}">
-                    <WrapPanel ItemSpacing="5">
-                        <PathIcon Data="{StaticResource income_icon}" />
-                        <TextBlock>Nhân sự</TextBlock>
-                    </WrapPanel>
-                </Button>
                 <Button Classes="style2" Command="{Binding GoCustomerCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Khách hàng</TextBlock>
                     </WrapPanel>
                 </Button>
+                <Button Classes="style2" Command="{Binding GoIncomeCommand}">
+                    <WrapPanel ItemSpacing="5">
+                        <PathIcon Data="{StaticResource income_icon}" />
+                        <TextBlock>Thu nhập</TextBlock>
+                    </WrapPanel>
+                </Button>
                 <Button Classes="style2" Command="{Binding GoHistoryCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Nhập kho</TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button Classes="style2" Command="{Binding GoEmployeeCommand}">
+                    <WrapPanel ItemSpacing="5">
+                        <PathIcon Data="{StaticResource income_icon}" />
+                        <TextBlock>Nhân sự</TextBlock>
                     </WrapPanel>
                 </Button>
                 <Button Classes="style2" Command="{Binding GoAccountSettingCommand}">
