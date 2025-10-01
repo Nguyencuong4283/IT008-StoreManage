@@ -99,56 +99,59 @@
             Grid.Column="0"
             Grid.Row="1">
             <StackPanel Orientation="Vertical" Spacing="10">
-                <Button Command="{Binding GoHomeCommand}">
+                <Button Classes="style2" Command="{Binding GoHomeCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource home_icon}" />
                         <TextBlock>Tổng quan</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoBillCommand}">
+                <Button Classes="style2" Command="{Binding GoBillCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource clipboard_icon}" />
                         <TextBlock>Đơn hàng</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoProductCommand}">
+                <Button Classes="style2" Command="{Binding GoProductCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource box_icon}" />
                         <TextBlock>Sản phẩm</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoIncomeCommand}">
+                <Button Classes="style2" Command="{Binding GoIncomeCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Thu nhập</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoEmployeeCommand}">
+                <Button Classes="style2" Command="{Binding GoEmployeeCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Nhân sự</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoCustomerCommand}">
+                <Button Classes="style2" Command="{Binding GoCustomerCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Khách hàng</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoHistoryCommand}">
+                <Button Classes="style2" Command="{Binding GoHistoryCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Nhập kho</TextBlock>
                     </WrapPanel>
                 </Button>
-                <Button Command="{Binding GoAccountSettingCommand}">
+                <Button Classes="style2" Command="{Binding GoAccountSettingCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource income_icon}" />
                         <TextBlock>Tài khoản</TextBlock>
                     </WrapPanel>
                 </Button>
             </StackPanel>
-            <Button Command="{Binding GoSettingCommand}" VerticalAlignment="Bottom">
+            <Button
+                Classes="style2"
+                Command="{Binding GoSettingCommand}"
+                VerticalAlignment="Bottom">
                 <WrapPanel ItemSpacing="5">
                     <PathIcon Data="{StaticResource settings_icon}" />
                     <TextBlock>Cài đặt</TextBlock>
