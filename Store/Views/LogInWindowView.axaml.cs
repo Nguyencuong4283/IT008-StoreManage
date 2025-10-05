@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Store;
 
-public partial class Window1 : Window
+public partial class LogInWindowView : Window
 {
-    public Window1()
+    public LogInWindowView()
     {
         InitializeComponent();
     }

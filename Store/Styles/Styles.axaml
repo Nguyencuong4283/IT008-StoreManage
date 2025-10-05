@@ -17,7 +17,7 @@
         <Setter Property="Background">
             <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
                 <GradientStop Color="Blue" Offset="0" />
-                <GradientStop Color="Red" Offset="1" />
+                <GradientStop Color="#E67C7C" Offset="1" />
             </LinearGradientBrush>
         </Setter>
         <Setter Property="FontSize" Value="40" />

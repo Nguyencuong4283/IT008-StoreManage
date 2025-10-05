@@ -1,0 +1,104 @@
+<Window
+    Background="#D9D9D9"
+    Height="900"
+    Title="Window1"
+    Width="1440"
+    d:DesignHeight="900"
+    d:DesignWidth="1440"
+    mc:Ignorable="d"
+    x:Class="Store.LogInWindowView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	
+    <Border
+        CornerRadius="1"
+        Height="800"
+        Width="1200"
+		BorderBrush="black"
+		BorderThickness="2">
+        <Grid Background="White" ColumnDefinitions="600,600">
+            <!--  Chia bố cục  -->
+            <Border
+                Background="#1F5CF5"
+                CornerRadius="30"
+                Grid.Column="0">
+                <StackPanel>
+					<TextBlock
+						FontSize="40"
+						Foreground="white"
+						Margin="20"
+						TextWrapping="Wrap"
+						Text="Phần mềm
+                              Quản lý bán hàng">
+					</TextBlock>
+                    <TextBlock 
+						FontSize="60" 
+						FontWeight="Bold" 
+						Foreground="White" 
+						Margin="20,120,20,50"
+						TextWrapping="Wrap"
+						TextAlignment="Center">
+                        Chào mừng đến với ShopLinQ
+                    </TextBlock>
+					<Button
+					   Classes="style1"
+					   CornerRadius="30"
+					   Height="80"
+					   HorizontalAlignment="Center"
+					   Width="400">
+					   Đăng ký 
+					</Button>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1">
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+
+                    <TextBlock
+                        FontSize="50"
+                        FontWeight="Bold"
+                        Margin="50,150,50,0"
+                        Text="Đăng nhập tài khoản"
+                        TextAlignment="Center"/>
+                    <TextBox
+                        Background="#D9D9D9"
+                        FontSize="30"
+                        Height="80"
+                        Margin="50,50,50,50"
+                        Watermark="Name"
+                        Width="500"/>
+                    <TextBox
+                        Background="#D9D9D9"
+                        FontSize="30"
+                        Height="80"
+                        Margin="50,0,50,25"
+                        Watermark="Password"
+                        Width="500"/>
+					<TextBlock
+						Foreground="Red"
+						FontSize="25"
+						Margin="50,0,0,25">
+						Bạn quên mật khẩu?
+					</TextBlock>
+					<Button
+                        Classes="style1"
+                        CornerRadius="30"
+                        Height="80"
+                        HorizontalAlignment="Center"
+                        Width="400">
+						Đăng nhập
+					</Button>
+                    <TextBlock FontSize="50" FontWeight="Bold" Margin="50" Text="Login Account" TextAlignment="Center" />
+                    <TextBox Background="#D9D9D9" FontSize="30" Height="80" Margin="50" Watermark="Name" Width="500" />
+                    <TextBox Background="#D9D9D9" FontSize="30" Height="80" Watermark="Email" Width="500" />
+                    <TextBox Background="#D9D9D9" FontSize="30" Height="80" Margin="50" Watermark="Password" Width="500" />
+                    <Button Classes="style1" CornerRadius="30" Height="80" HorizontalAlignment="Center" Width="400">
+                        Login
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+
+</Window>

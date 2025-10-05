@@ -9,6 +9,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private ViewModelBase _currentPage;
     
+
     private readonly HomePageViewModel _homePage = new ();
     private readonly BillPageViewModel _billPage = new ();
     private readonly ProductPageViewModel _productPage = new();
