@@ -1,0 +1,164 @@
+<Window
+   xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Store.ViewModels"
+    mc:Ignorable="d"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="Admin Window"
+	Height="800"
+	Width="1200"
+	WindowStartupLocation="CenterScreen"
+    d:DesignHeight="900"
+    d:DesignWidth="1440"
+    x:Class="Store.Views.AdminWindowView"
+	x:DataType="vm:AdminWindowViewModel">   <!-- sửa sang ViewModel đúng -->
+
+	<Grid
+        Background="{DynamicResource Firstbackground}"
+        ColumnDefinitions="200 , *"
+        RowDefinitions="100 , *">
+		<!-- Top bar -->
+		<Grid
+            Background="{DynamicResource Secondbackground}"
+            ColumnDefinitions="Auto,*,Auto"
+            ColumnSpan="2">
+			<!-- Logo -->
+			<Grid Margin="15">
+				<Image
+                    Height="30"
+                    Margin="15"
+                    Source="{SvgImage /Assets/images/LUCKY.svg}" />
+			</Grid>
+			<!-- Search -->
+			<Grid Grid.Column="1">
+				<Grid
+                    Background="White"
+                    Height="34"
+                    HorizontalAlignment="Center"
+                    Width="729">
+					<TextBox
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        FontSize="21.5"
+                        Height="45"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Width="690" />
+					<Button
+                        Background="Orange"
+                        CornerRadius="0"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Margin="1">
+						<PathIcon Data="{StaticResource Search_icon}" />
+					</Button>
+				</Grid>
+			</Grid>
+			<!-- function -->
+			<Grid Grid.Column="2" Margin="15">
+				<StackPanel
+                    Orientation="Horizontal"
+                    Spacing="8"
+                    VerticalAlignment="Center">
+					<Button
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        Height="32"
+                        Width="32">
+						<PathIcon Data="{StaticResource notifications_icon}" />
+					</Button>
+					<Button
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        Height="32"
+                        Width="32">
+						<PathIcon Data="{StaticResource chat_icon}" />
+					</Button>
+					<Button
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        Height="32"
+                        Width="32">
+						<PathIcon Data="{StaticResource user_icon}" />
+					</Button>
+				</StackPanel>
+			</Grid>
+		</Grid>
+
+		<!-- Side_Bar -->
+		<Grid
+            Background="{DynamicResource Secondbackground}"
+            Grid.Column="0"
+            Grid.Row="1">
+			<StackPanel Orientation="Vertical" Spacing="10">
+				<Button Classes="style2" Command="{Binding GoHomeCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource home_icon}" />
+						<TextBlock>Tổng quan</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoBillCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource clipboard_icon}" />
+						<TextBlock>Đơn hàng</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoProductCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource box_icon}" />
+						<TextBlock>Sản phẩm</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoCustomerCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource income_icon}" />
+						<TextBlock>Khách hàng</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoIncomeCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource income_icon}" />
+						<TextBlock>Thu nhập</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoHistoryCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource income_icon}" />
+						<TextBlock>Nhập kho</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoEmployeeCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource income_icon}" />
+						<TextBlock>Nhân sự</TextBlock>
+					</WrapPanel>
+				</Button>
+				<Button Classes="style2" Command="{Binding GoAccountSettingCommand}">
+					<WrapPanel ItemSpacing="5">
+						<PathIcon Data="{StaticResource income_icon}" />
+						<TextBlock>Tài khoản</TextBlock>
+					</WrapPanel>
+				</Button>
+			</StackPanel>
+			<Button
+                Classes="style2"
+                Command="{Binding GoSettingCommand}"
+                VerticalAlignment="Bottom">
+				<WrapPanel ItemSpacing="5">
+					<PathIcon Data="{StaticResource settings_icon}" />
+					<TextBlock>Cài đặt</TextBlock>
+				</WrapPanel>
+			</Button>
+		</Grid>
+
+		<!-- Content -->
+		<Grid Grid.Column="1" Grid.Row="1">
+			<ContentControl Content="{Binding CurrentPage}" />
+		</Grid>
+	</Grid>
+</Window>
