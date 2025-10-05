@@ -1,13 +1,20 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1240" d:DesignHeight="800"
-             xmlns:vm = "clr-namespace:Store.ViewModels"
-             x:DataType="vm:HomePageViewModel"
-             x:Class="Store.Views.HomePageView">
+<UserControl
+    d:DesignHeight="800"
+    d:DesignWidth="1240"
+    mc:Ignorable="d"
+    x:Class="Store.Views.HomePageView"
+    x:DataType="vm:HomePageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Store.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.DataContext>
-        <vm:BillPageViewModel/>
+        <vm:BillPageViewModel />
     </Design.DataContext>
-    
+    <Grid ColumnDefinitions="400,*,400" RowDefinitions="Auto,*" ShowGridLines="True">
+        <Border>
+            
+        </Border>
+    </Grid>
 </UserControl>

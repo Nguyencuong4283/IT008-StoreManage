@@ -3,12 +3,36 @@
   "WorkspaceRootPath": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\models\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\models\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\loginwindowview.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\loginwindowview.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\loginwindowview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
       "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\loginwindowview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\productpageview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\productpageview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\homepageview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\homepageview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\styles\\icon.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\styles\\icon.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\styles\\styles.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\styles\\styles.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\models\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\models\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,18 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\viewmodels\\analysepageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\viewmodels\\analysepageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\styles\\icon.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
-      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\styles\\icon.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\styles\\styles.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
-      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\styles\\styles.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
-      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\viewmodels\\incomepageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\viewmodels\\billpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\viewmodels\\billpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\homepageview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
-      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\homepageview.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\app.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -95,10 +103,6 @@
       "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\viewmodels\\homepageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\views\\loginwindowview.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\views\\loginwindowview.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|d:\\h\u1ECDc t\u1EADp\\it008-l\u1EADp tr\u00ECnh tr\u1EF1c quan\\doan-it008\\it008-storemanage\\store\\viewmodels\\customerpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E4C3C88E-569E-43CA-BC87-652EC8ED2A48}|Store\\Store.csproj|solutionrelative:store\\viewmodels\\customerpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -122,7 +126,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -130,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Models\\Class1.cs",
               "RelativeDocumentMoniker": "Store\\Models\\Class1.cs",
@@ -143,20 +147,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\MainWindowViewModel.cs",
-              "RelativeDocumentMoniker": "Store\\ViewModels\\MainWindowViewModel.cs",
-              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\MainWindowViewModel.cs",
-              "RelativeToolTip": "Store\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T06:33:37.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "SettingPageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\SettingPageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\SettingPageViewModel.cs",
@@ -164,8 +155,7 @@
               "RelativeToolTip": "Store\\ViewModels\\SettingPageViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T06:33:31.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T06:33:31.191Z"
             },
             {
               "$type": "Document",
@@ -181,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "MainWindow.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\MainWindow.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\MainWindow.axaml",
@@ -218,6 +208,55 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "HomePageView.axaml",
+              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\HomePageView.axaml",
+              "RelativeDocumentMoniker": "Store\\Views\\HomePageView.axaml",
+              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\HomePageView.axaml",
+              "RelativeToolTip": "Store\\Views\\HomePageView.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-09-30T06:36:26.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LogInWindowView.axaml.cs",
+              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\LogInWindowView.axaml.cs",
+              "RelativeDocumentMoniker": "Store\\Views\\LogInWindowView.axaml.cs",
+              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\LogInWindowView.axaml.cs",
+              "RelativeToolTip": "Store\\Views\\LogInWindowView.axaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T06:47:23.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductPageView.axaml",
+              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\ProductPageView.axaml",
+              "RelativeDocumentMoniker": "Store\\Views\\ProductPageView.axaml",
+              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\ProductPageView.axaml",
+              "RelativeToolTip": "Store\\Views\\ProductPageView.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-05T15:22:59.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "Store\\ViewModels\\MainWindowViewModel.cs",
+              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeToolTip": "Store\\ViewModels\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T06:33:37.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "AnalysePageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\AnalysePageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\AnalysePageViewModel.cs",
@@ -225,24 +264,22 @@
               "RelativeToolTip": "Store\\ViewModels\\AnalysePageViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T06:24:44.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T06:24:44.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "CustomerPageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\CustomerPageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\CustomerPageView.axaml",
               "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\CustomerPageView.axaml",
               "RelativeToolTip": "Store\\Views\\CustomerPageView.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-09-30T06:34:48.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T06:34:48.751Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "AccountSettingPageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\AccountSettingPageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\AccountSettingPageView.axaml",
@@ -253,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "IncomePageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\IncomePageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\IncomePageViewModel.cs",
@@ -265,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "BillPageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\BillPageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\BillPageViewModel.cs",
@@ -277,18 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "HomePageView.axaml",
-              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\HomePageView.axaml",
-              "RelativeDocumentMoniker": "Store\\Views\\HomePageView.axaml",
-              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\HomePageView.axaml",
-              "RelativeToolTip": "Store\\Views\\HomePageView.axaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-09-30T06:36:26.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "App.axaml.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\App.axaml.cs",
               "RelativeDocumentMoniker": "Store\\App.axaml.cs",
@@ -300,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "ProductPageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\ProductPageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\ProductPageViewModel.cs",
@@ -312,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "ViewModelBase.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\ViewModelBase.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\ViewModelBase.cs",
@@ -324,7 +350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "AccountSettingPageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\AccountSettingPageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\AccountSettingPageViewModel.cs",
@@ -336,7 +362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Program.cs",
               "RelativeDocumentMoniker": "Store\\Program.cs",
@@ -348,7 +374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "AnalysePageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\AnalysePageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\AnalysePageView.axaml",
@@ -359,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "EmployeePageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\EmployeePageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\EmployeePageViewModel.cs",
@@ -371,19 +397,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "BillPageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\BillPageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\BillPageView.axaml",
               "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\BillPageView.axaml",
               "RelativeToolTip": "Store\\Views\\BillPageView.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-09-30T06:24:51.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T06:24:51.282Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "IncomePageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\IncomePageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\IncomePageView.axaml",
@@ -394,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "HomePageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\HomePageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\HomePageViewModel.cs",
@@ -406,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "CustomerPageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\CustomerPageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\CustomerPageViewModel.cs",
@@ -418,19 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "LogInWindowView.axaml.cs",
-              "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\LogInWindowView.axaml.cs",
-              "RelativeDocumentMoniker": "Store\\Views\\LogInWindowView.axaml.cs",
-              "ToolTip": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\LogInWindowView.axaml.cs",
-              "RelativeToolTip": "Store\\Views\\LogInWindowView.axaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T06:47:23.05Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "HistoryPageViewModel.cs",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\ViewModels\\HistoryPageViewModel.cs",
               "RelativeDocumentMoniker": "Store\\ViewModels\\HistoryPageViewModel.cs",
@@ -442,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "HistoryPageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\HistoryPageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\HistoryPageView.axaml",
@@ -454,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "EmployeePageView.axaml",
               "DocumentMoniker": "D:\\H\u1ECCC T\u1EACP\\IT008-L\u1EADp tr\u00ECnh tr\u1EF1c quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Views\\EmployeePageView.axaml",
               "RelativeDocumentMoniker": "Store\\Views\\EmployeePageView.axaml",

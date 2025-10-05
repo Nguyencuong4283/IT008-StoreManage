@@ -12,6 +12,7 @@
         <entry key="Store/Views/CustomerPageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/EmployeePageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/HistoryPageView.axaml" value="Store/Store.csproj" />
+        <entry key="Store/Views/HomePageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/IncomePageView.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/MainWindow.axaml" value="Store/Store.csproj" />
         <entry key="Store/Views/ProductPageView.axaml" value="Store/Store.csproj" />
