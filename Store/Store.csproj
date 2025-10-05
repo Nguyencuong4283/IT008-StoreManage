@@ -34,10 +34,4 @@
     <ItemGroup>
       <AdditionalFiles Include="Styles\Styles.axaml" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\LogInWindowView.axaml.cs">
-        <DependentUpon>LogInWindowView.axaml</DependentUpon>
-      </Compile>
-    </ItemGroup>
 </Project>

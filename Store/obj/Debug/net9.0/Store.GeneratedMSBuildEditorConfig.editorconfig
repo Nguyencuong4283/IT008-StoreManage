@@ -34,6 +34,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/AccountSettingPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/AdminWindowView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/AnalysePageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
@@ -53,9 +56,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/IncomePageView.axaml]
-build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
-
-[D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/LogInWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/MainWindow.axaml]
