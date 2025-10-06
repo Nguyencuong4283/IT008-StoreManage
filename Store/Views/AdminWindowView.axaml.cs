@@ -1,14 +1,17 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Store.ViewModels;
 
 namespace Store.Views;
 
-public partial class MainWindow : Window
+public partial class AdminWindowView : Window
 {
-    public MainWindow()
+    public AdminWindowView()
     {
         InitializeComponent();
+        DataContext = new AdminWindowViewModel();
     }
+
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);

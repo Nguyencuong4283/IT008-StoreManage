@@ -1,8 +1,12 @@
 <Window
     Icon="/Assets/avalonia-logo.ico"
     Title="test_app"
-    d:DesignHeight="900"
-    d:DesignWidth="1440"
+	Height="800"
+	Width="1200"
+	WindowStartupLocation="CenterScreen"
+	Background="#D9D9D9"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
     mc:Ignorable="d"
     x:Class="Store.Views.MainWindow"
     x:DataType="vm:MainWindowViewModel"
@@ -19,71 +23,31 @@
         -->
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <Grid
-        Background="{DynamicResource Firstbackground}"
-        ColumnDefinitions="200 , *"
-        RowDefinitions="100 , *">
+<<<<<<< HEAD
+    <Grid Background="{DynamicResource Firstbackground}" ColumnDefinitions="200 , *" RowDefinitions="100 , *" ShowGridLines="True">
         <!--  Top bar  -->
-        <Grid
-            Background="{DynamicResource Secondbackground}"
-            ColumnDefinitions="Auto,*,Auto"
-            ColumnSpan="2">
-            <!--  Logo  -->
-            <Grid Margin="15">
-                <Image
-                    Height="30"
-                    Margin="15"
-                    Source="{SvgImage /Assets/images/LUCKY.svg}" />
-            </Grid>
+        <Grid Grid.Column="1" Background="{DynamicResource Firstbackground}" ColumnDefinitions="*,Auto">
             <!--  Search  -->
-            <Grid Grid.Column="1">
-                <Grid
-                    Background="White"
-                    Height="34"
-                    HorizontalAlignment="Center"
-                    Width="729">
-                    <TextBox
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        FontSize="21.5"
-                        Height="45"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Width="690" />
-                    <Button
-                        Background="Orange"
-                        CornerRadius="0"
-                        Height="30"
-                        HorizontalAlignment="Right"
-                        Margin="1">
-                        <PathIcon Data="{StaticResource Search_icon}" />
-                    </Button>
-                </Grid>
+            <Grid Grid.Column="0">
+                <Border Background="White" BorderBrush="White" BorderThickness="1" CornerRadius="10" Margin="35" Padding="5" HorizontalAlignment="Left" Height="45" Width="730">
+                    <DockPanel>
+                        <Button Background="Transparent" CornerRadius="0" DockPanel.Dock="Left" Height="35" Width="40" >
+                            <PathIcon Data="{StaticResource Search_icon}" Width="25"/>
+                        </Button>
+                        <TextBox Background="Transparent" BorderBrush="Transparent" FontSize="21.5" DockPanel.Dock="Right" VerticalAlignment="Center" Height="35" Width="680" />
+                    </DockPanel>
+                </Border>  
             </Grid>
             <!--  function  -->
-            <Grid Grid.Column="2" Margin="15">
-                <StackPanel
-                    Orientation="Horizontal"
-                    Spacing="8"
-                    VerticalAlignment="Center">
-                    <Button
-                        Background="White"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        Height="32"
-                        Width="32">
+            <Grid Grid.Column="1" Margin="15">
+                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <Button Background="White" BorderBrush="Black" BorderThickness="1" Height="32" Width="32">
                         <PathIcon Data="{StaticResource notifications_icon}" />
                     </Button>
-                    <Button
-                        Background="White"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        Height="32"
-                        Width="32">
+                    <Button Background="White" BorderBrush="Black" BorderThickness="1" Height="32" Width="32">
                         <PathIcon Data="{StaticResource chat_icon}" />
                     </Button>
-                    <Button
-                        Background="White"
+                    <Button Background="White"
                         BorderBrush="Black"
                         BorderThickness="1"
                         Height="32"
@@ -94,11 +58,15 @@
             </Grid>
         </Grid>
         <!--  Side_Bar  -->
-        <Grid
-            Background="{DynamicResource Secondbackground}"
-            Grid.Column="0"
-            Grid.Row="1">
+        <Grid Grid.Column="0" Grid.Row="0" Background="{DynamicResource Secondbackground}" RowSpan="2">
             <StackPanel Orientation="Vertical" Spacing="10">
+                <!--  Logo  -->
+                <Grid Margin="15">
+                    <Image
+                        Height="30"
+                        Margin="15"
+                        Source="{SvgImage /Assets/images/LUCKY.svg}" />
+                </Grid>
                 <Button Classes="style2" Command="{Binding GoHomeCommand}">
                     <WrapPanel ItemSpacing="5">
                         <PathIcon Data="{StaticResource home_icon}" />
@@ -163,4 +131,92 @@
             <ContentControl Content="{Binding CurrentPage}" />
         </Grid>
     </Grid>
+=======
+
+	<Border
+        CornerRadius="1"
+        Height="800"
+        Width="1200"
+		BorderBrush="black"
+		BorderThickness="2">
+		<Grid Background="White" ColumnDefinitions="600,600">
+			<!--  Chia bố cục  -->
+			<Border
+                Background="#1F5CF5"
+                CornerRadius="30"
+                Grid.Column="0">
+				<StackPanel>
+					<TextBlock
+						FontSize="40"
+						Foreground="white"
+						Margin="20"
+						TextWrapping="Wrap"
+						Text="Phần mềm
+                              Quản lý bán hàng">
+					</TextBlock>
+					<TextBlock
+						FontSize="60"
+						FontWeight="Bold"
+						Foreground="White"
+						Margin="20,120,20,50"
+						TextWrapping="Wrap"
+						TextAlignment="Center">
+						Chào mừng đến với ShopLinQ
+					</TextBlock>
+					<Button Command="{Binding RegisterButtonCommand}"
+					   Classes="style1"
+					   CornerRadius="30"
+					   Height="80"
+					   HorizontalAlignment="Center"
+					   Width="400">
+						Đăng ký
+					</Button>
+				</StackPanel>
+			</Border>
+			<Border Grid.Column="1">
+				<StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+					<TextBlock
+                        FontSize="50"
+                        FontWeight="Bold"
+                        Margin="50,150,50,0"
+						Foreground="black"
+                        Text="Đăng nhập tài khoản"
+                        TextAlignment="Center"/>
+					<TextBox
+                        Background="#D9D9D9"
+                        FontSize="30"
+                        Height="80"
+                        Margin="50,50,50,50"
+                        Watermark="Name"
+                        Width="500"/>
+					<TextBox
+						Background="#D9D9D9"
+						FontSize="30"
+						Height="80"
+						Width="500"
+						Margin="50,0,50,25"
+						PasswordChar="*"
+						Watermark="Password"/>
+
+					<TextBlock
+						Foreground="Red"
+						FontSize="25"
+						Margin="50,0,0,25">
+						Bạn quên mật khẩu?
+					</TextBlock>
+					<Button Command="{Binding LogInButtonCommand}"
+                        Classes="style1"
+                        CornerRadius="30"
+                        Height="80"
+                        HorizontalAlignment="Center"
+                        Width="400">
+						Đăng nhập
+					</Button>
+	
+				</StackPanel>
+			</Border>
+		</Grid>
+	</Border>
+
+>>>>>>> 4ac05be94d8bb18021ed7e5b0a53baed1b7e9185
 </Window>

@@ -16,7 +16,7 @@
         <StyleInclude Source="Styles/icon.axaml" />
     </Application.Styles>
     <Application.Resources>
-        <SolidColorBrush Color="White" x:Key="Firstbackground" />
-        <SolidColorBrush Color="GhostWhite" x:Key="Secondbackground" />
+        <SolidColorBrush Color="LightGray" x:Key="Firstbackground" />
+        <SolidColorBrush Color="White" x:Key="Secondbackground" />
     </Application.Resources>
 </Application>

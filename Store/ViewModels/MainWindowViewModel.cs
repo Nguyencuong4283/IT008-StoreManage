@@ -6,50 +6,34 @@ namespace Store.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private ViewModelBase _currentPage;
-    
-    private readonly HomePageViewModel _homePage = new ();
-    private readonly BillPageViewModel _billPage = new ();
-    private readonly ProductPageViewModel _productPage = new();
-    private readonly IncomePageViewModel _incomePage = new();
-    private readonly SettingPageViewModel _settingPage = new();
-    private readonly AccountSettingPageViewModel _accountSettingPage = new();
-    private readonly CustomerPageViewModel _customerPage = new();
-    private readonly EmployeePageViewModel _employeePage = new();
-    private readonly HistoryPageViewModel _historyPageView = new();
-    private readonly AnalysePageViewModel  _analysePageView = new();
+    public object CurrentPage { get; set; }
 
-    public MainWindowViewModel() => CurrentPage = _homePage;
-    
+    public MainWindowViewModel()
+    {
+        CurrentPage = null;
+    }
 
     [RelayCommand]
-    private void GoHome() => CurrentPage = _homePage;
-    
+    private void LogInButton()
+    {
+        var adminVM = new AdminWindowViewModel();
+        var adminWindow = new AdminWindowView();
+        adminWindow.DataContext = adminVM;
+        adminWindow.Show();
+
+        // Đóng MainWindow hiện tại
+        if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+     && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+        {
+            mainWindow.Close();
+        }
+
+    }
     [RelayCommand]
-    private void GoBill() => CurrentPage = _billPage;
-    
-    [RelayCommand]
-    private void GoProduct() => CurrentPage = _productPage;
-    
-    [RelayCommand]
-    private void GoIncome() => CurrentPage = _incomePage;
-    
-    [RelayCommand]
-    private void GoSetting() => CurrentPage = _settingPage;
-    
-    [RelayCommand]
-    private void GoAccountSetting() => CurrentPage = _accountSettingPage;
-    
-    [RelayCommand]
-    private void GoCustomer() => CurrentPage = _customerPage;
-    
-    [RelayCommand]
-    private void GoEmployee() => CurrentPage = _employeePage;
-    
-    [RelayCommand]
-    private void GoHistory() => CurrentPage = _historyPageView;
-    
-    [RelayCommand]
-    private void GoAnalyse() => CurrentPage = _analysePageView;
+    private void RegisterButton()
+    {
+        var regis = new RegisterWindowView();
+        regis.DataContext = regis;
+        regis.Show();
+    }
 }
