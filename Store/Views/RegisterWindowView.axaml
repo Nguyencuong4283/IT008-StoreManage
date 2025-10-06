@@ -1,0 +1,140 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        x:Class="Store.RegisterWindowView"
+        Title="RegisterWindowView"
+		Width="1000"
+		Height="700"
+		Background="White"
+		WindowStartupLocation="CenterScreen">
+	<Border BorderBrush="Black" BorderThickness="5">
+		<Grid ColumnDefinitions="300, 700">
+			<!--Phần 1-->
+			<StackPanel Grid.Column="0">
+				<Border 
+					BorderBrush="black" 
+					BorderThickness="2" 
+					CornerRadius="180"  
+					Height="250" 
+					Width="250"
+					Margin="25,120,25,0">
+					<Image></Image>
+				</Border>
+				<Button
+					Classes="style3"
+					Height="80"
+					Width="250"
+					Margin="25,50,25,0">
+					Thêm ảnh đại diện 
+				</Button>
+			</StackPanel>
+			<!--Phần 2-->
+			<StackPanel Grid.Column="1">
+				<TextBlock
+					Foreground="black"
+					FontWeight="Bold"
+					FontSize="30"
+					Margin="25,25,0,0"
+					Height="50">
+					Đăng ký 
+				</TextBlock>
+				<StackPanel
+					Orientation="Horizontal"
+					Margin="0,20,0,20">
+					<TextBox
+						FontSize="20"
+						Watermark="Tên đăng nhập"
+						Foreground="black"
+						Height="60"
+						Width="300"
+						Background="#D9D9D9"
+						VerticalAlignment="Center"
+						Margin="0,0,50,0">
+					</TextBox>
+					<TextBox
+						FontSize="20"
+						Watermark="Mật khẩu"
+						Foreground="black"
+						Height="60"
+						Width="300"
+						Background="#D9D9D9"
+						VerticalAlignment="Center">
+					</TextBox>
+				</StackPanel>
+				<StackPanel
+					Orientation="Horizontal"
+					Margin="0,20,0,20">
+					<TextBox
+						FontSize="20"
+						Watermark="Họ Tên"
+						Foreground="black"
+						Height="60"
+						Width="300"
+						Background="#D9D9D9"
+						VerticalAlignment="Center"
+						Margin="0,0,50,0">
+					</TextBox>
+					<ComboBox 
+						Height="60"
+						Width="300"
+						PlaceholderText="Chọn giới tính"
+						Foreground="black"
+						FontSize="20"
+						Background="#D9D9D9">
+						<ComboBoxItem Content="Nam"/>
+						<ComboBoxItem Content="Nữ"/>
+					</ComboBox>
+				</StackPanel>
+				<StackPanel
+					Orientation="Horizontal"
+					Margin="0,20,0,20">
+					<CalendarDatePicker
+						FontSize="20"
+						Height="60"
+						Width="300"
+						Background="#D9D9D9"
+						Margin="0,0,50,0"
+						Foreground="black">
+					</CalendarDatePicker>
+					<TextBox
+						FontSize="20"
+						Watermark="Số điện thoại"
+						Foreground="black"
+						Height="60"
+						Width="300"
+						Background="#D9D9D9"
+						VerticalAlignment="Center">
+					</TextBox>
+				</StackPanel>
+				<TextBox
+						FontSize="20"
+						Watermark="Email"
+						Foreground="black"
+						Height="60"
+						Width="650"
+						Background="#D9D9D9"
+						VerticalAlignment="Center"
+						Margin="0,20,50, 20">
+				</TextBox>
+				<TextBox
+						FontSize="20"
+						Watermark="Địa chỉ"
+						Foreground="black"
+						Height="60"
+						Width="650"
+						Background="#D9D9D9"
+						VerticalAlignment="Center"
+						Margin="0,20,50, 20">
+				</TextBox>
+				<Button
+					Classes="style3"
+					Width="650"
+					Margin="0,20,0,0">
+					Đăng ký
+				</Button>
+			</StackPanel>
+		</Grid>
+	</Border>
+</Window>
