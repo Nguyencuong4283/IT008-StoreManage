@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/avalonia.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/references" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/references" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/ref/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/ref/Store.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/refint/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/refint/Store.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/rider.project.restore.info" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Nguyencuong4283&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Nguyencuong4283/IT008-StoreManage.git&quot;,
+    &quot;accountId&quot;: &quot;3a1c5462-a083-42f2-940a-d732aa64e90b&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/nguyencuong/Desktop/c#/Đồ Án/IT008-StoreManage/Store/Views/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/nguyencuong/Desktop/c#/Đồ Án/IT008-StoreManage/Store/Views/MainWindow.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.xaml" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="33PZuQz53giQ5A0Ppn1AUsUMNmL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Store.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Store" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Store/Store.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="" />
+      <created>1758090994955</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758090994955</updated>
+      <workItem from="1758091003602" duration="398000" />
+      <workItem from="1758197607905" duration="153000" />
+      <workItem from="1759220894609" duration="1283000" />
+      <workItem from="1759222965717" duration="5796000" />
+      <workItem from="1759239180115" duration="3403000" />
+      <workItem from="1759318258464" duration="3867000" />
+      <workItem from="1759322979918" duration="643000" />
+      <workItem from="1759323640996" duration="29000" />
+      <workItem from="1759325452087" duration="445000" />
+      <workItem from="1759325917864" duration="1760000" />
+      <workItem from="1759738199685" duration="3517000" />
+      <workItem from="1759755094861" duration="854000" />
+      <workItem from="1759757187761" duration="392000" />
+      <workItem from="1759757607803" duration="232000" />
+      <workItem from="1759759243660" duration="762000" />
+    </task>
+    <task id="LOCAL-00001" summary="add button">
+      <option name="closed" value="true" />
+      <created>1759238835253</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1759238835253</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add button">
+      <option name="closed" value="true" />
+      <created>1759320185209</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759320185209</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <option name="closed" value="true" />
+      <created>1759323661123</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759323661123</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="upload" />
+    <MESSAGE value="add button" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,18 +1,10 @@
 ﻿using Store.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Store.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public object CurrentPage { get; set; }
-
-    public MainWindowViewModel()
-    {
-        CurrentPage = null;
-    }
-
     [RelayCommand]
     private void LogInButton()
     {
@@ -27,7 +19,7 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             mainWindow.Close();
         }
-
+        
     }
     [RelayCommand]
     private void RegisterButton()
