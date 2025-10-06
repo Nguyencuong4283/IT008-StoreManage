@@ -54,7 +54,7 @@
 						TextAlignment="Center">
 						Chào mừng đến với ShopLinQ
 					</TextBlock>
-					<Button
+					<Button Command="{Binding RegisterButtonCommand}"
 					   Classes="style1"
 					   CornerRadius="30"
 					   Height="80"

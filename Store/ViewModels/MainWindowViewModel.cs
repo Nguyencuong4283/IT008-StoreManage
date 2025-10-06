@@ -29,4 +29,11 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
     }
+    [RelayCommand]
+    private void RegisterButton()
+    {
+        var regis = new RegisterWindowView();
+        regis.DataContext = regis;
+        regis.Show();
+    }
 }

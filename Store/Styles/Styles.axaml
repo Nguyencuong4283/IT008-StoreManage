@@ -5,12 +5,14 @@
             <StackPanel>
                 <Button Classes="style1">test button</Button>
                 <Button Classes="style2">test button 2</Button>
+				<Button Classes="style3">test button 3</Button>
                 <TextBox>test_text_block</TextBox>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
 
     <!--  Add Styles Here  -->
+	
     <!--  button style 1  -->
     <Style Selector="Button.style1">
         <Setter Property="CornerRadius" Value="15" />
@@ -64,4 +66,16 @@
     <Style Selector="Label">
         <Setter Property="Foreground" Value="Black" />
     </Style>
+	<!--Style button3-->
+	<Style Selector="Button.style3">
+		<Setter Property="BorderBrush" Value="Black"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="FontSize" Value="25"/>
+		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Background" Value="#3E68E6"/>
+	</Style>
+	
 </Styles>
