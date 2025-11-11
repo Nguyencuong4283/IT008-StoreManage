@@ -81,44 +81,72 @@
         
         <!-- Customer List -->
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="16,8,16,16" Background="White">
-            <ItemsControl ItemsSource="{Binding KhachHangs}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Background="White"
-                                BorderBrush="#E5E7EB" 
-                                BorderThickness="1" 
-                                CornerRadius="8"
-                                Margin="0,0,0,6"
-                                Padding="8,10"
-                                BoxShadow="0 1 3 0 #08000000">
-                            <Grid ColumnDefinitions="110,280,180,*">
-                                <TextBlock Grid.Column="0" 
-                                           Text="{Binding MaKH}" 
-                                           FontSize="14" 
-                                           Foreground="#111827"
-                                           VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" 
-                                           Text="{Binding TenKH}" 
-                                           FontSize="14" 
-                                           FontWeight="Medium"
-                                           Foreground="#111827"
-                                           VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="2" 
-                                           Text="{Binding SDT}" 
-                                           FontSize="14" 
-                                           Foreground="#6B7280"
-                                           VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="3" 
-                                           Text="{Binding DiaChi}" 
-                                           FontSize="14" 
-                                           Foreground="#6B7280"
-                                           TextTrimming="CharacterEllipsis"
-                                           VerticalAlignment="Center"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Grid>
+                <!-- Customer List -->
+                <ItemsControl ItemsSource="{Binding KhachHangs}"
+                              IsVisible="{Binding KhachHangs.Count}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="White"
+                                    BorderBrush="#E5E7EB" 
+                                    BorderThickness="1" 
+                                    CornerRadius="8"
+                                    Margin="0,0,0,6"
+                                    Padding="8,10"
+                                    BoxShadow="0 1 3 0 #08000000">
+                                <Grid ColumnDefinitions="110,280,180,*">
+                                    <TextBlock Grid.Column="0" 
+                                               Text="{Binding MaKH}" 
+                                               FontSize="14" 
+                                               Foreground="#111827"
+                                               VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" 
+                                               Text="{Binding TenKH}" 
+                                               FontSize="14" 
+                                               FontWeight="Medium"
+                                               Foreground="#111827"
+                                               VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" 
+                                               Text="{Binding SDT}" 
+                                               FontSize="14" 
+                                               Foreground="#6B7280"
+                                               VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="3" 
+                                               Text="{Binding DiaChi}" 
+                                               FontSize="14" 
+                                               Foreground="#6B7280"
+                                               TextTrimming="CharacterEllipsis"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+                <!-- Empty State -->
+                <Border Background="#F7FAFC" 
+                        CornerRadius="12" 
+                        Padding="60,80"
+                        IsVisible="{Binding !KhachHangs.Count}">
+                    <StackPanel HorizontalAlignment="Center" Spacing="15">
+                        <TextBlock Text="👥" FontSize="64" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Chưa có khách hàng nào" 
+                                   FontSize="18" 
+                                   FontWeight="SemiBold"
+                                   Foreground="#2D3748"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Tạo khách hàng đầu tiên để bắt đầu quản lý" 
+                                   FontSize="14" 
+                                   Foreground="#718096"
+                                   HorizontalAlignment="Center"/>
+                        <Button Command="{Binding TaoKhachHangButtonCommand}"
+                                Classes="primary" 
+                                Margin="0,10,0,0">
+                            + Tạo khách hàng
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
         </ScrollViewer>
     </Grid>
    </Border>

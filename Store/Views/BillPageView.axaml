@@ -72,48 +72,76 @@
 
 			<!-- Bill List -->
 			<ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="14,8,14,14" Background="White">
-				<ItemsControl ItemsSource="{Binding HoaDons}">
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<Border Background="White"
-									BorderBrush="#E5E7EB"
-									BorderThickness="1"
-									CornerRadius="8"
-									Margin="0,0,0,6"
-									Padding="6,10"
-									BoxShadow="0 1 3 0 #08000000">
-								<Grid ColumnDefinitions="100,*,180,150">
-									<TextBlock Grid.Column="0"
-											   Text="{Binding SoHD}"
-											   FontSize="13"
-											   Foreground="#111827"
-											   VerticalAlignment="Center"/>
-									<TextBlock Grid.Column="1"
-											   Text="{Binding TenKH}"
-											   FontSize="13"
-											   FontWeight="Medium"
-											   Foreground="#111827"
-											   TextTrimming="CharacterEllipsis"
-											   VerticalAlignment="Center"/>
-									<TextBlock Grid.Column="2"
-											   Text="{Binding NgayLapHD}"
-											   FontSize="13"
-											   Foreground="#6B7280"
-											   VerticalAlignment="Center"/>
-									<TextBlock Grid.Column="3"
-											   FontSize="13"
-											   FontWeight="SemiBold"
-											   Foreground="#667EEA"
-											   TextAlignment="Right"
-											   VerticalAlignment="Center">
-										<Run Text="{Binding TongTienHD}"/>
-										<Run Text=" ₫"/>
-									</TextBlock>
-								</Grid>
-							</Border>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
+				<Grid>
+					<!-- Bill List -->
+					<ItemsControl ItemsSource="{Binding HoaDons}"
+								  IsVisible="{Binding HoaDons.Count}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Border Background="White"
+										BorderBrush="#E5E7EB"
+										BorderThickness="1"
+										CornerRadius="8"
+										Margin="0,0,0,6"
+										Padding="6,10"
+										BoxShadow="0 1 3 0 #08000000">
+									<Grid ColumnDefinitions="100,*,180,150">
+										<TextBlock Grid.Column="0"
+												   Text="{Binding SoHD}"
+												   FontSize="13"
+												   Foreground="#111827"
+												   VerticalAlignment="Center"/>
+										<TextBlock Grid.Column="1"
+												   Text="{Binding TenKH}"
+												   FontSize="13"
+												   FontWeight="Medium"
+												   Foreground="#111827"
+												   TextTrimming="CharacterEllipsis"
+												   VerticalAlignment="Center"/>
+										<TextBlock Grid.Column="2"
+												   Text="{Binding NgayLapHD}"
+												   FontSize="13"
+												   Foreground="#6B7280"
+												   VerticalAlignment="Center"/>
+										<TextBlock Grid.Column="3"
+												   FontSize="13"
+												   FontWeight="SemiBold"
+												   Foreground="#667EEA"
+												   TextAlignment="Right"
+												   VerticalAlignment="Center">
+											<Run Text="{Binding TongTienHD}"/>
+											<Run Text=" ₫"/>
+										</TextBlock>
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+					
+					<!-- Empty State -->
+					<Border Background="#F7FAFC" 
+							CornerRadius="12" 
+							Padding="60,80"
+							IsVisible="{Binding !HoaDons.Count}">
+						<StackPanel HorizontalAlignment="Center" Spacing="15">
+							<TextBlock Text="📋" FontSize="64" HorizontalAlignment="Center"/>
+							<TextBlock Text="Chưa có hóa đơn nào" 
+									   FontSize="18" 
+									   FontWeight="SemiBold"
+									   Foreground="#2D3748"
+									   HorizontalAlignment="Center"/>
+							<TextBlock Text="Tạo hóa đơn đầu tiên để bắt đầu giao dịch" 
+									   FontSize="14" 
+									   Foreground="#718096"
+									   HorizontalAlignment="Center"/>
+							<Button Command="{Binding CreateBillButtonCommand}"
+									Classes="primary" 
+									Margin="0,10,0,0">
+								+ Tạo hóa đơn
+							</Button>
+						</StackPanel>
+					</Border>
+				</Grid>
 			</ScrollViewer>
 		</Grid>
 	</Border>

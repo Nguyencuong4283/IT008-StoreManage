@@ -52,27 +52,27 @@
           "dependencies": {
             "Avalonia": {
               "target": "Package",
-              "version": "[11.3.6, )"
+              "version": "[11.3.8, )"
             },
             "Avalonia.Desktop": {
               "target": "Package",
-              "version": "[11.3.6, )"
+              "version": "[11.3.8, )"
             },
             "Avalonia.Diagnostics": {
               "target": "Package",
-              "version": "[11.3.6, )"
+              "version": "[11.3.8, )"
             },
             "Avalonia.Fonts.Inter": {
               "target": "Package",
-              "version": "[11.3.6, )"
+              "version": "[11.3.8, )"
             },
             "Avalonia.Themes.Fluent": {
               "target": "Package",
-              "version": "[11.3.6, )"
+              "version": "[11.3.8, )"
             },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
-              "version": "[8.2.1, )"
+              "version": "[8.4.0, )"
             },
             "Dapper": {
               "target": "Package",
@@ -96,15 +96,15 @@
             },
             "Xaml.Behaviors": {
               "target": "Package",
-              "version": "[11.3.6.1, )"
+              "version": "[11.3.6.6, )"
             },
             "Xaml.Behaviors.Interactions.DragAndDrop": {
               "target": "Package",
-              "version": "[11.3.6.1, )"
+              "version": "[11.3.6.6, )"
             },
             "Xaml.Behaviors.Interactions.Draggable": {
               "target": "Package",
-              "version": "[11.3.6.1, )"
+              "version": "[11.3.6.6, )"
             }
           },
           "imports": [

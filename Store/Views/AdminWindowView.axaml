@@ -127,10 +127,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -148,10 +157,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -169,10 +187,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -190,10 +217,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -211,10 +247,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -232,10 +277,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -253,14 +307,23 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
-								<TextBlock Text="👔" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="�" FontSize="18" VerticalAlignment="Center"/>
 								<TextBlock Text="Nhân sự" FontSize="14" VerticalAlignment="Center"/>
 							</StackPanel>
 						</Button>
@@ -274,10 +337,19 @@
 								Padding="12,10"
 								Cursor="Hand"
 								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Left">
+								HorizontalContentAlignment="Left"
+								Margin="0,0,0,0">
 							<Button.Styles>
 								<Style Selector="Button:pointerover">
-									<Setter Property="Background" Value="#F3F4F6"/>
+									<Setter Property="Background">
+										<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+											<GradientStop Color="#F9FAFB" Offset="0"/>
+											<GradientStop Color="#F3F4F6" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter>
+									<Setter Property="BorderBrush" Value="#667EEA"/>
+									<Setter Property="BorderThickness" Value="2"/>
+									<Setter Property="Margin" Value="0,-2,0,2"/>
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
@@ -299,10 +371,19 @@
 							Padding="12,10"
 							Cursor="Hand"
 							HorizontalAlignment="Stretch"
-							HorizontalContentAlignment="Left">
+							HorizontalContentAlignment="Left"
+							Margin="0,0,0,0">
 						<Button.Styles>
 							<Style Selector="Button:pointerover">
-								<Setter Property="Background" Value="#F3F4F6"/>
+								<Setter Property="Background">
+									<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+										<GradientStop Color="#F9FAFB" Offset="0"/>
+										<GradientStop Color="#F3F4F6" Offset="1"/>
+									</LinearGradientBrush>
+								</Setter>
+								<Setter Property="BorderBrush" Value="#667EEA"/>
+								<Setter Property="BorderThickness" Value="2"/>
+								<Setter Property="Margin" Value="0,-2,0,2"/>
 							</Style>
 						</Button.Styles>
 						<StackPanel Orientation="Horizontal" Spacing="10">

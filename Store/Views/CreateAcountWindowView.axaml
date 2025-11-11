@@ -3,19 +3,19 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:vm="using:Store.ViewModels"
-		mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
-		Height="700"
-		Width="1000"
+		mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+		Height="800"
+		Width="1200"
 		Background="Transparent"
 		SystemDecorations="None"
 		WindowStartupLocation="CenterScreen"
 		x:DataType="vm:CreateAcountWindowViewModel"
 		x:Class="Store.Views.CreateAcountWindowView"
-		Title="ShopQuality - Đăng ký">
+		Title="CreateAcountWindowView">
 	<Window.DataContext>
 		<vm:CreateAcountWindowViewModel/>
 	</Window.DataContext>
-	<Border CornerRadius="16" ClipToBounds="True" BoxShadow="0 10 40 5 #30000000">
+	<Border CornerRadius="16" Height="800" Width="1200" ClipToBounds="True" BoxShadow="0 10 40 5 #30000000">
 		<Border.Background>
 			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
 				<GradientStop Color="#F9FAFB" Offset="0"/>
@@ -34,140 +34,184 @@
 			</Button>
 
 			<!-- Main Content -->
-			<Grid ColumnDefinitions="320,*">
-				<!-- Left Panel - Avatar Section -->
-				<Border Grid.Column="0" Padding="40,60">
-					<StackPanel VerticalAlignment="Center" Spacing="20">
-						<!-- Header -->
-						<StackPanel Spacing="8" Margin="0,0,0,16">
-							<TextBlock Text="Đăng ký" 
-									   FontSize="28" 
+			<Border Background="White" CornerRadius="16" Margin="70,50,70,50" BoxShadow="0 8 32 0 #20000000">
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
+					<Grid ColumnDefinitions="360,*" Margin="40">
+						<!-- Left Column - Avatar Section -->
+						<StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="0,30,30,0">
+							<TextBlock FontSize="24" 
 									   FontWeight="Bold" 
 									   Foreground="#111827"
-									   TextAlignment="Center"/>
-							<TextBlock Text="Tạo tài khoản mới" 
-									   FontSize="14" 
-									   Foreground="#6B7280"
-									   TextAlignment="Center"/>
+									   TextAlignment="Center"
+									   Margin="0,0,0,32">
+								Đăng ký tài khoản
+							</TextBlock>
+							
+							<Border Background="#F9FAFB" 
+									CornerRadius="16" 
+									Width="260" 
+									Height="260"
+									BoxShadow="0 4 12 0 #10000000"
+									ClipToBounds="True"
+									Margin="0,0,0,16">
+								<Image Source="{Binding HinhAnh, Mode=TwoWay}" 
+									   Stretch="UniformToFill"/>
+							</Border>
+							
+							<Button Command="{Binding ThemAnhButtonCommand}" 
+									Classes="primary"
+									Width="260" 
+									Height="42"
+									FontSize="14">
+								📷 Chọn ảnh đại diện
+							</Button>
 						</StackPanel>
-						
-						<!-- Avatar -->
-						<Border Background="White" 
-								CornerRadius="16" 
-								Width="220" 
-								Height="220"
-								BoxShadow="0 4 12 0 #10000000"
-								ClipToBounds="True"
-								HorizontalAlignment="Center">
-							<Image Source="{Binding HinhAnh, Mode=TwoWay}" 
-								   Stretch="UniformToFill"/>
-						</Border>
-						
-						<!-- Upload Button -->
-						<Button Command="{Binding ThemAnhButtonCommand}" 
-								Classes="secondary"
-								Height="40"
-								HorizontalAlignment="Stretch"
-								FontSize="14">
-							📷 Chọn ảnh
-						</Button>
-					</StackPanel>
-				</Border>
 
-				<!-- Right Panel - Form -->
-				<Border Grid.Column="1" 
-						Background="White" 
-						CornerRadius="0,16,16,0"
-						BoxShadow="-4 0 16 0 #10000000">
-					<ScrollViewer VerticalScrollBarVisibility="Auto">
-						<StackPanel Margin="40,60,40,40" Spacing="16">
-							<!-- Username & Password -->
-							<Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-								<StackPanel Grid.Column="0" Spacing="6">
+						<!-- Right Column - Form Fields -->
+						<StackPanel Grid.Column="1" Margin="0,30,0,0">
+							<!-- Username & Password Row -->
+							<Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
+								<StackPanel Grid.Column="0" Margin="0,0,8,0">
 									<TextBlock Text="Tên đăng nhập" Classes="label"/>
-									<TextBox Text="{Binding TenDangNhap, Mode=TwoWay}" 
-											 Classes="modern-input"
-											 Watermark="Nhập tên đăng nhập"/>
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+										<TextBox Text="{Binding TenDangNhap, Mode=TwoWay}" 
+												 Background="White"
+												 BorderThickness="0"
+												 FontSize="14"
+												 Foreground="Black"
+												 Watermark="Nhập tên đăng nhập"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 VerticalContentAlignment="Center"/>
+									</Border>
 								</StackPanel>
-								<StackPanel Grid.Column="1" Spacing="6">
+								<StackPanel Grid.Column="1" Margin="8,0,0,0">
 									<TextBlock Text="Mật khẩu" Classes="label"/>
-									<TextBox Text="{Binding MatKhau, Mode=TwoWay}" 
-											 Classes="modern-input"
-											 PasswordChar="●"
-											 Watermark="Nhập mật khẩu"/>
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+										<TextBox Text="{Binding MatKhau, Mode=TwoWay}" 
+												 Background="White"
+												 BorderThickness="0"
+												 FontSize="14"
+												 PasswordChar="●"
+												 Foreground="Black"
+												 Watermark="Nhập mật khẩu"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 VerticalContentAlignment="Center"/>
+									</Border>
 								</StackPanel>
 							</Grid>
 
-							<!-- Full Name & Gender -->
-							<Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-								<StackPanel Grid.Column="0" Spacing="6">
+							<!-- Full Name & Gender Row -->
+							<Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
+								<StackPanel Grid.Column="0" Margin="0,0,8,0">
 									<TextBlock Text="Họ và tên" Classes="label"/>
-									<TextBox Text="{Binding HoTen, Mode=TwoWay}" 
-											 Classes="modern-input"
-											 Watermark="Nhập họ và tên"/>
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+										<TextBox Text="{Binding HoTen, Mode=TwoWay}" 
+												 Background="White"
+												 BorderThickness="0"
+												 FontSize="14"
+												 Foreground="Black"
+												 Watermark="Nhập họ và tên"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 VerticalContentAlignment="Center"/>
+									</Border>
 								</StackPanel>
-								<StackPanel Grid.Column="1" Spacing="6">
+								<StackPanel Grid.Column="1" Margin="8,0,0,0">
 									<TextBlock Text="Giới tính" Classes="label"/>
-									<ComboBox ItemsSource="{Binding DanhSachGioiTinh}" 
-											  SelectedItem="{Binding GioiTinh, Mode=TwoWay}"
-											  Classes="modern-combo"
-											  PlaceholderText="Chọn giới tính"/>
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+										<ComboBox ItemsSource="{Binding DanhSachGioiTinh}" 
+												  SelectedItem="{Binding GioiTinh, Mode=TwoWay}"
+												  Background="White"
+												  BorderThickness="0"
+												  FontSize="14"
+												  Foreground="Black"
+												  PlaceholderText="Chọn giới tính"
+												  Padding="12,10"
+												  CornerRadius="8"
+												  VerticalContentAlignment="Center"/>
+									</Border>
 								</StackPanel>
 							</Grid>
 
-							<!-- Birth Date & Phone -->
-							<Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-								<StackPanel Grid.Column="0" Spacing="6">
+							<!-- Birth Date & Phone Row -->
+							<Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
+								<StackPanel Grid.Column="0" Margin="0,0,8,0">
 									<TextBlock Text="Ngày sinh" Classes="label"/>
-									<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
-														Background="White"
-														BorderBrush="#D1D5DB"
-														BorderThickness="1.5"
-														CornerRadius="8"
-														FontSize="14"
-														Padding="12,10"
-														MinHeight="40"/>
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+										<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
+															FontSize="14"
+															Background="White"
+															Foreground="Black"
+															BorderThickness="0"
+															Padding="12,10"
+															CornerRadius="8"
+															VerticalContentAlignment="Center"/>
+									</Border>
 								</StackPanel>
-								<StackPanel Grid.Column="1" Spacing="6">
+								<StackPanel Grid.Column="1" Margin="8,0,0,0">
 									<TextBlock Text="Số điện thoại" Classes="label"/>
-									<TextBox Text="{Binding SDT, Mode=TwoWay}" 
-											 Classes="modern-input"
-											 Watermark="+84 xxx xxx xxx"/>
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+										<TextBox Text="{Binding SDT, Mode=TwoWay}" 
+												 Background="White"
+												 BorderThickness="0"
+												 FontSize="14"
+												 Foreground="Black"
+												 Watermark="+84 xxx xxx xxx"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 VerticalContentAlignment="Center"/>
+									</Border>
 								</StackPanel>
 							</Grid>
 
-							<!-- Email -->
-							<StackPanel Spacing="6">
+							<!-- Email Field -->
+							<StackPanel Margin="0,0,0,16">
 								<TextBlock Text="Email" Classes="label"/>
-								<TextBox Text="{Binding Email, Mode=TwoWay}" 
-										 Classes="modern-input"
-										 Watermark="example@email.com"/>
+								<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+									<TextBox Text="{Binding Email, Mode=TwoWay}" 
+											 Background="White"
+											 BorderThickness="0"
+											 FontSize="14"
+											 Foreground="Black"
+											 Watermark="example@email.com"
+											 Padding="12,10"
+											 CornerRadius="8"
+											 VerticalContentAlignment="Center"/>
+								</Border>
 							</StackPanel>
 
-							<!-- Address -->
-							<StackPanel Spacing="6">
+							<!-- Address Field -->
+							<StackPanel Margin="0,0,0,24">
 								<TextBlock Text="Địa chỉ" Classes="label"/>
-								<TextBox Text="{Binding DiaChi, Mode=TwoWay}" 
-										 Classes="modern-input"
-										 AcceptsReturn="True"
-										 TextWrapping="Wrap"
-										 Height="70"
-										 Watermark="Nhập địa chỉ đầy đủ"/>
+								<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+									<TextBox Text="{Binding DiaChi, Mode=TwoWay}" 
+											 Background="White"
+											 BorderThickness="0"
+											 FontSize="14"
+											 Foreground="Black"
+											 AcceptsReturn="True"
+											 TextWrapping="Wrap"
+											 Height="70"
+											 Watermark="Nhập địa chỉ đầy đủ"
+											 Padding="12,10"
+											 CornerRadius="8"/>
+								</Border>
 							</StackPanel>
 
 							<!-- Register Button -->
 							<Button Command="{Binding DangKyButtonCommand}" 
 									Classes="primary"
 									Height="44"
-									FontSize="15"
-									Margin="0,8,0,0"
+									FontSize="14"
 									HorizontalAlignment="Stretch">
-								Tạo tài khoản
+								✓ Tạo tài khoản
 							</Button>
 						</StackPanel>
-					</ScrollViewer>
-				</Border>
-			</Grid>
+					</Grid>
+				</ScrollViewer>
+			</Border>
 		</Grid>
 	</Border>
 </Window>

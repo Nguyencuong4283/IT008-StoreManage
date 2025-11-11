@@ -107,6 +107,18 @@ namespace Store.Services
                 }
             }
         }
+        //Đếm số lượng sản phẩm
+        public static int CountSanPham()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM SanPham";
+                var result = cmd.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+        }
         //Read All
         public static List<SanPham> GetAllSanPham()
         {

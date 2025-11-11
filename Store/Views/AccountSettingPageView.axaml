@@ -126,7 +126,7 @@
                     </Border>
 
                     <!-- Action Buttons -->
-                    <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right" Margin="0 0 0 50">
                         <Button Classes="secondary" Padding="20,12">Hủy</Button>
                         <Button Classes="primary" Padding="20,12">💾 Lưu thay đổi</Button>
                     </StackPanel>

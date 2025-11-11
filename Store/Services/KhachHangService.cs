@@ -96,7 +96,18 @@ namespace Store.Services
 
             return khachHangs;
         }
-
+        //Đếm khách hàng
+        public static int CountKhachHang()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM KhachHang";
+                var result = cmd.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+        }
         // ----------------- UPDATE -----------------
         public static void UpdateKhachHang(KhachHang kh)
         {

@@ -66,67 +66,95 @@
 
 			<!-- Product Grid -->
 			<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="16" Background="White">
-				<ItemsControl ItemsSource="{Binding SanPhams}">
-					<ItemsControl.ItemsPanel>
-						<ItemsPanelTemplate>
-							<WrapPanel Orientation="Horizontal"/>
-						</ItemsPanelTemplate>
-					</ItemsControl.ItemsPanel>
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<Button Background="Transparent" BorderThickness="0" Padding="0" Margin="8" Cursor="Hand">
-								<Border Width="200" 
-										Background="White" 
-										BorderBrush="#E5E7EB" 
-										BorderThickness="1" 
-										CornerRadius="10" 
-										BoxShadow="0 1 6 0 #10000000"
-										Padding="10">
-									<StackPanel Spacing="8">
-										<Border CornerRadius="8" 
-												ClipToBounds="True" 
-												Background="#F9FAFB"
-												Height="170" 
-												Width="180">
-											<Image Source="{Binding HinhAnhSP}" 
-												   Stretch="UniformToFill"/>
-										</Border>
+				<Grid>
+					<!-- Product Grid -->
+					<ItemsControl ItemsSource="{Binding SanPhams}"
+								  IsVisible="{Binding SanPhams.Count}">
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<WrapPanel Orientation="Horizontal"/>
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Button Background="Transparent" BorderThickness="0" Padding="0" Margin="8" Cursor="Hand">
+									<Border Width="200" 
+											Background="White" 
+											BorderBrush="#E5E7EB" 
+											BorderThickness="1" 
+											CornerRadius="10" 
+											BoxShadow="0 1 6 0 #10000000"
+											Padding="10">
+										<StackPanel Spacing="8">
+											<Border CornerRadius="8" 
+													ClipToBounds="True" 
+													Background="#F9FAFB"
+													Height="170" 
+													Width="180">
+												<Image Source="{Binding HinhAnhSP}" 
+													   Stretch="UniformToFill"/>
+											</Border>
 
-										<TextBlock Text="{Binding TenSP}" 
-												   FontSize="14" 
-												   FontWeight="SemiBold"
-												   Foreground="#111827"
-												   TextAlignment="Left"
-												   TextTrimming="CharacterEllipsis"
-												   MaxLines="2"
-												   TextWrapping="Wrap"
-												   LineHeight="18"/>
+											<TextBlock Text="{Binding TenSP}" 
+													   FontSize="14" 
+													   FontWeight="SemiBold"
+													   Foreground="#111827"
+													   TextAlignment="Left"
+													   TextTrimming="CharacterEllipsis"
+													   MaxLines="2"
+													   TextWrapping="Wrap"
+													   LineHeight="18"/>
 
-										<StackPanel Orientation="Horizontal" Spacing="6">
-											<TextBlock FontSize="15" 
-													   FontWeight="Bold"
-													   Foreground="#667EEA"
-													   VerticalAlignment="Center">
-												<Run Text="{Binding GiaSP}"/>
-												<Run Text=" ₫" FontSize="13"/>
-											</TextBlock>
-											<TextBlock Text="•" 
-													   Foreground="#D1D5DB" 
-													   VerticalAlignment="Center"
-													   FontSize="12"/>
-											<TextBlock FontSize="12" 
-													   Foreground="#6B7280"
-													   VerticalAlignment="Center">
-												<Run Text="SL: "/>
-												<Run Text="{Binding SoLuongSP}"/>
-											</TextBlock>
+											<StackPanel Orientation="Horizontal" Spacing="6">
+												<TextBlock FontSize="15" 
+														   FontWeight="Bold"
+														   Foreground="#667EEA"
+														   VerticalAlignment="Center">
+													<Run Text="{Binding GiaSP}"/>
+													<Run Text=" ₫" FontSize="13"/>
+												</TextBlock>
+												<TextBlock Text="•" 
+														   Foreground="#D1D5DB" 
+														   VerticalAlignment="Center"
+														   FontSize="12"/>
+												<TextBlock FontSize="12" 
+														   Foreground="#6B7280"
+														   VerticalAlignment="Center">
+													<Run Text="SL: "/>
+													<Run Text="{Binding SoLuongSP}"/>
+												</TextBlock>
+											</StackPanel>
 										</StackPanel>
-									</StackPanel>
-								</Border>
+									</Border>
+								</Button>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+					
+					<!-- Empty State -->
+					<Border Background="#F7FAFC" 
+							CornerRadius="12" 
+							Padding="60,80"
+							IsVisible="{Binding !SanPhams.Count}">
+						<StackPanel HorizontalAlignment="Center" Spacing="15">
+							<TextBlock Text="📦" FontSize="64" HorizontalAlignment="Center"/>
+							<TextBlock Text="Chưa có sản phẩm nào" 
+									   FontSize="18" 
+									   FontWeight="SemiBold"
+									   Foreground="#2D3748"
+									   HorizontalAlignment="Center"/>
+							<TextBlock Text="Thêm sản phẩm đầu tiên để bắt đầu bán hàng" 
+									   FontSize="14" 
+									   Foreground="#718096"
+									   HorizontalAlignment="Center"/>
+							<Button Command="{Binding ThemSanPhamButtonCommand}"
+									Classes="primary" 
+									Margin="0,10,0,0">
+								+ Thêm sản phẩm
 							</Button>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
+						</StackPanel>
+					</Border>
+				</Grid>
 			</ScrollViewer>
 		</Grid>
 	</Border>

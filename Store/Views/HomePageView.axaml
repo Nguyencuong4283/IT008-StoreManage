@@ -65,7 +65,7 @@
                     <StackPanel Spacing="10">
                         <TextBlock Text="👥" FontSize="32"/>
                         <TextBlock Text="Khách hàng" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="0" FontSize="22" FontWeight="Bold" Foreground="#4299E1"/>
+                        <TextBlock Text="{Binding SoKhachHang}" FontSize="22" FontWeight="Bold" Foreground="#4299E1"/>
                         <TextBlock Text="Tổng số khách" FontSize="12" Foreground="#718096"/>
                     </StackPanel>
                 </Border>
@@ -74,7 +74,7 @@
                     <StackPanel Spacing="10">
                         <TextBlock Text="📊" FontSize="32"/>
                         <TextBlock Text="Sản phẩm" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="0" FontSize="22" FontWeight="Bold" Foreground="#ED8936"/>
+                        <TextBlock Text="{Binding SoSanPham}" FontSize="22" FontWeight="Bold" Foreground="#ED8936"/>
                         <TextBlock Text="Trong kho" FontSize="12" Foreground="#718096"/>
                     </StackPanel>
                 </Border>
@@ -106,19 +106,19 @@
                     <StackPanel>
                         <TextBlock Text="Thao tác nhanh" Classes="subheader" Margin="0,0,0,15"/>
                         <StackPanel Spacing="10">
-                            <Button Classes="primary" HorizontalAlignment="Stretch" Padding="15">
+                            <Button Command="{Binding TaoDonButtonCommand}" Classes="primary" HorizontalAlignment="Stretch" Padding="15">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock Text="➕" FontSize="18"/>
                                     <TextBlock Text="Tạo đơn hàng mới" FontSize="14"/>
                                 </StackPanel>
                             </Button>
-                            <Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                            <Button Command="{Binding ThemSanPhamButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock Text="📦" FontSize="18"/>
                                     <TextBlock Text="Thêm sản phẩm" FontSize="14"/>
                                 </StackPanel>
                             </Button>
-                            <Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                            <Button Command="{Binding ThemKhachHangButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock Text="👤" FontSize="18"/>
                                     <TextBlock Text="Thêm khách hàng" FontSize="14"/>

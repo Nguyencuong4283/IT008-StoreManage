@@ -55,11 +55,13 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 						</Border>
 						
 						<!-- Title -->
-						<TextBlock Text="ShopQuality" 
+						<TextBlock 
 								   FontSize="36" 
 								   FontWeight="Bold" 
 								   Foreground="#111827"
-								   TextAlignment="Center"/>
+								   TextAlignment="Center">
+						ShopQ<Run FontSize="18">uality</Run>
+						</TextBlock>
 						
 						<!-- Subtitle -->
 						<TextBlock Text="Phần mềm quản lý bán hàng hiện đại" 
