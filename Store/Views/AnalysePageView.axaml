@@ -1,6 +1,6 @@
 <UserControl
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
     mc:Ignorable="d"
     x:Class="Store.Views.AnalysePageView"
     x:DataType="viewModel:AnalysePageViewModel"
@@ -9,5 +9,73 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:Store.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    Welcome to Avalonia!
+    
+    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+        <Grid RowDefinitions="Auto,*">
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">
+                <StackPanel>
+                    <TextBlock Text="Phân tích kinh doanh" Classes="header" Margin="0,0,0,10"/>
+                    <TextBlock Text="Thống kê và phân tích hiệu quả kinh doanh" Classes="body"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Content -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="30">
+                <StackPanel Spacing="20">
+                    <!-- Quick Stats -->
+                    <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
+                        <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="📊" FontSize="24"/>
+                                <TextBlock Text="Sản phẩm bán chạy" FontSize="12" Foreground="#718096"/>
+                                <TextBlock Text="0" FontSize="20" FontWeight="Bold" Foreground="#667EEA"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="👥" FontSize="24"/>
+                                <TextBlock Text="Khách hàng mới" FontSize="12" Foreground="#718096"/>
+                                <TextBlock Text="0" FontSize="20" FontWeight="Bold" Foreground="#48BB78"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="⭐" FontSize="24"/>
+                                <TextBlock Text="Đánh giá TB" FontSize="12" Foreground="#718096"/>
+                                <TextBlock Text="0.0" FontSize="20" FontWeight="Bold" Foreground="#ED8936"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="3" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="📈" FontSize="24"/>
+                                <TextBlock Text="Tăng trưởng" FontSize="12" Foreground="#718096"/>
+                                <TextBlock Text="0%" FontSize="20" FontWeight="Bold" Foreground="#4299E1"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Analysis Charts -->
+                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
+                        <StackPanel>
+                            <TextBlock Text="Phân tích xu hướng" Classes="subheader" Margin="0,0,0,20"/>
+                            <Border Background="#F7FAFC" 
+                                    CornerRadius="8" 
+                                    Height="350"
+                                    Padding="20">
+                                <TextBlock Text="📈 Biểu đồ phân tích sẽ được hiển thị ở đây" 
+                                           FontSize="16" 
+                                           Foreground="#718096"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </UserControl>

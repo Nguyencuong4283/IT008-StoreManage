@@ -1,219 +1,360 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Padding="20">
-			<!--  Add Controls for Previewer Here  -->
-			<StackPanel>
-				<Button Classes="style1">test button</Button>
-				<Button Classes="style2">test button 2</Button>
-				<Button Classes="style3">test button 3</Button>
-				<TextBox Classes="style4"/>
-				<ComboBox Classes="style5"/>
-				<Button Classes="style6">Tạo</Button>
-				<TextBlock Classes="style7">test text block 2</TextBlock>
-				<TextBox Classes="style8">test </TextBox>
-				<StackPanel Classes="style9"></StackPanel>
-				<Border Classes="style10"></Border>
-				<NumericUpDown Classes="style11"></NumericUpDown>
-				<Button Classes="style12">X</Button>
-				<TextBox>test_text_block</TextBox>
+			<StackPanel Spacing="10">
+				<Button Classes="primary">Primary Button</Button>
+				<Button Classes="secondary">Secondary Button</Button>
+				<TextBox Classes="modern-input" Watermark="Modern Input"/>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
 
-	<!--  Add Styles Here  -->
+	<!-- ==================== COLOR RESOURCES ==================== -->
+	<Styles.Resources>
+		<!-- Primary Colors -->
+		<Color x:Key="Primary">#667EEA</Color>
+		<Color x:Key="PrimaryDark">#5568D3</Color>
+		<Color x:Key="PrimaryLight">#8B9FEE</Color>
+		<Color x:Key="PrimaryHover">#7B8FED</Color>
+		
+		<!-- Neutral Colors -->
+		<Color x:Key="Gray50">#F9FAFB</Color>
+		<Color x:Key="Gray100">#F3F4F6</Color>
+		<Color x:Key="Gray200">#E5E7EB</Color>
+		<Color x:Key="Gray300">#D1D5DB</Color>
+		<Color x:Key="Gray400">#9CA3AF</Color>
+		<Color x:Key="Gray500">#6B7280</Color>
+		<Color x:Key="Gray600">#4B5563</Color>
+		<Color x:Key="Gray700">#374151</Color>
+		<Color x:Key="Gray800">#1F2937</Color>
+		<Color x:Key="Gray900">#111827</Color>
+		
+		<!-- Status Colors -->
+		<Color x:Key="Success">#10B981</Color>
+		<Color x:Key="SuccessHover">#059669</Color>
+		<Color x:Key="Warning">#F59E0B</Color>
+		<Color x:Key="WarningHover">#D97706</Color>
+		<Color x:Key="Danger">#EF4444</Color>
+		<Color x:Key="DangerHover">#DC2626</Color>
+		<Color x:Key="Info">#3B82F6</Color>
+		<Color x:Key="InfoHover">#2563EB</Color>
+	</Styles.Resources>
 
-	<!--  button style 1  -->
-	<Style Selector="Button.style1">
-		<Setter Property="CornerRadius" Value="15" />
+	<!-- ==================== PRIMARY BUTTON ==================== -->
+	<Style Selector="Button.primary">
 		<Setter Property="Background">
-			<LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
-				<GradientStop Color="Blue" Offset="0" />
-				<GradientStop Color="#E67C7C" Offset="1" />
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Color="{StaticResource Primary}" Offset="0"/>
+				<GradientStop Color="{StaticResource PrimaryDark}" Offset="1"/>
 			</LinearGradientBrush>
 		</Setter>
-		<Setter Property="FontSize" Value="40" />
-		<Setter Property="FontWeight" Value="Bold" />
-		<Setter Property="Foreground" Value="White" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
-		<Setter Property="VerticalContentAlignment" Value="Center" />
-	</Style>
-	<Style Selector="Button.style1:pointerover/template/ContentPresenter">
-		<Setter Property="Background" Value="#5C81F0" />
-		<Setter Property="Foreground" Value="white" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
-	</Style>
-	<!--  button style 2  -->
-	<Style Selector="Button.style2">
-		<Setter Property="CornerRadius" Value="15" />
-		<Setter Property="FontSize" Value="20" />
-		<Setter Property="Background" Value="#FF914D" />
-		<Setter Property="Foreground" Value="#2E2E2E" />
-		<Setter Property="Margin" Value="5" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
-	</Style>
-	<Style Selector="Button.style2:pointerover/template/ContentPresenter">
-		<Setter Property="Background" Value="#FFDAB9" />
-		<Setter Property="Foreground" Value="#1C1C1C" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
-	</Style>
-	<Style Selector="TextBox:focus">
-		<Setter Property="FontSize" Value="20" />
-		<Setter Property="Foreground" Value="Black" />
-	</Style>
-	<Style Selector="TextBox:pointerover/template/ Border#PART_BorderElement">
-		<Setter Property="Background" Value="White" />
-		<Setter Property="BorderBrush" Value="Black" />
-		<Setter Property="BorderThickness" Value="2" />
-		<Setter Property="CornerRadius" Value="5" />
-	</Style>
-	<Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
-		<Setter Property="Background">
-			<SolidColorBrush Color="White" />
-		</Setter>
-		<Setter Property="BorderBrush" Value="Black" />
-		<Setter Property="BorderThickness" Value="2" />
-		<Setter Property="CornerRadius" Value="5" />
-	</Style>
-	<Style Selector="PathIcon">
-		<Setter Property="Foreground" Value="Black" />
-	</Style>
-	<Style Selector="Label">
-		<Setter Property="Foreground" Value="Black" />
-	</Style>
-	<!--Style button3-->
-	<Style Selector="Button.style3">
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="FontWeight" Value="Bold" />
-		<Setter Property="Foreground" Value="White" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
-		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Background" Value="#3E68E6"/>
-	</Style>
-	<Style Selector="Button.style3:pointerover/template/ContentPresenter">
-		<Setter Property="Background" Value="#7D9BF4" />
-		<Setter Property="Foreground" Value="White" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
-	</Style>
-	<!--Style textbox4-->
-	<Style Selector="TextBox.style4">
-		<Setter Property="Background" Value="#D9D9D9"/>
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="Height" Value="60"/>
-		<Setter Property="Width" Value="200"/>
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="CornerRadius" Value="5"/>
-		<Setter Property="Watermark" Value="Tìm kiếm"/>
-		<Setter Property="VerticalAlignment" Value="Center"/>
-		<Setter Property="HorizontalAlignment" Value="Center"/>
-		<Setter Property="Foreground" Value="Black"/>
-	</Style>
-	<!--Style combobox5-->
-	<Style Selector="ComboBox.style5">
-		<Setter Property="Background" Value="#D9D9D9"/>
-		<Setter Property="PlaceholderText" Value="Bộ lọc"/>
-		<Setter Property="PlaceholderForeground" Value="Black"/>
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="Height" Value="60"/>
-		<Setter Property="Width" Value="200"/>
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="CornerRadius" Value="5"/>
-		<Setter Property="Foreground" Value="Black"/>
-	</Style>
-	<!--Style button6-->
-	<Style Selector="Button.style6">
-		<Setter Property="Background">
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-				<GradientStop Color="Red" Offset="0" />
-				<GradientStop Color="#FF5B5B" Offset="1" />
-			</LinearGradientBrush>
-		</Setter>
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="Height" Value="60"/>
-		<Setter Property="Width" Value="200"/>
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="CornerRadius" Value="5"/>
 		<Setter Property="Foreground" Value="White"/>
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
-		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="16,10"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.primary:pointerover">
+		<Setter Property="Background">
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Color="{StaticResource PrimaryHover}" Offset="0"/>
+				<GradientStop Color="{StaticResource Primary}" Offset="1"/>
+			</LinearGradientBrush>
+		</Setter>
+	</Style>
+	<Style Selector="Button.primary:pressed">
+		<Setter Property="RenderTransform" Value="scale(0.98)"/>
+	</Style>
+
+	<!-- ==================== SECONDARY BUTTON ==================== -->
+	<Style Selector="Button.secondary">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="16,10"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.secondary:pointerover">
+		<Setter Property="Background" Value="{StaticResource Gray50}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+	</Style>
+	<Style Selector="Button.secondary:pressed">
+		<Setter Property="Background" Value="{StaticResource Gray100}"/>
+	</Style>
+
+	<!-- ==================== DANGER BUTTON ==================== -->
+	<Style Selector="Button.danger">
+		<Setter Property="Background" Value="{StaticResource Danger}"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="16,10"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.danger:pointerover">
+		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
+	</Style>
+	<Style Selector="Button.danger:pressed">
+		<Setter Property="Background" Value="#B91C1C"/>
+	</Style>
+
+	<!-- ==================== CLOSE BUTTON ==================== -->
+	<Style Selector="Button.close-btn">
+		<Setter Property="Background" Value="{StaticResource Danger}"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="16"/>
 		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Width" Value="36"/>
+		<Setter Property="Height" Value="36"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.style6:pointerover/template/ContentPresenter">
-		<Setter Property="Background" Value="#F56C6C" />
-		<Setter Property="Foreground" Value="White" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
+	<Style Selector="Button.close-btn:pointerover">
+		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
 	</Style>
-	<!--Style textblock7-->
+
+	<!-- ==================== ICON BUTTON ==================== -->
+	<Style Selector="Button.icon-btn">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray600}"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Width" Value="36"/>
+		<Setter Property="Height" Value="36"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.icon-btn:pointerover">
+		<Setter Property="Background" Value="{StaticResource Gray100}"/>
+	</Style>
+
+	<!-- ==================== MODERN INPUT - FIX BLACK TEXT ==================== -->
+	<Style Selector="TextBox.modern-input">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Padding" Value="12,10"/>
+		<Setter Property="MinHeight" Value="40"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
+	</Style>
+	<Style Selector="TextBox.modern-input:focus /template/ Border#PART_BorderElement">
+		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
+	<Style Selector="TextBox.modern-input:pointerover /template/ Border#PART_BorderElement">
+		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
+	<Style Selector="TextBox.modern-input /template/ Border#PART_BorderElement">
+		<Setter Property="Background" Value="White"/>
+	</Style>
+
+	<!-- ==================== MODERN COMBOBOX ==================== -->
+	<Style Selector="ComboBox.modern-combo">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Padding" Value="12,10"/>
+		<Setter Property="MinHeight" Value="40"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="ComboBox.modern-combo:pointerover /template/ Border#Background">
+		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
+	<Style Selector="ComboBox.modern-combo:focus /template/ Border#Background">
+		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
+
+	<!-- ==================== CARD STYLE ==================== -->
+	<Style Selector="Border.card">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray200}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="CornerRadius" Value="12"/>
+		<Setter Property="Padding" Value="20"/>
+	</Style>
+
+	<!-- ==================== TEXT STYLES ==================== -->
+	<Style Selector="TextBlock.header">
+		<Setter Property="FontSize" Value="24"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="TextWrapping" Value="Wrap"/>
+	</Style>
+
+	<Style Selector="TextBlock.subheader">
+		<Setter Property="FontSize" Value="18"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray800}"/>
+		<Setter Property="TextWrapping" Value="Wrap"/>
+	</Style>
+
+	<Style Selector="TextBlock.label">
+		<Setter Property="FontSize" Value="13"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
+		<Setter Property="Margin" Value="0,0,0,6"/>
+	</Style>
+
+	<Style Selector="TextBlock.body">
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray600}"/>
+		<Setter Property="LineHeight" Value="20"/>
+		<Setter Property="TextWrapping" Value="Wrap"/>
+	</Style>
+
+	<!-- ==================== LEGACY STYLES ==================== -->
+	<Style Selector="Button.style1, Button.style3, Button.style6">
+		<Setter Property="Background">
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Color="{StaticResource Primary}" Offset="0"/>
+				<GradientStop Color="{StaticResource PrimaryDark}" Offset="1"/>
+			</LinearGradientBrush>
+		</Setter>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.style1:pointerover, Button.style3:pointerover, Button.style6:pointerover">
+		<Setter Property="Background">
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Color="{StaticResource PrimaryHover}" Offset="0"/>
+				<GradientStop Color="{StaticResource Primary}" Offset="1"/>
+			</LinearGradientBrush>
+		</Setter>
+	</Style>
+
+	<Style Selector="Button.style2">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Padding" Value="12,10"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.style2:pointerover">
+		<Setter Property="Background" Value="{StaticResource Gray50}"/>
+	</Style>
+
+	<Style Selector="Button.style12">
+		<Setter Property="Background" Value="{StaticResource Danger}"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="Width" Value="36"/>
+		<Setter Property="Height" Value="36"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="Button.style12:pointerover">
+		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
+	</Style>
+
+	<!-- FIX ALL TEXTBOX FOREGROUND -->
+	<Style Selector="TextBox">
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
+	</Style>
+	
+	<Style Selector="TextBox.style4, TextBox.style8">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Padding" Value="12,10"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
+	</Style>
+	<Style Selector="TextBox.style4:focus /template/ Border#PART_BorderElement, TextBox.style8:focus /template/ Border#PART_BorderElement">
+		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
+
+	<Style Selector="ComboBox.style5">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Padding" Value="12,10"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+
 	<Style Selector="TextBlock.style7">
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="FontWeight" Value="Bold"/>
-		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
 		<Setter Property="TextAlignment" Value="Center"/>
 		<Setter Property="VerticalAlignment" Value="Center"/>
-		<Setter Property="HorizontalAlignment" Value="Center"/>
-	</Style>
-	<!--Style textbox8-->
-	<Style Selector="TextBox.style8" >
-		<Setter Property="Background" Value="#D9D9D9"/>
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="Height" Value="60"/>
-		<Setter Property="Width" Value="200"/>
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="CornerRadius" Value="5"/>
-		<Setter Property="VerticalAlignment" Value="Center"/>
-		<Setter Property="HorizontalAlignment" Value="Left"/>
-		<Setter Property="Foreground" Value="Black"/>
-</Style>
-	
-	<!--Style stackpanel9-->
-	<Style Selector="StackPanel.style9">
-		<Setter Property="Background">
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-				<GradientStop Color="#81A3D8" Offset="0" />
-				<GradientStop Color="#0E80C7" Offset="1" />
-			</LinearGradientBrush>
-		</Setter>
-	</Style>
-	<!--Style border10-->
-	<Style Selector="Border.style10">
-		<Setter Property="Background">
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-				<GradientStop Color="#68C1F0" Offset="0"/>
-				<GradientStop Color="White" Offset="1"/>
-			</LinearGradientBrush>
-		</Setter>
-	</Style>
-	<!--Style NumericUpDown 11-->
-	<Style Selector="NumericUpDown.style11" >
-		<Setter Property="Background" Value="white"/>
-		<Setter Property="FontSize" Value="25"/>
-		<Setter Property="Height" Value="60"/>
-		<Setter Property="Width" Value="200"/>
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="CornerRadius" Value="5"/>
-		<Setter Property="VerticalAlignment" Value="Center"/>
-		<Setter Property="HorizontalAlignment" Value="Left"/>
-		<Setter Property="Foreground" Value="Black"/>
-</Style>
-	<Style Selector="Button.style12">
-		<Setter Property="Background" Value="White"></Setter>
-		<Setter Property="Foreground" Value="Gray"/>
-		<Setter Property="FontSize" Value="30"/>
-		<Setter Property="FontWeight" Value="Bold"/>
-		<Setter Property="Height" Value="45"/>
-		<Setter Property="Width" Value="40"/>
-	</Style>
-	<Style Selector="Button.style12:pointerover/template/ContentPresenter">
-		<Setter Property="Background" Value="White" />
-		<Setter Property="Foreground" Value="#938E8E" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
 	</Style>
 
+	<Style Selector="NumericUpDown.style11">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="FontSize" Value="14"/>
+	</Style>
+
+	<!-- ==================== GLOBAL TEXTBOX FIX ==================== -->
+	<Style Selector="TextBox /template/ Border#PART_BorderElement">
+		<Setter Property="Background" Value="White"/>
+	</Style>
+	
+	<Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
+
+	<Style Selector="ComboBox:focus /template/ Border#Background">
+		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
+		<Setter Property="Background" Value="White"/>
+	</Style>
 
 </Styles>

@@ -3,81 +3,170 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:vm="using:Store.ViewModels"
-		mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
-		Height="800"
-		Width="1200"
+		mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+		Height="700"
+		Width="1000"
 		Background="Transparent"
 		SystemDecorations="None"
 		WindowStartupLocation="CenterScreen"
 		x:DataType="vm:CreateAcountWindowViewModel"
 		x:Class="Store.Views.CreateAcountWindowView"
-		Title="CreateAcountWindowView">
+		Title="ShopQuality - Đăng ký">
 	<Window.DataContext>
 		<vm:CreateAcountWindowViewModel/>
 	</Window.DataContext>
-	<Border  Background="White" CornerRadius="40" Height="800" Width="1200"  ClipToBounds="True">
+	<Border CornerRadius="16" ClipToBounds="True" BoxShadow="0 10 40 5 #30000000">
+		<Border.Background>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#F9FAFB" Offset="0"/>
+				<GradientStop Color="#F3F4F6" Offset="1"/>
+			</LinearGradientBrush>
+		</Border.Background>
 		<Grid>
-			<Button Command="{Binding $parent[Window].Close}" Classes="style12" Margin=" 1140 0 0 730">X</Button>
+			<!-- Close Button -->
+			<Button Command="{Binding $parent[Window].Close}" 
+					Classes="close-btn"
+					HorizontalAlignment="Right" 
+					VerticalAlignment="Top" 
+					Margin="0,16,16,0"
+					ZIndex="10">
+				✕
+			</Button>
 
-			<Grid ColumnDefinitions="350,650" Margin="100,0,100,0">
-
-				<!-- Cột 1: Hình ảnh -->
-				<StackPanel Grid.Column="0" Orientation="Vertical" Margin="25,200,25,200">
-					<Border Background="White" CornerRadius="180" BoxShadow="0 0 3 3 gray" Width="300" Height="300"  ClipToBounds="True" >
-						<Image  Source="{Binding HinhAnh, Mode=TwoWay}" Stretch="UniformToFill"  />
-					</Border>
-					<Button Command="{Binding ThemAnhButtonCommand}"   Classes="style3" Width="300" Height="60" Margin="0,30,0,0">Thêm ảnh</Button>
-				</StackPanel>
-
-				<!-- Cột 2: Thông tin sản phẩm -->
-				<StackPanel Grid.Column="1" Orientation="Vertical">
-					<TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,30,0,10">Đăng ký</TextBlock>
-
-					<!--Teen Đăng nhập && Mật khẩu -->
-					<StackPanel Orientation="Horizontal">
-						<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-							<TextBlock Classes="style7" FontSize="20" Text="Tên đăng nhập:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
-							<TextBox Text="{Binding TenDangNhap, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="UserName"/>
+			<!-- Main Content -->
+			<Grid ColumnDefinitions="320,*">
+				<!-- Left Panel - Avatar Section -->
+				<Border Grid.Column="0" Padding="40,60">
+					<StackPanel VerticalAlignment="Center" Spacing="20">
+						<!-- Header -->
+						<StackPanel Spacing="8" Margin="0,0,0,16">
+							<TextBlock Text="Đăng ký" 
+									   FontSize="28" 
+									   FontWeight="Bold" 
+									   Foreground="#111827"
+									   TextAlignment="Center"/>
+							<TextBlock Text="Tạo tài khoản mới" 
+									   FontSize="14" 
+									   Foreground="#6B7280"
+									   TextAlignment="Center"/>
 						</StackPanel>
-						<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-							<TextBlock Classes="style7" FontSize="20" Text="Mật khẩu:"  HorizontalAlignment="Left" Margin="0,20,0,0"/>
-							<TextBox Text="{Binding MatKhau, Mode=TwoWay}" Classes="style8" Width="300" Watermark="Password"/>
-						</StackPanel>
+						
+						<!-- Avatar -->
+						<Border Background="White" 
+								CornerRadius="16" 
+								Width="220" 
+								Height="220"
+								BoxShadow="0 4 12 0 #10000000"
+								ClipToBounds="True"
+								HorizontalAlignment="Center">
+							<Image Source="{Binding HinhAnh, Mode=TwoWay}" 
+								   Stretch="UniformToFill"/>
+						</Border>
+						
+						<!-- Upload Button -->
+						<Button Command="{Binding ThemAnhButtonCommand}" 
+								Classes="secondary"
+								Height="40"
+								HorizontalAlignment="Stretch"
+								FontSize="14">
+							📷 Chọn ảnh
+						</Button>
 					</StackPanel>
+				</Border>
 
-					<!-- Họ tên && Giới tính -->
-					<StackPanel Orientation="Horizontal">
-						<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-							<TextBlock Classes="style7" FontSize="20" Text="Họ tên:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
-							<TextBox Text="{Binding HoTen, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="FullName"/>
-						</StackPanel>
-						<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-							<TextBlock Classes="style7" FontSize="20" Text="Giới tính:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
-							<ComboBox ItemsSource="{Binding DanhSachGioiTinh}"  SelectedItem="{Binding GioiTinh, Mode=TwoWay}" Classes="style5" PlaceholderText="Nam" Width="300"></ComboBox>
-						</StackPanel>
-					</StackPanel>
+				<!-- Right Panel - Form -->
+				<Border Grid.Column="1" 
+						Background="White" 
+						CornerRadius="0,16,16,0"
+						BoxShadow="-4 0 16 0 #10000000">
+					<ScrollViewer VerticalScrollBarVisibility="Auto">
+						<StackPanel Margin="40,60,40,40" Spacing="16">
+							<!-- Username & Password -->
+							<Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+								<StackPanel Grid.Column="0" Spacing="6">
+									<TextBlock Text="Tên đăng nhập" Classes="label"/>
+									<TextBox Text="{Binding TenDangNhap, Mode=TwoWay}" 
+											 Classes="modern-input"
+											 Watermark="Nhập tên đăng nhập"/>
+								</StackPanel>
+								<StackPanel Grid.Column="1" Spacing="6">
+									<TextBlock Text="Mật khẩu" Classes="label"/>
+									<TextBox Text="{Binding MatKhau, Mode=TwoWay}" 
+											 Classes="modern-input"
+											 PasswordChar="●"
+											 Watermark="Nhập mật khẩu"/>
+								</StackPanel>
+							</Grid>
 
-					<!--Ngày sinh && SDT -->
-					<StackPanel Orientation="Horizontal">
-						<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-							<TextBlock Classes="style7" FontSize="20" Text="Ngày sinh:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
-							<CalendarDatePicker  SelectedDate="{Binding NgaySinh, Mode=TwoWay}" FontSize="20" Height="60" Width="300" Background="#D9D9D9" Foreground="black"/>
-						</StackPanel>
-						<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-							<TextBlock Classes="style7" FontSize="20" Text="Số điện thoại:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
-							<TextBox Text="{Binding SDT, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="+84"/>
-						</StackPanel>
-					</StackPanel>
+							<!-- Full Name & Gender -->
+							<Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+								<StackPanel Grid.Column="0" Spacing="6">
+									<TextBlock Text="Họ và tên" Classes="label"/>
+									<TextBox Text="{Binding HoTen, Mode=TwoWay}" 
+											 Classes="modern-input"
+											 Watermark="Nhập họ và tên"/>
+								</StackPanel>
+								<StackPanel Grid.Column="1" Spacing="6">
+									<TextBlock Text="Giới tính" Classes="label"/>
+									<ComboBox ItemsSource="{Binding DanhSachGioiTinh}" 
+											  SelectedItem="{Binding GioiTinh, Mode=TwoWay}"
+											  Classes="modern-combo"
+											  PlaceholderText="Chọn giới tính"/>
+								</StackPanel>
+							</Grid>
 
-					<!-- Email && Địa chỉ -->
-					<TextBlock Classes="style7" FontSize="20" Margin="10,20,0,0" Text="Email:" HorizontalAlignment="Left" TextAlignment="Left"/>
-					<TextBox Text="{Binding Email, Mode=TwoWay}" Classes="style8" Width="620" Height="60" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Email"/>
-					<TextBlock Classes="style7" FontSize="20" Margin="10,20,0,0" Text="Địa chỉ:" HorizontalAlignment="Left" />
-					<TextBox Text="{Binding DiaChi, Mode=TwoWay}" Classes="style8" Width="620" Height="60" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Address"/>
+							<!-- Birth Date & Phone -->
+							<Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+								<StackPanel Grid.Column="0" Spacing="6">
+									<TextBlock Text="Ngày sinh" Classes="label"/>
+									<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
+														Background="White"
+														BorderBrush="#D1D5DB"
+														BorderThickness="1.5"
+														CornerRadius="8"
+														FontSize="14"
+														Padding="12,10"
+														MinHeight="40"/>
+								</StackPanel>
+								<StackPanel Grid.Column="1" Spacing="6">
+									<TextBlock Text="Số điện thoại" Classes="label"/>
+									<TextBox Text="{Binding SDT, Mode=TwoWay}" 
+											 Classes="modern-input"
+											 Watermark="+84 xxx xxx xxx"/>
+								</StackPanel>
+							</Grid>
 
-					<!-- Nút tạo sản phẩm -->
-					<Button Command="{Binding DangKyButtonCommand}" Classes="style3" Height="60" Width="620" HorizontalAlignment="Center" Margin="0,40,0,0">Thêm tài khoản</Button>
-				</StackPanel>
+							<!-- Email -->
+							<StackPanel Spacing="6">
+								<TextBlock Text="Email" Classes="label"/>
+								<TextBox Text="{Binding Email, Mode=TwoWay}" 
+										 Classes="modern-input"
+										 Watermark="example@email.com"/>
+							</StackPanel>
+
+							<!-- Address -->
+							<StackPanel Spacing="6">
+								<TextBlock Text="Địa chỉ" Classes="label"/>
+								<TextBox Text="{Binding DiaChi, Mode=TwoWay}" 
+										 Classes="modern-input"
+										 AcceptsReturn="True"
+										 TextWrapping="Wrap"
+										 Height="70"
+										 Watermark="Nhập địa chỉ đầy đủ"/>
+							</StackPanel>
+
+							<!-- Register Button -->
+							<Button Command="{Binding DangKyButtonCommand}" 
+									Classes="primary"
+									Height="44"
+									FontSize="15"
+									Margin="0,8,0,0"
+									HorizontalAlignment="Stretch">
+								Tạo tài khoản
+							</Button>
+						</StackPanel>
+					</ScrollViewer>
+				</Border>
 			</Grid>
 		</Grid>
 	</Border>

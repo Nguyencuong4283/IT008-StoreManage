@@ -9,48 +9,117 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:Store.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-     <Border CornerRadius="20" Background="White" Margin="10,10,10,10" BoxShadow="0 0 10 2 black">
-    <Grid RowDefinitions="180, 490">
-        <!--Chức năng-->
-        <StackPanel Grid.Row="0" Orientation="Vertical">
-           <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="30,20,30,20">
-               <ComboBox ItemsSource="{Binding DanhSachBoLoc}" Classes="style5" Width="200" Margin="0,0,20,0">
-               </ComboBox>
-               <TextBox Classes="style4" Width="400" Margin="0,0,200,0">
-               </TextBox>
-               <Button  Command="{Binding TaoKhachHangButtonCommand}" Classes="style6" Height="60" Width="100">
-				   Tạo
-               </Button>
-           </StackPanel>
-           
-           <Border Margin="30,0,30,0" Width="920" Height="60" BorderBrush="black" BorderThickness="1">
-            <StackPanel Orientation="Horizontal" Classes="style9">
-               <TextBlock Classes="style7" Width="120">MaKH</TextBlock>
-               <TextBlock Classes="style7" Width="300">Tên khách hàng</TextBlock>
-               <TextBlock Classes="style7" Width="200">Số điện thoại</TextBlock>
-                <TextBlock Classes="style7" Width="300">Địa chỉ</TextBlock>
-           </StackPanel>
-           </Border>
-        </StackPanel>
-         <!---->
-    <Border Grid.Row="1"  Margin="30,0,30,0" CornerRadius="10">
-    <ScrollViewer Width="920" Height="490" Margin="0,0,0,0">
-        <ItemsControl ItemsSource="{Binding KhachHangs}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Margin="0,0,0,10"  Classes="style10" Width="920" Height="60" CornerRadius="15"  BorderBrush="black" BorderThickness="1" Padding="5,5,5,5"> 
-                        <StackPanel Orientation="Horizontal"  Margin="0,0,0,0" Height="50">
-                            <TextBlock Text="{Binding MaKH}" Classes="style7" Height="50" Width="120" FontWeight="Light"/>
-                            <TextBlock Text="{Binding TenKH}" Classes="style7" Width="250" Height="50" TextAlignment="Left" FontWeight="Light"/>
-                            <TextBlock Text="{Binding SDT}" Classes="style7" Width="300" Height="50" FontWeight="Light"/>
-                            <TextBlock Text="{Binding DiaChi}" Classes="style7" Width="250" Height="50" FontWeight="Light"/>
-                        </StackPanel>
+    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+    <Grid RowDefinitions="Auto,Auto,*">
+        <!-- Header & Controls -->
+        <Border Grid.Row="0" Background="#F9FAFB" CornerRadius="12,12,0,0" Padding="20,16">
+            <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+                        <ComboBox ItemsSource="{Binding DanhSachBoLoc}" 
+                                  Background="White"
+                                  BorderThickness="0"
+                                  Width="160" 
+                                  FontSize="14"
+                                  Padding="12,9"
+                                  CornerRadius="8"
+                                  VerticalContentAlignment="Center"/>
                     </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
-    </Border>
+                    
+                    <Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+                        <TextBox Background="White"
+                                 BorderThickness="0"
+                                 Width="380" 
+                                 FontSize="14"
+                                 Watermark="🔍 Tìm kiếm khách hàng..."
+                                 Padding="12,9"
+                                 CornerRadius="8"
+                                 VerticalContentAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+                
+                <Button Grid.Column="1" 
+                        Command="{Binding TaoKhachHangButtonCommand}" 
+                        Classes="primary"
+                        Height="40"
+                        Padding="20,0"
+                        FontSize="14">
+                    + Tạo khách hàng
+                </Button>
+            </Grid>
+        </Border>
+        
+        <!-- Table Header -->
+        <Border Grid.Row="1" 
+                Background="#F9FAFB" 
+                BorderBrush="#E5E7EB" 
+                BorderThickness="0,1,0,1"
+                Padding="24,10">
+            <Grid ColumnDefinitions="110,280,180,*">
+                <TextBlock Grid.Column="0" 
+                           Text="Mã KH" 
+                           FontSize="13" 
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+                <TextBlock Grid.Column="1" 
+                           Text="Tên khách hàng" 
+                           FontSize="13" 
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+                <TextBlock Grid.Column="2" 
+                           Text="Số điện thoại" 
+                           FontSize="13" 
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+                <TextBlock Grid.Column="3" 
+                           Text="Địa chỉ" 
+                           FontSize="13" 
+                           FontWeight="SemiBold"
+                           Foreground="#374151"/>
+            </Grid>
+        </Border>
+        
+        <!-- Customer List -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="16,8,16,16" Background="White">
+            <ItemsControl ItemsSource="{Binding KhachHangs}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White"
+                                BorderBrush="#E5E7EB" 
+                                BorderThickness="1" 
+                                CornerRadius="8"
+                                Margin="0,0,0,6"
+                                Padding="8,10"
+                                BoxShadow="0 1 3 0 #08000000">
+                            <Grid ColumnDefinitions="110,280,180,*">
+                                <TextBlock Grid.Column="0" 
+                                           Text="{Binding MaKH}" 
+                                           FontSize="14" 
+                                           Foreground="#111827"
+                                           VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" 
+                                           Text="{Binding TenKH}" 
+                                           FontSize="14" 
+                                           FontWeight="Medium"
+                                           Foreground="#111827"
+                                           VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" 
+                                           Text="{Binding SDT}" 
+                                           FontSize="14" 
+                                           Foreground="#6B7280"
+                                           VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" 
+                                           Text="{Binding DiaChi}" 
+                                           FontSize="14" 
+                                           Foreground="#6B7280"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
    </Border>
 </UserControl>

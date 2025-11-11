@@ -13,61 +13,211 @@
 		x:Class="Store.CreateProductWindowView"
 		Title="Create Product">
 
-	<Grid ColumnDefinitions="450,550">
-		<!-- Cột 1: Hình ảnh -->
-		<StackPanel Grid.Column="0" Orientation="Vertical" Margin="25,200,25,200">
-			<Border Background="White" CornerRadius="20" BoxShadow="0 0 3 3 gray" Width="400" Height="400" Padding="7">
-					<Image Source="{Binding HinhAnhSP}" Stretch="UniformToFill" IsHitTestVisible="True"/>
+	<Border CornerRadius="20" Background="White" BoxShadow="0 10 40 5 #40000000">
+		<Border.Background>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#F5F7FA" Offset="0"/>
+				<GradientStop Color="#E8EEF5" Offset="1"/>
+			</LinearGradientBrush>
+		</Border.Background>
+		<Grid ColumnDefinitions="420,*">
+			<!-- Left Column - Image -->
+			<StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="40,60">
+				<TextBlock FontSize="28" 
+						   FontWeight="Bold" 
+						   Foreground="#2D3748"
+						   TextAlignment="Center"
+						   Margin="0,0,0,30">
+					Sản phẩm mới
+				</TextBlock>
+				
+				<Border Background="White" 
+						CornerRadius="16" 
+						BoxShadow="0 4 16 0 #30000000" 
+						Width="340" 
+						Height="340"
+						ClipToBounds="True"
+						Margin="0,0,0,20">
+					<Image Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
+				</Border>
+				
+				<Button Command="{Binding ThemAnhButtonCommand}" 
+						Width="340" 
+						Height="48"
+						CornerRadius="10"
+						FontSize="15"
+						FontWeight="SemiBold"
+						Foreground="White"
+						Cursor="Hand">
+					<Button.Background>
+						<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+							<GradientStop Color="#667EEA" Offset="0"/>
+							<GradientStop Color="#764BA2" Offset="1"/>
+						</LinearGradientBrush>
+					</Button.Background>
+					📷 Chọn hình ảnh
+				</Button>
+			</StackPanel>
+
+			<!-- Right Column - Form -->
+			<Border Grid.Column="1" Background="White" CornerRadius="0,20,20,0" Padding="40,60">
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
+					<StackPanel>
+						<!-- Product Code & Name -->
+						<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+							<StackPanel Grid.Column="0" Margin="0,0,10,0">
+								<TextBlock Text="Mã sản phẩm" 
+										   FontSize="14" 
+										   Foreground="#4A5568"
+										   Margin="0,0,0,8"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<TextBox Text="{Binding MaSP}" 
+											 IsReadOnly="True"
+											 Background="#F7FAFC"
+											 BorderThickness="0"
+											 FontSize="15"
+											 Padding="12,10"
+											 CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+							<StackPanel Grid.Column="1" Margin="10,0,0,0">
+								<TextBlock Text="Tên sản phẩm" 
+										   FontSize="14" 
+										   Foreground="#4A5568"
+										   Margin="0,0,0,8"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<TextBox Text="{Binding TenSP, Mode=TwoWay}" 
+											 Background="White"
+											 BorderThickness="0"
+											 FontSize="15"
+											 Watermark="Nhập tên sản phẩm"
+											 Foreground="black"
+											 Padding="12,10"
+											 CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+						</Grid>
+
+						<!-- Price & Category -->
+						<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+							<StackPanel Grid.Column="0" Margin="0,0,10,0">
+								<TextBlock Text="Giá sản phẩm (VND)" 
+										   FontSize="14" 
+										   Foreground="#4A5568"
+										   Margin="0,0,0,8"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<NumericUpDown Text="{Binding GiaSP, Mode=TwoWay}" 
+												   Background="White"
+												   BorderThickness="0"
+												   FontSize="15"
+												   FormatString="0" 
+												   Foreground="black"
+												   Minimum="1000" 
+												   Value="1000" 
+												   Increment="1000"
+												   Padding="12,10"
+												   CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+							<StackPanel Grid.Column="1" Margin="10,0,0,0">
+								<TextBlock Text="Loại sản phẩm" 
+										   FontSize="14" 
+										   Foreground="#4A5568"
+										   Margin="0,0,0,8"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<ComboBox ItemsSource="{Binding DanhSachLoaiSP}" 
+											  SelectedItem="{Binding LoaiSP, Mode=TwoWay}"
+											  Background="White"
+											  BorderThickness="0"
+											  FontSize="15"
+											  Foreground="black"
+											  PlaceholderText="Chọn loại"
+											  Padding="12,10"
+											  CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+						</Grid>
+
+						<!-- Quantity & Size -->
+						<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+							<StackPanel Grid.Column="0" Margin="0,0,10,0">
+								<TextBlock Text="Số lượng" 
+										   FontSize="14" 
+										   Foreground="#4A5568"
+										   Margin="0,0,0,8"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<NumericUpDown Text="{Binding SoLuongSP, Mode=TwoWay}" 
+												   Background="White"
+												   BorderThickness="0"
+												   FontSize="15"
+												   FormatString="0" 
+												   Value="1" 
+												   Foreground="black"
+												   Minimum="1"
+												   Padding="12,10"
+												   CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+							<StackPanel Grid.Column="1" Margin="10,0,0,0">
+								<TextBlock Text="Kích cỡ" 
+										   FontSize="14" 
+										   Foreground="#4A5568"
+										   Margin="0,0,0,8"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<ComboBox ItemsSource="{Binding DanhSachKichThuocSP}" 
+											  SelectedItem="{Binding KichThuocSP, Mode=TwoWay}"
+											  Background="White"
+											  BorderThickness="0"
+											  FontSize="15"
+											   Foreground="black"
+											  PlaceholderText="FreeSize"
+											  Padding="12,10"
+											  CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+						</Grid>
+
+						<!-- Description -->
+						<StackPanel Margin="0,0,0,30">
+							<TextBlock Text="Thông tin sản phẩm" 
+									   FontSize="14" 
+									   Foreground="#4A5568"
+									   Margin="0,0,0,8"/>
+							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+								<TextBox Text="{Binding MoTaSP, Mode=TwoWay}" 
+										 Background="White"
+										 BorderThickness="0"
+										 FontSize="15"
+										  Foreground="black"
+										 Height="140"
+										 AcceptsReturn="True"
+										 TextWrapping="Wrap"
+										 Watermark="Nhập mô tả chi tiết về sản phẩm..."
+										 Padding="12,10"
+										 CornerRadius="8"/>
+							</Border>
+						</StackPanel>
+
+						<!-- Create Button -->
+						<Button Command="{Binding TaoSanPhamCommand}" 
+								Height="52"
+								FontSize="16"
+								FontWeight="SemiBold"
+								Foreground="White"
+								CornerRadius="10"
+								HorizontalAlignment="Stretch"
+								Cursor="Hand">
+							<Button.Background>
+								<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+									<GradientStop Color="#667EEA" Offset="0"/>
+									<GradientStop Color="#764BA2" Offset="1"/>
+								</LinearGradientBrush>
+							</Button.Background>
+							✓ Tạo sản phẩm
+						</Button>
+					</StackPanel>
+				</ScrollViewer>
 			</Border>
-			 <Button Command="{Binding ThemAnhButtonCommand}" Classes="style3" Width="400" Height="60" Margin="0,30,0,0">Thêm ảnh</Button>
-		</StackPanel>
-
-		<!-- Cột 2: Thông tin sản phẩm -->
-		<StackPanel Grid.Column="1" Orientation="Vertical">
-			<TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,30,0,10">Sản phẩm mới</TextBlock>
-
-			<!-- Mã & Tên sản phẩm -->
-			<StackPanel Orientation="Horizontal">
-				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Mã sản phẩm:" Margin="0,20,0,0"/>
-					<TextBox Text="{Binding MaSP}" IsReadOnly="True" Classes="style8" Width="250"/>
-				</StackPanel>
-				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Tên sản phẩm:" Margin="0,20,0,0"/>
-					<TextBox Text="{Binding TenSP, Mode=TwoWay}" Classes="style8" Width="250"/>
-				</StackPanel>
-			</StackPanel>
-
-			<!-- Giá & Loại -->
-			<StackPanel Orientation="Horizontal">
-				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Giá sản phẩm:" Margin="0,20,0,0"/>
-					<NumericUpDown Text="{Binding GiaSP, Mode=TwoWay}" Classes="style11" FormatString="0" Minimum="1000" IsReadOnly="False" Value="1000" Increment="1000" Width="250"/>
-				</StackPanel>
-				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Loại sản phẩm:" Margin="0,20,0,0"/>
-					<ComboBox ItemsSource="{Binding DanhSachLoaiSP}"  SelectedItem="{Binding LoaiSP, Mode=TwoWay}" Classes="style5" PlaceholderText="Khác" Width="250"></ComboBox>
-				</StackPanel>
-			</StackPanel>
-
-			<!-- Số lượng & Kích cỡ -->
-			<StackPanel Orientation="Horizontal">
-				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Số lượng:" Margin="0,20,0,0"/>
-					<NumericUpDown Text="{Binding SoLuongSP, Mode=TwoWay}" Classes="style11" FormatString="0"  Value="1" Minimum="1" Width="250"/>
-				</StackPanel>
-				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Kích cỡ:" Margin="0,20,0,0"/>
-					<ComboBox ItemsSource="{Binding DanhSachKichThuocSP}" SelectedItem="{Binding KichThuocSP, Mode=TwoWay}" Classes="style5" Width="250" PlaceholderText="FreeSize"></ComboBox>
-				</StackPanel>
-			</StackPanel>
-
-			<!-- Mô tả -->
-			<TextBlock Classes="style7" FontSize="20" Margin="10,20,0,0" Text="Thông tin sản phẩm:"/>
-			<TextBox Text="{Binding MoTaSP, Mode=TwoWay}" Classes="style8" Width="520" Height="200" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap"/>
-
-			<!-- Nút tạo sản phẩm -->
-			<Button Classes="style3" Height="60" Width="520" HorizontalAlignment="Center" Margin="0,40,0,0" Command="{Binding TaoSanPhamCommand}">Tạo sản phẩm</Button>
-		</StackPanel>
-	</Grid>
+		</Grid>
+	</Border>
 </Window>

@@ -17,7 +17,7 @@ namespace Store.ViewModels
         [RelayCommand]
         private void RegisterButton()
         {
-            CreateAcountWindowView createAcountWindowView = new CreateAcountWindowView();
+            MainWindow createAcountWindowView = new MainWindow();
             createAcountWindowView.Show();
         }
         [RelayCommand]

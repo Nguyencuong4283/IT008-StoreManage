@@ -4,67 +4,130 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
 			 d:DesignWidth="1000" d:DesignHeight="700"
-			 Background="#D9D9D9"
 			 xmlns:vm="clr-namespace:Store.ViewModels"
 			 x:DataType="vm:ProductPageViewModel"
-			 x:Class="Store.Views.ProductPageView"
-			 >
+			 x:Class="Store.Views.ProductPageView">
 
 	<Design.DataContext>
 		<vm:ProductPageViewModel/>
 	</Design.DataContext>
 
-	<Border CornerRadius="20" Background="White"  Margin="10" BoxShadow="0 0 10 2 black">
+	<Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
 		<Grid RowDefinitions="Auto,*">
-
-			<!-- Khu chức năng -->
-			<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-				<ComboBox ItemsSource="{Binding DanhSachBoLoc}" Classes="style5" Width="200" Margin="0,0,10,0">
-				</ComboBox>
-
-				<ComboBox ItemsSource="{Binding DanhSachChiTiet}" Classes="style5" Width="150" Margin="0,0,10,0" PlaceholderText="Chi tiết">
-				</ComboBox>
-
-				<TextBox Classes="style4" Width="350" Margin="0,0,120,0"/>
-
-				<Button Command="{Binding ThemSanPhamButtonCommand}" Classes="style6" Height="60" Width="100">Thêm</Button>
-			</StackPanel>
-
-			<!-- Danh sách sản phẩm -->
-			<Border Grid.Row="1"  Width="950" Height="580" Margin="5,0,5,20">
-				<ScrollViewer VerticalScrollBarVisibility="Auto">
-					<ItemsControl ItemsSource="{Binding SanPhams}">
-						<!-- WrapPanel để sắp xếp các thẻ sản phẩm -->
-						<ItemsControl.ItemsPanel>
-							<ItemsPanelTemplate>
-								<WrapPanel Orientation="Horizontal"/>
-							</ItemsPanelTemplate>
-						</ItemsControl.ItemsPanel>
-						<ItemsControl.ItemTemplate>
-							<DataTemplate>
-								<Button>
-									<Border  Margin="8" Width="200" Height="250" Background="White" BorderBrush="black" BorderThickness="1" CornerRadius="10" Padding="5" BoxShadow="1 1 5 1 black">
-										<StackPanel>
-											
-											<Image Height="180" Width="180" Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
-
-											<TextBlock Classes="style7" Height="30" Text="{Binding TenSP}" FontSize="15" TextAlignment="Center"/>
-
-											<TextBlock Classes="style7" TextAlignment="Center" FontSize="15">
-												<Run Text="{Binding GiaSP}"/>
-												<Run Text=" VND ("/>
-												<Run Text="{Binding SoLuongSP}"/>
-												<Run Text=")"/>
-											</TextBlock>
-										</StackPanel>
-									</Border>
-								</Button>
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-					</ItemsControl>
-				</ScrollViewer>
+			<!-- Header & Controls -->
+			<Border Grid.Row="0" Background="#F9FAFB" CornerRadius="12,12,0,0" Padding="20,16">
+				<Grid ColumnDefinitions="*,Auto">
+					<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+							<ComboBox ItemsSource="{Binding DanhSachBoLoc}" 
+									  Background="White"
+									  BorderThickness="0"
+									  Width="160" 
+									  FontSize="14"
+									  Padding="12,9"
+									  CornerRadius="8"
+									  VerticalContentAlignment="Center"/>
+						</Border>
+						
+						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+							<ComboBox ItemsSource="{Binding DanhSachChiTiet}" 
+									  Background="White"
+									  BorderThickness="0"
+									  Width="140" 
+									  FontSize="14"
+									  PlaceholderText="Chi tiết"
+									  Padding="12,9"
+									  CornerRadius="8"
+									  VerticalContentAlignment="Center"/>
+						</Border>
+						
+						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+							<TextBox Background="White"
+									 BorderThickness="0"
+									 Width="300" 
+									 FontSize="14"
+									 Watermark="🔍 Tìm kiếm sản phẩm..."
+									 Padding="12,9"
+									 CornerRadius="8"
+									 VerticalContentAlignment="Center"/>
+						</Border>
+					</StackPanel>
+					
+					<Button Grid.Column="1" 
+							Command="{Binding ThemSanPhamButtonCommand}" 
+							Classes="primary"
+							Height="40"
+							Padding="20,0"
+							FontSize="14">
+						+ Thêm sản phẩm
+					</Button>
+				</Grid>
 			</Border>
 
+			<!-- Product Grid -->
+			<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="16" Background="White">
+				<ItemsControl ItemsSource="{Binding SanPhams}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel Orientation="Horizontal"/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Button Background="Transparent" BorderThickness="0" Padding="0" Margin="8" Cursor="Hand">
+								<Border Width="200" 
+										Background="White" 
+										BorderBrush="#E5E7EB" 
+										BorderThickness="1" 
+										CornerRadius="10" 
+										BoxShadow="0 1 6 0 #10000000"
+										Padding="10">
+									<StackPanel Spacing="8">
+										<Border CornerRadius="8" 
+												ClipToBounds="True" 
+												Background="#F9FAFB"
+												Height="170" 
+												Width="180">
+											<Image Source="{Binding HinhAnhSP}" 
+												   Stretch="UniformToFill"/>
+										</Border>
+
+										<TextBlock Text="{Binding TenSP}" 
+												   FontSize="14" 
+												   FontWeight="SemiBold"
+												   Foreground="#111827"
+												   TextAlignment="Left"
+												   TextTrimming="CharacterEllipsis"
+												   MaxLines="2"
+												   TextWrapping="Wrap"
+												   LineHeight="18"/>
+
+										<StackPanel Orientation="Horizontal" Spacing="6">
+											<TextBlock FontSize="15" 
+													   FontWeight="Bold"
+													   Foreground="#667EEA"
+													   VerticalAlignment="Center">
+												<Run Text="{Binding GiaSP}"/>
+												<Run Text=" ₫" FontSize="13"/>
+											</TextBlock>
+											<TextBlock Text="•" 
+													   Foreground="#D1D5DB" 
+													   VerticalAlignment="Center"
+													   FontSize="12"/>
+											<TextBlock FontSize="12" 
+													   Foreground="#6B7280"
+													   VerticalAlignment="Center">
+												<Run Text="SL: "/>
+												<Run Text="{Binding SoLuongSP}"/>
+											</TextBlock>
+										</StackPanel>
+									</StackPanel>
+								</Border>
+							</Button>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
 		</Grid>
 	</Border>
 </UserControl>

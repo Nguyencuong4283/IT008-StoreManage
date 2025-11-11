@@ -3,57 +3,118 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
-			 Height="700"
-			 Width="1000"
-			 Background="Gray"
 			 xmlns:vm = "clr-namespace:Store.ViewModels"
 			 x:DataType="vm:BillPageViewModel"
 			 x:Class="Store.Views.BillPageView">
 	<Design.DataContext>
 		<vm:BillPageViewModel/>
 	</Design.DataContext>
-	<Border CornerRadius="20" Background="White" Margin="10,10,10,10" BoxShadow="0 0 10 2 black">
-		<Grid RowDefinitions="180, *">
-			<!--Chức năng-->
-			<StackPanel Grid.Row="0" Orientation="Vertical">
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="30,20,30,20">
-					<ComboBox ItemsSource="{Binding DanhSachBoLoc}" Classes="style5" Width="200" Margin="0,0,20,0">
-					</ComboBox>
-					<TextBox Classes="style4" Width="400" Margin="0,0,200,0">
-					</TextBox>
-					<Button Command="{Binding CreateBillButtonCommand}" Classes="style6" Height="60" Width="100">
-						Tạo
-					</Button>
-				</StackPanel>
+	<Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+		<Grid RowDefinitions="Auto,Auto,*">
+			<!-- Header & Controls -->
+			<Border Grid.Row="0" Background="#F9FAFB" CornerRadius="12,12,0,0" Padding="16,14">
+				<Grid ColumnDefinitions="*,Auto">
+					<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8">
+						<ComboBox ItemsSource="{Binding DanhSachBoLoc}"
+								  Classes="modern-combo"
+								  Width="140"
+								  Foreground="Black"
+								  FontSize="13"/>
 
-				<Border Margin="30,0,30,0" Width="920" Height="60" BorderBrush="black" BorderThickness="1">
-					<StackPanel Orientation="Horizontal" Classes="style9">
-						<TextBlock Classes="style7" Width="120">Số HD</TextBlock>
-						<TextBlock Classes="style7" Width="300">Khách hàng</TextBlock>
-						<TextBlock Classes="style7" Width="250">Ngày tạo</TextBlock>
-						<TextBlock Classes="style7" Width="250">Trị giá </TextBlock>
+						<TextBox Classes="modern-input"
+								 Width="300"
+								 FontSize="13"
+								 Foreground="Black"
+								 Watermark="🔍 Tìm kiếm hóa đơn..."/>
 					</StackPanel>
-				</Border>
-			</StackPanel>
-			<!--Hiển thị-->
-			<Border Grid.Row="1"  Margin="30,0,30,0" CornerRadius="10">
-				<ScrollViewer Width="920" Height="490" Margin="0,0,0,0">
-					<ItemsControl ItemsSource="{Binding HoaDons}">
-						<ItemsControl.ItemTemplate>
-							<DataTemplate>
-								<Border Margin="0,0,0,10"  Classes="style10" Width="920" Height="60" CornerRadius="15"  BorderBrush="black" BorderThickness="1" Padding="5,5,5,5" >
-								<StackPanel Orientation="Horizontal"  Margin="0,0,0,0" Height="50">
-									<TextBlock Text="{Binding SoHD}" Classes="style7" Height="50" Width="120" FontWeight="Light"/>
-									<TextBlock Text="{Binding TenKH}" Classes="style7" Width="250" Height="50" TextAlignment="Left" FontWeight="Light"/>
-									<TextBlock Text="{Binding NgayLapHD}" Classes="style7" Width="300" Height="50" FontWeight="Light"/>
-									<TextBlock Text="{Binding TongTienHD}" Classes="style7" Width="250" Height="50" FontWeight="Light"/>
-								</StackPanel>
-								</Border>
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-					</ItemsControl>
-				</ScrollViewer>
+
+					<Button Grid.Column="1"
+							Command="{Binding CreateBillButtonCommand}"
+							Classes="primary"
+							Height="38"
+							Padding="16,0"
+							FontSize="13">
+						+ Tạo hóa đơn
+					</Button>
+				</Grid>
 			</Border>
+
+			<!-- Table Header -->
+			<Border Grid.Row="1"
+					Background="#F9FAFB"
+					BorderBrush="#E5E7EB"
+					BorderThickness="0,1,0,1"
+					Padding="20,10">
+				<Grid ColumnDefinitions="100,*,180,150">
+					<TextBlock Grid.Column="0"
+							   Text="Số HD"
+							   FontSize="12"
+							   FontWeight="SemiBold"
+							   Foreground="#374151"/>
+					<TextBlock Grid.Column="1"
+							   Text="Khách hàng"
+							   FontSize="12"
+							   FontWeight="SemiBold"
+							   Foreground="#374151"/>
+					<TextBlock Grid.Column="2"
+							   Text="Ngày tạo"
+							   FontSize="12"
+							   FontWeight="SemiBold"
+							   Foreground="#374151"/>
+					<TextBlock Grid.Column="3"
+							   Text="Trị giá"
+							   FontSize="12"
+							   FontWeight="SemiBold"
+							   Foreground="#374151"
+							   TextAlignment="Right"/>
+				</Grid>
+			</Border>
+
+			<!-- Bill List -->
+			<ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="14,8,14,14" Background="White">
+				<ItemsControl ItemsSource="{Binding HoaDons}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Background="White"
+									BorderBrush="#E5E7EB"
+									BorderThickness="1"
+									CornerRadius="8"
+									Margin="0,0,0,6"
+									Padding="6,10"
+									BoxShadow="0 1 3 0 #08000000">
+								<Grid ColumnDefinitions="100,*,180,150">
+									<TextBlock Grid.Column="0"
+											   Text="{Binding SoHD}"
+											   FontSize="13"
+											   Foreground="#111827"
+											   VerticalAlignment="Center"/>
+									<TextBlock Grid.Column="1"
+											   Text="{Binding TenKH}"
+											   FontSize="13"
+											   FontWeight="Medium"
+											   Foreground="#111827"
+											   TextTrimming="CharacterEllipsis"
+											   VerticalAlignment="Center"/>
+									<TextBlock Grid.Column="2"
+											   Text="{Binding NgayLapHD}"
+											   FontSize="13"
+											   Foreground="#6B7280"
+											   VerticalAlignment="Center"/>
+									<TextBlock Grid.Column="3"
+											   FontSize="13"
+											   FontWeight="SemiBold"
+											   Foreground="#667EEA"
+											   TextAlignment="Right"
+											   VerticalAlignment="Center">
+										<Run Text="{Binding TongTienHD}"/>
+										<Run Text=" ₫"/>
+									</TextBlock>
+								</Grid>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
 		</Grid>
 	</Border>
 </UserControl>

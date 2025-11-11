@@ -2,11 +2,112 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:Store.ViewModels" x:DataType="vm:SettingPageViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Store.ViewModels" 
+             x:DataType="vm:SettingPageViewModel"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
              x:Class="Store.Views.SettingPageView">
     <Design.DataContext>
         <vm:SettingPageViewModel/>
     </Design.DataContext>
-    <Label Content="{Binding Setting1}"></Label>
+    
+    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+        <Grid RowDefinitions="Auto,*">
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">
+                <StackPanel>
+                    <TextBlock Text="Cài đặt hệ thống" Classes="header" Margin="0,0,0,10"/>
+                    <TextBlock Text="Quản lý cấu hình và tùy chỉnh ứng dụng" Classes="body"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Settings Content -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="30">
+                <StackPanel Spacing="20">
+                    <!-- General Settings -->
+                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="⚙️ Cài đặt chung" Classes="subheader"/>
+                            
+                            <StackPanel Spacing="10">
+                                <TextBlock Text="Tên cửa hàng" Classes="label"/>
+                                <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+                                    <TextBox Text="{Binding Setting1}"
+                                             Background="White"
+                                             BorderThickness="0"
+                                             FontSize="15"
+                                             Padding="12,10"
+                                             CornerRadius="8"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Spacing="10">
+                                <TextBlock Text="Địa chỉ" Classes="label"/>
+                                <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+                                    <TextBox Background="White"
+                                             BorderThickness="0"
+                                             FontSize="15"
+                                             Padding="12,10"
+                                             CornerRadius="8"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Spacing="10">
+                                <TextBlock Text="Số điện thoại" Classes="label"/>
+                                <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+                                    <TextBox Background="White"
+                                             BorderThickness="0"
+                                             FontSize="15"
+                                             Padding="12,10"
+                                             CornerRadius="8"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Display Settings -->
+                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="🎨 Giao diện" Classes="subheader"/>
+                            
+                            <Grid ColumnDefinitions="*,Auto">
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Chế độ tối" FontSize="15" FontWeight="Medium" Foreground="#2D3748"/>
+                                    <TextBlock Text="Bật chế độ giao diện tối" FontSize="13" Foreground="#718096" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <ToggleSwitch Grid.Column="1" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Separator Background="#E2E8F0" Height="1"/>
+
+                            <Grid ColumnDefinitions="*,Auto">
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Thông báo" FontSize="15" FontWeight="Medium" Foreground="#2D3748"/>
+                                    <TextBlock Text="Nhận thông báo về đơn hàng mới" FontSize="13" Foreground="#718096" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <ToggleSwitch Grid.Column="1" VerticalAlignment="Center" IsChecked="True"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- About -->
+                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000" Margin="0 0 0 50">
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="ℹ️ Thông tin" Classes="subheader"/>
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="Phiên bản: 1.0.0" FontSize="14" Foreground="#718096"/>
+                                <TextBlock Text="© 2024 ShopQuality. All rights reserved." FontSize="14" Foreground="#718096"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Save Button -->
+                    <Button Classes="primary" 
+                            HorizontalAlignment="Right" 
+                            Padding="30,12">
+                        💾 Lưu thay đổi
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </UserControl>

@@ -22,32 +22,34 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
         else if (matKhau == null)
-        
-            {
-                KiemTraDangNhap = "Vui lòng nhâp mật khẩu!";
-                return;
-            }
-            var list = UserService.GetAllUser();
-            foreach (var user in list)
-            {
-                if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap)
-                {
-                    var adminVM = new AdminWindowViewModel();
-                    var adminWindow = new AdminWindowView();
-                    // adminWindow.DataContext = adminVM;
-                    adminWindow.Show();
-
-                    // Đóng MainWindow hiện tại
-                    if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
-                 && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
-                    {
-                        mainWindow.Close();
-                    }
-                }
-            }
-            KiemTraDangNhap = "Đăng nhập thất bại !!!";
-
+        {
+            KiemTraDangNhap = "Vui lòng nhập mật khẩu!";
+            return;
         }
+        
+        var list = UserService.GetAllUser();
+        foreach (var user in list)
+        {
+            if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap)
+            {
+                var adminVM = new AdminWindowViewModel();
+                var adminWindow = new AdminWindowView();
+                // adminWindow.DataContext = adminVM;
+                adminWindow.Show();
+
+                // Đóng MainWindow hiện tại
+                if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                    && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                {
+                    mainWindow.Close();
+                }
+                return; // Thoát khỏi hàm sau khi đăng nhập thành công
+            }
+        }
+        
+        // Chỉ hiển thị thông báo lỗi nếu không tìm thấy user phù hợp
+        KiemTraDangNhap = "Đăng nhập thất bại !!!";
+    }
     
     [RelayCommand]
     private void RegisterButton()

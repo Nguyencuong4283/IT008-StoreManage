@@ -13,40 +13,181 @@
 		WindowStartupLocation="CenterScreen"
 		x:Class="Store.CreateCustomerWindowView"
 		Title="Create Product">
-	<Border BorderBrush="Black" BorderThickness="3" Padding="3">
-		<StackPanel Grid.Column="1" Orientation="Vertical">
-			<Button Command="{Binding $parent[Window].Close}" Classes="style12" Margin="600,0,5,0">X</Button>
-			<TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,0,0,10">Khách hàng</TextBlock>
-			<!--MaKH | Hang && Ten KH -->
-			<StackPanel Orientation="Horizontal">
-				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-					<TextBlock Classes="style7"  FontSize="20" Text="MaKH" HorizontalAlignment="Left" Margin="0,30,0,0"/>
-					<TextBox Text="{Binding MaKH, Mode=TwoWay}" IsReadOnly="True" Classes="style8" Width="300" Watermark="KH001"/>
-				</StackPanel>
-				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Tên khách hàng" HorizontalAlignment="Left" Margin="0,30,0,0"/>
-					<TextBox Text="{Binding TenKH, Mode=TwoWay}" Classes="style8" Width="300" Watermark="Nguyen Van A"/>
-				</StackPanel>
-			</StackPanel>
+	<Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000">
+		<Border.Background>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#F5F7FA" Offset="0"/>
+				<GradientStop Color="#E8EEF5" Offset="1"/>
+			</LinearGradientBrush>
+		</Border.Background>
+		<Grid>
+			<!-- Close Button -->
+			<Button Command="{Binding $parent[Window].Close}" 
+					Background="#F44336" 
+					Foreground="White" 
+					CornerRadius="10" 
+					Width="40" 
+					Height="40" 
+					FontSize="18" 
+					FontWeight="Bold"
+					HorizontalAlignment="Right" 
+					VerticalAlignment="Top" 
+					Margin="0,20,20,0"
+					Cursor="Hand">
+				✕
+			</Button>
+			
+			<!-- Main Content -->
+			<Border Background="White" 
+					CornerRadius="16" 
+					Margin="60,70,60,60" 
+					BoxShadow="0 8 32 0 #30000000"
+					Padding="50,40">
+				<StackPanel>
+					<TextBlock FontSize="28" 
+							   FontWeight="Bold" 
+							   Foreground="#2D3748"
+							   TextAlignment="Center"
+							   Margin="0,0,0,40">
+						Tạo khách hàng mới
+					</TextBlock>
+					
+					<!-- Customer ID & Name -->
+					<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+						<StackPanel Grid.Column="0" Margin="0,0,10,0">
+							<TextBlock Text="Mã khách hàng" 
+									   FontSize="14" 
+									   Foreground="#4A5568"
+									   Margin="0,0,0,8"/>
+							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+								<TextBox Text="{Binding MaKH, Mode=TwoWay}" 
+										 IsReadOnly="True"
+										 Background="#F7FAFC"
+										 BorderThickness="0"
+										 FontSize="15"
+										 Watermark="KH001"
+										 Padding="12,10"
+										 CornerRadius="8"/>
+							</Border>
+						</StackPanel>
+						<StackPanel Grid.Column="1" Margin="10,0,0,0">
+							<TextBlock Text="Tên khách hàng" 
+									   FontSize="14" 
+									   Foreground="#4A5568"
+									   Margin="0,0,0,8"/>
+							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+								<TextBox Text="{Binding TenKH, Mode=TwoWay}" 
+										 Background="White"
+										 BorderThickness="0"
+										 FontSize="15"
+										 Foreground="Black"
+										 Watermark="Nguyễn Văn A"
+										 Padding="12,10"
+										 CornerRadius="8"/>
+							</Border>
+						</StackPanel>
+					</Grid>
 
-			<!-- SDT && Gioi Tinh -->
-			<StackPanel Orientation="Horizontal">
-				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
-					<TextBlock  Classes="style7" FontSize="20" Text="Số điện thoại" HorizontalAlignment="Left" Margin="0,30,0,0"/>
-					<TextBox Text="{Binding SDT, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="0999999999"/>
+					<!-- Phone & Gender -->
+					<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+						<StackPanel Grid.Column="0" Margin="0,0,10,0">
+							<TextBlock Text="Số điện thoại" 
+									   FontSize="14" 
+									   Foreground="#4A5568"
+									   Margin="0,0,0,8"/>
+							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+								<TextBox Text="{Binding SDT, Mode=TwoWay}" 
+										 Background="White"
+										 BorderThickness="0"
+										 FontSize="15"
+										  Foreground="Black"
+										 Watermark="+84 xxx xxx xxx"
+										 Padding="12,10"
+										 CornerRadius="8"/>
+							</Border>
+						</StackPanel>
+						<StackPanel Grid.Column="1" Margin="10,0,0,0">
+							<TextBlock Text="Giới tính" 
+									   FontSize="14" 
+									   Foreground="#4A5568"
+									   Margin="0,0,0,8"/>
+							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+								<ComboBox ItemsSource="{Binding DanhSachGioiTinh, Mode=TwoWay}" 
+										  SelectedItem="{Binding GioiTinh}"
+										  Background="White"
+										  BorderThickness="0"
+										  FontSize="20"
+										  Width="200"
+										  Foreground="Black"
+										  PlaceholderText="Chọn giới tính"
+										  Padding="12,10"
+										  CornerRadius="8"/>
+							</Border>
+						</StackPanel>
+					</Grid>
+
+					<!-- Address -->
+					<StackPanel Margin="0,0,0,20">
+						<TextBlock Text="Địa chỉ" 
+								   FontSize="14" 
+								   Foreground="#4A5568"
+								   Margin="0,0,0,8"/>
+						<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+							<TextBox Text="{Binding DiaChi, Mode=TwoWay}" 
+									 Background="White"
+									 BorderThickness="0"
+									 FontSize="15"
+									  Foreground="Black"
+									 Height="70"
+									 AcceptsReturn="True"
+									 TextWrapping="Wrap"
+									 Watermark="Nhập địa chỉ đầy đủ..."
+									 Padding="12,10"
+									 CornerRadius="8"/>
+						</Border>
+					</StackPanel>
+
+					<!-- Notes -->
+					<StackPanel Margin="0,0,0,30">
+						<TextBlock Text="Ghi chú" 
+								   FontSize="14" 
+								   Foreground="#4A5568"
+								   Margin="0,0,0,8"/>
+						<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+							<TextBox Text="{Binding GhiChu, Mode=TwoWay}" 
+									 Background="White"
+									 BorderThickness="0"
+									 FontSize="15"
+									 Height="100"
+									  Foreground="Black"
+									 AcceptsReturn="True"
+									 TextWrapping="Wrap"
+									 Watermark="Thêm ghi chú (tùy chọn)..."
+									 Padding="12,10"
+									 CornerRadius="8"/>
+						</Border>
+					</StackPanel>
+
+					<!-- Create Button -->
+					<Button Command="{Binding TaoKhachHangButtonCommand}" 
+							Height="52"
+							FontSize="16"
+							FontWeight="SemiBold"
+							Foreground="White"
+							CornerRadius="10"
+							HorizontalAlignment="Stretch"
+							Cursor="Hand">
+						<Button.Background>
+							<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+								<GradientStop Color="#667EEA" Offset="0"/>
+								<GradientStop Color="#764BA2" Offset="1"/>
+							</LinearGradientBrush>
+						</Button.Background>
+						✓ Tạo khách hàng
+					</Button>
 				</StackPanel>
-				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
-					<TextBlock Classes="style7" FontSize="20" Text="Giới tính:" HorizontalAlignment="Left" Margin="0,30,0,0"/>
-					<ComboBox ItemsSource="{Binding DanhSachGioiTinh, Mode=TwoWay}"  SelectedItem="{Binding GioiTinh}" Classes="style5" PlaceholderText="Nam" Width="300"></ComboBox>
-				</StackPanel>
-			</StackPanel>
-			<!--Địa chỉ && Ghi chú-->
-			<TextBlock Classes="style7" FontSize="20" Margin="10,30,0,0" Text="Địa chỉ:" HorizontalAlignment="Left" TextAlignment="Left"/>
-			<TextBox Text="{Binding DiaChi, Mode=TwoWay}" Classes="style8" Width="620" Height="60" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Khu pho 3, Quan 1, TP HCM"/>
-			<TextBlock Classes="style7" FontSize="20" Margin="10,30,0,0" Text="Ghi chú:" HorizontalAlignment="Left" />
-			<TextBox Text="{Binding GhiChu, Mode=TwoWay}" Classes="style8" Width="620" Height="100" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap"/>
-			<Button Command="{Binding TaoKhachHangButtonCommand}" Classes="style3" Width="620" Height="60" Margin="10,50,20,0">Tạo Khách Hàng</Button>
-		</StackPanel>
+			</Border>
+		</Grid>
 	</Border>
 
 

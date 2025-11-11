@@ -16,11 +16,133 @@
         <vm:ProductDetailWindowViewModel />
     </Design.DataContext>
 
-    <!-- Border ngoài cùng bo góc -->
-    <Border Background="White" CornerRadius="30"
-            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-            Padding="10">
-        
-       
+    <Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                <GradientStop Color="#F5F7FA" Offset="0"/>
+                <GradientStop Color="#E8EEF5" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <!-- Close Button -->
+            <Button Command="{Binding $parent[Window].Close}" 
+                    Background="#F44336" 
+                    Foreground="White" 
+                    CornerRadius="10" 
+                    Width="40" 
+                    Height="40" 
+                    FontSize="18" 
+                    FontWeight="Bold"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Margin="0,15,15,0"
+                    Cursor="Hand"
+                    ZIndex="10">
+                ✕
+            </Button>
+            
+            <!-- Main Content -->
+            <Border Background="White" 
+                    CornerRadius="16" 
+                    Margin="30" 
+                    BoxShadow="0 8 32 0 #30000000"
+                    Padding="40">
+                <Grid ColumnDefinitions="300,*">
+                    <!-- Left - Product Image -->
+                    <Border Grid.Column="0" 
+                            Background="#F7FAFC" 
+                            CornerRadius="12" 
+                            Width="280" 
+                            Height="280"
+                            ClipToBounds="True"
+                            BoxShadow="0 4 12 0 #20000000"
+                            VerticalAlignment="Top">
+                        <Image Source="" Stretch="UniformToFill"/>
+                    </Border>
+                    
+                    <!-- Right - Product Details -->
+                    <StackPanel Grid.Column="1" Margin="30,0,0,0">
+                        <TextBlock Text="" 
+                                   FontSize="28" 
+                                   FontWeight="Bold"
+                                   Foreground="#2D3748"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,15"/>
+                        
+                        <TextBlock FontSize="24" 
+                                   FontWeight="Bold"
+                                   Foreground="#667EEA"
+                                   Margin="0,0,0,20">
+                            <Run Text=""/>
+                            <Run Text=" ₫" FontSize="18"/>
+                        </TextBlock>
+                        
+                        <Separator Background="#E2E8F0" Height="1" Margin="0,0,0,20"/>
+                        
+                        <!-- Product Info Grid -->
+                        <Grid ColumnDefinitions="140,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" Margin="0,0,0,20">
+                            <TextBlock Grid.Row="0" Grid.Column="0" 
+                                       Text="Mã sản phẩm:" 
+                                       FontSize="14" 
+                                       Foreground="#718096"
+                                       Margin="0,0,0,12"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" 
+                                       Text="" 
+                                       FontSize="14" 
+                                       FontWeight="Medium"
+                                       Foreground="#2D3748"
+                                       Margin="0,0,0,12"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="0" 
+                                       Text="Loại sản phẩm:" 
+                                       FontSize="14" 
+                                       Foreground="#718096"
+                                       Margin="0,0,0,12"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" 
+                                       Text="" 
+                                       FontSize="14" 
+                                       FontWeight="Medium"
+                                       Foreground="#2D3748"
+                                       Margin="0,0,0,12"/>
+                            
+                            <TextBlock Grid.Row="2" Grid.Column="0" 
+                                       Text="Kích cỡ:" 
+                                       FontSize="14" 
+                                       Foreground="#718096"
+                                       Margin="0,0,0,12"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" 
+                                       Text="" 
+                                       FontSize="14" 
+                                       FontWeight="Medium"
+                                       Foreground="#2D3748"
+                                       Margin="0,0,0,12"/>
+                            
+                            <TextBlock Grid.Row="3" Grid.Column="0" 
+                                       Text="Số lượng:" 
+                                       FontSize="14" 
+                                       Foreground="#718096"
+                                       Margin="0,0,0,12"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" 
+                                       Text="" 
+                                       FontSize="14" 
+                                       FontWeight="Medium"
+                                       Foreground="#2D3748"
+                                       Margin="0,0,0,12"/>
+                        </Grid>
+                        
+                        <TextBlock Text="Mô tả sản phẩm" 
+                                   FontSize="16" 
+                                   FontWeight="SemiBold"
+                                   Foreground="#2D3748"
+                                   Margin="0,10,0,10"/>
+                        <TextBlock Text="" 
+                                   FontSize="14" 
+                                   Foreground="#718096"
+                                   TextWrapping="Wrap"
+                                   LineHeight="22"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
     </Border>
 </Window>

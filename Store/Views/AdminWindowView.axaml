@@ -6,159 +6,317 @@
     xmlns:vm="using:Store.ViewModels"
     mc:Ignorable="d"
     Icon="/Assets/avalonia-logo.ico"
-    Title="Admin Window"
+    Title="ShopQuality - Admin"
 	Height="800"
 	Width="1200"
 	WindowStartupLocation="CenterScreen"
     d:DesignHeight="800"
     d:DesignWidth="1200"
     x:Class="Store.Views.AdminWindowView"
-	x:DataType="vm:AdminWindowViewModel">   <!-- sửa sang ViewModel đúng -->
+	x:DataType="vm:AdminWindowViewModel">
 
-	<Grid
-        Background="{DynamicResource Firstbackground}"
-        ColumnDefinitions="200, *"
-        RowDefinitions="100, *">
-		<!-- Top bar -->
-		<Grid
-            Background="{DynamicResource Secondbackground}"
-            ColumnDefinitions="Auto,*,Auto"
-            Grid.Column="0">
-			<!-- Logo -->
-			<Grid Margin="15">
-				<Image
-                    Height="30"
-                    Margin="15"
-                    Source="{SvgImage /Assets/images/LUCKY.svg}" />
-			</Grid>
-			<!-- Search -->
-			<Grid Grid.Column="1">
-				<Grid
-                    Background="White"
-                    Height="34"
-                    HorizontalAlignment="Center"
-                    Width="729">
-					<TextBox
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        FontSize="21.5"
-                        Height="45"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Width="690" />
-					<Button
-                        Background="Orange"
-                        CornerRadius="0"
-                        Height="30"
-                        HorizontalAlignment="Right"
-                        Margin="1">
-						<PathIcon Data="{StaticResource Search_icon}" />
+	<Grid ColumnDefinitions="240,*" RowDefinitions="70,*">
+		<!-- Top Bar with Gradient -->
+		<Border Grid.Column="0" Grid.ColumnSpan="2" BoxShadow="0 2 8 0 #15000000">
+			<Border.Background>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+					<GradientStop Color="#667EEA" Offset="0"/>
+					<GradientStop Color="#764BA2" Offset="1"/>
+				</LinearGradientBrush>
+			</Border.Background>
+			<Grid ColumnDefinitions="240,*,Auto" Margin="20,0">
+				<!-- Logo -->
+				<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+					<TextBlock Text="🛍️" FontSize="28"/>
+					<TextBlock Text="ShopQuality" 
+							   FontSize="20" 
+							   FontWeight="Bold" 
+							   Foreground="White"
+							   VerticalAlignment="Center"/>
+				</StackPanel>
+
+				<!-- Search Bar -->
+				<Border Grid.Column="1" 
+						CornerRadius="10" 
+						Background="White"
+						BorderBrush="Black" 
+						BorderThickness="1"
+						MaxWidth="500"
+						Height="42"
+						Margin="20,0">
+					<TextBox Background="Transparent"
+							 Foreground="Black"
+							 BorderThickness="0"
+							 FontSize="14"
+							 Height="42"
+							 Watermark="🔍 Tìm kiếm..."
+							 Padding="12,0"
+							 VerticalAlignment="Center"
+							 VerticalContentAlignment="Center">
+						<TextBox.Styles>
+							<Style Selector="TextBox">
+								<Setter Property="Foreground" Value="White"/>
+								<Setter Property="CaretBrush" Value="White"/>
+							</Style>
+							<Style Selector="TextBox /template/ TextBlock#PART_Watermark">
+								<Setter Property="Foreground" Value="Black"/>
+							</Style>
+						</TextBox.Styles>
+					</TextBox>
+				</Border>
+
+				<!-- User Actions -->
+				<StackPanel Grid.Column="2" 
+							Orientation="Horizontal" 
+							Spacing="8" 
+							VerticalAlignment="Center">
+					<Button Background="White" 
+							BorderThickness="0" 
+							Width="38" 
+							Height="38"
+							CornerRadius="8"
+							Cursor="Hand">
+						<Button.Styles>
+							<Style Selector="Button:pointerover">
+								<Setter Property="Background" Value="#FFFFFF30"/>
+							</Style>
+						</Button.Styles>
+						<TextBlock Text="🔔" FontSize="18"/>
 					</Button>
-				</Grid>
-			</Grid>
-			<!-- function -->
-			<Grid Grid.Column="2" Margin="15">
-				<StackPanel
-                    Orientation="Horizontal"
-                    Spacing="8"
-                    VerticalAlignment="Center">
-					<Button
-                        Background="White"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        Height="32"
-                        Width="32">
-						<PathIcon Data="{StaticResource notifications_icon}" />
+					<Button Background="White" 
+							BorderThickness="0" 
+							Width="38" 
+							Height="38"
+							CornerRadius="8"
+							Cursor="Hand">
+						<Button.Styles>
+							<Style Selector="Button:pointerover">
+								<Setter Property="Background" Value="Black"/>
+							</Style>
+						</Button.Styles>
+						<TextBlock Text="💬" FontSize="18"/>
 					</Button>
-					<Button
-                        Background="White"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        Height="32"
-                        Width="32">
-						<PathIcon Data="{StaticResource chat_icon}" />
-					</Button>
-					<Button
-                        Background="White"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        Height="32"
-                        Width="32">
-						<PathIcon Data="{StaticResource user_icon}" />
+					<Button Background="White" 
+							BorderThickness="0" 
+							Width="38" 
+							Height="38"
+							CornerRadius="8"
+							Cursor="Hand">
+						<Button.Styles>
+							<Style Selector="Button:pointerover">
+								<Setter Property="Background" Value="White"/>
+							</Style>
+						</Button.Styles>
+						<TextBlock Text="👤" FontSize="18"/>
 					</Button>
 				</StackPanel>
 			</Grid>
-		</Grid>
+		</Border>
 
-		<!-- Side_Bar -->
-		<Grid
-            Background="{DynamicResource Secondbackground}"
-            Grid.Column="0"
-            Grid.Row="1">
-			<StackPanel Orientation="Vertical" Spacing="10">
-				<Button Classes="style2" Command="{Binding GoHomeCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource home_icon}" />
-						<TextBlock>Tổng quan</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoBillCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource clipboard_icon}" />
-						<TextBlock>Đơn hàng</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoProductCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource box_icon}" />
-						<TextBlock>Sản phẩm</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoCustomerCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource income_icon}" />
-						<TextBlock>Khách hàng</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoIncomeCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource income_icon}" />
-						<TextBlock>Thu nhập</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoHistoryCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource income_icon}" />
-						<TextBlock>Nhập kho</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoEmployeeCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource income_icon}" />
-						<TextBlock>Nhân sự</TextBlock>
-					</WrapPanel>
-				</Button>
-				<Button Classes="style2" Command="{Binding GoAccountSettingCommand}">
-					<WrapPanel ItemSpacing="5">
-						<PathIcon Data="{StaticResource income_icon}" />
-						<TextBlock>Tài khoản</TextBlock>
-					</WrapPanel>
-				</Button>
-			</StackPanel>
-			<Button
-                Classes="style2"
-                Command="{Binding GoSettingCommand}"
-                VerticalAlignment="Bottom">
-				<WrapPanel ItemSpacing="5">
-					<PathIcon Data="{StaticResource settings_icon}" />
-					<TextBlock>Cài đặt</TextBlock>
-				</WrapPanel>
-			</Button>
-		</Grid>
+		<!-- Sidebar with White Background -->
+		<Border Grid.Column="0" Grid.Row="1" Background="White" BorderBrush="#E5E7EB" BorderThickness="0,0,1,0">
+			<Grid RowDefinitions="*,Auto">
+				<ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+					<StackPanel Margin="12" Spacing="4">
+						<Button Command="{Binding GoHomeCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="🏠" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Tổng quan" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
 
-		<!-- Content -->
-		<Grid Grid.Column="1" Grid.Row="1">
+						<Button Command="{Binding GoBillCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="📋" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Đơn hàng" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+
+						<Button Command="{Binding GoProductCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="📦" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Sản phẩm" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+
+						<Button Command="{Binding GoCustomerCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="👥" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Khách hàng" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+
+						<Button Command="{Binding GoIncomeCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="💰" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Thu nhập" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+
+						<Button Command="{Binding GoHistoryCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="📥" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Nhập kho" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+
+						<Button Command="{Binding GoEmployeeCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="👔" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Nhân sự" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+
+						<Button Command="{Binding GoAccountSettingCommand}" 
+								Background="White"
+								Foreground="#374151"
+								BorderBrush="#E5E7EB"
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12,10"
+								Cursor="Hand"
+								HorizontalAlignment="Stretch"
+								HorizontalContentAlignment="Left">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Background" Value="#F3F4F6"/>
+								</Style>
+							</Button.Styles>
+							<StackPanel Orientation="Horizontal" Spacing="10">
+								<TextBlock Text="👤" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Tài khoản" FontSize="14" VerticalAlignment="Center"/>
+							</StackPanel>
+						</Button>
+					</StackPanel>
+				</ScrollViewer>
+
+				<!-- Settings at Bottom -->
+				<Border Grid.Row="1" BorderBrush="#E5E7EB" BorderThickness="0,1,0,0" Padding="12">
+					<Button Command="{Binding GoSettingCommand}" 
+							Background="White"
+							Foreground="#374151"
+							BorderBrush="#E5E7EB"
+							BorderThickness="1"
+							CornerRadius="8"
+							Padding="12,10"
+							Cursor="Hand"
+							HorizontalAlignment="Stretch"
+							HorizontalContentAlignment="Left">
+						<Button.Styles>
+							<Style Selector="Button:pointerover">
+								<Setter Property="Background" Value="#F3F4F6"/>
+							</Style>
+						</Button.Styles>
+						<StackPanel Orientation="Horizontal" Spacing="10">
+							<TextBlock Text="⚙️" FontSize="18" VerticalAlignment="Center"/>
+							<TextBlock Text="Cài đặt" FontSize="14" VerticalAlignment="Center"/>
+						</StackPanel>
+					</Button>
+				</Border>
+			</Grid>
+		</Border>
+
+		<!-- Main Content Area -->
+		<Border Grid.Column="1" Grid.Row="1" Background="#F3F4F6" Padding="20">
 			<ContentControl Content="{Binding CurrentPage}" />
-		</Grid>
+		</Border>
 	</Grid>
 </Window>

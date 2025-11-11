@@ -1,6 +1,6 @@
 <UserControl
-    d:DesignHeight="800"
-    d:DesignWidth="1240"
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
     mc:Ignorable="d"
     x:Class="Store.Views.HomePageView"
     x:DataType="vm:HomePageViewModel"
@@ -10,11 +10,130 @@
     xmlns:vm="clr-namespace:Store.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.DataContext>
-        <vm:BillPageViewModel />
+        <vm:HomePageViewModel />
     </Design.DataContext>
-    <Grid ColumnDefinitions="400,*,400" RowDefinitions="Auto,*" ShowGridLines="True">
-        <Border>
-            
-        </Border>
-    </Grid>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" Spacing="20">
+            <!-- Welcome Section -->
+            <Border Classes="card" BoxShadow="0 4 20 0 #30000000">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+                        <GradientStop Color="#667EEA" Offset="0"/>
+                        <GradientStop Color="#764BA2" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid ColumnDefinitions="*,Auto" Margin="10">
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="Chào mừng trở lại! 👋" 
+                                   FontSize="28" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock Text="Hệ thống quản lý cửa hàng ShopQuality" 
+                                   FontSize="16" 
+                                   Foreground="#E0E0E0"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" 
+                               Text="🛍️" 
+                               FontSize="80" 
+                               VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Quick Stats -->
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
+                <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="💰" FontSize="32"/>
+                        <TextBlock Text="Doanh thu hôm nay" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="0 ₫" FontSize="22" FontWeight="Bold" Foreground="#667EEA"/>
+                        <TextBlock Text="↗ +0% so với hôm qua" FontSize="12" Foreground="#48BB78"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="📦" FontSize="32"/>
+                        <TextBlock Text="Đơn hàng mới" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="0" FontSize="22" FontWeight="Bold" Foreground="#48BB78"/>
+                        <TextBlock Text="Chờ xử lý" FontSize="12" Foreground="#ED8936"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="👥" FontSize="32"/>
+                        <TextBlock Text="Khách hàng" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="0" FontSize="22" FontWeight="Bold" Foreground="#4299E1"/>
+                        <TextBlock Text="Tổng số khách" FontSize="12" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="📊" FontSize="32"/>
+                        <TextBlock Text="Sản phẩm" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="0" FontSize="22" FontWeight="Bold" Foreground="#ED8936"/>
+                        <TextBlock Text="Trong kho" FontSize="12" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Recent Activity & Quick Actions -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
+                <!-- Recent Orders -->
+                <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel>
+                        <TextBlock Text="Đơn hàng gần đây" Classes="subheader" Margin="0,0,0,15"/>
+                        <Border Background="#F7FAFC" 
+                                CornerRadius="8" 
+                                Padding="20"
+                                Height="250">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+                                <TextBlock Text="📋" FontSize="48"/>
+                                <TextBlock Text="Chưa có đơn hàng nào" 
+                                           FontSize="14" 
+                                           Foreground="#718096"
+                                           TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <!-- Quick Actions -->
+                <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel>
+                        <TextBlock Text="Thao tác nhanh" Classes="subheader" Margin="0,0,0,15"/>
+                        <StackPanel Spacing="10">
+                            <Button Classes="primary" HorizontalAlignment="Stretch" Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="➕" FontSize="18"/>
+                                    <TextBlock Text="Tạo đơn hàng mới" FontSize="14"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="📦" FontSize="18"/>
+                                    <TextBlock Text="Thêm sản phẩm" FontSize="14"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="👤" FontSize="18"/>
+                                    <TextBlock Text="Thêm khách hàng" FontSize="14"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="📊" FontSize="18"/>
+                                    <TextBlock Text="Xem báo cáo" FontSize="14"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

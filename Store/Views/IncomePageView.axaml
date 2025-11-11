@@ -2,11 +2,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:Store.ViewModels" x:DataType="vm:IncomePageViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Store.ViewModels" 
+             x:DataType="vm:IncomePageViewModel"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
              x:Class="Store.Views.IncomePageView">
     <Design.DataContext>
         <vm:IncomePageViewModel/>
     </Design.DataContext>
-    <Label Content="{Binding Income}"></Label>
+    
+    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+        <Grid RowDefinitions="Auto,Auto,*">
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">
+                <StackPanel>
+                    <TextBlock Text="Báo cáo thu nhập" Classes="header" Margin="0,0,0,10"/>
+                    <TextBlock Text="Theo dõi doanh thu và lợi nhuận của cửa hàng" Classes="body"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Stats Cards -->
+            <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Margin="30,20" ColumnSpacing="20">
+                <!-- Total Revenue Card -->
+                <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="💰" FontSize="32"/>
+                        <TextBlock Text="Tổng doanh thu" FontSize="14" Foreground="#718096"/>
+                        <TextBlock Text="{Binding Income}" FontSize="28" FontWeight="Bold" Foreground="#667EEA"/>
+                        <TextBlock Text="₫" FontSize="16" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Orders Card -->
+                <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="📦" FontSize="32"/>
+                        <TextBlock Text="Tổng đơn hàng" FontSize="14" Foreground="#718096"/>
+                        <TextBlock Text="0" FontSize="28" FontWeight="Bold" Foreground="#48BB78"/>
+                        <TextBlock Text="đơn" FontSize="16" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Profit Card -->
+                <Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="📈" FontSize="32"/>
+                        <TextBlock Text="Lợi nhuận" FontSize="14" Foreground="#718096"/>
+                        <TextBlock Text="0" FontSize="28" FontWeight="Bold" Foreground="#ED8936"/>
+                        <TextBlock Text="₫" FontSize="16" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Chart Area -->
+            <Border Grid.Row="2" Margin="30,0,30,30" Classes="card" BoxShadow="0 2 8 0 #20000000">
+                <StackPanel>
+                    <TextBlock Text="Biểu đồ doanh thu" Classes="subheader" Margin="0,0,0,20"/>
+                    <Border Background="#F7FAFC" 
+                            CornerRadius="8" 
+                            Height="300"
+                            Padding="20">
+                        <TextBlock Text="📊 Biểu đồ sẽ được hiển thị ở đây" 
+                                   FontSize="16" 
+                                   Foreground="#718096"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
 </UserControl>
