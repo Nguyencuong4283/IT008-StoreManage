@@ -58,6 +58,7 @@
 	</Styles.Resources>
 
 	<!-- ==================== PRIMARY BUTTON ==================== -->
+	
 	<Style Selector="Button.primary">
 		<Setter Property="Background" Value="{StaticResource Primary}"/>
 		<Setter Property="Foreground" Value="White"/>
@@ -70,10 +71,10 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.primary:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+	<Style Selector="Button.primary:pointerover /template/ContentPresenter">
 		<Setter Property="Background" Value="Blue"/>
 	</Style>
-	<Style Selector="Button.primary:pressed /template/ ContentPresenter#PART_ContentPresenter">
+	<Style Selector="Button.primary:pressed /template/ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource PrimaryDark}"/>
 	</Style>
 	
@@ -92,12 +93,12 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.secondary:pointerover  /template/ ContentPresenter#PART_ContentPresenter">
+	<Style Selector="Button.secondary:pointerover/template/ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource Gray50}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
 		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
 	</Style>
-	<Style Selector="Button.secondary:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+	<Style Selector="Button.secondary:pressed/template/ ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource Gray100}"/>
 	</Style>
 
@@ -135,7 +136,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.close-btn:pointerover  /template/ ContentPresenter#PART_ContentPresenter">
+	<Style Selector="Button.close-btn:pointerover/template/ ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
 	</Style>
 
@@ -168,16 +169,16 @@
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:focus /template/ Border#PART_BorderElement">
+	<Style Selector="TextBox.modern-input:focus/template/Border">
 		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
 		<Setter Property="BorderThickness" Value="2"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:pointerover /template/ Border#PART_BorderElement">
+	<Style Selector="TextBox.modern-input:pointerover/template/Border">
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="TextBox.modern-input /template/ Border#PART_BorderElement">
+	<Style Selector="TextBox.modern-input/template/Border">
 		<Setter Property="Background" Value="White"/>
 	</Style>
 
@@ -193,11 +194,11 @@
 		<Setter Property="MinHeight" Value="40"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="ComboBox.modern-combo:pointerover /template/ Border#Background">
+	<Style Selector="ComboBox.modern-combo:pointerover/template/Border">
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="ComboBox.modern-combo:focus /template/ Border#Background">
+	<Style Selector="ComboBox.modern-combo:focus/template/Border">
 		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
 		<Setter Property="BorderThickness" Value="2"/>
 		<Setter Property="Background" Value="White"/>
