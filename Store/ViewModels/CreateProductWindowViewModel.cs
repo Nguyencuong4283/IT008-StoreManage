@@ -75,8 +75,8 @@ namespace Store.ViewModels
                 KichThuocSP = "";
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
-                HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png"))
-  );
+                HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
+                MaSP = SanPhanService.GenerateNewMaSP();
 
 
             }

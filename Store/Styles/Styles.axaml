@@ -2,9 +2,26 @@
 	<Design.PreviewWith>
 		<Border Padding="20">
 			<StackPanel Spacing="10">
+				<TextBlock Classes="header">Header Text</TextBlock>
+				<TextBlock Classes="subheader">Subheader Text</TextBlock>
+				<TextBlock Classes="label">Label Text</TextBlock>
+				<TextBlock Classes="body">Body text with normal content</TextBlock>
+				<Separator Height="20"/>
 				<Button Classes="primary">Primary Button</Button>
 				<Button Classes="secondary">Secondary Button</Button>
+				<Button Classes="danger">Danger Button</Button>
+				<Button Classes="icon-btn">🔍</Button>
+				<Button Classes="close-btn">✕</Button>
+				<Separator Height="20"/>
 				<TextBox Classes="modern-input" Watermark="Modern Input"/>
+				<ComboBox Classes="modern-combo">
+					<ComboBoxItem>Option 1</ComboBoxItem>
+					<ComboBoxItem>Option 2</ComboBoxItem>
+				</ComboBox>
+				<Separator Height="20"/>
+				<Border Classes="card">
+					<TextBlock>Card Content</TextBlock>
+				</Border>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
@@ -42,12 +59,7 @@
 
 	<!-- ==================== PRIMARY BUTTON ==================== -->
 	<Style Selector="Button.primary">
-		<Setter Property="Background">
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
-				<GradientStop Color="{StaticResource Primary}" Offset="0"/>
-				<GradientStop Color="{StaticResource PrimaryDark}" Offset="1"/>
-			</LinearGradientBrush>
-		</Setter>
+		<Setter Property="Background" Value="{StaticResource Primary}"/>
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="FontWeight" Value="SemiBold"/>
@@ -58,17 +70,13 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.primary:pointerover">
-		<Setter Property="Background">
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
-				<GradientStop Color="{StaticResource PrimaryHover}" Offset="0"/>
-				<GradientStop Color="{StaticResource Primary}" Offset="1"/>
-			</LinearGradientBrush>
-		</Setter>
+	<Style Selector="Button.primary:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="Blue"/>
 	</Style>
-	<Style Selector="Button.primary:pressed">
-		<Setter Property="RenderTransform" Value="scale(0.98)"/>
+	<Style Selector="Button.primary:pressed /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{StaticResource PrimaryDark}"/>
 	</Style>
+	
 
 	<!-- ==================== SECONDARY BUTTON ==================== -->
 	<Style Selector="Button.secondary">
@@ -84,11 +92,12 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.secondary:pointerover">
+	<Style Selector="Button.secondary:pointerover  /template/ ContentPresenter#PART_ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource Gray50}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
 	</Style>
-	<Style Selector="Button.secondary:pressed">
+	<Style Selector="Button.secondary:pressed  /template/ ContentPresenter#PART_ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource Gray100}"/>
 	</Style>
 
@@ -126,7 +135,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.close-btn:pointerover">
+	<Style Selector="Button.close-btn:pointerover  /template/ ContentPresenter#PART_ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
 	</Style>
 
