@@ -4,40 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_25,_21_18_[Changes]1/Store.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_25,_21_18_[Changes]1/resources" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_25,_21_18_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_25__21_18__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Styles/Styles.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Styles/Styles.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CreateCustomerWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CreateCustomerWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/ForgotPasswordView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ForgotPasswordView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/HistoryPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/HistoryPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/HomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/HomePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/ProductDetailWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ProductDetailWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Store/bin/Debug/net9.0/Store.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/references" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/references" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Avalonia/resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/ref/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/ref/Store.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/refint/Store.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/refint/Store.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Store.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +133,7 @@
       <workItem from="1759757607803" duration="232000" />
       <workItem from="1759759243660" duration="762000" />
       <workItem from="1762998415626" duration="346000" />
-      <workItem from="1763036071905" duration="4928000" />
+      <workItem from="1763036071905" duration="9934000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -167,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759323661123</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update style">
+      <option name="closed" value="true" />
+      <created>1763041730550</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763041730550</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +191,8 @@
     <MESSAGE value="upload" />
     <MESSAGE value="add button" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update style" />
+    <option name="LAST_COMMIT_MESSAGE" value="update style" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

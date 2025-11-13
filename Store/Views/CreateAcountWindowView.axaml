@@ -62,7 +62,8 @@
 									Classes="primary"
 									Width="260" 
 									Height="42"
-									FontSize="14">
+									FontSize="14"
+									HorizontalAlignment="Center">
 								📷 Chọn ảnh đại diện
 							</Button>
 						</StackPanel>
@@ -75,20 +76,22 @@
 									<TextBlock Text="Tên đăng nhập" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 										<TextBox Text="{Binding TenDangNhap, Mode=TwoWay}" 
-												 Background="White"
-												 BorderThickness="0"
-												 FontSize="14"
-												 Foreground="Black"
-												 Watermark="Nhập tên đăng nhập"
-												 Padding="12,10"
-												 CornerRadius="8"
-												 VerticalContentAlignment="Center"/>
+										         Classes="modern-input"
+										         Background="White"
+										         BorderThickness="0"
+										         FontSize="14"
+										         Foreground="Black"
+										         Watermark="Nhập tên đăng nhập"
+										         Padding="12,10"
+										         CornerRadius="8"
+										         VerticalContentAlignment="Center"/>
 									</Border>
 								</StackPanel>
 								<StackPanel Grid.Column="1" Margin="8,0,0,0">
 									<TextBlock Text="Mật khẩu" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 										<TextBox Text="{Binding MatKhau, Mode=TwoWay}" 
+										         Classes="modern-input"
 												 Background="White"
 												 BorderThickness="0"
 												 FontSize="14"
@@ -108,6 +111,7 @@
 									<TextBlock Text="Họ và tên" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 										<TextBox Text="{Binding HoTen, Mode=TwoWay}" 
+										         Classes="modern-input"
 												 Background="White"
 												 BorderThickness="0"
 												 FontSize="14"
@@ -139,11 +143,10 @@
 							<Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
 								<StackPanel Grid.Column="0" Margin="0,0,8,0">
 									<TextBlock Text="Ngày sinh" Classes="label"/>
-									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5" Width="140" HorizontalAlignment="Left">
 										<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
+										                    Classes="fix"
 															FontSize="14"
-															Background="White"
-															Foreground="Black"
 															BorderThickness="0"
 															Padding="12,10"
 															CornerRadius="8"
@@ -154,6 +157,7 @@
 									<TextBlock Text="Số điện thoại" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 										<TextBox Text="{Binding SDT, Mode=TwoWay}" 
+										         Classes="modern-input"
 												 Background="White"
 												 BorderThickness="0"
 												 FontSize="14"
@@ -171,7 +175,8 @@
 								<TextBlock Text="Email" Classes="label"/>
 								<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 									<TextBox Text="{Binding Email, Mode=TwoWay}" 
-											 Background="White"
+											 Classes="modern-input"
+									         Background="White"
 											 BorderThickness="0"
 											 FontSize="14"
 											 Foreground="Black"
@@ -187,7 +192,7 @@
 								<TextBlock Text="Địa chỉ" Classes="label"/>
 								<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 									<TextBox Text="{Binding DiaChi, Mode=TwoWay}" 
-											 Background="White"
+									         Background="White"
 											 BorderThickness="0"
 											 FontSize="14"
 											 Foreground="Black"

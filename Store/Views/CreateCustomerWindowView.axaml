@@ -32,7 +32,9 @@
 					FontWeight="Bold"
 					HorizontalAlignment="Right" 
 					VerticalAlignment="Top" 
-					Margin="0,20,20,0"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					Margin="0,15,15,0"
 					Cursor="Hand">
 				✕
 			</Button>
@@ -60,7 +62,7 @@
 									   Foreground="#4A5568"
 									   Margin="0,0,0,8"/>
 							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-								<TextBox Text="{Binding MaKH, Mode=TwoWay}" 
+								<TextBox Text="{Binding MaKH}" 
 										 IsReadOnly="True"
 										 Background="#F7FAFC"
 										 BorderThickness="0"
@@ -112,11 +114,11 @@
 									   Foreground="#4A5568"
 									   Margin="0,0,0,8"/>
 							<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-								<ComboBox ItemsSource="{Binding DanhSachGioiTinh, Mode=TwoWay}" 
+								<ComboBox ItemsSource="{Binding DanhSachGioiTinh, Mode=OneWay}" 
 										  SelectedItem="{Binding GioiTinh}"
 										  Background="White"
 										  BorderThickness="0"
-										  FontSize="20"
+										  FontSize="15"
 										  Width="200"
 										  Foreground="Black"
 										  PlaceholderText="Chọn giới tính"
@@ -176,7 +178,9 @@
 							Foreground="White"
 							CornerRadius="10"
 							HorizontalAlignment="Stretch"
-							Cursor="Hand">
+							Cursor="Hand"
+							VerticalContentAlignment="Center"
+							HorizontalContentAlignment="Center">
 						<Button.Background>
 							<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
 								<GradientStop Color="#667EEA" Offset="0"/>

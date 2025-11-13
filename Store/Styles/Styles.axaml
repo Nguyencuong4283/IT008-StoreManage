@@ -367,4 +367,8 @@
 		<Setter Property="Background" Value="White"/>
 	</Style>
 
+	<!-- ==================== CALENDAR FIX ==================== -->
+	<Style Selector="CalendarDatePicker.fix:pointerover/template/ContentPresenter">
+		<Setter Property="Background" Value="White"/>
+	</Style>
 </Styles>

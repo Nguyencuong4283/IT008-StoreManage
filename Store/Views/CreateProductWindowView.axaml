@@ -13,7 +13,7 @@
 		x:Class="Store.CreateProductWindowView"
 		Title="Create Product">
 
-	<Border CornerRadius="20" Background="White" BoxShadow="0 10 40 5 #40000000">
+	<Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000">
 		<Border.Background>
 			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
 				<GradientStop Color="#F5F7FA" Offset="0"/>
@@ -48,7 +48,9 @@
 						FontSize="15"
 						FontWeight="SemiBold"
 						Foreground="White"
-						Cursor="Hand">
+						Cursor="Hand"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center">
 					<Button.Background>
 						<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
 							<GradientStop Color="#667EEA" Offset="0"/>
@@ -133,7 +135,8 @@
 											  Foreground="black"
 											  PlaceholderText="Chọn loại"
 											  Padding="12,10"
-											  CornerRadius="8"/>
+											  CornerRadius="8"
+											  Width="235"/>
 								</Border>
 							</StackPanel>
 						</Grid>
@@ -172,7 +175,8 @@
 											   Foreground="black"
 											  PlaceholderText="FreeSize"
 											  Padding="12,10"
-											  CornerRadius="8"/>
+											  CornerRadius="8"
+											  Width="235"/>
 								</Border>
 							</StackPanel>
 						</Grid>
@@ -206,7 +210,9 @@
 								Foreground="White"
 								CornerRadius="10"
 								HorizontalAlignment="Stretch"
-								Cursor="Hand">
+								Cursor="Hand"
+								HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center">
 							<Button.Background>
 								<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
 									<GradientStop Color="#667EEA" Offset="0"/>

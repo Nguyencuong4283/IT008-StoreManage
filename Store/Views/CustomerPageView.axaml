@@ -141,7 +141,7 @@
                                    HorizontalAlignment="Center"/>
                         <Button Command="{Binding TaoKhachHangButtonCommand}"
                                 Classes="primary" 
-                                Margin="0,10,0,0">
+                                Margin="74,10,0,0">
                             + Tạo khách hàng
                         </Button>
                     </StackPanel>

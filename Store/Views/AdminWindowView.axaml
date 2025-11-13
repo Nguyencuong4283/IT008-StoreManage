@@ -26,7 +26,7 @@
 			</Border.Background>
 			<Grid ColumnDefinitions="240,*,Auto" Margin="20,0">
 				<!-- Logo -->
-				<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+				<StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10" >
 					<TextBlock Text="🛍️" FontSize="28"/>
 					<TextBlock Text="ShopQuality" 
 							   FontSize="20" 
@@ -81,7 +81,7 @@
 								<Setter Property="Background" Value="#FFFFFF30"/>
 							</Style>
 						</Button.Styles>
-						<TextBlock Text="🔔" FontSize="18"/>
+						<TextBlock Text="🔔" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 					</Button>
 					<Button Background="White" 
 							BorderThickness="0" 
@@ -94,7 +94,7 @@
 								<Setter Property="Background" Value="Black"/>
 							</Style>
 						</Button.Styles>
-						<TextBlock Text="💬" FontSize="18"/>
+						<TextBlock Text="💬" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 					</Button>
 					<Button Background="White" 
 							BorderThickness="0" 
@@ -107,7 +107,7 @@
 								<Setter Property="Background" Value="White"/>
 							</Style>
 						</Button.Styles>
-						<TextBlock Text="👤" FontSize="18"/>
+						<TextBlock Text="👤" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 					</Button>
 				</StackPanel>
 			</Grid>
@@ -323,7 +323,7 @@
 								</Style>
 							</Button.Styles>
 							<StackPanel Orientation="Horizontal" Spacing="10">
-								<TextBlock Text="�" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="📂" FontSize="18" VerticalAlignment="Center"/>
 								<TextBlock Text="Nhân sự" FontSize="14" VerticalAlignment="Center"/>
 							</StackPanel>
 						</Button>

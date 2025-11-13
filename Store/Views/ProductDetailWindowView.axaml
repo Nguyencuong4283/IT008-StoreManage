@@ -35,6 +35,8 @@
                     FontWeight="Bold"
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top" 
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
                     Margin="0,15,15,0"
                     Cursor="Hand"
                     ZIndex="10">

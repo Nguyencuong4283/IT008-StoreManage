@@ -16,7 +16,7 @@ namespace Store.ViewModels
         [ObservableProperty] private string maKH;
         [ObservableProperty] private string tenKH;
         [ObservableProperty] private string sDT;
-        [ObservableProperty] private string gioiTinh = "Nam" ;
+        [ObservableProperty] private string gioiTinh = "Chọn giới tính" ;
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private string ghiChu;
 

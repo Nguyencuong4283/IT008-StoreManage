@@ -111,7 +111,7 @@
                                        FontSize="14" 
                                        Foreground="#718096"
                                        HorizontalAlignment="Center"/>
-                            <Button Classes="primary" Margin="0,10,0,0">+ Nhập kho mới</Button>
+                            <Button Classes="primary" Margin="70,10,0,0">+ Nhập kho mới</Button>
                         </StackPanel>
                     </Border>
                 </StackPanel>
