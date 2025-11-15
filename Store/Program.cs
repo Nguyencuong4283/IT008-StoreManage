@@ -13,6 +13,8 @@ sealed class Program
         SanPhanService.Initialize();
         UserService.Initialize();
         KhachHangService.Initialize();
+        HoaDonService.Initialize();
+        ChiTiet_HoaDonService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng
         BuildAvaloniaApp()

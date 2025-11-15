@@ -14,7 +14,7 @@
 		x:Class="Store.Views.CreateBillWindowView"
 		x:DataType="vm:CreateBillWindowViewModel"
 		Title="CreateBillWindowView">
-	
+
 	<Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000">
 		<Border.Background>
 			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
@@ -24,10 +24,10 @@
 		</Border.Background>
 		<Grid>
 			<!-- Close Button -->
-			<Button Command="{Binding $parent[Window].Close}" 
+			<Button Command="{Binding $parent[Window].Close}"
 					Classes="close-btn"
-					HorizontalAlignment="Right" 
-					VerticalAlignment="Top" 
+					HorizontalAlignment="Right"
+					VerticalAlignment="Top"
 					Margin="0,20,20,0"
 					ZIndex="10">
 				✕
@@ -38,8 +38,8 @@
 				<ScrollViewer VerticalScrollBarVisibility="Auto">
 					<Grid RowDefinitions="Auto,Auto,Auto,Auto" Margin="40">
 						<!-- Header -->
-						<TextBlock Grid.Row="0" 
-								   Text="Tạo hóa đơn mới" 
+						<TextBlock Grid.Row="0"
+								   Text="Tạo hóa đơn mới"
 								   Classes="header"
 								   TextAlignment="Center"
 								   Margin="0,0,0,30"/>
@@ -52,7 +52,7 @@
 								<StackPanel>
 									<TextBlock Text="Nhân viên" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-										<ComboBox ItemsSource="{Binding DanhSachNhanVien, Mode=TwoWay}" 
+										<ComboBox ItemsSource="{Binding DanhSachNhanVien, Mode=TwoWay}"
 												  SelectedItem="{Binding NhanVienDuocChon, Mode=TwoWay}"
 												  Background="White"
 												  BorderThickness="0"
@@ -76,7 +76,7 @@
 								<StackPanel>
 									<TextBlock Text="Khách hàng" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-										<ComboBox ItemsSource="{Binding DanhSachKhachHang, Mode=TwoWay}" 
+										<ComboBox ItemsSource="{Binding DanhSachKhachHang, Mode=TwoWay}"
 												  SelectedItem="{Binding KhachHangDuocChon, Mode=TwoWay}"
 												  Background="White"
 												  BorderThickness="0"
@@ -102,7 +102,8 @@
 										<TextBox Background="White"
 												 BorderThickness="0"
 												 FontSize="15"
-
+												 IsReadOnly="True"
+												 Text="{Binding ThoiGianHienTai}"
 												 Foreground="Black"
 												 Padding="12,10"
 												 CornerRadius="8"/>
@@ -115,6 +116,8 @@
 									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
 										<TextBox Background="White"
 												 BorderThickness="0"
+												 Text="{Binding SoHD}"
+												 IsReadOnly="True"
 												 FontSize="15"
 												 Padding="12,10"
 												 CornerRadius="8"/>
@@ -128,14 +131,14 @@
 								<StackPanel>
 									<TextBlock Text="Sản phẩm" Classes="label"/>
 									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-										<ComboBox ItemsSource="{Binding DanhSachSanPham, Mode=TwoWay}" 
+										<ComboBox ItemsSource="{Binding DanhSachSanPham, Mode=TwoWay}"
 												  SelectedItem="{Binding SanPhamDuocChon, Mode=TwoWay}"
 												  Background="White"
 												  BorderThickness="0"
 												  FontSize="15"
 												  PlaceholderText="Chọn sản phẩm"
 												  Padding="12,10"
-												   Foreground="Black"
+												  Foreground="Black"
 												  CornerRadius="8"
 												  HorizontalAlignment="Stretch">
 											<ComboBox.ItemTemplate>
@@ -154,7 +157,9 @@
 										<TextBox Background="White"
 												 BorderThickness="0"
 												 FontSize="15"
-												  Foreground="Black"
+												 IsReadOnly="True"
+												 Text="{Binding GiaSP}"
+												 Foreground="Black"
 												 Padding="12,10"
 												 CornerRadius="8"/>
 									</Border>
@@ -165,12 +170,41 @@
 									<StackPanel Grid.Column="0" Margin="0,0,10,0">
 										<TextBlock Text="Số lượng" Classes="label"/>
 										<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-											<TextBox Background="White"
-													 BorderThickness="0"
-													 FontSize="15"
-													  Foreground="Black"
-													 Padding="12,10"
-													 CornerRadius="8"/>
+											<Grid ColumnDefinitions="*,Auto,Auto">
+												<TextBox Grid.Column="0"
+														 Text="{Binding SoLuong, Mode=TwoWay}"
+														 Background="Transparent"
+														 BorderThickness="0"
+														 FontSize="15"
+														 Foreground="black"
+														 Padding="12,10"
+														 VerticalContentAlignment="Center"/>
+												<Button Grid.Column="1"
+														Content="▲"
+														Width="35"
+														Classes="btn1"
+														Height="48"
+														Background="White"
+														Foreground="Black"
+														BorderThickness="0"
+														FontSize="12"
+														FontWeight="Bold"
+														Cursor="Hand"
+														Command="{Binding TangCommand}"/>
+												<Button Grid.Column="2"
+														Content="▼"
+														Width="35"
+														Height="48"
+														Classes="btn1"
+														Background="White"
+														Foreground="Black"
+														BorderThickness="0"
+														FontSize="12"
+														FontWeight="Bold"
+														Cursor="Hand"
+														CornerRadius="0,8,8,0"
+														Command="{Binding GiamCommand}"/>
+											</Grid>
 										</Border>
 									</StackPanel>
 									<StackPanel Grid.Column="1" Margin="10,0,0,0">
@@ -178,8 +212,9 @@
 										<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
 											<TextBox Background="White"
 													 BorderThickness="0"
+													 Text="{Binding KhuyenMai}"
 													 FontSize="15"
-													  Foreground="Black"
+													 Foreground="Black"
 													 Padding="12,10"
 													 CornerRadius="8"/>
 										</Border>
@@ -188,9 +223,9 @@
 
 								<!-- Action Buttons -->
 								<StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
-									<Button Classes="primary" Width="120">+ Thêm</Button>
+									<Button Command="{Binding ThemSanPhamCommand}" Classes="primary" Width="120">+ Thêm</Button>
 									<Button Classes="danger" Width="120">🗑️ Xóa</Button>
-									<Button Classes="primary" Width="140">💳 Thanh toán</Button>
+									<Button Command="{Binding ThanhToanCommand}"  Classes="primary" Width="140">💳 Thanh toán</Button>
 								</StackPanel>
 							</StackPanel>
 						</Grid>
@@ -198,10 +233,10 @@
 						<!-- Product List -->
 						<StackPanel Grid.Row="2" Margin="0,0,0,20">
 							<TextBlock Text="Danh sách sản phẩm" Classes="subheader" Margin="0,0,0,15"/>
-							
+
 							<!-- Table Header -->
-							<Border Background="#F7FAFC" 
-									BorderBrush="#E2E8F0" 
+							<Border Background="#F7FAFC"
+									BorderBrush="#E2E8F0"
 									BorderThickness="1"
 									CornerRadius="8,8,0,0"
 									Padding="15,12">
@@ -215,26 +250,26 @@
 							</Border>
 
 							<!-- Table Content -->
-							<Border BorderBrush="#E2E8F0" 
-									BorderThickness="1,0,1,1" 
+							<Border BorderBrush="#E2E8F0"
+									BorderThickness="1,0,1,1"
 									CornerRadius="0,0,8,8"
 									MinHeight="100"
 									MaxHeight="250">
 								<ScrollViewer VerticalScrollBarVisibility="Auto">
-									<ItemsControl ItemsSource="{Binding SanPhams}">
+									<ItemsControl ItemsSource="{Binding ChiTietHoaDons}">
 										<ItemsControl.ItemTemplate>
 											<DataTemplate>
-												<Border BorderBrush="#E2E8F0" 
-														BorderThickness="0,0,0,1" 
+												<Border BorderBrush="#E2E8F0"
+														BorderThickness="0,0,0,1"
 														Padding="15,12"
 														Background="White">
 													<Grid ColumnDefinitions="100,*,120,120,150">
 														<TextBlock Grid.Column="0" Text="{Binding MaSP}" FontSize="14" Foreground="#2D3748" VerticalAlignment="Center"/>
 														<TextBlock Grid.Column="1" Text="{Binding TenSP}" FontSize="14" Foreground="#2D3748" VerticalAlignment="Center"/>
 														<TextBlock Grid.Column="2" Text="{Binding KichThuocSP}" FontSize="14" Foreground="#718096" VerticalAlignment="Center"/>
-														<TextBlock Grid.Column="3" Text="{Binding SoLuongSP}" FontSize="14" Foreground="#718096" VerticalAlignment="Center"/>
+														<TextBlock Grid.Column="3" Text="{Binding SoLuong}" FontSize="14" Foreground="#718096" VerticalAlignment="Center"/>
 														<TextBlock Grid.Column="4" FontSize="14" FontWeight="SemiBold" Foreground="#667EEA" VerticalAlignment="Center" TextAlignment="Right">
-															<Run Text="{Binding GiaSP}"/>
+															<Run Text="{Binding ThanhTien}"/>
 															<Run Text=" ₫"/>
 														</TextBlock>
 													</Grid>
@@ -247,23 +282,38 @@
 						</StackPanel>
 
 						<!-- Summary -->
-						<Border Grid.Row="3" 
-								Background="#F7FAFC" 
-								CornerRadius="12" 
+						<Border Grid.Row="3"
+								Background="#F7FAFC"
+								CornerRadius="12"
 								Padding="20">
 							<StackPanel Spacing="15">
 								<Grid ColumnDefinitions="*,200">
 									<TextBlock Grid.Column="0" Text="Giảm giá:" FontSize="16" Foreground="#718096"/>
-									<TextBlock Grid.Column="1" Text="0 ₫" FontSize="16" FontWeight="SemiBold" Foreground="#2D3748" TextAlignment="Right"/>
+									<TextBlock Grid.Column="1" 
+											   Text="{Binding TongGiamGia, StringFormat='{}{0:N0} ₫'}"
+											   FontSize="16" 
+											   FontWeight="SemiBold" 
+											   Foreground="#2D3748" 
+											   TextAlignment="Right"/>
 								</Grid>
 								<Grid ColumnDefinitions="*,200">
 									<TextBlock Grid.Column="0" Text="Tổng trị giá:" FontSize="16" Foreground="#718096"/>
-									<TextBlock Grid.Column="1" Text="0 ₫" FontSize="16" FontWeight="SemiBold" Foreground="#2D3748" TextAlignment="Right"/>
+									<TextBlock Grid.Column="1" 
+											   Text="{Binding TongTriGia, StringFormat='{}{0:N0} ₫'}"
+											   FontSize="16" 
+											   FontWeight="SemiBold" 
+											   Foreground="#2D3748" 
+											   TextAlignment="Right"/>
 								</Grid>
 								<Separator Background="#E2E8F0" Height="1"/>
 								<Grid ColumnDefinitions="*,200">
 									<TextBlock Grid.Column="0" Text="Thành tiền:" FontSize="20" FontWeight="Bold" Foreground="#2D3748"/>
-									<TextBlock Grid.Column="1" Text="0 ₫" FontSize="20" FontWeight="Bold" Foreground="#667EEA" TextAlignment="Right"/>
+									<TextBlock Grid.Column="1" 
+											   Text="{Binding TongThanhTien, StringFormat='{}{0:N0} ₫'}"
+											   FontSize="20" 
+											   FontWeight="Bold" 
+											   Foreground="#667EEA" 
+											   TextAlignment="Right"/>
 								</Grid>
 							</StackPanel>
 						</Border>

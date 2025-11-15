@@ -132,6 +132,30 @@ namespace Store.ViewModels
             return null;
         }
 
+        [RelayCommand]
+        private void TangGia()
+        {
+            GiaSP += 1000;
+        }
 
+        [RelayCommand]
+        private void GiamGia()
+        {
+            if (GiaSP >= 2000)
+                GiaSP -= 1000;
+        }
+
+        [RelayCommand]
+        private void TangSoLuong()
+        {
+            SoLuongSP++;
+        }
+
+        [RelayCommand]
+        private void GiamSoLuong()
+        {
+            if (SoLuongSP > 1)
+                SoLuongSP--;
+        }
     }
 }

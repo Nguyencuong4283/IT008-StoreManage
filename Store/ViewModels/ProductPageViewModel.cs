@@ -63,5 +63,17 @@ namespace Store.ViewModels
             createProductWindowView.Show();
             LoadSanPhams();
         }
+
+        [RelayCommand]
+        private void XemChiTietSanPham(SanPham sanPham)
+        {
+            if (sanPham == null) return;
+
+            var detailWindow = new ProductDetailWindowView
+            {
+                DataContext = new ProductDetailWindowViewModel(sanPham)
+            };
+            detailWindow.Show();
+        }
     }
 }

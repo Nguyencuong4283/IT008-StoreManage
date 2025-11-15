@@ -174,7 +174,7 @@
 		<Setter Property="BorderThickness" Value="2"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:pointerover/template/Border">
+	<Style Selector="TextBox.modern-input:pointerover /template/Border">
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
@@ -194,11 +194,11 @@
 		<Setter Property="MinHeight" Value="40"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="ComboBox.modern-combo:pointerover/template/Border">
+	<Style Selector="ComboBox.modern-combo:pointerover /template/ContentPresenter">
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="ComboBox.modern-combo:focus/template/Border">
+	<Style Selector="ComboBox.modern-combo:focus /template/ContentPresenter">
 		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
 		<Setter Property="BorderThickness" Value="2"/>
 		<Setter Property="Background" Value="White"/>
@@ -212,6 +212,12 @@
 		<Setter Property="CornerRadius" Value="12"/>
 		<Setter Property="Padding" Value="20"/>
 	</Style>
+	<Style Selector="Border.card:pointerover/template/ContentPresenter">
+		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+		<Setter Property="BorderThickness" Value="4"/>
+		<Setter Property="Background" Value="#D9D9D9"/>
+	</Style>
+
 
 	<!-- ==================== TEXT STYLES ==================== -->
 	<Style Selector="TextBlock.header">
@@ -367,8 +373,41 @@
 		<Setter Property="Background" Value="White"/>
 	</Style>
 
+	<Style Selector="Button.btn1:pointeover /template/ContentPresenter">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="Black"/>
+	</Style>
+
 	<!-- ==================== CALENDAR FIX ==================== -->
-	<Style Selector="CalendarDatePicker.fix:pointerover/template/ContentPresenter">
+	<Style Selector="CalendarDatePicker.fix:pointerover /template/ContentPresenter">
 		<Setter Property="Background" Value="White"/>
 	</Style>
+
+
+	<!--Chỉnh sidebar button-->
+	<Style Selector="Button.sidebar">
+		<Setter Property="Background" Value="White"/>
+	</Style>
+	<Style Selector="Button.sidebar:pointerover/template/ContentPresenter">
+		<Setter Property="Background" Value="{StaticResource Gray50}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
+	</Style>
+	<Style Selector="Button.sidebar:pressed/template/ ContentPresenter">
+		<Setter Property="Background" Value="{StaticResource Gray100}"/>
+	</Style>
+
+	<Style Selector="Border.border1">
+	</Style>
+	<Style Selector="Border.border1:pointerover/template/ContentPresenter">
+		<Setter Property="Background" Value="#D9D9D9"/>
+		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
+		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
+	</Style>
+
+	
+	
 </Styles>
+
+
+

@@ -1,26 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nguyencuong/RiderProjects/IT008-StoreManage/Store/Store.csproj": {}
+    "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj": {}
   },
   "projects": {
-    "/Users/nguyencuong/RiderProjects/IT008-StoreManage/Store/Store.csproj": {
+    "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nguyencuong/RiderProjects/IT008-StoreManage/Store/Store.csproj",
+        "projectUniqueName": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
         "projectName": "Store",
-        "projectPath": "/Users/nguyencuong/RiderProjects/IT008-StoreManage/Store/Store.csproj",
-        "packagesPath": "/Users/nguyencuong/.nuget/packages/",
-        "outputPath": "/Users/nguyencuong/RiderProjects/IT008-StoreManage/Store/obj/",
+        "projectPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/nguyencuong/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -81,6 +86,10 @@
               "target": "Package",
               "version": "[9.0.10, )"
             },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.7.4, )"
+            },
             "Svg.Controls.Skia.Avalonia": {
               "target": "Package",
               "version": "[11.3.6.2, )"
@@ -118,7 +127,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -47,7 +47,11 @@
                     <StackPanel Spacing="10">
                         <TextBlock Text="💰" FontSize="32"/>
                         <TextBlock Text="Doanh thu hôm nay" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="0 ₫" FontSize="22" FontWeight="Bold" Foreground="#667EEA"/>
+                        <TextBlock  FontSize="22" FontWeight="Bold" Foreground="#667EEA">
+                            <Run Text="{Binding DoanhThuHomNay}"/>
+                            <Run Text=" ₫"/>
+
+                        </TextBlock>
                         <TextBlock Text="↗ +0% so với hôm qua" FontSize="12" Foreground="#48BB78"/>
                     </StackPanel>
                 </Border>
@@ -56,14 +60,14 @@
                     <StackPanel Spacing="10">
                         <TextBlock Text="📦" FontSize="32"/>
                         <TextBlock Text="Đơn hàng mới" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="0" FontSize="22" FontWeight="Bold" Foreground="#48BB78"/>
+                        <TextBlock Text="{Binding SoHoaDon}" FontSize="22" FontWeight="Bold" Foreground="#48BB78"/>
                         <TextBlock Text="Chờ xử lý" FontSize="12" Foreground="#ED8936"/>
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
                     <StackPanel Spacing="10">
-                        <TextBlock Text="👥" FontSize="32"/>
+                        <TextBlock Text="👻" FontSize="32"/>
                         <TextBlock Text="Khách hàng" FontSize="13" Foreground="#718096"/>
                         <TextBlock Text="{Binding SoKhachHang}" FontSize="22" FontWeight="Bold" Foreground="#4299E1"/>
                         <TextBlock Text="Tổng số khách" FontSize="12" Foreground="#718096"/>

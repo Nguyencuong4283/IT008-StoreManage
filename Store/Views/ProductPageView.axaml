@@ -77,7 +77,13 @@
 						</ItemsControl.ItemsPanel>
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
-								<Button Background="Transparent" BorderThickness="0" Padding="0" Margin="8" Cursor="Hand">
+								<Button Background="Transparent" 
+										BorderThickness="0" 
+										Padding="0" 
+										Margin="8" 
+										Cursor="Hand"
+										Command="{Binding $parent[UserControl].((vm:ProductPageViewModel)DataContext).XemChiTietSanPhamCommand}"
+										CommandParameter="{Binding}">
 									<Border Width="200" 
 											Background="White" 
 											BorderBrush="#E5E7EB" 
@@ -149,7 +155,7 @@
 									   HorizontalAlignment="Center"/>
 							<Button Command="{Binding ThemSanPhamButtonCommand}"
 									Classes="primary" 
-									Margin="77,10,0,0">
+									Margin="0,10,0,0">
 								+ Thêm sản phẩm
 							</Button>
 						</StackPanel>

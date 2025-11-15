@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Store.Models;
+using Store.Messages;
+using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,18 +27,21 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
                 CREATE TABLE IF NOT EXISTS HoaDon (
-                    MaHD INTEGER PRIMARY KEY AUTOINCREMENT,
+                    MaHD TEXT PRIMARY KEY,
                     NgayLapHD TEXT NOT NULL,
                     TongTienHD REAL NOT NULL,
                     GiamGiaHD REAL DEFAULT 0,
                     MaKH TEXT NOT NULL,
                     MaUser TEXT NOT NULL,
                     SoHD INTEGER NOT NULL,
-                    TrangThaiHD TEXT NOT NULL
+                    TrangThaiHD TEXT NOT NULL,
+                    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+                    FOREIGN KEY (MaUser) REFERENCES Users(MaNV)
                 );";
                 cmd.ExecuteNonQuery();
             }
         }
+
 
         // ------------------ CREATE ------------------
         public static void InsertHoaDon(HoaDon hd)
@@ -47,10 +52,11 @@ namespace Store.Services
 
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
-                INSERT INTO HoaDon 
-                (NgayLapHD, TongTienHD, GiamGiaHD, MaKH, MaUser, SoHD, TrangThaiHD)
-                VALUES ($NgayLapHD, $TongTienHD, $GiamGiaHD, $MaKH, $MaUser, $SoHD, $TrangThaiHD);";
-
+            INSERT INTO HoaDon 
+            (MaHD,NgayLapHD, TongTienHD, GiamGiaHD, MaKH, MaUser, SoHD, TrangThaiHD)
+            VALUES ($MaHD, $NgayLapHD, $TongTienHD, $GiamGiaHD, $MaKH, $MaUser, $SoHD, $TrangThaiHD);
+        ";
+                cmd.Parameters.AddWithValue("$MaHD", hd.MaHD);
                 cmd.Parameters.AddWithValue("$NgayLapHD", hd.NgayLapHD.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("$TongTienHD", (double)hd.TongTienHD);
                 cmd.Parameters.AddWithValue("$GiamGiaHD", (double)hd.GiamGiaHD);
@@ -60,8 +66,26 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$TrangThaiHD", hd.TrangThaiHD);
 
                 cmd.ExecuteNonQuery();
+                
+                // Gửi message thông báo đã thêm hóa đơn
+                WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage("Insert"));
             }
         }
+
+        //So   HD tự động tăng
+        public static int GetNextSoHD()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT IFNULL(MAX(SoHD), 0) FROM HoaDon;";
+                int maxSoHD = Convert.ToInt32(cmd.ExecuteScalar());
+                return maxSoHD + 1;
+            }
+        }
+
 
         // ------------------ READ ALL ------------------
         public static List<HoaDon> GetAllHoaDon()
@@ -73,9 +97,15 @@ namespace Store.Services
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
-                SELECT MaHD, NgayLapHD, TongTienHD, GiamGiaHD, MaKH, MaUser, SoHD, TrangThaiHD
-                FROM HoaDon
-                ORDER BY MaHD DESC;";
+                SELECT 
+                    h.MaHD, h.NgayLapHD, h.TongTienHD, h.GiamGiaHD, 
+                    h.MaKH, h.MaUser, h.SoHD, h.TrangThaiHD,
+                    k.TenKH, k.SDT, k.DiaChi, k.GioiTinh, k.Hang, k.GhiChu, k.TongMua,
+                    u.HoTen as TenUser
+                FROM HoaDon h
+                LEFT JOIN KhachHang k ON h.MaKH = k.MaKH
+                LEFT JOIN Users u ON h.MaUser = u.MaNV
+                ORDER BY h.MaHD DESC;";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -83,14 +113,27 @@ namespace Store.Services
                     {
                         var hd = new HoaDon
                         {
-                            MaHD = reader.GetInt32(0),
+                            MaHD = reader.GetString(0),
                             NgayLapHD = DateTime.Parse(reader.GetString(1)),
                             TongTienHD = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2),
                             GiamGiaHD = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
-                            MaKH = int.Parse(reader.GetString(4)),
-                            MaUser = int.Parse(reader.GetString(5)),
+                            MaKH = reader.GetString(4),
+                            MaUser = reader.GetString(5),
                             SoHD = reader.GetInt32(6),
                             TrangThaiHD = reader.GetString(7),
+                            // Load thông tin KhachHang
+                            KhachHang = reader.IsDBNull(8) ? null : new KhachHang
+                            {
+                                MaKH = reader.GetString(4),
+                                TenKH = reader.GetString(8),
+                                SDT = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                                DiaChi = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                                GioiTinh = reader.IsDBNull(11) ? "" : reader.GetString(11),
+                                Hang = reader.IsDBNull(12) ? "" : reader.GetString(12),
+                                GhiChu = reader.IsDBNull(13) ? "" : reader.GetString(13),
+                                TongMua = reader.IsDBNull(14) ? 0 : reader.GetDecimal(14)
+                            },
+                            TenUser = reader.IsDBNull(15) ? "" : reader.GetString(15)
                         };
                         hoaDons.Add(hd);
                     }
@@ -101,15 +144,22 @@ namespace Store.Services
         }
 
         // ------------------ READ ONE ------------------
-        public static HoaDon? GetHoaDonById(int maHD)
+        public static HoaDon? GetHoaDonById(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
-                SELECT MaHD, NgayLapHD, TongTienHD, GiamGiaHD, MaKH, MaUser, SoHD, TrangThaiHD 
-                FROM HoaDon WHERE MaHD = $MaHD";
+                SELECT 
+                    h.MaHD, h.NgayLapHD, h.TongTienHD, h.GiamGiaHD, 
+                    h.MaKH, h.MaUser, h.SoHD, h.TrangThaiHD,
+                    k.TenKH, k.SDT, k.DiaChi, k.GioiTinh, k.Hang, k.GhiChu, k.TongMua,
+                    u.HoTen as TenUser
+                FROM HoaDon h
+                LEFT JOIN KhachHang k ON h.MaKH = k.MaKH
+                LEFT JOIN Users u ON h.MaUser = u.MaNV
+                WHERE h.MaHD = $MaHD";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
 
                 using (var reader = cmd.ExecuteReader())
@@ -118,14 +168,27 @@ namespace Store.Services
                     {
                         return new HoaDon
                         {
-                            MaHD = reader.GetInt32(0),
+                            MaHD = reader.GetString(0),
                             NgayLapHD = DateTime.Parse(reader.GetString(1)),
                             TongTienHD = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2),
                             GiamGiaHD = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
-                            MaKH = int.Parse(reader.GetString(4)),
-                            MaUser = int.Parse(reader.GetString(5)),
+                            MaKH = reader.GetString(4),
+                            MaUser = reader.GetString(5),
                             SoHD = reader.GetInt32(6),
                             TrangThaiHD = reader.GetString(7),
+                            // Load thông tin KhachHang
+                            KhachHang = reader.IsDBNull(8) ? null : new KhachHang
+                            {
+                                MaKH = reader.GetString(4),
+                                TenKH = reader.GetString(8),
+                                SDT = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                                DiaChi = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                                GioiTinh = reader.IsDBNull(11) ? "" : reader.GetString(11),
+                                Hang = reader.IsDBNull(12) ? "" : reader.GetString(12),
+                                GhiChu = reader.IsDBNull(13) ? "" : reader.GetString(13),
+                                TongMua = reader.IsDBNull(14) ? 0 : reader.GetDecimal(14)
+                            },
+                            TenUser = reader.IsDBNull(15) ? "" : reader.GetString(15)
                         };
                     }
                 }
@@ -163,11 +226,14 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$MaHD", hd.MaHD);
 
                 cmd.ExecuteNonQuery();
+                
+                // Gửi message thông báo đã cập nhật hóa đơn
+                WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage("Update"));
             }
         }
 
         // ------------------ DELETE ------------------
-        public static void DeleteHoaDon(int maHD)
+        public static void DeleteHoaDon(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -176,7 +242,59 @@ namespace Store.Services
                 cmd.CommandText = "DELETE FROM HoaDon WHERE MaHD = $MaHD";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
                 cmd.ExecuteNonQuery();
+                
+                // Gửi message thông báo đã xóa hóa đơn
+                WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage("Delete"));
             }
         }
+
+        //ID
+        public static string GenerateNewMaHD()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT MaHD FROM HoaDon ORDER BY MaHD DESC LIMIT 1";
+                var result = cmd.ExecuteScalar()?.ToString();
+
+                if (string.IsNullOrEmpty(result))
+                    return "HD001";
+
+                int number = int.Parse(result.Substring(2));
+                return $"HD{(number + 1):D3}";
+            }
+        }
+        //Đếm hoá đơn 
+        public static int CountHoaDon()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM HoaDon";
+                var result = cmd.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+        }
+        //Tổng tiền hôm nay
+        public static decimal GetTongTienHomNay()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT IFNULL(SUM(TongTienHD), 0) 
+                    FROM HoaDon 
+                    WHERE date(NgayLapHD) = date('now') 
+                    AND TrangThaiHD = 'Đã thanh toán'";
+                var result = cmd.ExecuteScalar();
+                var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
+                System.Diagnostics.Debug.WriteLine($"[Service] GetTongTienHomNay() = {total}");
+                return total;
+            }
+        }
+
     }
 }

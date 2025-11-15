@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Store.Models;
+using Store.Messages;
+using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -60,6 +62,9 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$LoaiSP", sp.LoaiSP);
                 cmd.Parameters.AddWithValue("$MoTaSP", sp.MoTaSP ?? (object)DBNull.Value);
                 cmd.ExecuteNonQuery();
+                
+                // Gửi message thông báo đã thêm sản phẩm
+                WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Insert"));
             }
         }
 
