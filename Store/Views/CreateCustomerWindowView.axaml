@@ -7,13 +7,13 @@
 		d:DesignHeight="800"
 		Height="800"
 		Width="650"
-		Background="white"
+		Background="Transparent"
 		SystemDecorations="None"
 		x:DataType="vm:CreateCustomerWindowViewModel"
 		WindowStartupLocation="CenterScreen"
 		x:Class="Store.CreateCustomerWindowView"
 		Title="Create Product">
-	<Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000">
+	<Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000" BorderBrush="Black" BorderThickness="2">
 		<Border.Background>
 			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
 				<GradientStop Color="#F5F7FA" Offset="0"/>
@@ -22,22 +22,15 @@
 		</Border.Background>
 		<Grid>
 			<!-- Close Button -->
-			<Button Command="{Binding $parent[Window].Close}" 
-					Background="#F44336" 
-					Foreground="White" 
-					CornerRadius="10" 
-					Width="40" 
-					Height="40" 
-					FontSize="18" 
-					FontWeight="Bold"
-					HorizontalAlignment="Right" 
-					VerticalAlignment="Top" 
-					HorizontalContentAlignment="Center"
-					VerticalContentAlignment="Center"
-					Margin="0,15,15,0"
-					Cursor="Hand">
+			<Button Command="{Binding $parent[Window].Close}"
+					Classes="close-btn"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Top"
+					Margin="0,5,10,0"
+					ZIndex="10">
 				✕
 			</Button>
+
 			
 			<!-- Main Content -->
 			<Border Background="White" 
@@ -173,6 +166,7 @@
 					<!-- Create Button -->
 					<Button Command="{Binding TaoKhachHangButtonCommand}" 
 							Height="52"
+							Classes="btn1"
 							FontSize="16"
 							FontWeight="SemiBold"
 							Foreground="White"

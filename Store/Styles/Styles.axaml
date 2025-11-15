@@ -33,7 +33,7 @@
 		<Color x:Key="PrimaryDark">#5568D3</Color>
 		<Color x:Key="PrimaryLight">#8B9FEE</Color>
 		<Color x:Key="PrimaryHover">#7B8FED</Color>
-		
+
 		<!-- Neutral Colors -->
 		<Color x:Key="Gray50">#F9FAFB</Color>
 		<Color x:Key="Gray100">#F3F4F6</Color>
@@ -45,7 +45,7 @@
 		<Color x:Key="Gray700">#374151</Color>
 		<Color x:Key="Gray800">#1F2937</Color>
 		<Color x:Key="Gray900">#111827</Color>
-		
+
 		<!-- Status Colors -->
 		<Color x:Key="Success">#10B981</Color>
 		<Color x:Key="SuccessHover">#059669</Color>
@@ -58,7 +58,7 @@
 	</Styles.Resources>
 
 	<!-- ==================== PRIMARY BUTTON ==================== -->
-	
+
 	<Style Selector="Button.primary">
 		<Setter Property="Background" Value="{StaticResource Primary}"/>
 		<Setter Property="Foreground" Value="White"/>
@@ -72,12 +72,12 @@
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
 	<Style Selector="Button.primary:pointerover /template/ContentPresenter">
-		<Setter Property="Background" Value="Blue"/>
+		<Setter Property="Background" Value="#2D5DEE"/>
 	</Style>
 	<Style Selector="Button.primary:pressed /template/ContentPresenter">
-		<Setter Property="Background" Value="{StaticResource PrimaryDark}"/>
+		<Setter Property="Background" Value="#567CEE"/>
 	</Style>
-	
+
 
 	<!-- ==================== SECONDARY BUTTON ==================== -->
 	<Style Selector="Button.secondary">
@@ -136,6 +136,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
+
 	<Style Selector="Button.close-btn:pointerover/template/ ContentPresenter">
 		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
 	</Style>
@@ -313,7 +314,7 @@
 		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
 		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
 	</Style>
-	
+
 	<Style Selector="TextBox.style4, TextBox.style8">
 		<Setter Property="Background" Value="White"/>
 		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
@@ -362,7 +363,7 @@
 	<Style Selector="TextBox /template/ Border#PART_BorderElement">
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	
+
 	<Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
 		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
 		<Setter Property="Background" Value="White"/>
@@ -405,8 +406,23 @@
 		<Setter Property="Foreground" Value="{StaticResource Gray700}"/>
 	</Style>
 
-	
-	
+	<!--Buton tim -->
+	<Style Selector="Button.btn1">
+	</Style>
+	<Style Selector="Button.btn1:pointerover/template/ContentPresenter">
+		<Setter Property="Background">
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Color="#667EEA" Offset="0"/>
+				<GradientStop Color="#764BA2" Offset="1"/>
+			</LinearGradientBrush>
+		</Setter>
+		<Setter Property="BorderBrush" Value="Black"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		
+
+	</Style>
+
+
 </Styles>
 
 

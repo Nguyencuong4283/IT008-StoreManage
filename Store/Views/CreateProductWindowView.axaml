@@ -4,16 +4,17 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:vm="using:Store.ViewModels"
 		mc:Ignorable="d" d:DesignWidth="1000"
-		d:DesignHeight="800"
-		Height="800"
+		d:DesignHeight="700"
+		Height="700"
 		Width="1000"
-		Background="white"
+		Background="Transparent"
+		SystemDecorations="None"
 		x:DataType="vm:CreateProductWindowViewModel"
 		WindowStartupLocation="CenterScreen"
 		x:Class="Store.CreateProductWindowView"
 		Title="Create Product">
 
-	<Border CornerRadius="20" BoxShadow="0 10 40 5 #40000000">
+	<Border CornerRadius="20" ClipToBounds="True" BoxShadow="0 10 40 5 #40000000" BorderBrush="Black" BorderThickness="2">
 		<Border.Background>
 			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
 				<GradientStop Color="#F5F7FA" Offset="0"/>
@@ -43,6 +44,7 @@
 
 				<Button Command="{Binding ThemAnhButtonCommand}"
 						Width="340"
+						Classes="btn1"
 						Height="48"
 						CornerRadius="10"
 						FontSize="15"
@@ -63,7 +65,7 @@
 
 			<!-- Right Column - Form -->
 			<Border Grid.Column="1" Background="White" CornerRadius="0,20,20,0" Padding="40,60">
-				<ScrollViewer VerticalScrollBarVisibility="Auto">
+			
 					<StackPanel>
 						<!-- Product Code & Name -->
 						<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
@@ -121,6 +123,7 @@
 												Content="▲"
 												Width="35"
 												Classes="btn1"
+												VerticalContentAlignment="Center"
 												Height="48"
 												Background="White"
 												Foreground="Black"
@@ -133,6 +136,7 @@
 												Content="▼"
 												Width="35"
 												Height="48"
+												VerticalContentAlignment="Center"
 												Classes="btn1"
 												Background="White"
 												Foreground="Black"
@@ -179,6 +183,7 @@
 												 Background="Transparent"
 												 BorderThickness="0"
 												 FontSize="15"
+
 												 Foreground="black"
 												 Padding="12,10"
 												 VerticalContentAlignment="Center"/>
@@ -190,6 +195,7 @@
 												Foreground="Black"
 												BorderThickness="0"
 												FontSize="12"
+												VerticalContentAlignment="Center"
 												FontWeight="Bold"
 												Cursor="Hand"
 												Command="{Binding TangSoLuongCommand}"/>
@@ -200,6 +206,7 @@
 												Background="White"
 												Foreground="Black"
 												BorderThickness="0"
+												VerticalContentAlignment="Center"
 												FontSize="12"
 												FontWeight="Bold"
 												Cursor="Hand"
@@ -252,6 +259,7 @@
 						<!-- Create Button -->
 						<Button Command="{Binding TaoSanPhamCommand}"
 								Height="52"
+								Classes="btn1"
 								FontSize="16"
 								FontWeight="SemiBold"
 								Foreground="White"
@@ -268,9 +276,21 @@
 							</Button.Background>
 							✓ Tạo sản phẩm
 						</Button>
+						<Button Command="{Binding $parent[Window].Close}"
+								Classes="close-btn"
+								HorizontalAlignment="Right"
+								VerticalAlignment="Top"
+								Width="100"
+								Margin="0,40,10,0"
+								ZIndex="10">
+							Thoát
+						</Button>
+						
 					</StackPanel>
-				</ScrollViewer>
+
+				
 			</Border>
 		</Grid>
+
 	</Border>
 </Window>
