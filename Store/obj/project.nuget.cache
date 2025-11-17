@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PSATKpBfqA0=",
+  "dgSpecHash": "RPwIePWNO5A=",
   "success": true,
-  "projectFilePath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\DoAn-IT008\\IT008-StoreManage\\Store\\Store.csproj",
+  "projectFilePath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\avalonia\\11.3.8\\avalonia.11.3.8.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.25547.20250602\\avalonia.angle.windows.natives.2.1.25547.20250602.nupkg.sha512",

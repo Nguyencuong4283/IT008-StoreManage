@@ -22,6 +22,6 @@ namespace Store.Models
         public string MaNV_HoTen => $"{MaNV} | {HoTen}";
 
 
-        public  User() {}
+     
     }
 }

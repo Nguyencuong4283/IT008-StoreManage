@@ -10,6 +10,6 @@ namespace Store.Models
     {
         public string MaVT { get; set; }
         public string TenVT { get; set; }
-        public VaiTro() { }
+        
     }
 }
