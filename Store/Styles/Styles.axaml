@@ -170,16 +170,16 @@
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:focus/template/Border">
+	<Style Selector="TextBox.modern-input:focus/template/ContentPresenter">
 		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
 		<Setter Property="BorderThickness" Value="2"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:pointerover /template/Border">
+	<Style Selector="TextBox.modern-input:pointerover /template/ContentPresenter">
 		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-	<Style Selector="TextBox.modern-input/template/Border">
+	<Style Selector="TextBox.modern-input/template/ContentPresenter">
 		<Setter Property="Background" Value="White"/>
 	</Style>
 
