@@ -19,6 +19,6 @@ namespace Store.Models
         public int      SoHD { get; set; }
         public string   TrangThaiHD { get; set; }
         
-        public HoaDon() { }
+       
     }
 }
