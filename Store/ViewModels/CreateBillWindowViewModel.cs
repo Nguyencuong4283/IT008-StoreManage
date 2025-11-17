@@ -6,6 +6,7 @@ using LiveChartsCore.SkiaSharpView.Avalonia;
 using Store.Models;
 using Store.Services;
 using Store.Messages;
+using Store.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,53 +65,46 @@ namespace Store.ViewModels
 
         public CreateBillWindowViewModel()
         {
-            MaHD = HoaDonService.GenerateNewMaHD();
-            SoHD = HoaDonService.GetNextSoHD();
-            SoLuong = 1; // Khởi tạo số lượng mặc định
-            
             LoadKhachHang();
             LoadSanPham();
             LoadUser();
             
-            System.Diagnostics.Debug.WriteLine($"[ViewModel] Khởi tạo với MaHD: {MaHD}, SoHD: {SoHD}");
-        }
-
-        // Tạo hóa đơn tạm thời trong database
-        private void TaoHoaDonTamThoi()
-        {
-            if (!isHoaDonCreated)
+            // Kiểm tra xem có hóa đơn nháp không
+            if (DraftBillManager.HasDraft)
             {
-                // Kiểm tra khách hàng và nhân viên đã chọn chưa
-                if (KhachHangDuocChon == null || NhanVienDuocChon == null)
-                {
-                    System.Diagnostics.Debug.WriteLine("[ViewModel] Chưa chọn khách hàng hoặc nhân viên");
-                    return;
-                }
+                // Load hóa đơn nháp
+                var draft = DraftBillManager.LoadDraft();
+                MaHD = draft.MaHD;
+                SoHD = draft.SoHD;
+                ChiTietHoaDons = draft.Items;
+                KhachHangDuocChon = draft.KhachHang;
+                NhanVienDuocChon = draft.NhanVien;
                 
-                var hoaDonTam = new HoaDon
-                {
-                    MaHD = MaHD,
-                    NgayLapHD = DateTime.Now,
-                    TongTienHD = 0,
-                    GiamGiaHD = 0,
-                    MaKH = KhachHangDuocChon.MaKH,
-                    MaUser = NhanVienDuocChon.MaNV,
-                    SoHD = SoHD,
-                    TrangThaiHD = "Đang tạo"
-                };
-                
-                try
-                {
-                    HoaDonService.InsertHoaDon(hoaDonTam);
-                    isHoaDonCreated = true;
-                    System.Diagnostics.Debug.WriteLine($"[ViewModel] Đã tạo hóa đơn tạm thời: {MaHD}");
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"[ViewModel] Lỗi tạo hóa đơn tạm: {ex.Message}");
-                }
+                CapNhatTongTien();
+                System.Diagnostics.Debug.WriteLine($"[ViewModel] Đã load hóa đơn nháp: {MaHD}, {ChiTietHoaDons.Count} sản phẩm");
+            }
+            else
+            {
+                // Tạo hóa đơn mới
+                MaHD = HoaDonService.GenerateNewMaHD();
+                SoHD = HoaDonService.GetNextSoHD();
+                System.Diagnostics.Debug.WriteLine($"[ViewModel] Khởi tạo hóa đơn mới: {MaHD}, SoHD: {SoHD}");
+            }
+            
+            SoLuong = 1; // Khởi tạo số lượng mặc định
+        }
+        
+        // Lưu nháp khi đóng window (nếu chưa thanh toán)
+        public void OnWindowClosing()
+        {
+            if (!isHoaDonCreated && ChiTietHoaDons.Count > 0)
+            {
+                DraftBillManager.SaveDraft(MaHD, SoHD, ChiTietHoaDons, KhachHangDuocChon, NhanVienDuocChon);
+                System.Diagnostics.Debug.WriteLine($"[ViewModel] Đã lưu nháp khi đóng window");
             }
         }
+
+
         
         // Thanh toán và xuất hóa đơn
         [RelayCommand]
@@ -131,24 +125,41 @@ namespace Store.ViewModels
             
             try
             {
-                // Cập nhật trạng thái hóa đơn thành "Đã thanh toán"
-                var hoaDon = HoaDonService.GetHoaDonById(MaHD);
-                if (hoaDon != null)
+                // Bước 1: Tạo hóa đơn trong database
+                var hoaDon = new HoaDon
                 {
-                    hoaDon.TongTienHD = TongThanhTien;
-                    hoaDon.GiamGiaHD = TongGiamGia;
-                    hoaDon.TrangThaiHD = "Đã thanh toán";
-                    HoaDonService.UpdateHoaDon(hoaDon);
-                }
+                    MaHD = MaHD,
+                    NgayLapHD = DateTime.Now,
+                    TongTienHD = TongThanhTien,
+                    GiamGiaHD = TongGiamGia,
+                    MaKH = KhachHangDuocChon.MaKH,
+                    MaUser = NhanVienDuocChon.MaNV,
+                    SoHD = SoHD,
+                    TrangThaiHD = "Đã thanh toán"
+                };
+                HoaDonService.InsertHoaDon(hoaDon);
+                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã tạo hóa đơn: {MaHD}");
                 
-                // Xuất file hóa đơn
+                // Bước 2: Lưu tất cả chi tiết hóa đơn vào database
+                foreach(var chiTiet in ChiTietHoaDons)
+                {
+                    ChiTiet_HoaDonService.InsertChiTiet_HoaDon(chiTiet);
+                }
+                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã lưu {ChiTietHoaDons.Count} chi tiết hóa đơn");
+                
+                // Bước 3: Xuất file hóa đơn PDF
                 await XuatFileHoaDon();
                 
-                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã thanh toán hóa đơn {MaHD}");
+                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Hoàn tất thanh toán hóa đơn {MaHD}");
+                
+                // Bước 4: Đánh dấu đã thanh toán và xóa nháp
+                isHoaDonCreated = true;
+                DraftBillManager.ClearDraft();
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Lỗi: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Stack trace: {ex.StackTrace}");
             }
         }
         
@@ -264,9 +275,6 @@ namespace Store.ViewModels
 
             try
             {
-                // Tạo hóa đơn tạm thời nếu chưa có
-                TaoHoaDonTamThoi();
-                
                 // Tính thành tiền
                 decimal donGia = SanPhamDuocChon.GiaSP;
                 decimal giamGia = donGia * KhuyenMai / 100;
@@ -277,21 +285,20 @@ namespace Store.ViewModels
                 
                 if (chiTietTonTai != null)
                 {
-                    // Nếu đã có, cập nhật số lượng và thành tiền
+                    // Nếu đã có, cập nhật số lượng và thành tiền (CHỈ TRONG MEMORY)
                     chiTietTonTai.SoLuong += SoLuong;
                     chiTietTonTai.ThanhTien = (chiTietTonTai.DonGia - (chiTietTonTai.DonGia * chiTietTonTai.KhuyenMai / 100)) * chiTietTonTai.SoLuong;
-                    
-                    // Cập nhật trong database
-                    ChiTiet_HoaDonService.UpdateChiTiet_HoaDon(chiTietTonTai);
                     
                     // Xóa và thêm lại để trigger UI update
                     var index = ChiTietHoaDons.IndexOf(chiTietTonTai);
                     ChiTietHoaDons.RemoveAt(index);
                     ChiTietHoaDons.Insert(index, chiTietTonTai);
+                    
+                    System.Diagnostics.Debug.WriteLine($"Đã cập nhật số lượng sản phẩm (tạm): {SanPhamDuocChon.TenSP}, SoLuong mới: {chiTietTonTai.SoLuong}");
                 }
                 else
                 {
-                    // Thêm chi tiết hóa đơn mới
+                    // Thêm chi tiết hóa đơn mới (CHỈ TRONG MEMORY)
                     var chiTietMoi = new ChiTiet_HoaDon
                     {            
                         MaHD = MaHD,
@@ -303,7 +310,7 @@ namespace Store.ViewModels
                         SanPham = SanPhamDuocChon //Gán thông tin sản phẩm để hiển thị
                     };
                     ChiTietHoaDons.Add(chiTietMoi);
-                    ChiTiet_HoaDonService.InsertChiTiet_HoaDon(chiTietMoi);
+                    System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm mới (tạm): {SanPhamDuocChon.TenSP}, SoLuong: {SoLuong}");
                 }
                 
                 // Cập nhật tổng tiền sau khi thêm/cập nhật
