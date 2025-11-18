@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +115,7 @@
       <workItem from="1763124260954" duration="4695000" />
       <workItem from="1763129289984" duration="1199000" />
       <workItem from="1763431205653" duration="1141000" />
-      <workItem from="1763469829549" duration="1008000" />
+      <workItem from="1763469829549" duration="1320000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -170,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763469974447</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Thêm cửa sổ đăng nhập cho nhân viên">
+      <option name="closed" value="true" />
+      <created>1763471154900</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1763471154900</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +200,8 @@
     <MESSAGE value="update style" />
     <MESSAGE value="Fix UI" />
     <MESSAGE value="sửa lỗi UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="sửa lỗi UI" />
+    <MESSAGE value="Thêm cửa sổ đăng nhập cho nhân viên" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm cửa sổ đăng nhập cho nhân viên" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -240,38 +240,7 @@ x:DataType="vm:AdminWindowViewModel">
 									<TextBlock Text="Khách hàng" FontSize="14" VerticalAlignment="Center"/>
 								</StackPanel>
 							</Button>
-
-							<Button Command="{Binding GoIncomeCommand}"
-									Background="White"
-									Foreground="#374151"
-									Classes="sidebar"
-									BorderBrush="#E5E7EB"
-									BorderThickness="1"
-									CornerRadius="8"
-									Padding="12,10"
-									Cursor="Hand"
-									HorizontalAlignment="Stretch"
-									HorizontalContentAlignment="Left"
-									Margin="0,0,0,0">
-								<Button.Styles>
-									<Style Selector="Button:pointerover">
-										<Setter Property="Background">
-											<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
-												<GradientStop Color="#F9FAFB" Offset="0"/>
-												<GradientStop Color="#F3F4F6" Offset="1"/>
-											</LinearGradientBrush>
-										</Setter>
-										<Setter Property="BorderBrush" Value="#667EEA"/>
-										<Setter Property="BorderThickness" Value="2"/>
-										<Setter Property="Margin" Value="0,-2,0,2"/>
-									</Style>
-								</Button.Styles>
-								<StackPanel Orientation="Horizontal" Spacing="10">
-									<TextBlock Text="💰" FontSize="18" VerticalAlignment="Center"/>
-									<TextBlock Text="Thu nhập" FontSize="14" VerticalAlignment="Center"/>
-								</StackPanel>
-							</Button>
-
+							
 							<Button Command="{Binding GoHistoryCommand}"
 									Background="White"
 									Foreground="#374151"
@@ -300,37 +269,6 @@ x:DataType="vm:AdminWindowViewModel">
 								<StackPanel Orientation="Horizontal" Spacing="10">
 									<TextBlock Text="📥" FontSize="18" VerticalAlignment="Center"/>
 									<TextBlock Text="Nhập kho" FontSize="14" VerticalAlignment="Center"/>
-								</StackPanel>
-							</Button>
-
-							<Button Command="{Binding GoEmployeeCommand}"
-									Background="White"
-									Foreground="#374151"
-									Classes="sidebar"
-									BorderBrush="#E5E7EB"
-									BorderThickness="1"
-									CornerRadius="8"
-									Padding="12,10"
-									Cursor="Hand"
-									HorizontalAlignment="Stretch"
-									HorizontalContentAlignment="Left"
-									Margin="0,0,0,0">
-								<Button.Styles>
-									<Style Selector="Button:pointerover">
-										<Setter Property="Background">
-											<LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
-												<GradientStop Color="#F9FAFB" Offset="0"/>
-												<GradientStop Color="#F3F4F6" Offset="1"/>
-											</LinearGradientBrush>
-										</Setter>
-										<Setter Property="BorderBrush" Value="#667EEA"/>
-										<Setter Property="BorderThickness" Value="2"/>
-										<Setter Property="Margin" Value="0,-2,0,2"/>
-									</Style>
-								</Button.Styles>
-								<StackPanel Orientation="Horizontal" Spacing="10">
-									<TextBlock Text="📂" FontSize="18" VerticalAlignment="Center"/>
-									<TextBlock Text="Nhân sự" FontSize="14" VerticalAlignment="Center"/>
 								</StackPanel>
 							</Button>
 
