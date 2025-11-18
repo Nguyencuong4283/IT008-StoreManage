@@ -39,6 +39,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 								  ItemsSource="{Binding DanhSachBoLoc}"
                                   Width="180" 
                                   FontSize="14"
+								  PlaceholderForeground="Black"
                                   PlaceholderText="Bộ lọc"
                                   Padding="12,8"
                                   CornerRadius="8"/>

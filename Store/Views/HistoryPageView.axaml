@@ -36,6 +36,7 @@
                                   BorderThickness="0"
                                   Width="180" 
                                   FontSize="14"
+                                  PlaceholderForeground="Black"
                                   PlaceholderText="Lọc theo tháng"
                                   Padding="12,8"
                                   CornerRadius="8"/>

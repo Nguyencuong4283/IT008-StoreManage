@@ -38,6 +38,7 @@
                                   BorderThickness="0"
 								  ItemsSource="{Binding DanhSachBoLoc}"
                                   Width="180" 
+								  PlaceholderForeground="Black"
                                   FontSize="14"
                                   PlaceholderText="Bộ lọc"
                                   Padding="12,8"
