@@ -24,5 +24,6 @@ Desktop.ini
 
 # Chặn CSDL
 Store/bin/Debug/net9.0/store
-Store/obj/
 Store/bin/
+Store/obj/
+

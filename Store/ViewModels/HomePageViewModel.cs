@@ -24,7 +24,14 @@ public partial class HomePageViewModel : ViewModelBase,
     [ObservableProperty] private int soSanPham;
     [ObservableProperty] private int soHoaDon;
     [ObservableProperty] private decimal doanhThuHomNay;
-    
+
+
+    [ObservableProperty] private int soHD;
+    [ObservableProperty] private string tenKH;
+    [ObservableProperty] private DateTime ngayLapHD;
+    [ObservableProperty] private decimal tongTienHD;
+    [ObservableProperty]
+    private ObservableCollection<HoaDon> hoaDons = new();
     public HomePageViewModel()
     {
         // Đăng ký nhận message
@@ -34,6 +41,7 @@ public partial class HomePageViewModel : ViewModelBase,
         
         // Load dữ liệu async để tránh đơ UI
         LoadStatistics();
+        LoadHoaDons();
     }
     
     // Xử lý khi nhận message HoaDon thay đổi
@@ -96,6 +104,16 @@ public partial class HomePageViewModel : ViewModelBase,
         createCustomerWindowView.Show();
         // Sau khi thêm xong, cập nhật lại số lượng
         SoKhachHang = KhachHangService.CountKhachHang();
+    }
+    private void LoadHoaDons()
+    {
+        var list = HoaDonService.GetAllHoaDon();
+
+        hoaDons.Clear();
+        foreach (var kh in list)
+        {
+            hoaDons.Add(kh);
+        }
     }
 }
 /*using CommunityToolkit.Mvvm.ComponentModel;
