@@ -37,6 +37,7 @@
                         <ComboBox Background="White"
                                   BorderThickness="0"
                                   Width="180" 
+                                  PlaceholderForeground="Black"
                                   FontSize="14"
                                   PlaceholderText="Bộ lọc"
                                   Padding="12,8"
