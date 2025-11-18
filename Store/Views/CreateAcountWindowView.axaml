@@ -133,7 +133,6 @@
 												  Foreground="Black"
 												  PlaceholderText="Chọn giới tính"
 												  Padding="12,10"
-												  Width="295"
 												  CornerRadius="8"
 												  VerticalContentAlignment="Center"/>
 									</Border>
@@ -144,15 +143,12 @@
 							<Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
 								<StackPanel Grid.Column="0" Margin="0,0,8,0">
 									<TextBlock Text="Ngày sinh" Classes="label"/>
-									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5" Width="300" HorizontalAlignment="Left">
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5" Width="140" HorizontalAlignment="Left">
 										<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
 										                    Classes="fix"
 															FontSize="14"
 															BorderThickness="0"
 															Padding="12,10"
-															Background="White"
-															Foreground="Black"
-															Width="295"
 															CornerRadius="8"
 															VerticalContentAlignment="Center"/>
 									</Border>
@@ -197,7 +193,6 @@
 								<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 									<TextBox Text="{Binding DiaChi, Mode=TwoWay}" 
 									         Background="White"
-											 Classes="modern-input"
 											 BorderThickness="0"
 											 FontSize="14"
 											 Foreground="Black"

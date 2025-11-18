@@ -115,10 +115,10 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="Button.danger:pointerover /template/ContentPresenter">
+	<Style Selector="Button.danger:pointerover">
 		<Setter Property="Background" Value="{StaticResource DangerHover}"/>
 	</Style>
-	<Style Selector="Button.danger:pressed /template/ContentPresenter">
+	<Style Selector="Button.danger:pressed">
 		<Setter Property="Background" Value="#B91C1C"/>
 	</Style>
 
@@ -410,10 +410,16 @@
 	<Style Selector="Button.btn1">
 	</Style>
 	<Style Selector="Button.btn1:pointerover/template/ContentPresenter">
-		<Setter Property="Background" Value="White"/>
-		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="Background">
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Color="#667EEA" Offset="0"/>
+				<GradientStop Color="#764BA2" Offset="1"/>
+			</LinearGradientBrush>
+		</Setter>
 		<Setter Property="BorderBrush" Value="Black"/>
 		<Setter Property="BorderThickness" Value="1"/>
+		
+
 	</Style>
 
 

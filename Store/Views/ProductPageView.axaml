@@ -158,7 +158,8 @@
 									   HorizontalAlignment="Center"/>
 							<Button Command="{Binding ThemSanPhamButtonCommand}"
 									Classes="primary" 
-									Margin="0,10,0,0">
+									Margin="0,10,0,0"
+									HorizontalAlignment="Center">
 								+ Thêm sản phẩm
 							</Button>
 						</StackPanel>
