@@ -30,7 +30,7 @@ public partial class MainWindowViewModel : ViewModelBase
         var list = UserService.GetAllUser();
         foreach (var user in list)
         {
-            if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap)
+            if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap && user.MaVT == "VT01")
             {
                 var adminVM = new AdminWindowViewModel();
                 var adminWindow = new AdminWindowView();
@@ -44,6 +44,18 @@ public partial class MainWindowViewModel : ViewModelBase
                     mainWindow.Close();
                 }
                 return; // Thoát khỏi hàm sau khi đăng nhập thành công
+            }
+            else if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap && user.MaVT == "VT02")
+            {
+                var staffVM = new EmployeePageViewModel();
+                var staffWindow = new EmployeeWindowView();
+                staffWindow.Show();
+                if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                   && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                {
+                    mainWindow.Close();
+                }
+                return; 
             }
         }
         

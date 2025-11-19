@@ -6,7 +6,7 @@ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:vm="using:Store.ViewModels"
 mc:Ignorable="d"
 Icon="/Assets/avalonia-logo.ico"
-Title="ShopQuality - Admin"
+Title="ShopQuality - Employees"
 Height="800"
 Background="Transparent"
 SystemDecorations="None"
@@ -14,8 +14,8 @@ Width="1200"
 WindowStartupLocation="CenterScreen"
 d:DesignHeight="800"
 d:DesignWidth="1200"
-x:Class="Store.Views.AdminWindowView"
-x:DataType="vm:AdminWindowViewModel">
+x:Class="Store.Views.EmployeeWindowView"
+x:DataType="vm:EmployeeWindowViewModel">
 	<Border CornerRadius="16" ClipToBounds="True" BoxShadow="0 10 40 5 #30000000">
 		<Border.Background>
 			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
