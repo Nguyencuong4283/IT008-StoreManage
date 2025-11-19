@@ -112,6 +112,52 @@ namespace Store.Services
             return users;
         }
 
+        //Read one
+        public static User GetOneUser(string maNV)
+        {
+          
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT 
+                FROM Users";
+                User user1 = new User();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.GetString(0) != maNV)
+                            continue;
+
+                        else
+                        {
+                            var user = new User
+                            {
+                                MaNV = reader.IsDBNull(0) ? "" : reader.GetString(0),
+                                TenDangNhap = reader.IsDBNull(1) ? "" : reader.GetString(1),
+                                MatKhau = reader.IsDBNull(2) ? "" : reader.GetString(2),
+                                HoTen = reader.IsDBNull(3) ? "" : reader.GetString(3),
+                                Email = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                                SDT = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                                DiaChi = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                                NgaySinh = reader.IsDBNull(7) ? (DateTime?)null : DateTime.Parse(reader.GetString(7)),
+                                GioiTinh = reader.IsDBNull(8) ? "" : reader.GetString(8),
+                                HinhAnh = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                                MaVT = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                            };
+                            user1 = user;
+                            return user1;
+                        }
+                       
+                    }
+                }
+            }
+            return null;
+        }
+
         // ------------------ UPDATE ------------------
         public static void UpdateUser(User user, bool updatePassword = false)
         {

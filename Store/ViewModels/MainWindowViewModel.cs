@@ -1,6 +1,7 @@
 ﻿using Avalonia.Xaml.Interactions.Custom;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Store.Models;
 using Store.Services;
 using Store.Views;
@@ -10,6 +11,13 @@ namespace Store.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    public string maDN = "";
+    public class LoginSuccessMessage
+    {
+        public string MaDN { get; }
+        public LoginSuccessMessage(string maDN) => MaDN = maDN;
+    }
+
     [ObservableProperty] private string tenDangNhap;
     [ObservableProperty] private string matKhau;
     [ObservableProperty] private string kiemTraDangNhap;
@@ -36,6 +44,8 @@ public partial class MainWindowViewModel : ViewModelBase
                 var adminWindow = new AdminWindowView();
                 // adminWindow.DataContext = adminVM;
                 adminWindow.Show();
+                maDN = user.MaNV;
+                WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
 
                 // Đóng MainWindow hiện tại
                 if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
@@ -49,6 +59,8 @@ public partial class MainWindowViewModel : ViewModelBase
             {
                 var staffVM = new EmployeePageViewModel();
                 var staffWindow = new EmployeeWindowView();
+                maDN = user.MaNV;
+                WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
                 staffWindow.Show();
                 if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
                    && desktop.MainWindow is Avalonia.Controls.Window mainWindow)

@@ -313,7 +313,7 @@ x:DataType="vm:EmployeeWindowViewModel">
 									Cursor="Hand"
 									HorizontalAlignment="Stretch"
 									HorizontalContentAlignment="Left"
-									Margin="0,173,0,0">
+									Margin="0,270,0,0">
 								<Button.Styles>
 									<Style Selector="Button:pointerover">
 										<Setter Property="Background">

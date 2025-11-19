@@ -1,137 +1,144 @@
-<UserControl
-    d:DesignHeight="700"
-    d:DesignWidth="1000"
-    mc:Ignorable="d"
-    x:Class="Store.Views.AccountSettingPageView"
-    x:DataType="viewModel:AccountSettingPageViewModel"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="clr-namespace:Store.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
-        <Grid RowDefinitions="Auto,*">
-            <!-- Header -->
-            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">
-                <StackPanel>
-                    <TextBlock Text="Cài đặt tài khoản" Classes="header" Margin="0,0,0,10"/>
-                    <TextBlock Text="Quản lý thông tin cá nhân và bảo mật" Classes="body"/>
-                </StackPanel>
-            </Border>
 
-            <!-- Content -->
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="30">
-                <StackPanel Spacing="20">
-                    <!-- Profile Section -->
-                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
-                        <Grid ColumnDefinitions="Auto,*">
-                            <!-- Avatar -->
-                            <Border Grid.Column="0" 
-                                    Background="#F7FAFC" 
-                                    CornerRadius="60" 
-                                    Width="120" 
-                                    Height="120"
-                                    VerticalAlignment="Top"
-                                    Margin="0,0,30,0">
-                                <TextBlock Text="👤" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
+	<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+			 xmlns:vm = "clr-namespace:Store.ViewModels"
+			 x:DataType="vm:AccountSettingPageViewModel"
+			 x:Class="Store.Views.AccountSettingPageView">
+	<Design.DataContext>
+		<vm:AccountSettingPageViewModel/>
+	</Design.DataContext>
 
-                            <!-- Profile Info -->
-                            <StackPanel Grid.Column="1" Spacing="15">
-                                <StackPanel Spacing="10">
-                                    <TextBlock Text="Họ và tên" Classes="label"/>
-                                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                                        <TextBox Background="White"
-                                                 BorderThickness="0"
-                                                 FontSize="15"
-                                                 Padding="12,10"
-                                                 CornerRadius="8"
-                                                 Watermark="Nhập họ và tên"/>
-                                    </Border>
-                                </StackPanel>
+	<Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+		<Grid RowDefinitions="Auto,*">
+			<!-- Header -->
+			<Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">
+				<StackPanel>
+					<TextBlock Text="Cài đặt tài khoản" Classes="header" Margin="0,0,0,10"/>
+					<TextBlock Text="Quản lý thông tin cá nhân và bảo mật" Classes="body"/>
+				</StackPanel>
+			</Border>
 
-                                <StackPanel Spacing="10">
-                                    <TextBlock Text="Email" Classes="label"/>
-                                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                                        <TextBox Background="White"
-                                                 BorderThickness="0"
-                                                 FontSize="15"
-                                                 Padding="12,10"
-                                                 CornerRadius="8"
-                                                 Watermark="email@example.com"/>
-                                    </Border>
-                                </StackPanel>
+			<!-- Content -->
+			<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="30">
+				<StackPanel Spacing="20">
+					<!-- Profile Section -->
+					<Border Classes="card" BoxShadow="0 2 8 0 #20000000">
+						<Grid ColumnDefinitions="Auto,*">
+							<!-- Avatar -->
+							<Border Grid.Column="0"
+									Background="#F7FAFC"
+									CornerRadius="60"
+									Width="120"
+									Height="120"
+									VerticalAlignment="Top"
+									Margin="0,0,30,0">
+								<TextBlock Text="👤" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+							</Border>
 
-                                <StackPanel Spacing="10">
-                                    <TextBlock Text="Số điện thoại" Classes="label"/>
-                                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                                        <TextBox Background="White"
-                                                 BorderThickness="0"
-                                                 FontSize="15"
-                                                 Padding="12,10"
-                                                 CornerRadius="8"
-                                                 Watermark="+84 xxx xxx xxx"/>
-                                    </Border>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+							<!-- Profile Info -->
+							<StackPanel Grid.Column="1" Spacing="15">
+								<StackPanel Spacing="10">
+									<TextBlock Text="Họ và tên" Classes="label"/>
+									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+										<TextBox Background="White"
+												 BorderThickness="0"
+												 FontSize="15"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 IsReadOnly="True"
+												Text="{Binding HoTen, Mode=TwoWay}" 
+												 />
+									</Border>
+								</StackPanel>
 
-                    <!-- Security Section -->
-                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
-                        <StackPanel Spacing="15">
-                            <TextBlock Text="🔒 Bảo mật" Classes="subheader"/>
-                            
-                            <StackPanel Spacing="10">
-                                <TextBlock Text="Mật khẩu hiện tại" Classes="label"/>
-                                <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                                    <TextBox Background="White"
-                                             BorderThickness="0"
-                                             FontSize="15"
-                                             PasswordChar="●"
-                                             Padding="12,10"
-                                             CornerRadius="8"/>
-                                </Border>
-                            </StackPanel>
+								<StackPanel Spacing="10">
+									<TextBlock Text="Email" Classes="label"/>
+									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+										<TextBox Background="White"
+												 BorderThickness="0"
+												 FontSize="15"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 IsReadOnly="True"
+												Text="{Binding Email, Mode=TwoWay}" 
+												 />
+									</Border>
+								</StackPanel>
 
-                            <StackPanel Spacing="10">
-                                <TextBlock Text="Mật khẩu mới" Classes="label"/>
-                                <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                                    <TextBox Background="White"
-                                             BorderThickness="0"
-                                             FontSize="15"
-                                             PasswordChar="●"
-                                             Padding="12,10"
-                                             CornerRadius="8"/>
-                                </Border>
-                            </StackPanel>
+								<StackPanel Spacing="10">
+									<TextBlock Text="Số điện thoại" Classes="label"/>
+									<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+										<TextBox Background="White"
+												 BorderThickness="0"
+												 FontSize="15"
+												 Padding="12,10"
+												 CornerRadius="8"
+												 IsReadOnly="True"
+												Text="{Binding SDT, Mode=TwoWay}" 
+												 />
+									</Border>
+								</StackPanel>
+							</StackPanel>
+						</Grid>
+					</Border>
 
-                            <StackPanel Spacing="10">
-                                <TextBlock Text="Xác nhận mật khẩu mới" Classes="label"/>
-                                <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                                    <TextBox Background="White"
-                                             BorderThickness="0"
-                                             FontSize="15"
-                                             PasswordChar="●"
-                                             Padding="12,10"
-                                             CornerRadius="8"/>
-                                </Border>
-                            </StackPanel>
+					<!-- Security Section -->
+					<Border Classes="card" BoxShadow="0 2 8 0 #20000000">
+						<StackPanel Spacing="15">
+							<TextBlock Text="🔒 Bảo mật" Classes="subheader"/>
 
-                            <Button Classes="secondary" Padding="15,10" HorizontalAlignment="Left">
-                                🔑 Đổi mật khẩu
-                            </Button>
-                        </StackPanel>
-                    </Border>
+							<StackPanel Spacing="10">
+								<TextBlock Text="Mật khẩu hiện tại" Classes="label"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<TextBox Background="White"
+											 BorderThickness="0"
+											 FontSize="15"
+											 PasswordChar="●"
+											 Padding="12,10"
+											 CornerRadius="8"/>
+								</Border>
+							</StackPanel>
 
-                    <!-- Action Buttons -->
-                    <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right" Margin="0 0 0 50">
-                        <Button Classes="secondary" Padding="20,12">Hủy</Button>
-                        <Button Classes="primary" Padding="20,12">💾 Lưu thay đổi</Button>
-                    </StackPanel>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
-    </Border>
+							<StackPanel Spacing="10">
+								<TextBlock Text="Mật khẩu mới" Classes="label"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<TextBox Background="White"
+											 BorderThickness="0"
+											 FontSize="15"
+											 PasswordChar="●"
+											 Padding="12,10"
+											 CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+
+							<StackPanel Spacing="10">
+								<TextBlock Text="Xác nhận mật khẩu mới" Classes="label"/>
+								<Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
+									<TextBox Background="White"
+											 BorderThickness="0"
+											 FontSize="15"
+											 PasswordChar="●"
+											 Padding="12,10"
+											 CornerRadius="8"/>
+								</Border>
+							</StackPanel>
+
+							<Button Classes="secondary" Padding="15,10" HorizontalAlignment="Left">
+								🔑 Đổi mật khẩu
+							</Button>
+						</StackPanel>
+					</Border>
+
+					<!-- Action Buttons -->
+					<StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right" Margin="0 0 0 50">
+						<Button Classes="secondary" Padding="20,12">Hủy</Button>
+						<Button Classes="primary" Padding="20,12">💾 Lưu thay đổi</Button>
+					</StackPanel>
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+	</Border>
 </UserControl>
