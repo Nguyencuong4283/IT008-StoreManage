@@ -20,6 +20,9 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
     [ObservableProperty] private string hoTen;
     [ObservableProperty] private string sDT;
     [ObservableProperty] private string email;
+    [ObservableProperty] private string matKhauNow;
+    [ObservableProperty] private string matKhauNew;
+    [ObservableProperty] private string matKhauNewConfirm;
 
     private string _maDN;
 
@@ -42,6 +45,26 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
             HoTen = currentUser.HoTen;
             SDT = currentUser.SDT;
             Email = currentUser.Email;
+        }
+    }
+    [RelayCommand]
+    private void DoiMatKhauButton()
+    {
+        var currentUser = UserService.GetOneUser(_maDN);
+        if(matKhauNew != matKhauNewConfirm || matKhauNew == null || UserService.VerifyPassword(matKhauNow, currentUser.MatKhau) != true)
+        {
+            return;
+        }
+        else
+        {
+            currentUser.MatKhau = matKhauNew;
+        }
+        if (currentUser != null)
+        {
+            UserService.UpdateUser(currentUser, true);
+            matKhauNew = "";
+            matKhauNow = "";
+            matKhauNewConfirm = "";
         }
     }
 }

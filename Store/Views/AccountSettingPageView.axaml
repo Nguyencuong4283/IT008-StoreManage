@@ -46,6 +46,7 @@
 										<TextBox Background="White"
 												 BorderThickness="0"
 												 FontSize="15"
+												  Foreground="Black"
 												 Padding="12,10"
 												 CornerRadius="8"
 												 IsReadOnly="True"
@@ -60,6 +61,7 @@
 										<TextBox Background="White"
 												 BorderThickness="0"
 												 FontSize="15"
+												  Foreground="Black"
 												 Padding="12,10"
 												 CornerRadius="8"
 												 IsReadOnly="True"
@@ -74,6 +76,7 @@
 										<TextBox Background="White"
 												 BorderThickness="0"
 												 FontSize="15"
+												  Foreground="Black"
 												 Padding="12,10"
 												 CornerRadius="8"
 												 IsReadOnly="True"
@@ -96,8 +99,10 @@
 									<TextBox Background="White"
 											 BorderThickness="0"
 											 FontSize="15"
+											  Foreground="Black"
 											 PasswordChar="●"
 											 Padding="12,10"
+											 Text="{Binding MatKhauNow, Mode=TwoWay}"
 											 CornerRadius="8"/>
 								</Border>
 							</StackPanel>
@@ -108,8 +113,10 @@
 									<TextBox Background="White"
 											 BorderThickness="0"
 											 FontSize="15"
+											  Foreground="Black"
 											 PasswordChar="●"
 											 Padding="12,10"
+											 Text="{Binding MatKhauNew, Mode=TwoWay}"
 											 CornerRadius="8"/>
 								</Border>
 							</StackPanel>
@@ -120,13 +127,15 @@
 									<TextBox Background="White"
 											 BorderThickness="0"
 											 FontSize="15"
+											 Foreground="Black"
 											 PasswordChar="●"
+											 Text="{Binding MatKhauNewConfirm, Mode=TwoWay}"
 											 Padding="12,10"
 											 CornerRadius="8"/>
 								</Border>
 							</StackPanel>
 
-							<Button Classes="secondary" Padding="15,10" HorizontalAlignment="Left">
+							<Button Classes="secondary" Command="{Binding DoiMatKhauButtonCommand}" Padding="15,10" HorizontalAlignment="Left">
 								🔑 Đổi mật khẩu
 							</Button>
 						</StackPanel>
