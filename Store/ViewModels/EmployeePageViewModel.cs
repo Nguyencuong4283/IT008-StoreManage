@@ -36,6 +36,7 @@ public partial class EmployeePageViewModel : ViewModelBase
             nhanViens.Add(nv);
         }
     }
+ 
     /*   private void LoadKhachHangs()
     {
         var list = KhachHangService.GetAllKhachHang();

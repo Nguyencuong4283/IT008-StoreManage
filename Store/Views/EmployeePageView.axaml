@@ -89,7 +89,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 											<!-- Actions -->
 											<StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
 												<Button Classes="secondary" Padding="12,8">✏️ Sửa</Button>
-												<Button Classes="danger" Padding="12,8">🗑️ Xóa</Button>
+												<Button  Classes="danger" Padding="12,8">🗑️ Xóa</Button>
 											</StackPanel>
 										</Grid>
 									</Border>
