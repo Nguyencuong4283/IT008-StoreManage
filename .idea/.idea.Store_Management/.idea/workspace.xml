@@ -7,8 +7,10 @@
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Store.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Store.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AnalysePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AnalysePageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AnalysePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AnalysePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -124,7 +126,10 @@
       <workItem from="1763644596014" duration="1552000" />
       <workItem from="1763685871057" duration="1191000" />
       <workItem from="1763708766528" duration="5000" />
-      <workItem from="1763786901081" duration="1360000" />
+      <workItem from="1763786901081" duration="3531000" />
+      <workItem from="1763812461137" duration="2179000" />
+      <workItem from="1763818484428" duration="837000" />
+      <workItem from="1763819365048" duration="1142000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -190,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763471354797</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="chỉnh lại avatar">
+      <option name="closed" value="true" />
+      <created>1763788389221</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1763788389221</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +232,8 @@
     <MESSAGE value="sửa lỗi UI" />
     <MESSAGE value="Thêm cửa sổ đăng nhập cho nhân viên" />
     <MESSAGE value="chỉnh sửa lại giao diện của nhân viên" />
-    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa lại giao diện của nhân viên" />
+    <MESSAGE value="chỉnh lại avatar" />
+    <option name="LAST_COMMIT_MESSAGE" value="chỉnh lại avatar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

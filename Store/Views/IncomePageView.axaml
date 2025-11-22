@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
              xmlns:vm="clr-namespace:Store.ViewModels" 
              x:DataType="vm:IncomePageViewModel"
              mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
@@ -55,19 +56,13 @@
 
             <!-- Chart Area -->
             <Border Grid.Row="2" Margin="30,0,30,30" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                <StackPanel>
-                    <TextBlock Text="Biểu đồ doanh thu" Classes="subheader" Margin="0,0,0,20"/>
-                    <Border Background="#F7FAFC" 
-                            CornerRadius="8" 
-                            Height="300"
-                            Padding="20">
-                        <TextBlock Text="📊 Biểu đồ sẽ được hiển thị ở đây" 
-                                   FontSize="16" 
-                                   Foreground="#718096"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                    </Border>
-                </StackPanel>
+                <Grid >
+                    <lvc:CartesianChart
+                        Series="{Binding _series}"
+                        XAxes="{Binding xAxis}"
+                        ZoomMode="X"
+                        Padding="-10"/>
+                </Grid>
             </Border>
         </Grid>
     </Border>
