@@ -33,7 +33,7 @@ public partial class AdminWindowViewModel : ViewModelBase
 
     [RelayCommand]
     private void GoProduct() => CurrentPage = _productPage;
-
+    
     [RelayCommand]
     private void GoIncome() => CurrentPage = _incomePage;
 
