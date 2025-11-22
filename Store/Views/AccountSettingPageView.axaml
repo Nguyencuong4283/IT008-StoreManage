@@ -35,7 +35,12 @@
 									Height="120"
 									VerticalAlignment="Top"
 									Margin="0,0,30,0">
-								<TextBlock Text="👤" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+								<Image Source="{Binding HinhAnh}"
+									   Width="120"
+									   Height="120"
+									   Stretch="UniformToFill"
+									   ClipToBounds="True"
+									   />
 							</Border>
 
 							<!-- Profile Info -->

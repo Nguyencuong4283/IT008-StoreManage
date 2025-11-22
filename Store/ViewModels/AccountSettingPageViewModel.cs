@@ -23,6 +23,7 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
     [ObservableProperty] private string matKhauNow;
     [ObservableProperty] private string matKhauNew;
     [ObservableProperty] private string matKhauNewConfirm;
+    [ObservableProperty] private Bitmap hinhAnh;
 
     private string _maDN;
 
