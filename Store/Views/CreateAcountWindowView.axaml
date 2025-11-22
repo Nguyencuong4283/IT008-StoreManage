@@ -48,14 +48,14 @@
 							</TextBlock>
 							
 							<Border Background="#F9FAFB" 
-									CornerRadius="16" 
+									CornerRadius="260" 
 									Width="260" 
 									Height="260"
 									BoxShadow="0 4 12 0 #10000000"
 									ClipToBounds="True"
 									Margin="0,0,0,16">
 								<Image Source="{Binding HinhAnh, Mode=TwoWay}" 
-									   Stretch="UniformToFill"/>
+									   Stretch="Fill"/>
 							</Border>
 							
 							<Button Command="{Binding ThemAnhButtonCommand}" 
