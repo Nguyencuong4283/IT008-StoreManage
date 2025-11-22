@@ -1,101 +1,103 @@
 <UserControl
-    d:DesignHeight="700"
-    d:DesignWidth="1000"
-    mc:Ignorable="d"
-    x:Class="Store.Views.HomePageView"
-    x:DataType="vm:HomePageViewModel"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:Store.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Design.DataContext>
-        <vm:HomePageViewModel />
-    </Design.DataContext>
-    
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="20" Spacing="20">
-            <!-- Welcome Section -->
-            <Border Classes="card" BoxShadow="0 4 20 0 #30000000">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
-                        <GradientStop Color="#667EEA" Offset="0"/>
-                        <GradientStop Color="#764BA2" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Grid ColumnDefinitions="*,Auto" Margin="10">
-                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                        <TextBlock Text="Chào mừng trở lại! 👋" 
-                                   FontSize="28" 
-                                   FontWeight="Bold" 
-                                   Foreground="White"
-                                   Margin="0,0,0,10"/>
-                        <TextBlock Text="Hệ thống quản lý cửa hàng ShopQuality" 
-                                   FontSize="16" 
-                                   Foreground="#E0E0E0"/>
-                    </StackPanel>
-                    <TextBlock Grid.Column="1" 
-                               Text="🛍️" 
-                               FontSize="80" 
-                               VerticalAlignment="Center"/>
-                </Grid>
-            </Border>
+d:DesignHeight="700"
+d:DesignWidth="1000"
+mc:Ignorable="d"
+x:Class="Store.Views.HomePageView"
+x:DataType="vm:HomePageViewModel"
+xmlns="https://github.com/avaloniaui"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:vm="clr-namespace:Store.ViewModels"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.DataContext>
+		<vm:HomePageViewModel />
+	</Design.DataContext>
 
-            <!-- Quick Stats -->
-            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
-                <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                    <StackPanel Spacing="10">
-                        <TextBlock Text="💰" FontSize="32"/>
-                        <TextBlock Text="Doanh thu hôm nay" FontSize="13" Foreground="#718096"/>
-                        <TextBlock  FontSize="22" FontWeight="Bold" Foreground="#667EEA">
-                            <Run Text="{Binding DoanhThuHomNay}"/>
-                            <Run Text=" ₫"/>
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<StackPanel Margin="20" Spacing="20">
+			<!-- Welcome Section -->
+			<Border Classes="card" BoxShadow="0 4 20 0 #30000000">
+				<Border.Background>
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+						<GradientStop Color="#667EEA" Offset="0"/>
+						<GradientStop Color="#764BA2" Offset="1"/>
+					</LinearGradientBrush>
+				</Border.Background>
+				<Grid ColumnDefinitions="*,Auto" Margin="10">
+					<StackPanel Grid.Column="0" VerticalAlignment="Center">
+						<TextBlock Text="Chào mừng trở lại! 👋"
+								   FontSize="28"
+								   FontWeight="Bold"
+								   Foreground="White"
+								   Margin="0,0,0,10"/>
+						<TextBlock Text="Hệ thống quản lý cửa hàng ShopQuality"
+								   FontSize="16"
+								   Foreground="#E0E0E0"/>
+					</StackPanel>
+					<TextBlock Grid.Column="1"
+							   Text="🛍️"
+							   FontSize="80"
+							   VerticalAlignment="Center"/>
+				</Grid>
+			</Border>
 
-                        </TextBlock>
-                        <TextBlock Text="↗ +0% so với hôm qua" FontSize="12" Foreground="#48BB78"/>
-                    </StackPanel>
-                </Border>
+			<!-- Quick Stats -->
+			<Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
+				<Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
+					<StackPanel Spacing="10">
+						<TextBlock Text="💰" FontSize="32"/>
+						<TextBlock Text="Doanh thu hôm nay" FontSize="13" Foreground="#718096"/>
+						<TextBlock  FontSize="22" FontWeight="Bold" Foreground="#667EEA">
+							<Run Text="{Binding DoanhThuHomNay}"/>
+							<Run Text=" ₫"/>
 
-                <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                    <StackPanel Spacing="10">
-                        <TextBlock Text="📦" FontSize="32"/>
-                        <TextBlock Text="Đơn hàng mới" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="{Binding SoHoaDon}" FontSize="22" FontWeight="Bold" Foreground="#48BB78"/>
-                        <TextBlock Text="Chờ xử lý" FontSize="12" Foreground="#ED8936"/>
-                    </StackPanel>
-                </Border>
+						</TextBlock>
+						<TextBlock Text="↗ +0% so với hôm qua" FontSize="12" Foreground="#48BB78"/>
+					</StackPanel>
+				</Border>
 
-                <Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                    <StackPanel Spacing="10">
-                        <TextBlock Text="👻" FontSize="32"/>
-                        <TextBlock Text="Khách hàng" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="{Binding SoKhachHang}" FontSize="22" FontWeight="Bold" Foreground="#4299E1"/>
-                        <TextBlock Text="Tổng số khách" FontSize="12" Foreground="#718096"/>
-                    </StackPanel>
-                </Border>
+				<Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
+					<StackPanel Spacing="10">
+						<TextBlock Text="📦" FontSize="32"/>
+						<TextBlock Text="Đơn hàng mới" FontSize="13" Foreground="#718096"/>
+						<TextBlock Text="{Binding SoHoaDon}" FontSize="22" FontWeight="Bold" Foreground="#48BB78"/>
+						<TextBlock Text="Chờ xử lý" FontSize="12" Foreground="#ED8936"/>
+					</StackPanel>
+				</Border>
 
-                <Border Grid.Column="3" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                    <StackPanel Spacing="10">
-                        <TextBlock Text="📊" FontSize="32"/>
-                        <TextBlock Text="Sản phẩm" FontSize="13" Foreground="#718096"/>
-                        <TextBlock Text="{Binding SoSanPham}" FontSize="22" FontWeight="Bold" Foreground="#ED8936"/>
-                        <TextBlock Text="Trong kho" FontSize="12" Foreground="#718096"/>
-                    </StackPanel>
-                </Border>
-            </Grid>
+				<Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
+					<StackPanel Spacing="10">
+						<TextBlock Text="👻" FontSize="32"/>
+						<TextBlock Text="Khách hàng" FontSize="13" Foreground="#718096"/>
+						<TextBlock Text="{Binding SoKhachHang}" FontSize="22" FontWeight="Bold" Foreground="#4299E1"/>
+						<TextBlock Text="Tổng số khách" FontSize="12" Foreground="#718096"/>
+					</StackPanel>
+				</Border>
 
-            <!-- Recent Activity & Quick Actions -->
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
-                <!-- Recent Orders -->
-                <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                  <ScrollViewer  VerticalScrollBarVisibility="Auto"  Background="White">
-			
-					<!-- Customer List -->
-					<ItemsControl ItemsSource="{Binding HoaDons}"
-								  IsVisible="{Binding HoaDons.Count}">
-						<ItemsControl.ItemTemplate>
-							<DataTemplate>
-								
+				<Border Grid.Column="3" Classes="card" BoxShadow="0 2 8 0 #20000000">
+					<StackPanel Spacing="10">
+						<TextBlock Text="📊" FontSize="32"/>
+						<TextBlock Text="Sản phẩm" FontSize="13" Foreground="#718096"/>
+						<TextBlock Text="{Binding SoSanPham}" FontSize="22" FontWeight="Bold" Foreground="#ED8936"/>
+						<TextBlock Text="Trong kho" FontSize="12" Foreground="#718096"/>
+					</StackPanel>
+				</Border>
+			</Grid>
+
+			<!-- Recent Activity & Quick Actions -->
+			<Grid ColumnDefinitions="*,*" ColumnSpacing="20">
+	
+				<!-- Recent Orders -->
+				<Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
+					
+					<ScrollViewer  VerticalScrollBarVisibility="Auto"  Background="White">
+						<Grid>
+						<!-- Customer List -->
+						<ItemsControl ItemsSource="{Binding HoaDons}"
+									  IsVisible="{Binding HoaDons.Count}">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+
 									<Border Classes="card" BoxShadow="0 2 8 0 #20000000" Margin="0 3 0 3">
 										<Grid ColumnDefinitions="Auto,*,Auto,Auto">
 											<!-- Icon -->
@@ -116,65 +118,79 @@
 													<Run  Text="{Binding SoHD}"></Run>
 												</TextBlock>
 												<TextBlock  FontSize="13" Foreground="#718096" Margin="0,5,0,0">
-													 <Run Text="Tên Khách hàng: "/>
+													<Run Text="Tên Khách hàng: "/>
 													<Run Text="{Binding TenKH}" />
-											       
+
 												</TextBlock>
 											</StackPanel>
 
 											<!-- Amount -->
 											<StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10,0">
 												<TextBlock Text="{Binding NgayLapHD}" FontSize="12" Foreground="#718096" TextAlignment="Right"/>
-												
+
 												<TextBlock   FontSize="16" FontWeight="Bold" Foreground="#667EEA" TextAlignment="Right" Margin="0,5,0,0">
 													<Run Text="{Binding TongTienHD}"/>
-											        <Run Text=" ₫"/>
+													<Run Text=" ₫"/>
 												</TextBlock>
 											</StackPanel>
 
 											<!-- Action -->
-						
 										</Grid>
 									</Border>
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-					</ItemsControl>
-					</ScrollViewer>
-                </Border>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+								<Border Background="#F7FAFC"
+												CornerRadius="12"
+												Padding="60,80"
+												IsVisible="{Binding !HoaDons.Count}">
+								<StackPanel HorizontalAlignment="Center" Spacing="15">
+												<TextBlock Text="📋" FontSize="64" HorizontalAlignment="Center"/>
+												<TextBlock Text="Chưa có hóa đơn nào"
+														   FontSize="18"
+														   FontWeight="SemiBold"
+														   Foreground="#2D3748"
+														   HorizontalAlignment="Center"/>
+								</StackPanel>
+				</Border>
 
-                <!-- Quick Actions -->
-                <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                    <StackPanel>
-                        <TextBlock Text="Thao tác nhanh" Classes="subheader" Margin="0,0,0,15"/>
-                        <StackPanel Spacing="10">
-                            <Button Command="{Binding TaoDonButtonCommand}" Classes="primary" HorizontalAlignment="Stretch" Padding="15">
-                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <TextBlock Text="➕" FontSize="18"/>
-                                    <TextBlock Text="Tạo đơn hàng mới" FontSize="14"/>
-                                </StackPanel>
-                            </Button>
-                            <Button Command="{Binding ThemSanPhamButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
-                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <TextBlock Text="📦" FontSize="18"/>
-                                    <TextBlock Text="Thêm sản phẩm" FontSize="14"/>
-                                </StackPanel>
-                            </Button>
-                            <Button Command="{Binding ThemKhachHangButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
-                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <TextBlock Text="👤" FontSize="18"/>
-                                    <TextBlock Text="Thêm khách hàng" FontSize="14"/>
-                                </StackPanel>
-                            </Button>
-                            <Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
-                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <TextBlock Text="📊" FontSize="18"/>
-                                    <TextBlock Text="Xem báo cáo" FontSize="14"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
-            </Grid>
-        </StackPanel>
-    </ScrollViewer>
+						</Grid>
+					</ScrollViewer>
+				</Border>
+
+				<!-- Quick Actions -->
+				<Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
+					<StackPanel>
+						<TextBlock Text="Thao tác nhanh" Classes="subheader" Margin="0,0,0,15"/>
+						<StackPanel Spacing="10">
+							<Button Command="{Binding TaoDonButtonCommand}" Classes="primary" HorizontalAlignment="Stretch" Padding="15">
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<TextBlock Text="➕" FontSize="18"/>
+									<TextBlock Text="Tạo đơn hàng mới" FontSize="14"/>
+								</StackPanel>
+							</Button>
+							<Button Command="{Binding ThemSanPhamButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<TextBlock Text="📦" FontSize="18"/>
+									<TextBlock Text="Thêm sản phẩm" FontSize="14"/>
+								</StackPanel>
+							</Button>
+							<Button Command="{Binding ThemKhachHangButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<TextBlock Text="👤" FontSize="18"/>
+									<TextBlock Text="Thêm khách hàng" FontSize="14"/>
+								</StackPanel>
+							</Button>
+							<Button Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<TextBlock Text="📊" FontSize="18"/>
+									<TextBlock Text="Xem báo cáo" FontSize="14"/>
+								</StackPanel>
+							</Button>
+						</StackPanel>
+					</StackPanel>
+				</Border>
+			</Grid>
+		</StackPanel>
+	</ScrollViewer>
 </UserControl>
