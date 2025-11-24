@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" afterDir="false" />
     </list>
@@ -126,7 +126,9 @@
       <workItem from="1763786901081" duration="3531000" />
       <workItem from="1763812461137" duration="2179000" />
       <workItem from="1763818484428" duration="837000" />
-      <workItem from="1763819365048" duration="2426000" />
+      <workItem from="1763819365048" duration="2511000" />
+      <workItem from="1763860235916" duration="1189000" />
+      <workItem from="1763861898230" duration="3457000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -208,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763820525426</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Cập nhật biểu đồ trong IncomePageView.axaml">
+      <option name="closed" value="true" />
+      <created>1763821832383</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1763821832383</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +249,8 @@
     <MESSAGE value="chỉnh sửa lại giao diện của nhân viên" />
     <MESSAGE value="chỉnh lại avatar" />
     <MESSAGE value="thêm biều đồ cho trang thu nhập" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm biều đồ cho trang thu nhập" />
+    <MESSAGE value="Cập nhật biểu đồ trong IncomePageView.axaml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cập nhật biểu đồ trong IncomePageView.axaml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

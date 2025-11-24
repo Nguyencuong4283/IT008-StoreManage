@@ -58,11 +58,10 @@
             <Border Grid.Row="2" Margin="30,0,30,30" Classes="card" BoxShadow="0 2 8 0 #20000000">
                 <Grid >
                     <lvc:CartesianChart
-                        Title="{Binding Title}"
                         Series="{Binding _series}"
                         XAxes="{Binding xAxis}"
                         YAxes="{Binding yAxis}"
-                        ZoomMode="X"
+                        ZoomMode="Both"
                         Padding="-5,0,0,-6"/>
                 </Grid>
             </Border>

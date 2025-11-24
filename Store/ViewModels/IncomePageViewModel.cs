@@ -1,4 +1,4 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.ObjectModel;
 using LiveChartsCore;
 using LiveChartsCore.Drawing;
@@ -9,26 +9,18 @@ using SkiaSharp;
 
 namespace Store.ViewModels;
 
-public partial class IncomePageViewModel : ViewModelBase
+public class IncomePageViewModel : ViewModelBase
 {
     public string Income { get; set; } = "Thu nhập";
     
     private readonly ObservableCollection<int> _values;
-    public LabelVisual Title { get; set; }
     public ISeries[] _series { get; set; }
     public Axis[] xAxis { get; set; }
     public Axis[] yAxis { get; set; }
     public IncomePageViewModel()
     {
-        _values = new ObservableCollection<int> {0,10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-
-        Title = new LabelVisual()
-        {
-            Text = "Thống kê doanh thu",
-            TextSize = 18,
-            Padding = new LiveChartsCore.Drawing.Padding(10),
-            Paint = new SolidColorPaint(SKColors.Red)
-        };
+        int currentYear = DateTime.Now.Year;
+        _values = new ObservableCollection<int> {10, 20, 15, 30, 25, 40, 35};
         
         _series = new ISeries[]
         {
@@ -40,24 +32,24 @@ public partial class IncomePageViewModel : ViewModelBase
             }
         };
 
-        xAxis = new Axis[]
-        {
-            new Axis()
+        xAxis =
+        [
+            new Axis
             {
-                Name = "Tháng",
-                NameTextSize = 18,
-                Labeler = _value => $"{_value}m",
-                LabelsRotation = 0
+                Name = $"Năm {currentYear}",
+                NameTextSize = 15,
+                Labels = ["Tháng 1" ,"Tháng 2" ,"Tháng 3" ,"Tháng 4" ,"Tháng 5" ,"Tháng 6" ,"Tháng 7" ,"Tháng 8" ,"Tháng 9" ,"Tháng 10" ,"Tháng 11" ,"Tháng 12"],
             }
-        };
+        ];
 
-        yAxis = new Axis[]
-        {
-            new Axis()
+        yAxis =
+        [
+            new Axis
             {
-                Name = "Doanh thu",
-                NameTextSize = 18,
+                Name = "Doanh thu (triệu VNĐ)",
+                NameTextSize = 15,
+                Labeler = value => $"{value} M"
             }
-        };
+        ];
     }
 }
