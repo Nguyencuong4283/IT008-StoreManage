@@ -1,6 +1,8 @@
-﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Styles xmlns="https://github.com/avaloniaui" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
-		<Border Padding="20" Width ='400'>
+		<ThemeVariantScope RequestedThemeVariant="Default" >
+		<Border Padding="20" Width ='400' Background="{DynamicResource BgPage}">
 			<StackPanel Spacing="10">
 				<TextBlock Classes="header">Header Text</TextBlock>
 				<TextBlock Classes="subheader">Subheader Text</TextBlock>
@@ -27,8 +29,9 @@
 				</Border>
 			</StackPanel>
 		</Border>
+		</ThemeVariantScope>
 	</Design.PreviewWith>
-
+	
 	<!-- ==================== COLOR RESOURCES ==================== -->
 	<Styles.Resources>
 		<!-- Primary Colors -->
@@ -173,12 +176,12 @@
 		<Setter Property="MinHeight" Value="40"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:focus/template/ContentPresenter">
+	<Style Selector="TextBox.modern-input:focus/template/Border">
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderFocus}"/>
 		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
-		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="BorderThickness" Value="0"/>
 	</Style>
-	<Style Selector="TextBox.modern-input:pointerover /template/ContentPresenter">
+	<Style Selector="TextBox.modern-input:pointerover/template/ContentPresenter">
 		<Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}"/>
 		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
 	</Style>
@@ -188,9 +191,9 @@
 
 	<!-- ==================== MODERN COMBOBOX ==================== -->
 	<Style Selector="ComboBox.modern-combo">
-		<Setter Property="Background" Value="White"/>
-		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
-		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
+		<Setter Property="Foreground" Value="{DynamicResource TextSecondary }"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
 		<Setter Property="BorderThickness" Value="1.5"/>
 		<Setter Property="CornerRadius" Value="8"/>
 		<Setter Property="FontSize" Value="14"/>
@@ -198,16 +201,16 @@
 		<Setter Property="MinHeight" Value="40"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
-	<Style Selector="ComboBox.modern-combo:pointerover /template/ContentPresenter">
-		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
-		<Setter Property="Background" Value="White"/>
+	<Style Selector="ComboBox.modern-combo:pointerover/template/ContentPresenter">
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderFocus}"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
 	</Style>
-	<Style Selector="ComboBox.modern-combo:focus /template/ContentPresenter">
+	<Style Selector="ComboBox.modern-combo:focus/template/ContentPresenter">
 		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
 		<Setter Property="BorderThickness" Value="2"/>
 		<Setter Property="Background" Value="White"/>
 	</Style>
-
+	
 	<!-- ==================== CARD STYLE ==================== -->
 	<Style Selector="Border.card">
 		<Setter Property="Background" Value="{DynamicResource BgCard}"/>
@@ -383,39 +386,38 @@
 	</Style>
 
 	<!-- ==================== CALENDAR FIX ==================== -->
-	<Style Selector="CalendarDatePicker.calendar/template/Border">
-		<Setter Property="Background" Value="White"/>
+	<Style Selector="CalendarDatePicker.calendar/template/TextBox">
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
 	</Style>
 	
-	<Style Selector="CalendarDatePicker.calendar/template/TextBox">
-		<Setter Property="Background" Value="White"/>
-		<Setter Property="Foreground" Value="Black"/>
+	<Style Selector="CalendarDatePicker.calendar/template/Border">
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
 	</Style>
 	
 	<Style Selector="CalendarDatePicker.calendar/template/Button">
-		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
 	</Style>
 	
 	<Style Selector="CalendarDatePicker.calendar:pointerover/template/TextBox">
-		<Setter Property="Background" Value="White"/>
-		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
 	</Style>
 	
 	<Style Selector="CalendarDatePicker.calendar:pointerover/template/Button">
-		<Setter Property="Foreground" Value="Black"/>
-	</Style>
-	
-	<Style Selector="CalendarDatePicker.calendar:focus/template/Border">
-		<Setter Property="Background" Value="LightGray"/>
-		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
 	</Style>
 	
 	<Style Selector="CalendarDatePicker.calendar:focus/template/TextBox">
-		<Setter Property="Background" Value="LightGray"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
 	</Style>
 	
 	<Style Selector="CalendarDatePicker.calendar:focus/template/Button">
-		<Setter Property="Background" Value="LightGray"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar:focus/template/Border">
+		<Setter Property="Background" Value="{DynamicResource BorderFocus}"/>
 	</Style>
 	
 	<!--Chỉnh sidebar button-->
@@ -448,8 +450,9 @@
 		<Setter Property="BorderBrush" Value="Black"/>
 		<Setter Property="BorderThickness" Value="1"/>
 	</Style>
-	
 </Styles>
+	
+
 
 
 

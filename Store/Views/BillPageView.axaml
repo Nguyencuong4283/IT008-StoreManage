@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:Store.ViewModels"
              x:DataType="vm:BillPageViewModel"
              x:Class="Store.Views.BillPageView">
-    
+   
     <Design.DataContext>
        <vm:BillPageViewModel/>
     </Design.DataContext>

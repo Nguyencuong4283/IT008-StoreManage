@@ -18,14 +18,32 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="BgPage">#F9FAFB</SolidColorBrush>      <SolidColorBrush x:Key="BgCard">#FFFFFF</SolidColorBrush>      <SolidColorBrush x:Key="BgInput">#FFFFFF</SolidColorBrush>     <SolidColorBrush x:Key="BgHover">#F3F4F6</SolidColorBrush>     <SolidColorBrush x:Key="TextPrimary">#111827</SolidColorBrush> <SolidColorBrush x:Key="TextSecondary">#4B5563</SolidColorBrush> <SolidColorBrush x:Key="TextPlaceholder">#9CA3AF</SolidColorBrush> <SolidColorBrush x:Key="BorderColor">#D1D5DB</SolidColorBrush> <SolidColorBrush x:Key="BorderFocus">#667EEA</SolidColorBrush> <SolidColorBrush x:Key="PrimaryColor">#667EEA</SolidColorBrush>
+                    <SolidColorBrush x:Key="BgPage">#F9FAFB</SolidColorBrush>      
+                    <SolidColorBrush x:Key="BgCard">#FFFFFF</SolidColorBrush>      
+                    <SolidColorBrush x:Key="BgInput">#FFFFFF</SolidColorBrush>     
+                    <SolidColorBrush x:Key="BgHover">#F3F4F6</SolidColorBrush>     
+                    <SolidColorBrush x:Key="TextPrimary">#111827</SolidColorBrush> 
+                    <SolidColorBrush x:Key="TextSecondary">#4B5563</SolidColorBrush> 
+                    <SolidColorBrush x:Key="TextPlaceholder">#9CA3AF</SolidColorBrush> 
+                    <SolidColorBrush x:Key="BorderColor">#D1D5DB</SolidColorBrush> 
+                    <SolidColorBrush x:Key="BorderFocus">#667EEA</SolidColorBrush> 
+                    <SolidColorBrush x:Key="PrimaryColor">#667EEA</SolidColorBrush>
                     <SolidColorBrush x:Key="PrimaryHover">#5568D3</SolidColorBrush>
                     <SolidColorBrush x:Key="PrimaryText">#FFFFFF</SolidColorBrush>
                     <SolidColorBrush x:Key="DangerColor">#EF4444</SolidColorBrush>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="BgPage">#0F172A</SolidColorBrush>      <SolidColorBrush x:Key="BgCard">#1E293B</SolidColorBrush>      <SolidColorBrush x:Key="BgInput">#0F172A</SolidColorBrush>     <SolidColorBrush x:Key="BgHover">#334155</SolidColorBrush>     <SolidColorBrush x:Key="TextPrimary">#F1F5F9</SolidColorBrush> <SolidColorBrush x:Key="TextSecondary">#94A3B8</SolidColorBrush> <SolidColorBrush x:Key="TextPlaceholder">#64748B</SolidColorBrush> <SolidColorBrush x:Key="BorderColor">#334155</SolidColorBrush> <SolidColorBrush x:Key="BorderFocus">#818CF8</SolidColorBrush> <SolidColorBrush x:Key="PrimaryColor">#667EEA</SolidColorBrush>
+                    <SolidColorBrush x:Key="BgPage">#0F172A</SolidColorBrush>      
+                    <SolidColorBrush x:Key="BgCard">#1E293B</SolidColorBrush>      
+                    <SolidColorBrush x:Key="BgInput">#0F172A</SolidColorBrush>     
+                    <SolidColorBrush x:Key="BgHover">#334155</SolidColorBrush>     
+                    <SolidColorBrush x:Key="TextPrimary">#F1F5F9</SolidColorBrush> 
+                    <SolidColorBrush x:Key="TextSecondary">#94A3B8</SolidColorBrush> 
+                    <SolidColorBrush x:Key="TextPlaceholder">#64748B</SolidColorBrush> 
+                    <SolidColorBrush x:Key="BorderColor">#334155</SolidColorBrush> 
+                    <SolidColorBrush x:Key="BorderFocus">#818CF8</SolidColorBrush> 
+                    <SolidColorBrush x:Key="PrimaryColor">#667EEA</SolidColorBrush>
                     <SolidColorBrush x:Key="PrimaryHover">#818CF8</SolidColorBrush>
                     <SolidColorBrush x:Key="PrimaryText">#FFFFFF</SolidColorBrush>
                     <SolidColorBrush x:Key="DangerColor">#EF4444</SolidColorBrush>

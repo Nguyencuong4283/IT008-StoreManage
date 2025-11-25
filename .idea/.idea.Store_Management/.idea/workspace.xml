@@ -8,13 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/App.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Styles/Styles.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Styles/Styles.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/SettingPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/SettingPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/AccountSettingPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AccountSettingPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateBillWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateBillWindowView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +36,12 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/Views/BillPageView.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/Views/BillPageView.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/Views/HistoryPageView.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/Views/HistoryPageView.axaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -139,7 +136,8 @@
       <workItem from="1763952817826" duration="657000" />
       <workItem from="1763959973562" duration="728000" />
       <workItem from="1763990289858" duration="7955000" />
-      <workItem from="1764030510079" duration="4463000" />
+      <workItem from="1764030510079" duration="6955000" />
+      <workItem from="1764046354525" duration="2661000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -245,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764030537109</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="chỉnh sửa giao diện">
+      <option name="closed" value="true" />
+      <created>1764035435546</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1764035435546</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +285,8 @@
     <MESSAGE value="Cập nhật biểu đồ trong IncomePageView.axaml" />
     <MESSAGE value="chỉnh sửa biểu đồ" />
     <MESSAGE value="chỉnh sửa UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa UI" />
+    <MESSAGE value="chỉnh sửa giao diện" />
+    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa giao diện" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
