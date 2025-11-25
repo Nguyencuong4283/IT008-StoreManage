@@ -8,8 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/App.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Styles/Styles.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Styles/Styles.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/SettingPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/SettingPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AccountSettingPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AccountSettingPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/SettingPageView.axaml.cs" afterDir="false" />
     </list>
@@ -136,6 +139,7 @@
       <workItem from="1763952817826" duration="657000" />
       <workItem from="1763959973562" duration="728000" />
       <workItem from="1763990289858" duration="7955000" />
+      <workItem from="1764030510079" duration="4463000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -233,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763952874620</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="chỉnh sửa UI">
+      <option name="closed" value="true" />
+      <created>1764030537109</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1764030537109</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +278,8 @@
     <MESSAGE value="thêm biều đồ cho trang thu nhập" />
     <MESSAGE value="Cập nhật biểu đồ trong IncomePageView.axaml" />
     <MESSAGE value="chỉnh sửa biểu đồ" />
-    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa biểu đồ" />
+    <MESSAGE value="chỉnh sửa UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -16,15 +16,4 @@ public partial class SettingPageView : UserControl
     {
         AvaloniaXamlLoader.Load(this);
     }
-
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
-    {
-        var app = Application.Current;
-        if (app is not null)
-        {
-            // Nếu đang là Dark thì chuyển sang Light, và ngược lại
-            app.RequestedThemeVariant =
-                app.RequestedThemeVariant == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
-        }
-    }
 }
