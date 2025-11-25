@@ -11,7 +11,7 @@
 		<vm:AccountSettingPageViewModel/>
 	</Design.DataContext>
 
-	<Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+	<Border CornerRadius="16" Background="{DynamicResource MyPageBackground}" Margin="10" BoxShadow="0 4 20 0 #30000000">
 		<Grid RowDefinitions="Auto,*">
 			<!-- Header -->
 			<Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">

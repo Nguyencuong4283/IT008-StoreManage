@@ -63,8 +63,8 @@
 	<!-- ==================== PRIMARY BUTTON ==================== -->
 
 	<Style Selector="Button.primary">
-		<Setter Property="Background" Value="{StaticResource Primary}"/>
-		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="FontWeight" Value="SemiBold"/>
 		<Setter Property="CornerRadius" Value="8"/>
@@ -75,7 +75,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 	</Style>
 	<Style Selector="Button.primary:pointerover /template/ContentPresenter">
-		<Setter Property="Background" Value="#2D5DEE"/>
+		<Setter Property="Background" Value="{DynamicResource PrimaryHover}"/>
 	</Style>
 	<Style Selector="Button.primary:pressed /template/ContentPresenter">
 		<Setter Property="Background" Value="#567CEE"/>
@@ -162,28 +162,28 @@
 
 	<!-- ==================== MODERN INPUT - FIX BLACK TEXT ==================== -->
 	<Style Selector="TextBox.modern-input">
-		<Setter Property="Background" Value="White"/>
-		<Setter Property="Foreground" Value="{StaticResource Gray900}"/>
-		<Setter Property="BorderBrush" Value="{StaticResource Gray300}"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
+		<Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
+		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryColor}"/>
 		<Setter Property="BorderThickness" Value="1.5"/>
 		<Setter Property="CornerRadius" Value="8"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="Padding" Value="12,10"/>
 		<Setter Property="MinHeight" Value="40"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
-		<Setter Property="CaretBrush" Value="{StaticResource Primary}"/>
 	</Style>
 	<Style Selector="TextBox.modern-input:focus/template/ContentPresenter">
-		<Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderFocus}"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
 		<Setter Property="BorderThickness" Value="2"/>
-		<Setter Property="Background" Value="White"/>
 	</Style>
 	<Style Selector="TextBox.modern-input:pointerover /template/ContentPresenter">
-		<Setter Property="BorderBrush" Value="{StaticResource Gray400}"/>
-		<Setter Property="Background" Value="White"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}"/>
+		<Setter Property="Background" Value="{DynamicResource BgInput}"/>
 	</Style>
 	<Style Selector="TextBox.modern-input/template/ContentPresenter">
-		<Setter Property="Background" Value="White"/>
+		<Setter Property="Background" Value="CornflowerBlue"/>
 	</Style>
 
 	<!-- ==================== MODERN COMBOBOX ==================== -->
@@ -210,8 +210,8 @@
 
 	<!-- ==================== CARD STYLE ==================== -->
 	<Style Selector="Border.card">
-		<Setter Property="Background" Value="White"/>
-		<Setter Property="BorderBrush" Value="{StaticResource Gray200}"/>
+		<Setter Property="Background" Value="{DynamicResource BgCard}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="CornerRadius" Value="12"/>
 		<Setter Property="Padding" Value="20"/>
@@ -440,18 +440,15 @@
 	</Style>
 
 	<!--Buton tim -->
-	<Style Selector="Button.btn1">
-	</Style>
+	<Style Selector="Button.btn1"/>
+	
 	<Style Selector="Button.btn1:pointerover/template/ContentPresenter">
 		<Setter Property="Background" Value="White"/>
 		<Setter Property="Foreground" Value="Black"/>
 		<Setter Property="BorderBrush" Value="Black"/>
 		<Setter Property="BorderThickness" Value="1"/>
-		
-
 	</Style>
-
-
+	
 </Styles>
 
 
