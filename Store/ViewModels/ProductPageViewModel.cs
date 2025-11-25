@@ -17,7 +17,7 @@ namespace Store.ViewModels
         [ObservableProperty] private Bitmap hinhAnhSP;
         [ObservableProperty] private string tenSP;
         [ObservableProperty] private decimal giaSP;
-        [ObservableProperty] private int soLuongSP;
+        [ObservableProperty] private string boLoc;
         [ObservableProperty] private ObservableCollection<SanPham> sanPhams = new();
         private readonly DispatcherTimer _timer;
         public ObservableCollection<string> DanhSachBoLoc { get; } = new()
@@ -37,7 +37,15 @@ namespace Store.ViewModels
         };
         public ProductPageViewModel()
         {
-            LoadSanPhams();
+            if (boLoc != null)
+            {
+                LoadSearch();
+            }
+            else
+            {
+                LoadSanPhams();
+            }
+            
             // ✅ Tạo timer lặp lại mỗi 5 giây
             _timer = new DispatcherTimer
             {
@@ -49,6 +57,16 @@ namespace Store.ViewModels
         private void LoadSanPhams()
         {
             var list = SanPhanService.GetAllSanPham();
+
+            sanPhams.Clear();
+            foreach (var sp in list)
+            {
+                sanPhams.Add(sp);
+            }
+        }
+        private void LoadSearch()
+        {
+            var list = SanPhanService.GetSearchSanPham(boLoc);
 
             sanPhams.Clear();
             foreach (var sp in list)

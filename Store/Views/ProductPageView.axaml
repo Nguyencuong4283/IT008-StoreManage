@@ -20,9 +20,11 @@
 					<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
 						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
 							<ComboBox ItemsSource="{Binding DanhSachBoLoc}" 
+									  SelectedItem="{Binding BoLoc}"
 									  Background="White"
 									  BorderThickness="0"
 									  Width="160" 
+									  Foreground="Black"
 									  PlaceholderForeground="Black"
 									  PlaceholderText="Bộ lọc"
 									  FontSize="14"
@@ -36,6 +38,7 @@
 									  Background="White"
 									  BorderThickness="0"
 									  Width="140" 
+									  Foreground="Black"
 									  FontSize="14"
 									  PlaceholderForeground="Black"
 									  PlaceholderText="Chi tiết"
@@ -49,6 +52,7 @@
 									 BorderThickness="0"
 									 Width="300" 
 									 FontSize="14"
+									 Foreground="Black"
 									 Watermark="🔍 Tìm kiếm sản phẩm..."
 									 Padding="12,9"
 									 CornerRadius="8"
