@@ -74,7 +74,7 @@
                                     <TextBlock Text="Chế độ tối" FontSize="15" FontWeight="Medium" Foreground="#2D3748"/>
                                     <TextBlock Text="Bật chế độ giao diện tối" FontSize="13" Foreground="#718096" Margin="0,5,0,0"/>
                                 </StackPanel>
-                                <ToggleSwitch Grid.Column="1" VerticalAlignment="Center"/>
+                                <ToggleSwitch Grid.Column="1" VerticalAlignment="Center" Click="Button_OnClick"/>
                             </Grid>
 
                             <Separator Background="#E2E8F0" Height="1"/>

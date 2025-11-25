@@ -124,9 +124,10 @@
 								</StackPanel>
 								<StackPanel Grid.Column="1" Margin="8,0,0,0">
 									<TextBlock Text="Giới tính" Classes="label"/>
-									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5" Width="97" HorizontalAlignment="Left">
 										<ComboBox ItemsSource="{Binding DanhSachGioiTinh}" 
 												  SelectedItem="{Binding GioiTinh, Mode=TwoWay}"
+												  Width="95"
 												  Background="White"
 												  BorderThickness="0"
 												  FontSize="14"
@@ -143,12 +144,13 @@
 							<Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
 								<StackPanel Grid.Column="0" Margin="0,0,8,0">
 									<TextBlock Text="Ngày sinh" Classes="label"/>
-									<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5" Width="140" HorizontalAlignment="Left">
+									<Border CornerRadius="9" BorderBrush="#D1D5DB" BorderThickness="1.5" Width="134" HorizontalAlignment="Left">
 										<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
-										                    Classes="fix"
+										                    Classes="calendar"
 															FontSize="14"
+										                    Width="132"
 															BorderThickness="0"
-															Padding="12,10"
+															Padding="10,10"
 															CornerRadius="8"
 															VerticalContentAlignment="Center"/>
 									</Border>

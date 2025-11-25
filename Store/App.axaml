@@ -4,7 +4,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:local="using:Store"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.DataTemplates>
         <local:ViewLocator />
@@ -14,15 +13,6 @@
         <FluentTheme />
         <StyleInclude Source="Styles/Styles.axaml" />
         <StyleInclude Source="Styles/icon.axaml" />
-        <!-- Style mặc định cho TextBlock -->
-        <Style Selector="TextBlock">
-            <Setter Property="Foreground" Value="Black"/>
-        </Style>
-
-        <!-- Style mặc định cho TextBox -->
-        <Style Selector="TextBox">
-            <Setter Property="Foreground" Value="Black"/>
-        </Style>
     </Application.Styles>
     <Application.Resources>
         <SolidColorBrush Color="LightGray" x:Key="Firstbackground" />

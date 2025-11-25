@@ -1,6 +1,6 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
-		<Border Padding="20">
+		<Border Padding="20" Width ='400'>
 			<StackPanel Spacing="10">
 				<TextBlock Classes="header">Header Text</TextBlock>
 				<TextBlock Classes="subheader">Subheader Text</TextBlock>
@@ -21,6 +21,9 @@
 				<Separator Height="20"/>
 				<Border Classes="card">
 					<TextBlock>Card Content</TextBlock>
+				</Border>
+				<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
+					<CalendarDatePicker Classes="calendar"/>
 				</Border>
 			</StackPanel>
 		</Border>
@@ -380,11 +383,41 @@
 	</Style>
 
 	<!-- ==================== CALENDAR FIX ==================== -->
-	<Style Selector="CalendarDatePicker.fix:pointerover /template/ContentPresenter">
+	<Style Selector="CalendarDatePicker.calendar/template/Border">
 		<Setter Property="Background" Value="White"/>
 	</Style>
-
-
+	
+	<Style Selector="CalendarDatePicker.calendar/template/TextBox">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="Black"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar/template/Button">
+		<Setter Property="Foreground" Value="Black"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar:pointerover/template/TextBox">
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="Foreground" Value="Black"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar:pointerover/template/Button">
+		<Setter Property="Foreground" Value="Black"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar:focus/template/Border">
+		<Setter Property="Background" Value="LightGray"/>
+		<Setter Property="BorderThickness" Value="0"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar:focus/template/TextBox">
+		<Setter Property="Background" Value="LightGray"/>
+	</Style>
+	
+	<Style Selector="CalendarDatePicker.calendar:focus/template/Button">
+		<Setter Property="Background" Value="LightGray"/>
+	</Style>
+	
 	<!--Chỉnh sidebar button-->
 	<Style Selector="Button.sidebar">
 		<Setter Property="Background" Value="White"/>

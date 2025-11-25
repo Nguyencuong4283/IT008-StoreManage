@@ -61,7 +61,7 @@
                         Series="{Binding _series}"
                         XAxes="{Binding xAxis}"
                         YAxes="{Binding yAxis}"
-                        ZoomMode="Both"
+                        ZoomMode="X"
                         Padding="-5,0,0,-6"/>
                 </Grid>
             </Border>
