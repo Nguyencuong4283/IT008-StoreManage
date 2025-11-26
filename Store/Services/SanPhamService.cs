@@ -228,7 +228,7 @@ namespace Store.Services
             }
         }
         //Tìm kiếm ds bộ lọc 
-        //Read All
+      
         public static List<SanPham> GetSearchSanPham(string boLoc)
         {
             var sanPhams = new List<SanPham>();
