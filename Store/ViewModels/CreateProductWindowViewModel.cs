@@ -29,10 +29,11 @@ namespace Store.ViewModels
         [ObservableProperty] private Bitmap hinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
         public ObservableCollection<string> DanhSachLoaiSP { get; } = new()
         {
-            "Quần ngắn",
-            "Quần dài",
-            "Áo bà ba",
-            "Khác"
+           "Quần ngắn",
+           "Quần dài",
+           "Áo ngắn",
+           "Áo dài",
+           "Khác"
         };
         public ObservableCollection<string> DanhSachKichThuocSP { get; } = new()
         {
