@@ -296,5 +296,24 @@ namespace Store.Services
             }
         }
 
+        //Tổng tiền tháng , năm nay
+
+        public static decimal GetTongTienThangNam(int thang, int nam)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT IFNULL(SUM(TongTienHD), 0) 
+                    FROM HoaDon 
+                    WHERE month(NgayLapHD) = month(thang) && year(NgayLapHD) = year(nam) 
+                    AND TrangThaiHD = 'Đã thanh toán'";
+                var result = cmd.ExecuteScalar();
+                var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
+                System.Diagnostics.Debug.WriteLine($"[Service] GetTongTienThangNam() = {total}");
+                return total;
+            }
+        }
     }
 }
