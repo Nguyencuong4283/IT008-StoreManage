@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ForgotPasswordViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ForgotPasswordViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateBillWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateBillWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/ForgotPasswordView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ForgotPasswordView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Styles/Styles.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Styles/Styles.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +140,7 @@
       <workItem from="1764053060459" duration="743000" />
       <workItem from="1764254743526" duration="2863000" />
       <workItem from="1764303892766" duration="72000" />
-      <workItem from="1764303988858" duration="2767000" />
+      <workItem from="1764303988858" duration="5437000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -270,7 +262,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764049039125</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="thêm giao diện dark mode">
+      <option name="closed" value="true" />
+      <created>1764306782796</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1764306782796</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Hoàn thành thêm giao diện dark mode">
+      <option name="closed" value="true" />
+      <created>1764308314737</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1764308314737</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +313,9 @@
     <MESSAGE value="chỉnh sửa biểu đồ" />
     <MESSAGE value="chỉnh sửa giao diện" />
     <MESSAGE value="chỉnh sửa UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa UI" />
+    <MESSAGE value="thêm giao diện dark mode" />
+    <MESSAGE value="Hoàn thành thêm giao diện dark mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hoàn thành thêm giao diện dark mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
