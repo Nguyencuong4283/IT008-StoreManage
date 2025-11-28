@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Styles/Styles.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Styles/Styles.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ForgotPasswordViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ForgotPasswordViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/CreateBillWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateBillWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/ForgotPasswordView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ForgotPasswordView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,22 +60,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Store.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/nguyencuong/Desktop/IT008-StoreManage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Store.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/nguyencuong/Desktop/IT008-StoreManage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Store" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -137,7 +143,12 @@
       <workItem from="1763959973562" duration="728000" />
       <workItem from="1763990289858" duration="7955000" />
       <workItem from="1764030510079" duration="6955000" />
-      <workItem from="1764046354525" duration="2661000" />
+      <workItem from="1764046354525" duration="2685000" />
+      <workItem from="1764051528575" duration="779000" />
+      <workItem from="1764053060459" duration="743000" />
+      <workItem from="1764254743526" duration="2863000" />
+      <workItem from="1764303892766" duration="72000" />
+      <workItem from="1764303988858" duration="2767000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -251,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764035435546</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="chỉnh sửa UI">
+      <option name="closed" value="true" />
+      <created>1764049039125</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1764049039125</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,9 +303,9 @@
     <MESSAGE value="thêm biều đồ cho trang thu nhập" />
     <MESSAGE value="Cập nhật biểu đồ trong IncomePageView.axaml" />
     <MESSAGE value="chỉnh sửa biểu đồ" />
-    <MESSAGE value="chỉnh sửa UI" />
     <MESSAGE value="chỉnh sửa giao diện" />
-    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa giao diện" />
+    <MESSAGE value="chỉnh sửa UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -305,5 +324,13 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

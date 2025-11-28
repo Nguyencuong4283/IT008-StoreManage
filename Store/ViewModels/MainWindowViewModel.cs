@@ -86,6 +86,11 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
         forgotPasswordView.Show();
+        if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+            && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+        {
+            mainWindow.Close();
+        }
     }
 
 

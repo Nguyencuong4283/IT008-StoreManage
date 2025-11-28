@@ -5,6 +5,7 @@ using Store.Models;
 using Store.Services;
 using Store.Views;
 using System.Collections.ObjectModel;
+using Avalonia.Controls;
 
 namespace Store.ViewModels
 {
@@ -13,13 +14,18 @@ namespace Store.ViewModels
         [ObservableProperty] private string email;
         [ObservableProperty] private string messageError;
 
-
         [RelayCommand]
         private void RegisterButton()
         {
-            MainWindow createAcountWindowView = new MainWindow();
-            createAcountWindowView.Show();
+            MainWindow mainWindow = new MainWindow();
+            if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                && desktop.MainWindow is Avalonia.Controls.Window currentWindow)
+            {
+                currentWindow.Close();
+            }
+            mainWindow.Show();
         }
+        
         [RelayCommand]
         private void ConfirmButton()
         {
