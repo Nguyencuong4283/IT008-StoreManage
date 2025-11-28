@@ -7,56 +7,66 @@
              x:DataType="vm:IncomePageViewModel"
              mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
              x:Class="Store.Views.IncomePageView">
+    
     <Design.DataContext>
         <vm:IncomePageViewModel/>
     </Design.DataContext>
     
-    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+    <Border CornerRadius="16" 
+            Background="{DynamicResource BgPage}" 
+            Margin="10" 
+            BoxShadow="0 4 20 0 #30000000">
+        
         <Grid RowDefinitions="Auto,Auto,*">
-            <!-- Header -->
-            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="30,25">
+            <Border Grid.Row="0" 
+                    Background="{DynamicResource BgCard}" 
+                    CornerRadius="16,16,0,0" 
+                    Padding="30,25"
+                    BorderBrush="{DynamicResource BorderColor}"
+                    BorderThickness="0,0,0,1">
                 <StackPanel>
-                    <TextBlock Text="Báo cáo thu nhập" Classes="header" Margin="0,0,0,10"/>
-                    <TextBlock Text="Theo dõi doanh thu và lợi nhuận của cửa hàng" Classes="body"/>
+                    <TextBlock Text="Báo cáo thu nhập" 
+                               Classes="header" 
+                               Foreground="{DynamicResource TextPrimary}"
+                               Margin="0,0,0,10"/>
+                    <TextBlock Text="Theo dõi doanh thu và lợi nhuận của cửa hàng" 
+                               Classes="body"
+                               Foreground="{DynamicResource TextSecondary}"/>
                 </StackPanel>
             </Border>
 
-            <!-- Stats Cards -->
             <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Margin="30,20" ColumnSpacing="20">
-                <!-- Total Revenue Card -->
+                
                 <Border Grid.Column="0" Classes="card" BoxShadow="0 2 8 0 #20000000">
                     <StackPanel Spacing="10">
                         <TextBlock Text="💰" FontSize="32"/>
-                        <TextBlock Text="Tổng doanh thu" FontSize="14" Foreground="#718096"/>
-                        <TextBlock Text="{Binding Income}" FontSize="28" FontWeight="Bold" Foreground="#667EEA"/>
-                        <TextBlock Text="₫" FontSize="16" Foreground="#718096"/>
+                        <TextBlock Text="Tổng doanh thu" FontSize="14" Foreground="{DynamicResource TextSecondary}"/>
+                        <TextBlock Text="{Binding Income}" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource PrimaryColor}"/>
+                        <TextBlock Text="₫" FontSize="16" Foreground="{DynamicResource TextSecondary}"/>
                     </StackPanel>
                 </Border>
 
-                <!-- Orders Card -->
                 <Border Grid.Column="1" Classes="card" BoxShadow="0 2 8 0 #20000000">
                     <StackPanel Spacing="10">
                         <TextBlock Text="📦" FontSize="32"/>
-                        <TextBlock Text="Tổng đơn hàng" FontSize="14" Foreground="#718096"/>
-                        <TextBlock Text="0" FontSize="28" FontWeight="Bold" Foreground="#48BB78"/>
-                        <TextBlock Text="đơn" FontSize="16" Foreground="#718096"/>
+                        <TextBlock Text="Tổng đơn hàng" FontSize="14" Foreground="{DynamicResource TextSecondary}"/>
+                        <TextBlock Text="0" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource Success}"/>
+                        <TextBlock Text="đơn" FontSize="16" Foreground="{DynamicResource TextSecondary}"/>
                     </StackPanel>
                 </Border>
 
-                <!-- Profit Card -->
                 <Border Grid.Column="2" Classes="card" BoxShadow="0 2 8 0 #20000000">
                     <StackPanel Spacing="10">
                         <TextBlock Text="📈" FontSize="32"/>
-                        <TextBlock Text="Lợi nhuận" FontSize="14" Foreground="#718096"/>
-                        <TextBlock Text="0" FontSize="28" FontWeight="Bold" Foreground="#ED8936"/>
-                        <TextBlock Text="₫" FontSize="16" Foreground="#718096"/>
+                        <TextBlock Text="Lợi nhuận" FontSize="14" Foreground="{DynamicResource TextSecondary}"/>
+                        <TextBlock Text="0" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource Warning}"/>
+                        <TextBlock Text="₫" FontSize="16" Foreground="{DynamicResource TextSecondary}"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <!-- Chart Area -->
             <Border Grid.Row="2" Margin="30,0,30,30" Classes="card" BoxShadow="0 2 8 0 #20000000">
-                <Grid >
+                <Grid>
                     <lvc:CartesianChart
                         Series="{Binding _series}"
                         XAxes="{Binding xAxis}"
