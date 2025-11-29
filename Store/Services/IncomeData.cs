@@ -25,11 +25,10 @@ public static class IncomeData
 
             command.CommandText = @"
             SELECT strftime('%m',NgayLapHD) as MONTH,
-                   SUM(TongTienHD) as TOTAL,
-                   COUNT(*) as ORDER_COUNT
+                   SUM(TongTienHD) as TOTAL
             FROM HoaDon
             WHERE strftime('%Y', NgayLapHD) = @Year
-            AND TrangThaiHD = 'Da thanh toan'
+            AND TrangThaiHD = 'Đã thanh toán'
             GROUP BY MONTH";
             
             command.Parameters.AddWithValue("@Year", year.ToString());
@@ -57,33 +56,47 @@ public static class IncomeData
         return MonthlyIncomeData;
     }
     
-    //===== Lấy dữ liệu tổng doanh thu đến thời điểm hiện tại =====//
-    public static double GetTotalIncome(int year)
+    //===== Lấy dữ liệu tổng doanh thu và số đơn hàng mỗi tháng=====//
+    public class Monthyly_statistics
     {
-        var mIncomeData = GetMonthlyIncome(year);
-        double TotalIncome = 0;
-        
-        foreach (var Income in mIncomeData)
-        {
-            TotalIncome += Income;
-        }
-        
-        return TotalIncome;
+        public double TotalIncome { get; set; }
+        public int TotalOrders { get; set; }
     }
-    
-    //===== Lấy dữ liệu tổng số đơn hàng đã thanh toán đến thời điểm hiện tại =====//
-    public static double GetTotalOrder(int year, int month)
+    public static Monthyly_statistics Monthly_Stat(int year)
     {
-        var mOrderData = GetMonthlyIncome(year);
-        double mTotalOrders = 0;
-
-        foreach (var order in mOrderData)
-        {
-            mTotalOrders += order;
-        }
+        Monthyly_statistics Ms = new Monthyly_statistics();
         
-        return mTotalOrders;
-    }
+        using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
 
+            command.CommandText = @"
+            SELECT strftime('%m',NgayLapHD) as MONTH,
+                   SUM(TongTienHD) as TOTAL_INCOME,
+                   COUNT(*) as TOTAL_ORDERS
+            FROM HoaDon
+            WHERE strftime('%Y', NgayLapHD) = @Year
+            AND strftime('%m', NgayLapHD) = @Month
+            AND TrangThaiHD = 'Đã thanh toán'
+            GROUP BY MONTH";
+            
+            command.Parameters.AddWithValue("@Year",  year.ToString());
+            command.Parameters.AddWithValue("@Month", DateTime.Now.Month.ToString());
+            
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    if(reader.IsDBNull(0))
+                        continue;
+                    Ms.TotalIncome = reader.IsDBNull(1) ? 0 : reader.GetDouble(1);
+                    Ms.TotalOrders = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                }
+            }
+        }
+
+        return Ms;
+    }
     
 }

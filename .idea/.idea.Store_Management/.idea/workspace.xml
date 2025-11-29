@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Store/Services/IncomeData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Models/HoaDon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Models/HoaDon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Store.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Store.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/BillPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/HomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/HomePageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Services/IncomeData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/IncomeData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/BillPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/BillPageView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +141,8 @@
       <workItem from="1764303892766" duration="72000" />
       <workItem from="1764303988858" duration="16747000" />
       <workItem from="1764388285285" duration="90000" />
-      <workItem from="1764388402906" duration="2569000" />
+      <workItem from="1764388402906" duration="2626000" />
+      <workItem from="1764403596973" duration="4754000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -298,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764309472041</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="cập nhật tính năng trong income">
+      <option name="closed" value="true" />
+      <created>1764393361927</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1764393361927</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +334,8 @@
     <MESSAGE value="thêm giao diện dark mode" />
     <MESSAGE value="Hoàn thành thêm giao diện dark mode" />
     <MESSAGE value="Chỉnh sửa giao diện dark mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chỉnh sửa giao diện dark mode" />
+    <MESSAGE value="cập nhật tính năng trong income" />
+    <option name="LAST_COMMIT_MESSAGE" value="cập nhật tính năng trong income" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

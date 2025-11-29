@@ -71,8 +71,8 @@ public class IncomePageViewModel : ViewModelBase
     {
         get
         {
-            var income = IncomeData.GetTotalIncome(currentYear);
-            return income;
+            var income = IncomeData.Monthly_Stat(currentYear);
+            return income.TotalIncome;
         }
     }
     
@@ -81,8 +81,8 @@ public class IncomePageViewModel : ViewModelBase
     {
         get
         {
-            var orders = IncomeData.GetTotalOrder(currentYear, DateTime.Now.Month);
-            return orders;
+            var orders = IncomeData.Monthly_Stat(currentYear);
+            return orders.TotalOrders;
         }
     }
 }
