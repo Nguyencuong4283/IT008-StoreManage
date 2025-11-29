@@ -15,7 +15,7 @@ using System.Collections.ObjectModel;
 namespace Store.ViewModels;
 
 
-public partial class BillPageViewModel : ViewModelBase, 
+public partial class OrderPageViewModel : ViewModelBase, 
     IRecipient<HoaDonChangedMessage>
 {
     [ObservableProperty] private int soHD;
@@ -31,11 +31,12 @@ public partial class BillPageViewModel : ViewModelBase,
      "TongTienHD",
      "Tất cả"
  };
-    public BillPageViewModel()
+    public OrderPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<HoaDonChangedMessage>(this);
         LoadHoaDons();
     }
+
     // Xử lý khi nhận message HoaDon thay đổi
     public void Receive(HoaDonChangedMessage message)
     {

@@ -9,7 +9,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
     [ObservableProperty]
     private ViewModelBase _currentPage;
     private readonly HomePageViewModel _homePage = new();
-    private readonly BillPageViewModel _billPage = new();
+    private readonly OrderPageViewModel _orderPage = new();
     private readonly ProductPageViewModel _productPage = new();
     private readonly SettingPageViewModel _settingPage = new();
     private readonly AccountSettingPageViewModel _accountSettingPage = new();
@@ -24,7 +24,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
     private void GoHome() => CurrentPage = _homePage;
 
     [RelayCommand]
-    private void GoBill() => CurrentPage = _billPage;
+    private void GoBill() => CurrentPage = _orderPage;
 
     [RelayCommand]
     private void GoProduct() => CurrentPage = _productPage;

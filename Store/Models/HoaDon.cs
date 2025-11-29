@@ -19,9 +19,12 @@ namespace Store.Models
         public string   TrangThaiHD { get; set; }
 
         public KhachHang? KhachHang { get; set; }
-        public string TenKH => KhachHang?.TenKH ?? "";
+        public string TenKH
+        {
+            get => KhachHang?.TenKH ?? "";
+        }
 
-       
+
         public HoaDon() { }
     }
 }

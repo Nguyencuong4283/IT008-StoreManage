@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
              xmlns:vm="clr-namespace:Store.ViewModels"
-             x:DataType="vm:BillPageViewModel"
-             x:Class="Store.Views.BillPageView">
+             x:DataType="vm:OrderPageViewModel"
+             x:Class="Store.Views.OrderPageView">
    
     <Design.DataContext>
-       <vm:BillPageViewModel/>
+       <vm:OrderPageViewModel/>
     </Design.DataContext>
     
     <Border CornerRadius="16" Background="{DynamicResource BgPage}" Margin="10" BoxShadow="0 4 20 0 #30000000">
@@ -67,7 +67,6 @@
                            IsVisible="{Binding HoaDons.Count}">
                    <ItemsControl.ItemTemplate>
                       <DataTemplate>
-                         
                             <Border Classes="card" BoxShadow="0 2 8 0 #20000000" Margin="0 10 0 10">
                                <Grid ColumnDefinitions="Auto,*,Auto,Auto">
                                   <Border Grid.Column="0"

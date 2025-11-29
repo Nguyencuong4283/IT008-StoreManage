@@ -126,7 +126,7 @@ using System.Collections.ObjectModel;
 namespace Store.ViewModels;
 
 
-public partial class BillPageViewModel : ViewModelBase
+public partial class OrderPageViewModel : ViewModelBase
 {
     [ObservableProperty] private int soHD;
     [ObservableProperty] private string tenKH;
@@ -141,7 +141,7 @@ public partial class BillPageViewModel : ViewModelBase
      "TongTienHD",
      "Tất cả"
  };
-    public BillPageViewModel()
+    public OrderPageViewModel()
     {
        
     }

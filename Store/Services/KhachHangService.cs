@@ -38,7 +38,7 @@ namespace Store.Services
             }
         }
 
-        // ----------------- CREATE -----------------
+        // ----------------- Tạo Khách hàng ----------------- //
         public static void InsertKhachHang(KhachHang kh)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -63,7 +63,7 @@ namespace Store.Services
             }
         }
 
-        // ----------------- READ -----------------
+        // ----------------- Đọc ----------------- //
         public static List<KhachHang> GetAllKhachHang()
         {
             var khachHangs = new List<KhachHang>();
@@ -108,7 +108,7 @@ namespace Store.Services
                 return Convert.ToInt32(result);
             }
         }
-        // ----------------- UPDATE -----------------
+        // ----------------- UPDATE ----------------- //
         public static void UpdateKhachHang(KhachHang kh)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
