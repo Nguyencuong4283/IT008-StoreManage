@@ -104,7 +104,7 @@
                             <ComboBox ItemsSource="{Binding DanhSachGioiTinh}" 
                                       SelectedItem="{Binding GioiTinh, Mode=TwoWay}"
                                       Classes="modern-combo"
-                                      Width="150"
+                                      Width="300"
                                       HorizontalAlignment="Left"
                                       PlaceholderText="Chọn giới tính"/>
                          </StackPanel>
@@ -116,7 +116,7 @@
                             <CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay}" 
                                                 Classes="calendar"
                                                 HorizontalAlignment="Left"
-                                                Width="150"/>
+                                                Width="300"/>
                          </StackPanel>
                          
                          <StackPanel Grid.Column="1" Margin="8,0,0,0">
