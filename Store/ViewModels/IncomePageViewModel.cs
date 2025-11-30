@@ -43,7 +43,7 @@ public class IncomePageViewModel : ViewModelBase
         [
             new Axis
             {
-                Name = "Doanh thu (triệu VNĐ)",
+                Name = "Doanh thu (VNĐ)",
                 NameTextSize = 15,
                 Labeler = value => value.ToString("N0")
             }

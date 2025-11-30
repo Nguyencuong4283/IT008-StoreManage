@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/IncomeData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/IncomeData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/MainWindow.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +142,12 @@
       <workItem from="1764303988858" duration="16747000" />
       <workItem from="1764388285285" duration="90000" />
       <workItem from="1764388402906" duration="2626000" />
-      <workItem from="1764403596973" duration="4754000" />
+      <workItem from="1764403596973" duration="5084000" />
+      <workItem from="1764482287267" duration="619000" />
+      <workItem from="1764482928016" duration="957000" />
+      <workItem from="1764484405448" duration="158000" />
+      <workItem from="1764484591223" duration="48000" />
+      <workItem from="1764494796421" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -296,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764393361927</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="cập nhật thêm tính năng IncomePageViewModel.cs">
+      <option name="closed" value="true" />
+      <created>1764421214387</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1764421214387</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +348,8 @@
     <MESSAGE value="Hoàn thành thêm giao diện dark mode" />
     <MESSAGE value="Chỉnh sửa giao diện dark mode" />
     <MESSAGE value="cập nhật tính năng trong income" />
-    <option name="LAST_COMMIT_MESSAGE" value="cập nhật tính năng trong income" />
+    <MESSAGE value="cập nhật thêm tính năng IncomePageViewModel.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="cập nhật thêm tính năng IncomePageViewModel.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

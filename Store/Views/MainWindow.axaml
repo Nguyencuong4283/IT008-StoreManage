@@ -28,6 +28,7 @@
                   VerticalAlignment="Top" 
                   Margin="0,16,16,0"
                   ZIndex="10">
+                  
              ✕
           </Button>
           
