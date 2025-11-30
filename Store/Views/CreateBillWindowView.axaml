@@ -56,8 +56,7 @@
                                       HorizontalAlignment="Stretch">
                                   <ComboBox.ItemTemplate>
                                      <DataTemplate>
-                                        <TextBlock Text="{Binding MaNV_HoTen}"
-                                                   Foreground="{DynamicResource PrimaryText}"/>
+                                        <TextBlock Text="{Binding MaNV_HoTen}"/>
                                      </DataTemplate>
                                   </ComboBox.ItemTemplate>
                                </ComboBox>
