@@ -59,4 +59,25 @@ public partial class OrderPageViewModel : ViewModelBase,
         CreateBillWindowView createBillWindow = new CreateBillWindowView();
         createBillWindow.Show();
     }
+    [RelayCommand]
+    private void ChiTietButton(HoaDon hoaDon)
+    {
+        if(hoaDon == null) return;
+        var detailWindow = new BillDetailWindowView
+        {
+            DataContext = new BillDetailWindowViewModel(hoaDon)
+        };
+        detailWindow.Show();
+
+    }
+    //private void XemChiTietSanPham(SanPham sanPham)
+    //{
+    //    if (sanPham == null) return;
+
+    //    var detailWindow = new ProductDetailWindowView
+    //    {
+    //        DataContext = new ProductDetailWindowViewModel(sanPham)
+    //    };
+    //    detailWindow.Show();
+    //}
 }
