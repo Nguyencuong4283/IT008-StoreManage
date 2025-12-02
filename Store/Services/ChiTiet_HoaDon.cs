@@ -96,6 +96,55 @@ namespace Store.Services
             return chiTiets;
         }
 
+        public static List<ChiTiet_HoaDon> GetChiTiet_HoaDon(string maHD)
+        {
+            var chiTiets = new List<ChiTiet_HoaDon>();
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+            SELECT 
+                ct.MaHD, ct.MaSP, ct.SoLuong, ct.DonGia, ct.KhuyenMai, ct.ThanhTien,
+                sp.TenSP, sp.KichThuocSP, sp.GiaSP, sp.SoLuongSP, sp.LoaiSP, sp.MoTaSP, sp.HinhAnhDuongDan
+            FROM ChiTiet_HoaDon ct
+            LEFT JOIN SanPham sp ON ct.MaSP = sp.MaSP
+            WHERE ct.MaHD = $MaHD;
+        ";
+                cmd.Parameters.AddWithValue("$MaHD", maHD);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var ct = new ChiTiet_HoaDon
+                        {
+                            MaHD = reader.GetString(0),
+                            MaSP = reader.GetString(1),
+                            SoLuong = reader.GetInt32(2),
+                            DonGia = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
+                            KhuyenMai = reader.IsDBNull(4) ? 0 : reader.GetInt32(4),
+                            ThanhTien = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5),
+                            SanPham = reader.IsDBNull(6) ? null : new SanPham
+                            {
+                                MaSP = reader.GetString(1),
+                                TenSP = reader.GetString(6),
+                                KichThuocSP = reader.IsDBNull(7) ? "" : reader.GetString(7),
+                                GiaSP = reader.IsDBNull(8) ? 0 : reader.GetDecimal(8),
+                                SoLuongSP = reader.IsDBNull(9) ? 0 : reader.GetInt32(9),
+                                LoaiSP = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                                MoTaSP = reader.IsDBNull(11) ? "" : reader.GetString(11),
+                                HinhAnhDuongDan = reader.IsDBNull(12) ? "" : reader.GetString(12)
+                            }
+                        };
+                        chiTiets.Add(ct);
+                    }
+                }
+            }
+
+            return chiTiets;
+        }
         // ------------------ READ BY MaHD ------------------
         public static List<ChiTiet_HoaDon> GetChiTiet_HoaDonByMaHD(string maHD)
         {
@@ -228,10 +277,10 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = "SELECT SUM(ThanhTien) FROM ChiTiet_HoaDon WHERE MaHD = $MaHD;";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
-                
+
                 var result = cmd.ExecuteScalar();
                 var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
-                
+
                 System.Diagnostics.Debug.WriteLine($"[Service] GetTongTienByMaHD('{maHD}') = {total}");
                 return total;
             }
@@ -285,7 +334,7 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = "SELECT COUNT(*) FROM ChiTiet_HoaDon WHERE MaHD = $MaHD;";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
-                
+
                 var result = cmd.ExecuteScalar();
                 return result != null ? Convert.ToInt32(result) : 0;
             }
@@ -301,14 +350,14 @@ namespace Store.Services
                 cmd.CommandText = "SELECT COUNT(*) FROM ChiTiet_HoaDon WHERE MaHD = $MaHD AND MaSP = $MaSP;";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
                 cmd.Parameters.AddWithValue("$MaSP", maSP);
-                
+
                 var result = cmd.ExecuteScalar();
                 return result != null && Convert.ToInt32(result) > 0;
             }
         }
 
         // ------------------ TÍNH TỔNG GIẢM GIÁ ------------------
-       
+
 
         // ------------------ TÍNH TỔNG GIẢM GIÁ ------------------
         public static decimal GetTongGiamGiaByMaHD(string maHD)
@@ -319,7 +368,7 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = "SELECT SUM(DonGia * SoLuong * KhuyenMai / 100) FROM ChiTiet_HoaDon WHERE MaHD = $MaHD;";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
-                
+
                 var result = cmd.ExecuteScalar();
                 return result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
             }
@@ -334,7 +383,7 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = "SELECT SUM(DonGia * SoLuong) FROM ChiTiet_HoaDon WHERE MaHD = $MaHD;";
                 cmd.Parameters.AddWithValue("$MaHD", maHD);
-                
+
                 var result = cmd.ExecuteScalar();
                 return result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
             }

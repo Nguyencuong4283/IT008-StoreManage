@@ -101,6 +101,8 @@
                                   </StackPanel>
 
                                   <Button Grid.Column="3"
+                                        Command="{Binding $parent[ItemsControl].((vm:OrderPageViewModel)DataContext).ChiTietButtonCommand}"
+                                        CommandParameter="{Binding}"
                                         Classes="secondary"
                                         Padding="12,8"
                                         VerticalAlignment="Center">
