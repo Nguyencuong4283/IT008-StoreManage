@@ -113,7 +113,7 @@
                                 <TextBlock Text="Phiên bản: 1.0.0" 
                                            FontSize="14" 
                                            Foreground="{DynamicResource TextSecondary}"/>
-                                <TextBlock Text="© 2024 ShopQuality. All rights reserved." 
+                                <TextBlock Text="© 2025 ShopQuality. All rights reserved." 
                                            FontSize="14" 
                                            Foreground="{DynamicResource TextSecondary}"/>
                             </StackPanel>

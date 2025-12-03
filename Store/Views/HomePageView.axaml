@@ -113,7 +113,7 @@
                                             <Run Text="{Binding SoHD}"/>
                                          </TextBlock>
                                          <TextBlock FontSize="13" Foreground="{DynamicResource TextSecondary}" Margin="0,5,0,0">
-                                            <Run Text="Tên Khách hàng: "/>
+                                            <Run Text=""/>
                                             <Run Text="{Binding TenKH}"/>
                                          </TextBlock>
                                       </StackPanel>

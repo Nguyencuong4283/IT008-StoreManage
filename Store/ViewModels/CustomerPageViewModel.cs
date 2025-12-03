@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
 using Store.Services;
+using Store.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -17,17 +18,24 @@ namespace Store.ViewModels;
 public partial class CustomerPageViewModel : ViewModelBase
 {
     [ObservableProperty] private ObservableCollection<KhachHang> khachHangs = new();
-    private readonly DispatcherTimer _timer;
+    private DispatcherTimer? _timer;
+    
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
         {
             "TenKH",
             "SDT",
             "DiaChi"
         };
+    
     public CustomerPageViewModel()
     {
         LoadKhachHangs();
-        // ✅ Tạo timer lặp lại mỗi 5 giây
+        StartAutoRefresh();
+    }
+
+    private void StartAutoRefresh()
+    {
+        // Tạo timer lặp lại mỗi 5 giây
         _timer = new DispatcherTimer
         {
             Interval = TimeSpan.FromSeconds(5)
@@ -35,15 +43,37 @@ public partial class CustomerPageViewModel : ViewModelBase
         _timer.Tick += (s, e) => LoadKhachHangs();
         _timer.Start();
     }
+
+    public void StopAutoRefresh()
+    {
+        if (_timer != null)
+        {
+            _timer.Stop();
+            _timer = null;
+        }
+    }
+
     private void LoadKhachHangs()
     {
-        var list = KhachHangService.GetAllKhachHang();
-
-        khachHangs.Clear();
-        foreach (var kh in list)
+        try
         {
-            khachHangs.Add(kh);
+            var list = KhachHangService.GetAllKhachHang();
+
+            khachHangs.Clear();
+            foreach (var kh in list)
+            {
+                khachHangs.Add(kh);
+            }
         }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"❌ Lỗi khi load khách hàng: {ex.Message}");
+        }
+    }
+
+    public void RefreshData()
+    {
+        LoadKhachHangs();
     }
     [RelayCommand]
     public void TaoKhachHangButton()
@@ -51,25 +81,24 @@ public partial class CustomerPageViewModel : ViewModelBase
        CreateCustomerWindowView createCustomerWindowView = new CreateCustomerWindowView();
        createCustomerWindowView.Show();
     }
-    /* public ProductPageViewModel()
- {
-     LoadSanPhams();
- }
- private void LoadSanPhams()
- {
-     var list = SanPhanService.GetAllSanPham();
+    [RelayCommand]
+    public void ChiTietButtonCommand(KhachHang khachHang)
+    {
+        if (khachHang == null) return;
+        var detailWindow = new CustomerDetailWindowView
+        {
+            DataContext = new CustomerDetailWindowViewModel(khachHang)
+        };
+        detailWindow.Show();
+    }
+    //private void XemChiTietSanPham(SanPham sanPham)
+    //{
+    //    if (sanPham == null) return;
 
-     sanPhams.Clear();
-     foreach (var sp in list)
-     {
-         sanPhams.Add(sp);
-     }
- }
- [RelayCommand]
- private void ThemSanPhamButton()
- {
-     CreateProductWindowView createProductWindowView = new();
-     createProductWindowView.Show();
-     LoadSanPhams();
- }*/
+    //    var detailWindow = new ProductDetailWindowView
+    //    {
+    //        DataContext = new ProductDetailWindowViewModel(sanPham)
+    //    };
+    //    detailWindow.Show();
+    //}
 }

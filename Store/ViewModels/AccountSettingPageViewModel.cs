@@ -46,6 +46,20 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
             HoTen = currentUser.HoTen;
             SDT = currentUser.SDT;
             Email = currentUser.Email;
+            
+            // Load hình ảnh
+            if (!string.IsNullOrEmpty(currentUser.HinhAnh))
+            {
+                try
+                {
+                    HinhAnh = new Bitmap(currentUser.HinhAnh);
+                }
+                catch
+                {
+                    // Nếu load ảnh thất bại, có thể set ảnh mặc định
+                    HinhAnh = null;
+                }
+            }
         }
     }
     [RelayCommand]
