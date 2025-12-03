@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Store.Models;
 using Store.Services;
 using Store.Views;
+using System;
 using System.Collections.ObjectModel;
 
 namespace Store.ViewModels;
@@ -24,55 +25,76 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void LogInButton()
     {
-        if (tenDangNhap == null)
+        try
         {
-            KiemTraDangNhap = "Vui lòng nhập tên đăng nhập!";
-            return;
-        }
-        else if (matKhau == null)
-        {
-            KiemTraDangNhap = "Vui lòng nhập mật khẩu!";
-            return;
-        }
-        
-        var list = UserService.GetAllUser();
-        foreach (var user in list)
-        {
-            if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap && user.MaVT == "VT01")
+            if (string.IsNullOrWhiteSpace(tenDangNhap))
             {
-                var adminVM = new AdminWindowViewModel();
-                var adminWindow = new AdminWindowView();
-                // adminWindow.DataContext = adminVM;
-                adminWindow.Show();
-                maDN = user.MaNV;
-                WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
+                KiemTraDangNhap = "Vui lòng nhập tên đăng nhập!";
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(matKhau))
+            {
+                KiemTraDangNhap = "Vui lòng nhập mật khẩu!";
+                return;
+            }
+            
+            var list = UserService.GetAllUser();
+            
+            if (list == null || list.Count == 0)
+            {
+                KiemTraDangNhap = "Không tìm thấy tài khoản nào trong hệ thống!";
+                return;
+            }
+            
+            foreach (var user in list)
+            {
+                if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap && user.MaVT == "VT01")
+                {
+                    System.Diagnostics.Debug.WriteLine($"✅ Đăng nhập Admin thành công: {user.HoTen}");
+                    
+                    var adminWindow = new AdminWindowView();
+                    var adminVM = new AdminWindowViewModel();
+                    adminWindow.DataContext = adminVM;
+                    adminWindow.Show();
+                    
+                    maDN = user.MaNV;
+                    WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
 
-                // Đóng MainWindow hiện tại
-                if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
-                    && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
-                {
-                    mainWindow.Close();
+                    // Đóng MainWindow hiện tại
+                    if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                        && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                    {
+                        mainWindow.Close();
+                    }
+                    return;
                 }
-                return; // Thoát khỏi hàm sau khi đăng nhập thành công
-            }
-            else if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap && user.MaVT == "VT02")
-            {
-                var staffVM = new EmployeePageViewModel();
-                var staffWindow = new EmployeeWindowView();
-                maDN = user.MaNV;
-                WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
-                staffWindow.Show();
-                if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
-                   && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                else if (UserService.VerifyPassword(MatKhau, user.MatKhau) && TenDangNhap == user.TenDangNhap && user.MaVT == "VT02")
                 {
-                    mainWindow.Close();
+                    System.Diagnostics.Debug.WriteLine($"✅ Đăng nhập Nhân viên thành công: {user.HoTen}");
+                    
+                    var staffWindow = new EmployeeWindowView();
+                    staffWindow.Show();
+                    
+                    maDN = user.MaNV;
+                    WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
+                    
+                    if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                       && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                    {
+                        mainWindow.Close();
+                    }
+                    return; 
                 }
-                return; 
             }
+            
+            // Chỉ hiển thị thông báo lỗi nếu không tìm thấy user phù hợp
+            KiemTraDangNhap = "Tên đăng nhập hoặc mật khẩu không đúng!";
         }
-        
-        // Chỉ hiển thị thông báo lỗi nếu không tìm thấy user phù hợp
-        KiemTraDangNhap = "Đăng nhập thất bại !!!";
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"❌ Lỗi khi đăng nhập: {ex.Message}\n{ex.StackTrace}");
+            KiemTraDangNhap = $"Lỗi hệ thống: {ex.Message}";
+        }
     }
     
     [RelayCommand]

@@ -107,12 +107,19 @@ public partial class HomePageViewModel : ViewModelBase,
     }
     private void LoadHoaDons()
     {
-        var list = HoaDonService.GetAllHoaDon();
-
-        hoaDons.Clear();
-        foreach (var kh in list)
+        try
         {
-            hoaDons.Add(kh);
+            var list = HoaDonService.GetAllHoaDon();
+
+            hoaDons.Clear();
+            foreach (var kh in list)
+            {
+                hoaDons.Add(kh);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Lỗi load hóa đơn: {ex.Message}\n{ex.StackTrace}");
         }
     }
 }
