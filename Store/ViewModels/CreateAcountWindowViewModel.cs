@@ -44,33 +44,38 @@ namespace Store.ViewModels
         {
             try
             {
+                // Validate input
+                if (string.IsNullOrWhiteSpace(TenDangNhap) || string.IsNullOrWhiteSpace(MatKhau) || 
+                    string.IsNullOrWhiteSpace(HoTen) || string.IsNullOrWhiteSpace(Email))
+                {
+                    System.Diagnostics.Debug.WriteLine("Vui lòng điền đầy đủ thông tin!");
+                    return;
+                }
+
                 var user = new User
                 {
                     TenDangNhap = TenDangNhap,
                     MatKhau = MatKhau,
                     HoTen = HoTen,
                     Email = Email,
-                    SDT = SDT,
-                    DiaChi = DiaChi,
+                    SDT = SDT ?? "",
+                    DiaChi = DiaChi ?? "",
                     NgaySinh = NgaySinh,
                     GioiTinh = GioiTinh,
                     HinhAnh = HinhAnhPath, // ✅ Lưu đường dẫn ảnh
-                    MaVT = "VT01"
+                    MaVT = "VT01" 
                 };
                 UserService.InsertUser(user);
 
-                System.Diagnostics.Debug.WriteLine($"Đã thêm User: {HoTen}");
+                System.Diagnostics.Debug.WriteLine($"✅ Đã tạo tài khoản thành công: {HoTen}");
 
-                // Reset form
-                TenDangNhap = MatKhau = HoTen = Email = SDT = DiaChi = "";
-                NgaySinh = DateTime.Now;
-                GioiTinh = "Nam";
-                HinhAnhPath = null;
-                HinhAnh = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_2.png")));
+                // Đóng window sau khi tạo thành công
+                var window = GetActiveWindow();
+                window?.Close();
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Lỗi khi tạo User: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"❌ Lỗi khi tạo User: {ex.Message}\n{ex.StackTrace}");
             }
         }
 

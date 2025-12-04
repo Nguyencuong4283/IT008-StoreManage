@@ -10,12 +10,11 @@ namespace Store.Models
     {
         public int      MaNK { get; set; }
         public int      MaSP { get; set; }
-        public int      SoLuong { get; set; }
-       
+        public int      SoLuong { get; set;}
         public decimal  DonGia { get; set; }
         public decimal  ThanhTien { get; set; }
-        public NhapKho NhapKho { get; set; }
-        public SanPham SanPham { get; set; }
+        public NhapKho? NhapKho { get; set; }
+        public SanPham? SanPham { get; set; }
         public ChiTiet_NhapKho() { }
     }
 }
