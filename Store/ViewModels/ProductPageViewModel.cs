@@ -10,6 +10,7 @@ using Store.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Store.ViewModels
 {
@@ -32,22 +33,26 @@ namespace Store.ViewModels
                 }
             }
         }
+        
+        [ObservableProperty] private string searchKeyword;
+        [ObservableProperty] private string _selectedFilterBy = "TenSP";
+        
         private readonly DispatcherTimer _timer;
         public ObservableCollection<string> DanhSachBoLoc { get; } = new()
         {
+            "Tất cả",
            "Quần ngắn",
            "Quần dài",
            "Áo ngắn",
            "Áo dài",
-           "Khác",
-           "Tất cả"
+           "Khác"
         };
         public ObservableCollection<string> DanhSachChiTiet { get; } = new()
         {
+            "Tất cả",
             "GiaSP",
             "TenSP",
-            "SoLuong",
-            "Tất cả"
+            "SoLuong"
         };
         public ProductPageViewModel()
         {
@@ -72,25 +77,7 @@ namespace Store.ViewModels
             }
         }
         
-        private void ApplyFilter()
-        {
-            List<SanPham> list;
-            
-            if (string.IsNullOrEmpty(BoLoc) || BoLoc == "Tất cả")
-            {
-                list = SanPhanService.GetAllSanPham();
-            }
-            else
-            {
-                list = SanPhanService.GetSearchSanPham(BoLoc);
-            }
-
-            sanPhams.Clear();
-            foreach (var sp in list)
-            {
-                sanPhams.Add(sp);
-            }
-        }
+        
         [RelayCommand]
         private void ThemSanPhamButton()
         {
@@ -110,5 +97,27 @@ namespace Store.ViewModels
             };
             detailWindow.Show();
         }
+        
+        //===== Tìm kiếm và lọc sản phẩm =====//
+        private void ApplyFilter()
+        {
+            List<SanPham> list;
+            
+            if (string.IsNullOrEmpty(BoLoc) || BoLoc == "Tất cả")
+            {
+                list = SanPhanService.GetAllSanPham();
+            }
+            else
+            {
+                list = SanPhanService.GetSearchSanPham(BoLoc);
+            }
+
+            sanPhams.Clear();
+            foreach (var sp in list)
+            {
+                sanPhams.Add(sp);
+            }
+        }
+        
     }
 }

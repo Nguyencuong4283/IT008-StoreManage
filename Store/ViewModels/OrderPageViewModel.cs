@@ -20,7 +20,7 @@ namespace Store.ViewModels;
 public partial class OrderPageViewModel : ViewModelBase, 
     IRecipient<HoaDonChangedMessage>
 {
-    private List<HoaDon> allHoaDons = new();
+    private List<HoaDon> allOrder = new();
     [ObservableProperty] private int soHD;
     [ObservableProperty] private string tenKH;
     [ObservableProperty] private DateTime  ngayLapHD;
@@ -36,11 +36,9 @@ public partial class OrderPageViewModel : ViewModelBase,
     };
     
 
-    [ObservableProperty] 
-    private string searchKeyword;
+    [ObservableProperty] private string searchKeyword;
     
-    [ObservableProperty]
-    private string _selectedFilterBy = "Tất cả";
+    [ObservableProperty] private string _selectedFilterBy = "Tất cả";
     
     public OrderPageViewModel()
     {
@@ -58,7 +56,7 @@ public partial class OrderPageViewModel : ViewModelBase,
     {
         var list = HoaDonService.GetAllHoaDon();
 
-        allHoaDons = list;
+        allOrder = list;
 
         hoaDons.Clear();
         foreach (var kh in list)
@@ -108,9 +106,9 @@ public partial class OrderPageViewModel : ViewModelBase,
     private void FilterOrders()
     {
         // Nếu danh sách gốc chưa có dữ liệu thì thoát
-        if (allHoaDons == null) return;
+        if (allOrder == null) return;
 
-        IEnumerable<HoaDon> query = allHoaDons;
+        IEnumerable<HoaDon> query = allOrder;
 
         // Xử lý tìm kiếm
         if (!string.IsNullOrWhiteSpace(searchKeyword))
@@ -121,7 +119,7 @@ public partial class OrderPageViewModel : ViewModelBase,
             query = query.Where(x => 
                     x.SoHD.ToString().Contains(keyword) || 
                     (x.TenKH != null && x.TenKH.ToLower().Contains(keyword)) ||
-                    (x.TenUser != null && x.TenUser.ToLower().Contains(keyword)) // Tìm cả tên nhân viên nếu thích
+                    (x.TenUser != null && x.TenUser.ToLower().Contains(keyword)) 
             );
         }
 

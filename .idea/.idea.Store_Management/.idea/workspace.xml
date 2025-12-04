@@ -7,9 +7,11 @@
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Models/HoaDon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Models/HoaDon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Models/KhachHang.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Models/KhachHang.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Store.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Store.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +23,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -162,7 +163,7 @@
       <workItem from="1764656094320" duration="2318000" />
       <workItem from="1764726587119" duration="1381000" />
       <workItem from="1764748985077" duration="442000" />
-      <workItem from="1764857566766" duration="2509000" />
+      <workItem from="1764857566766" duration="5857000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -332,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764518639694</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="thêm chức năng tìm kiếm đơn hàng">
+      <option name="closed" value="true" />
+      <created>1764860580348</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1764860580348</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +382,8 @@
     <MESSAGE value="cập nhật tính năng trong income" />
     <MESSAGE value="cập nhật thêm tính năng IncomePageViewModel.cs" />
     <MESSAGE value="cập nhật tính năng và backup" />
-    <option name="LAST_COMMIT_MESSAGE" value="cập nhật tính năng và backup" />
+    <MESSAGE value="thêm chức năng tìm kiếm đơn hàng" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm chức năng tìm kiếm đơn hàng" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

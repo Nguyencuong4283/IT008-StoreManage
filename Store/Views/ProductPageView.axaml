@@ -67,7 +67,8 @@
                    
                    <TextBox Classes="modern-input"
                             Width="300" 
-                            Watermark="🔍 Tìm kiếm sản phẩm..."/>
+                            Watermark="🔍 Tìm kiếm sản phẩm..."
+                            Text="{Binding SearchKeyword}"/>
                 </StackPanel>
                 
         

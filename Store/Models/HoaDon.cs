@@ -22,6 +22,7 @@ namespace Store.Models
         public string TenKH
         {
             get => KhachHang?.TenKH ?? "";
+            set => KhachHang = KhachHang;
         }
 
 

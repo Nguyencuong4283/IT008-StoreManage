@@ -55,4 +55,10 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </AvaloniaResource>
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\CustomerDetailWindowView.axaml.cs">
+        <DependentUpon>CustomerDetailWindowView.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
 </Project>
