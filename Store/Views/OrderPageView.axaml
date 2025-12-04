@@ -55,6 +55,7 @@
                                  Width="400" 
                                  FontSize="14"
                                  Watermark="🔍 Tìm kiếm hoá đơn..."
+                                 Text="{Binding SearchKeyword}"
                                  Padding="12,8"
                                  CornerRadius="8"/>
                     </Border>

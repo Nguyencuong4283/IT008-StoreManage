@@ -10,7 +10,9 @@ using Store.Services;
 using Store.Messages;
 using Store.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Store.ViewModels;
 
@@ -18,19 +20,28 @@ namespace Store.ViewModels;
 public partial class OrderPageViewModel : ViewModelBase, 
     IRecipient<HoaDonChangedMessage>
 {
+    private List<HoaDon> allHoaDons = new();
     [ObservableProperty] private int soHD;
     [ObservableProperty] private string tenKH;
     [ObservableProperty] private DateTime  ngayLapHD;
     [ObservableProperty] private decimal tongTienHD;
+    
     [ObservableProperty]
     private ObservableCollection<HoaDon> hoaDons = new();
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
- {
+    { "Tất cả",
      "TenKH",
      "NgayLapHD",
-     "TongTienHD",
-     "Tất cả"
- };
+     "TongTienHD"
+    };
+    
+
+    [ObservableProperty] 
+    private string searchKeyword;
+    
+    [ObservableProperty]
+    private string _selectedFilterBy = "Tất cả";
+    
     public OrderPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<HoaDonChangedMessage>(this);
@@ -46,6 +57,8 @@ public partial class OrderPageViewModel : ViewModelBase,
     private void LoadHoaDons()
     {
         var list = HoaDonService.GetAllHoaDon();
+
+        allHoaDons = list;
 
         hoaDons.Clear();
         foreach (var kh in list)
@@ -80,4 +93,40 @@ public partial class OrderPageViewModel : ViewModelBase,
     //    };
     //    detailWindow.Show();
     //}
+    
+    //===== Tìm kiếm và lọc đơn hàng =====//
+    partial void OnSearchKeywordChanged(string value)
+    {
+        FilterOrders();
+    }
+    
+    partial void OnSelectedFilterByChanged(string value)
+    {
+        FilterOrders();
+    }
+    
+    private void FilterOrders()
+    {
+        // Nếu danh sách gốc chưa có dữ liệu thì thoát
+        if (allHoaDons == null) return;
+
+        IEnumerable<HoaDon> query = allHoaDons;
+
+        // Xử lý tìm kiếm
+        if (!string.IsNullOrWhiteSpace(searchKeyword))
+        {
+            string keyword = searchKeyword.ToLower().Trim();
+
+            // Tìm kiếm đa năng: Số HĐ hoặc Tên Khách Hàng
+            query = query.Where(x => 
+                    x.SoHD.ToString().Contains(keyword) || 
+                    (x.TenKH != null && x.TenKH.ToLower().Contains(keyword)) ||
+                    (x.TenUser != null && x.TenUser.ToLower().Contains(keyword)) // Tìm cả tên nhân viên nếu thích
+            );
+        }
+
+        // Cập nhật lại danh sách hiển thị
+        HoaDons = new ObservableCollection<HoaDon>(query);
+    }
+    
 }
