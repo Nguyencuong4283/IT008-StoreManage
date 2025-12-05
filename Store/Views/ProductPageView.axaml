@@ -61,6 +61,7 @@
                              PlaceholderText="Bộ lọc"/>
                    
                    <ComboBox ItemsSource="{Binding DanhSachChiTiet}" 
+                             SelectedItem="{Binding SelectedDetail}"
                              Classes="modern-combo"
                              Width="140" 
                              PlaceholderText="Chi tiết"/>

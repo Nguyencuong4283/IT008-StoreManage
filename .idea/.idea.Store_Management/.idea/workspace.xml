@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Models/HoaDon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Models/HoaDon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Store.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Store.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Services/SanPhamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/SanPhamService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +162,11 @@
       <workItem from="1764656094320" duration="2318000" />
       <workItem from="1764726587119" duration="1381000" />
       <workItem from="1764748985077" duration="442000" />
-      <workItem from="1764857566766" duration="5857000" />
+      <workItem from="1764857566766" duration="6600000" />
+      <workItem from="1764866389194" duration="116000" />
+      <workItem from="1764896834772" duration="1979000" />
+      <workItem from="1764905129630" duration="1037000" />
+      <workItem from="1764942218731" duration="4868000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -341,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764860580348</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="chỉnh sửa file ProductPageViewModel.cs">
+      <option name="closed" value="true" />
+      <created>1764863932118</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1764863932118</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +394,8 @@
     <MESSAGE value="cập nhật thêm tính năng IncomePageViewModel.cs" />
     <MESSAGE value="cập nhật tính năng và backup" />
     <MESSAGE value="thêm chức năng tìm kiếm đơn hàng" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm chức năng tìm kiếm đơn hàng" />
+    <MESSAGE value="chỉnh sửa file ProductPageViewModel.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa file ProductPageViewModel.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
