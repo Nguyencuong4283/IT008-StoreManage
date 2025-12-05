@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/SanPhamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/SanPhamService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +163,7 @@
       <workItem from="1764866389194" duration="116000" />
       <workItem from="1764896834772" duration="1979000" />
       <workItem from="1764905129630" duration="1037000" />
-      <workItem from="1764942218731" duration="4868000" />
+      <workItem from="1764942218731" duration="8081000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -352,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764863932118</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Thêm tính năng tìm kiếm sản phẩm">
+      <option name="closed" value="true" />
+      <created>1764947384467</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764947384467</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +400,8 @@
     <MESSAGE value="cập nhật tính năng và backup" />
     <MESSAGE value="thêm chức năng tìm kiếm đơn hàng" />
     <MESSAGE value="chỉnh sửa file ProductPageViewModel.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa file ProductPageViewModel.cs" />
+    <MESSAGE value="Thêm tính năng tìm kiếm sản phẩm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm tính năng tìm kiếm sản phẩm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

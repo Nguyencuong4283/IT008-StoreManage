@@ -34,8 +34,19 @@ public class IncomePageViewModel : ViewModelBase
             new Axis
             {
                 Name = $"Năm {currentYear}",
-                NameTextSize = 15,
-                Labels = ["Tháng 1" ,"Tháng 2" ,"Tháng 3" ,"Tháng 4" ,"Tháng 5" ,"Tháng 6" ,"Tháng 7" ,"Tháng 8" ,"Tháng 9" ,"Tháng 10" ,"Tháng 11" ,"Tháng 12"],
+                NameTextSize = 10,
+                Labels = [$"Tháng 1/{currentYear}" ,
+                          $"Tháng 2/{currentYear}" ,
+                          $"Tháng 3/{currentYear}" ,
+                          $"Tháng 4/{currentYear}" ,
+                          $"Tháng 5/{currentYear}" ,
+                          $"Tháng 6/{currentYear}" ,
+                          $"Tháng 7/{currentYear}" ,
+                          $"Tháng 8/{currentYear}" ,
+                          $"Tháng 9/{currentYear}" ,
+                          $"Tháng 10/{currentYear}" ,
+                          $"Tháng 11/{currentYear}" ,
+                          $"Tháng 12/{currentYear}"],
             }
         ];
 
@@ -44,15 +55,13 @@ public class IncomePageViewModel : ViewModelBase
             new Axis
             {
                 Name = "Doanh thu (VNĐ)",
-                NameTextSize = 15,
+                NameTextSize = 10,
                 Labeler = value => value.ToString("N0")
             }
         ];
 
         LoadData(currentYear);
         
-    
-
     }
 
     private void LoadData(int year)
