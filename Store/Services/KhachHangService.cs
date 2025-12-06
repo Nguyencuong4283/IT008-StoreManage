@@ -32,7 +32,8 @@ namespace Store.Services
                     DiaChi TEXT CHECK(DiaChi <> ''),
                     Hang TEXT,
                     GhiChu TEXT,
-                    TongMua REAL
+                    TongMua REAL,
+                    IsDelete INTEGER DEFAULT 0
                 );";
                 cmd.ExecuteNonQuery();
             }
@@ -49,8 +50,8 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
                 INSERT INTO KhachHang 
-                (MaKH, TenKH, SDT, GioiTinh, DiaChi, Hang, GhiChu, TongMua)
-                VALUES ($MaKH, $TenKH, $SDT, $GioiTinh, $DiaChi, $Hang, $GhiChu, $TongMua)";
+                (MaKH, TenKH, SDT, GioiTinh, DiaChi, Hang, GhiChu, TongMua, IsDelete)
+                VALUES ($MaKH, $TenKH, $SDT, $GioiTinh, $DiaChi, $Hang, $GhiChu, $TongMua, $IsDelete)";
                 cmd.Parameters.AddWithValue("$MaKH", newMaKH);
                 cmd.Parameters.AddWithValue("$TenKH", kh.TenKH);
                 cmd.Parameters.AddWithValue("$SDT", kh.SDT);
@@ -59,6 +60,7 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$Hang", kh.Hang);
                 cmd.Parameters.AddWithValue("$GhiChu", kh.GhiChu);
                 cmd.Parameters.AddWithValue("$TongMua", (double)kh.TongMua);
+                cmd.Parameters.AddWithValue("$IsDelete", 0);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -72,7 +74,7 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT MaKH, TenKH, SDT, GioiTinh, DiaChi, Hang, GhiChu, TongMua FROM KhachHang";
+                cmd.CommandText = "SELECT MaKH, TenKH, SDT, GioiTinh, DiaChi, Hang, GhiChu, TongMua, IsDelete FROM KhachHang";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -88,8 +90,12 @@ namespace Store.Services
                             Hang = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             GhiChu = reader.IsDBNull(6) ? "" : reader.GetString(6),
                             TongMua = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7),
+                            IsDelete = reader.IsDBNull(8) ? 0 : reader.GetInt32(8)
                         };
-                        khachHangs.Add(kh);
+                        if (kh.IsDelete == 0)
+                        {
+                            khachHangs.Add(kh);
+                        }
                     }
                 }
             }
@@ -103,7 +109,7 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT COUNT(*) FROM KhachHang";
+                cmd.CommandText = "SELECT COUNT(*) FROM KhachHang WHERE IsDelete = 0";
                 var result = cmd.ExecuteScalar();
                 return Convert.ToInt32(result);
             }
@@ -123,7 +129,8 @@ namespace Store.Services
                     DiaChi = $DiaChi,
                     Hang = $Hang,
                     GhiChu = $GhiChu,
-                    TongMua = $TongMua
+                    TongMua = $TongMua,
+                    IsDelete = $IsDelete
                 WHERE MaKH = $MaKH";
 
                 cmd.Parameters.AddWithValue("$MaKH", kh.MaKH);
@@ -134,6 +141,7 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$Hang", kh.Hang);
                 cmd.Parameters.AddWithValue("$GhiChu", kh.GhiChu);
                 cmd.Parameters.AddWithValue("$TongMua", (double)kh.TongMua);
+                cmd.Parameters.AddWithValue("$IsDelete", kh.IsDelete);
 
                 cmd.ExecuteNonQuery();
             }
