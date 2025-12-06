@@ -20,6 +20,6 @@ namespace Store.Models
         public int IsDelete { get; set; }
 
         public string MaVaTen => $"{MaKH} | {TenKH}";
-        public KhachHang() { }
+        public KhachHang() {}
     }
 }

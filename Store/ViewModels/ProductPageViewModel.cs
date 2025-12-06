@@ -10,17 +10,21 @@ using Store.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Store.ViewModels
 {
     public partial class ProductPageViewModel : ViewModelBase
     {
+        private List<SanPham> allSanPhams = new();
+        
         [ObservableProperty] private Bitmap hinhAnhSP;
         [ObservableProperty] private string tenSP;
         [ObservableProperty] private decimal giaSP;
+        [ObservableProperty] private string searchKeyword;
         [ObservableProperty] private ObservableCollection<SanPham> sanPhams = new();
         
-        private string _boLoc;
+        private string _boLoc = "Tất cả";
         public string BoLoc
         {
             get => _boLoc;
@@ -32,65 +36,71 @@ namespace Store.ViewModels
                 }
             }
         }
-        private readonly DispatcherTimer _timer;
+        
+        private string _selectedDetail = "Tất cả";
+        public string SelectedDetail
+        {
+            get => _selectedDetail;
+            set
+            {
+                if (SetProperty(ref _selectedDetail, value))
+                {
+                    ApplyFilter();
+                }
+            }
+        }
+        
         public ObservableCollection<string> DanhSachBoLoc { get; } = new()
         {
+            "Tất cả",
            "Quần ngắn",
            "Quần dài",
            "Áo ngắn",
            "Áo dài",
-           "Khác",
-           "Tất cả"
+           "Khác"
         };
         public ObservableCollection<string> DanhSachChiTiet { get; } = new()
         {
-            "GiaSP",
-            "TenSP",
-            "SoLuong",
-            "Tất cả"
+            "Tất cả",
+            "Giá sản phẩm",
+            "Tên sản phẩm",
+            "Số lượng"
         };
+        
+        private readonly DispatcherTimer _timer;
         public ProductPageViewModel()
         {
             LoadSanPhams();
             
-            // ✅ Tạo timer lặp lại mỗi 5 giây
+            // Tạo timer lặp lại mỗi 5 giây
             _timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(5)
             };
-            _timer.Tick += (s, e) => ApplyFilter();
+            _timer.Tick += (s, e) =>
+            {
+                if (string.IsNullOrEmpty(SearchKeyword))
+                {
+                    LoadSanPhams();
+                }
+            };
             _timer.Start();
         }
         private void LoadSanPhams()
         {
             var list = SanPhanService.GetAllSanPham();
-
-            sanPhams.Clear();
-            foreach (var sp in list)
-            {
-                sanPhams.Add(sp);
-            }
-        }
-        
-        private void ApplyFilter()
-        {
-            List<SanPham> list;
+            allSanPhams = list;
             
-            if (string.IsNullOrEmpty(BoLoc) || BoLoc == "Tất cả")
+            if (string.IsNullOrEmpty(SearchKeyword) && BoLoc == "Tất cả")
             {
-                list = SanPhanService.GetAllSanPham();
+                UpdateProductsList(allSanPhams);
             }
             else
             {
-                list = SanPhanService.GetSearchSanPham(BoLoc);
-            }
-
-            sanPhams.Clear();
-            foreach (var sp in list)
-            {
-                sanPhams.Add(sp);
+                ApplyFilter();
             }
         }
+        
         [RelayCommand]
         private void ThemSanPhamButton()
         {
@@ -109,6 +119,59 @@ namespace Store.ViewModels
                 DataContext = new ProductDetailWindowViewModel(sanPham)
             };
             detailWindow.Show();
+        }
+        
+        //===== Tìm kiếm và lọc sản phẩm =====//
+        partial void OnSearchKeywordChanged(string value)
+        {
+            ApplyFilter();
+        }
+        private void ApplyFilter()
+        {
+            if (sanPhams == null) return;
+            
+            IEnumerable<SanPham> query = allSanPhams;
+
+            if (!string.IsNullOrEmpty(BoLoc) && !BoLoc.Equals("Tất cả", StringComparison.OrdinalIgnoreCase))
+            {
+                query = query.Where(sp => sp.LoaiSP == BoLoc);
+            }
+            
+            if (!string.IsNullOrWhiteSpace(SearchKeyword))
+            {
+                string keyword = SearchKeyword.ToLower().Trim();
+                
+                switch (SelectedDetail)
+                {
+                    case "Giá sản phẩm":
+                        query = query.Where(sp => sp.GiaSP.ToString().Contains(keyword));
+                        break;
+
+                    case "Tên sản phẩm":
+                        query = query.Where(sp => sp.TenSP.ToLower().Contains(keyword));
+                        break;
+
+                    case "Số lượng":
+                        query = query.Where(sp => sp.SoLuongSP.ToString().Contains(keyword));
+                        break;
+
+                    default: // Tất cả
+                        query = query.Where(sp => 
+                            sp.TenSP.ToLower().Contains(keyword) ||
+                            sp.GiaSP.ToString().Contains(keyword) ||
+                            sp.SoLuongSP.ToString().Contains(keyword));
+                        break;
+                }
+            }
+            UpdateProductsList(query);
+        }
+        private void UpdateProductsList(IEnumerable<SanPham> products)
+        {
+            sanPhams.Clear();
+            foreach (var sp in products)
+            {
+                sanPhams.Add(sp);
+            }
         }
     }
 }

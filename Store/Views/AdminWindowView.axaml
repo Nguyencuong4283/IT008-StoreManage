@@ -9,6 +9,7 @@
         Height="800"
         Width="1200"
         WindowStartupLocation="CenterScreen"
+        TransparencyLevelHint="transparent" 
         Background="Transparent"
         SystemDecorations="None"
         d:DesignHeight="800"

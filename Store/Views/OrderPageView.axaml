@@ -36,7 +36,7 @@
                     <Border CornerRadius="8" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1.5">
                         <ComboBox Background="{DynamicResource BgInput}"
                                   BorderThickness="0"
-								  ItemsSource="{Binding DanhSachBoLoc}"
+								          ItemsSource="{Binding DanhSachBoLoc}"
                                   Width="180"
                                   PlaceholderForeground="{DynamicResource TextPlaceholder}"
                                   Foreground="{DynamicResource TextPrimary}"
@@ -55,6 +55,7 @@
                                  Width="400" 
                                  FontSize="14"
                                  Watermark="🔍 Tìm kiếm hoá đơn..."
+                                 Text="{Binding SearchKeyword}"
                                  Padding="12,8"
                                  CornerRadius="8"/>
                     </Border>

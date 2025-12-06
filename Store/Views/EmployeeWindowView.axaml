@@ -8,6 +8,7 @@
         Title="ShopQuality - Employees"
         Height="800"
         Width="1200"
+        TransparencyLevelHint="transparent"
         Background="Transparent"
         SystemDecorations="None"
         WindowStartupLocation="CenterScreen"

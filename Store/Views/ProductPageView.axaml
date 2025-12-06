@@ -61,13 +61,15 @@
                              PlaceholderText="Bộ lọc"/>
                    
                    <ComboBox ItemsSource="{Binding DanhSachChiTiet}" 
+                             SelectedItem="{Binding SelectedDetail}"
                              Classes="modern-combo"
                              Width="140" 
                              PlaceholderText="Chi tiết"/>
                    
                    <TextBox Classes="modern-input"
                             Width="300" 
-                            Watermark="🔍 Tìm kiếm sản phẩm..."/>
+                            Watermark="🔍 Tìm kiếm sản phẩm..."
+                            Text="{Binding SearchKeyword}"/>
                 </StackPanel>
                 
         

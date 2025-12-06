@@ -5,6 +5,7 @@
         WindowStartupLocation="CenterScreen"
         d:DesignHeight="600"
         d:DesignWidth="900"
+        TransparencyLevelHint="transparent"
         Background="Transparent"
         SystemDecorations="None"
         mc:Ignorable="d"
