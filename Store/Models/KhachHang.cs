@@ -17,6 +17,8 @@ namespace Store.Models
         public decimal TongMua { get; set; }
         public string GhiChu { get; set; }
 
+        public int IsDelete { get; set; }
+
         public string MaVaTen => $"{MaKH} | {TenKH}";
         public KhachHang() { }
     }

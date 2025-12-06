@@ -36,8 +36,9 @@ namespace Store.Services
                     DiaChi TEXT NOT NULL,
                     NgaySinh TEXT,
                     GioiTinh TEXT,
-                    HinhAnh TEXT,
-                    MaVT TEXT NOT NULL
+                    HinhAnh TEXT NULL,
+                    MaVT TEXT NOT NULL,
+                    IsDelete INTEGER DEFAULT 0
                 );";
                 cmd.ExecuteNonQuery();
             }
@@ -54,8 +55,8 @@ namespace Store.Services
 
                 cmd.CommandText = @"
                 INSERT INTO Users 
-                (MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT)
-                VALUES ($MaNV, $TenDangNhap, $MatKhau, $HoTen, $Email, $SDT, $DiaChi, $NgaySinh, $GioiTinh, $HinhAnh, $MaVT)";
+                (MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT, IsDelete)
+                VALUES ($MaNV, $TenDangNhap, $MatKhau, $HoTen, $Email, $SDT, $DiaChi, $NgaySinh, $GioiTinh, $HinhAnh, $MaVT, $IsDelete)";
 
                 cmd.Parameters.AddWithValue("$MaNV", newMaNV);
                 cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap);
@@ -68,6 +69,7 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh);
                 cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh);
                 cmd.Parameters.AddWithValue("$MaVT", user.MaVT);
+                cmd.Parameters.AddWithValue("$IsDelete", user.IsDelete);
 
                 cmd.ExecuteNonQuery();
             }
@@ -83,7 +85,7 @@ namespace Store.Services
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
-                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT 
+                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT, IsDelete
                 FROM Users";
 
                 using (var reader = cmd.ExecuteReader())
@@ -103,8 +105,10 @@ namespace Store.Services
                             GioiTinh = reader.IsDBNull(8) ? "" : reader.GetString(8),
                             HinhAnh = reader.IsDBNull(9) ? "" : reader.GetString(9),
                             MaVT = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                            IsDelete = reader.IsDBNull(11) ? 0 : reader.GetInt32(11),
                         };
-                        users.Add(user);
+                        if(user.IsDelete == 0 )
+                            users.Add(user);
                     }
                 }
             }
@@ -122,7 +126,7 @@ namespace Store.Services
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
-                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT 
+                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT , IsDelete
                 FROM Users";
                 User user1 = new User();
                 using (var reader = cmd.ExecuteReader())
@@ -147,6 +151,7 @@ namespace Store.Services
                                 GioiTinh = reader.IsDBNull(8) ? "" : reader.GetString(8),
                                 HinhAnh = reader.IsDBNull(9) ? "" : reader.GetString(9),
                                 MaVT = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                                IsDelete = reader.IsDBNull(11) ? 0 : reader.GetInt32(11),
                             };
                             user1 = user;
                             return user1;
@@ -179,7 +184,8 @@ namespace Store.Services
                             NgaySinh = $NgaySinh,
                             GioiTinh = $GioiTinh,
                             HinhAnh = $HinhAnh,
-                            MaVT = $MaVT
+                            MaVT = $MaVT,
+                            IsDelete = $IsDelete
                         WHERE MaNV = $MaNV"
                     : @"
                         UPDATE Users SET
@@ -191,19 +197,21 @@ namespace Store.Services
                             NgaySinh = $NgaySinh,
                             GioiTinh = $GioiTinh,
                             HinhAnh = $HinhAnh,
-                            MaVT = $MaVT
+                            MaVT = $MaVT,
+                            IsDelete = $IsDelete
                         WHERE MaNV = $MaNV";
 
-                cmd.Parameters.AddWithValue("$MaNV", user.MaNV);
-                cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap);
-                cmd.Parameters.AddWithValue("$HoTen", user.HoTen);
-                cmd.Parameters.AddWithValue("$Email", user.Email);
-                cmd.Parameters.AddWithValue("$SDT", user.SDT);
-                cmd.Parameters.AddWithValue("$DiaChi", user.DiaChi);
-                cmd.Parameters.AddWithValue("$NgaySinh", user.NgaySinh?.ToString("yyyy-MM-dd"));
-                cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh);
-                cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh);
-                cmd.Parameters.AddWithValue("$MaVT", user.MaVT);
+                cmd.Parameters.AddWithValue("$MaNV", user.MaNV ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$HoTen", user.HoTen ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$Email", user.Email ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$SDT", user.SDT ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$DiaChi", user.DiaChi ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$NgaySinh", user.NgaySinh?.ToString("yyyy-MM-dd") ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$MaVT", user.MaVT ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$IsDelete", user.IsDelete);
 
                 if (updatePassword)
                 {

@@ -89,10 +89,10 @@
                                 Spacing="8"
                                 VerticalAlignment="Center">
                         <Button Classes="top-icon">
-                            <TextBlock Text="🔔" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="📆" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Button>
                         <Button Classes="top-icon">
-                            <TextBlock Text="💬" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="📒" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Button>
                         <Button Classes="top-icon">
                             <TextBlock Text="👤" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>

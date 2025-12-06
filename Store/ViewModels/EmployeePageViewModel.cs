@@ -11,6 +11,7 @@ using Store.Models;
 using Store.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Store.ViewModels;
@@ -36,7 +37,44 @@ public partial class EmployeePageViewModel : ViewModelBase
             nhanViens.Add(nv);
         }
     }
- 
+    [RelayCommand]
+    private async Task ChiTietButton(User user)
+    {
+        if (user == null) return;
+        
+        var editWindow = new Views.EditAccountWindowView
+        {
+            DataContext = new EditAccountWindowViewModel(user)
+        };
+        
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            var owner = desktop.Windows.FirstOrDefault(w => w.IsActive) ?? desktop.MainWindow;
+            if (owner != null)
+            {
+                await editWindow.ShowDialog(owner);
+                LoadNhanViens(); // Reload sau khi đóng dialog
+            }
+        }
+    }
+    [RelayCommand]
+    private void ThemNhanVienButton()
+    {
+        var createWindow = new Views.CreateAcountWindowView
+        {
+            DataContext = new CreateAcountWindowViewModel()
+        };
+        
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            var owner = desktop.Windows.FirstOrDefault(w => w.IsActive) ?? desktop.MainWindow;
+            if (owner != null)
+            {
+                createWindow.ShowDialog(owner);
+                LoadNhanViens(); // Reload sau khi đóng dialog
+            }
+        }
+    }
     /*   private void LoadKhachHangs()
     {
         var list = KhachHangService.GetAllKhachHang();
