@@ -62,9 +62,6 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$LoaiSP", sp.LoaiSP);
                 cmd.Parameters.AddWithValue("$MoTaSP", sp.MoTaSP ?? (object)DBNull.Value);
                 cmd.ExecuteNonQuery();
-                
-                // Gửi message thông báo đã thêm sản phẩm
-                WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Insert"));
             }
         }
 

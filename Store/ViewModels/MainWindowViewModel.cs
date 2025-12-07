@@ -100,8 +100,17 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void RegisterButton()
     {
-        CreateAcountWindowView createAcountWindowView = new CreateAcountWindowView();
-        createAcountWindowView.Show();
+        if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+            && desktop.MainWindow is Avalonia.Controls.Window loginWindow)
+        {
+            CreateAcountWindowView createAcountWindowView = new CreateAcountWindowView();
+            createAcountWindowView.Closed += (sender, args) =>
+            {
+                loginWindow.Show();
+            };
+            loginWindow.Hide();
+            createAcountWindowView.Show();
+        }
     }
     [RelayCommand]
     private void ForgotPasswordButton()

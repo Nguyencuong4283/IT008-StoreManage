@@ -1,46 +1,34 @@
+using CommunityToolkit.Mvvm.Messaging.Messages;
+using Store.Models;
+
 namespace Store.Messages
 {
-    // Message chung cho mọi thay đổi database
-    public class DatabaseChangedMessage
+    // Message dùng chung cho bảng Khách Hàng
+    // Kế thừa ValueChangedMessage<string> để chứa nội dung Action ("Insert", "Update", "Delete")
+    public class KhachHangChangedMessage : ValueChangedMessage<string>
     {
-        public string TableName { get; set; }
-        public string Action { get; set; } // "Insert", "Update", "Delete"
-        
-        public DatabaseChangedMessage(string tableName, string action)
+        public KhachHangChangedMessage(string action) : base(action)
+        {
+        }
+    }
+
+    // Các message khác (giữ nguyên hoặc cập nhật tương tự nếu cần)
+    public class HoaDonChangedMessage : ValueChangedMessage<string>
+    {
+        public HoaDonChangedMessage(string action) : base(action) { }
+    }
+    
+    public class SanPhamChangedMessage : ValueChangedMessage<string>
+    {
+        public SanPhamChangedMessage(string action) : base(action) { }
+    }
+    
+    public class DatabaseChangedMessage : ValueChangedMessage<string>
+    {
+        public string TableName { get; }
+        public DatabaseChangedMessage(string tableName, string action) : base(action)
         {
             TableName = tableName;
-            Action = action;
-        }
-    }
-    
-    // Message cụ thể cho từng bảng
-    public class HoaDonChangedMessage
-    {
-        public string Action { get; set; }
-        
-        public HoaDonChangedMessage(string action)
-        {
-            Action = action;
-        }
-    }
-    
-    public class SanPhamChangedMessage
-    {
-        public string Action { get; set; }
-        
-        public SanPhamChangedMessage(string action)
-        {
-            Action = action;
-        }
-    }
-    
-    public class KhachHangChangedMessage
-    {
-        public string Action { get; set; }
-        
-        public KhachHangChangedMessage(string action)
-        {
-            Action = action;
         }
     }
 }

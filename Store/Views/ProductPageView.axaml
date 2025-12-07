@@ -55,7 +55,7 @@
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
                    
                    <ComboBox ItemsSource="{Binding DanhSachBoLoc}" 
-                             SelectedItem="{Binding BoLoc}"
+                             SelectedItem="{Binding Filter}"
                              Classes="modern-combo"
                              Width="160" 
                              PlaceholderText="Bộ lọc"/>

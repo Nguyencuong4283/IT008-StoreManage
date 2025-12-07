@@ -50,9 +50,16 @@
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     
                     <ComboBox ItemsSource="{Binding DanhSachBoLoc}"
+                              SelectedItem="{Binding SelectedFilter}"
                               Classes="modern-combo"
                               Width="180" 
-                              PlaceholderText="Bộ lọc"/>
+                              PlaceholderText="Bộ lọc"
+                              PlaceholderForeground="{DynamicResource TextPlaceholder}"
+                              Background="{DynamicResource BgInput}"
+                              Foreground="{DynamicResource TextPrimary}"
+                              FontSize="14"
+                              Padding="12,8"
+                              CornerRadius="8"/>
                     
                     <TextBox Width="400" 
                              Classes="modern-input"

@@ -37,10 +37,10 @@
                         <ComboBox Background="{DynamicResource BgInput}"
                                   BorderThickness="0"
 								          ItemsSource="{Binding DanhSachBoLoc}"
+                                  SelectedItem="{Binding SelectedFilterBy}"
                                   Width="180"
                                   PlaceholderForeground="{DynamicResource TextPlaceholder}"
                                   Foreground="{DynamicResource TextPrimary}"
-
                                   FontSize="14"
                                   PlaceholderText="Bộ lọc"
                                   Padding="12,8"

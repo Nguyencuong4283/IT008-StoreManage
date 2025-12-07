@@ -6,8 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Messages/DatabaseChangedMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Messages/DatabaseChangedMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Services/IncomeData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CreateCustomerWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CreateCustomerWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CreateProductWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CreateProductWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/HomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/HomePageViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateAcountWindowView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/OrderPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/OrderPageView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/ProductPageView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +31,8 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="KEEP" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -33,11 +47,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Store/Services/IncomeData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Store/Services/OrderFilter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Store/Models/Income.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Store/Services/IncomeService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/ViewModels/OrderPageViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/Views/AdminWindowView.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/ViewModels/ProductPageViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -66,8 +79,13 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
 }</component>
   <component name="RunManager">
@@ -164,6 +182,13 @@
       <workItem from="1764896834772" duration="1979000" />
       <workItem from="1764905129630" duration="1037000" />
       <workItem from="1764942218731" duration="8081000" />
+      <workItem from="1767283245143" duration="116000" />
+      <workItem from="1765071285080" duration="1443000" />
+      <workItem from="1765072964475" duration="7029000" />
+      <workItem from="1765080418337" duration="49000" />
+      <workItem from="1765080488803" duration="3790000" />
+      <workItem from="1765085940703" duration="503000" />
+      <workItem from="1765087204765" duration="2594000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -357,7 +382,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764947384467</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Chỉnh sửa giao diện các trang">
+      <option name="closed" value="true" />
+      <created>1764950562654</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1764950562654</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +403,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -401,7 +446,8 @@
     <MESSAGE value="thêm chức năng tìm kiếm đơn hàng" />
     <MESSAGE value="chỉnh sửa file ProductPageViewModel.cs" />
     <MESSAGE value="Thêm tính năng tìm kiếm sản phẩm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Thêm tính năng tìm kiếm sản phẩm" />
+    <MESSAGE value="Chỉnh sửa giao diện các trang" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chỉnh sửa giao diện các trang" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

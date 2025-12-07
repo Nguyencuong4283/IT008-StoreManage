@@ -66,7 +66,7 @@ public class IncomePageViewModel : ViewModelBase
 
     private void LoadData(int year)
     {
-            var monthlyData = IncomeData.GetMonthlyIncome(year);
+            var monthlyData = IncomeService.GetMonthlyIncome(year);
 
             _values.Clear();
             foreach (var m in monthlyData)
@@ -80,7 +80,7 @@ public class IncomePageViewModel : ViewModelBase
     {
         get
         {
-            var income = IncomeData.Monthly_Stat(currentYear);
+            var income = IncomeService.Monthly_Stat(currentYear);
             return income.TotalIncome;
         }
     }
@@ -90,7 +90,7 @@ public class IncomePageViewModel : ViewModelBase
     {
         get
         {
-            var orders = IncomeData.Monthly_Stat(currentYear);
+            var orders = IncomeService.Monthly_Stat(currentYear);
             return orders.TotalOrders;
         }
     }

@@ -47,21 +47,21 @@ public partial class HomePageViewModel : ViewModelBase,
     // Xử lý khi nhận message HoaDon thay đổi
     public void Receive(HoaDonChangedMessage message)
     {
-        System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Nhận message: HoaDon {message.Action}");
+        System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Nhận message: HoaDon {message}");
         LoadStatistics();
     }
     
     // Xử lý khi nhận message SanPham thay đổi
     public void Receive(SanPhamChangedMessage message)
     {
-        System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Nhận message: SanPham {message.Action}");
+        System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Nhận message: SanPham {message}");
         LoadStatistics();
     }
     
     // Xử lý khi nhận message KhachHang thay đổi
     public void Receive(KhachHangChangedMessage message)
     {
-        System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Nhận message: KhachHang {message.Action}");
+        System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Nhận message: KhachHang {message}");
         LoadStatistics();
     }
     
