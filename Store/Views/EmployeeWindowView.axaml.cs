@@ -20,7 +20,7 @@ public partial class EmployeeWindowView : Window
     }
     private void LogoutButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var mainWindow = new MainWindow();
+        var mainWindow = new Auth.MainWindow();
         mainWindow.Show();
         this.Close(); // đóng Window
     }

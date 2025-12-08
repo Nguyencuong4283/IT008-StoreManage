@@ -11,7 +11,7 @@ using Store.Messages;
 using Store.Views;
 using System;
 using System.Collections.ObjectModel;
-using static Store.ViewModels.MainWindowViewModel;
+using static Store.ViewModels.Auth.MainWindowViewModel;
 
 namespace Store.ViewModels;
 public partial class AccountSettingPageViewModel : ViewModelBase,

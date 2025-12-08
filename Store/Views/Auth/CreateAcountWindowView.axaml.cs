@@ -1,10 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Store.ViewModels;
-using Store.Views;
 
-namespace Store.Views;
+namespace Store.Views.Auth;
 
 public partial class CreateAcountWindowView : Window
 {

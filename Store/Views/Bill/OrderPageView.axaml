@@ -3,9 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
-             xmlns:vm="clr-namespace:Store.ViewModels"
+             xmlns:vm="clr-namespace:Store.ViewModels.Bill"
              x:DataType="vm:OrderPageViewModel"
-             x:Class="Store.Views.OrderPageView">
+             x:Class="Store.Views.Bill.OrderPageView">
    
     <Design.DataContext>
        <vm:OrderPageViewModel/>
@@ -37,10 +37,10 @@
                         <ComboBox Background="{DynamicResource BgInput}"
                                   BorderThickness="0"
 								          ItemsSource="{Binding DanhSachBoLoc}"
-                                  SelectedItem="{Binding SelectedFilterBy}"
                                   Width="180"
                                   PlaceholderForeground="{DynamicResource TextPlaceholder}"
                                   Foreground="{DynamicResource TextPrimary}"
+
                                   FontSize="14"
                                   PlaceholderText="Bộ lọc"
                                   Padding="12,8"

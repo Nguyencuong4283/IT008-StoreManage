@@ -2,19 +2,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="using:Store.Views"
-        xmlns:vm="using:Store.ViewModels"
+        xmlns:vm="using:Store.ViewModels.Bill"
         mc:Ignorable="d"
         d:DesignWidth="900"
-        d:DesignHeight="800"
-        Height="800"
+        d:DesignHeight="900"
+        Height="900"
         Width="900"
         Background="Transparent"
         SystemDecorations="None"
         WindowStartupLocation="CenterScreen"
-        x:Class="Store.Views.BillDetailWindowView"
-        x:DataType="vm:BillDetailWindowViewModel"
-        Title="BillDetailWindowView">
+        x:Class="Store.Views.Bill.CreateBillWindowView"
+        x:DataType="vm:CreateBillWindowViewModel"
+        Title="CreateBillWindowView">
 
     <Border CornerRadius="20" 
             BoxShadow="0 10 40 5 #40000000" 
@@ -40,7 +39,7 @@
                 <Grid RowDefinitions="Auto,Auto,Auto,Auto" Margin="40">
                    
                    <TextBlock Grid.Row="0"
-                              Text="Chi tiết hóa đơn"
+                              Text="Tạo hóa đơn mới"
                               Classes="header"
                               Foreground="{DynamicResource TextPrimary}"
                               TextAlignment="Center"
@@ -50,22 +49,34 @@
                       <StackPanel Grid.Column="0" Margin="0,0,20,0" Spacing="20">
                          <StackPanel>
                             <TextBlock Text="Nhân viên" Classes="label"/>
-                              <TextBox Classes="modern-input"
-                                     Text="{Binding TenNhanVien}"
-                                     IsReadOnly="True"/>
+                            <ComboBox ItemsSource="{Binding DanhSachNhanVien, Mode=TwoWay}"
+                                      SelectedItem="{Binding NhanVienDuocChon, Mode=TwoWay}"
+                                      Classes="modern-combo"
+                                      PlaceholderText="Chọn nhân viên"
+                                      HorizontalAlignment="Stretch">
+                                  <ComboBox.ItemTemplate>
+                                     <DataTemplate>
+                                        <TextBlock Text="{Binding MaNV_HoTen}"/>
+                                     </DataTemplate>
+                                  </ComboBox.ItemTemplate>
+                               </ComboBox>
                          </StackPanel>
 
                          <StackPanel>
                             <TextBlock Text="Khách hàng" Classes="label"/>
-                              <TextBox Classes="modern-input"
-                                     Text="{Binding TenKhachHang}"
-                                     IsReadOnly="True"/>
+                            <ComboBox ItemsSource="{Binding DanhSachKhachHang, Mode=TwoWay}"
+                                      SelectedItem="{Binding KhachHangDuocChon, Mode=TwoWay}"
+                                      Classes="modern-combo"
+                                      PlaceholderText="Chọn khách hàng"
+                                      HorizontalAlignment="Stretch">
+                                  <ComboBox.ItemTemplate>
+                                     <DataTemplate>
+                                        <TextBlock Text="{Binding MaVaTen}"/>
+                                     </DataTemplate>
+                                  </ComboBox.ItemTemplate>
+                               </ComboBox>
                          </StackPanel>
 
-                      </StackPanel>
-
-                      <StackPanel Grid.Column="1" Margin="20,0,0,0" Spacing="20">
-                        
                          <StackPanel>
                             <TextBlock Text="Thời gian" Classes="label"/>
                             <TextBox Classes="modern-input"
@@ -78,6 +89,62 @@
                             <TextBox Classes="modern-input"
                                      Text="{Binding SoHD}"
                                      IsReadOnly="True"/>
+                         </StackPanel>
+                      </StackPanel>
+
+                      <StackPanel Grid.Column="1" Margin="20,0,0,0" Spacing="20">
+                         <StackPanel>
+                            <TextBlock Text="Sản phẩm" Classes="label"/>
+                            <ComboBox ItemsSource="{Binding DanhSachSanPham, Mode=TwoWay}"
+                                      SelectedItem="{Binding SanPhamDuocChon, Mode=TwoWay}"
+                                      Classes="modern-combo"
+                                      PlaceholderText="Chọn sản phẩm"
+                                      HorizontalAlignment="Stretch">
+                                  <ComboBox.ItemTemplate>
+                                     <DataTemplate>
+                                        <TextBlock Text="{Binding TenSP_Size_TonKho}"/>
+                                     </DataTemplate>
+                                  </ComboBox.ItemTemplate>
+                               </ComboBox>
+                         </StackPanel>
+
+                         <StackPanel>
+                            <TextBlock Text="Đơn giá" Classes="label"/>
+                            <TextBox Classes="modern-input"
+                                     IsReadOnly="True"
+                                     Text="{Binding GiaSP}"/>
+                         </StackPanel>
+
+                         <Grid ColumnDefinitions="*,*">
+                            
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                               <TextBlock Text="Số lượng" Classes="label"/>
+                               <Border CornerRadius="8" 
+                                       BorderBrush="{DynamicResource BorderColor}" 
+                                       BorderThickness="1.5"
+                                       Background="{DynamicResource BgInput}">
+                                  <TextBox Grid.Column="0"
+                                                   Text="{Binding SoLuong, Mode=TwoWay}"
+                                                   Background="Transparent"
+                                                   BorderThickness="0"
+                                                   FontSize="15"
+                                                   Foreground="{DynamicResource TextPrimary}"
+                                                   Padding="12,10"
+                                                   VerticalContentAlignment="Center"/>
+                               </Border>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                               <TextBlock Text="Khuyến mãi (%)" Classes="label"/>
+                               <TextBox Classes="modern-input"
+                                        Text="{Binding KhuyenMai}"/>
+                            </StackPanel>
+                         </Grid>
+
+                         <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
+                            <Button Command="{Binding ThemSanPhamCommand}" Classes="primary" Width="110">+ Thêm</Button>
+                            <Button Classes="danger" Width="110">🗑️ Xóa</Button>
+                            <Button Command="{Binding ThanhToanCommand}"  Classes="primary" Width="140">💳 Thanh toán</Button>
                          </StackPanel>
                       </StackPanel>
                    </Grid>

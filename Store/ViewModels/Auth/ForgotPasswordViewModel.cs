@@ -3,14 +3,13 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
 using Store.Services;
-using Store.Views;
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Store.ViewModels
+namespace Store.ViewModels.Auth
 {
     public partial class ForgotPasswordViewModel : ViewModelBase
     {
@@ -22,7 +21,7 @@ namespace Store.ViewModels
         [RelayCommand]
         private void RegisterButton()
         {
-            MainWindow mainWindow = new MainWindow();
+            var mainWindow = new Store.Views.Auth.MainWindow();
             if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
                 && desktop.MainWindow is Avalonia.Controls.Window currentWindow)
             {

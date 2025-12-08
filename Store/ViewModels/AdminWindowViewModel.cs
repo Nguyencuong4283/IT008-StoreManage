@@ -1,5 +1,4 @@
-﻿using Store.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Store.ViewModels;
@@ -12,7 +11,7 @@ public partial class AdminWindowViewModel : ViewModelBase
 
 
     private readonly HomePageViewModel _homePage = new();
-    private readonly OrderPageViewModel _orderPage = new();
+    private readonly Bill.OrderPageViewModel _orderPage = new();
     private readonly ProductPageViewModel _productPage = new();
     private readonly IncomePageViewModel _incomePage = new();
     private readonly SettingPageViewModel _settingPage = new();
