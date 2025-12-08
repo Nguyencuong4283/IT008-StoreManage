@@ -14,6 +14,7 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -446,7 +447,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765197871128</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Thêm ImportPageView.axaml.cs">
+      <option name="closed" value="true" />
+      <created>1765199172906</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1765199172906</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="update" />
     <MESSAGE value="update style" />
     <MESSAGE value="Fix UI" />
     <MESSAGE value="sửa lỗi UI" />
@@ -504,7 +512,8 @@
     <MESSAGE value="cập nhật tính năng tìm kiếm sản phẩm và chỉnh sửa các lỗi" />
     <MESSAGE value="thêm lại file bị thiếu" />
     <MESSAGE value="Thêm ImportPageViewModel.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Thêm ImportPageViewModel.cs" />
+    <MESSAGE value="Thêm ImportPageView.axaml.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm ImportPageView.axaml.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
