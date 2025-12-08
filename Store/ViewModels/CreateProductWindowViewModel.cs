@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 
 
 namespace Store.ViewModels
@@ -29,10 +31,11 @@ namespace Store.ViewModels
         [ObservableProperty] private Bitmap hinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
         public ObservableCollection<string> DanhSachLoaiSP { get; } = new()
         {
-            "Quần ngắn",
-            "Quần dài",
-            "Áo bà ba",
-            "Khác"
+           "Quần ngắn",
+           "Quần dài",
+           "Áo ngắn",
+           "Áo dài",
+           "Khác"
         };
         public ObservableCollection<string> DanhSachKichThuocSP { get; } = new()
         {
@@ -66,6 +69,7 @@ namespace Store.ViewModels
                 };
                 SanPhanService.InsertSanPham(sanPham);
                 // Sau khi thêm thành công
+                WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm: {TenSP}");
                 // Reset form
                 TenSP = "";
@@ -75,8 +79,8 @@ namespace Store.ViewModels
                 KichThuocSP = "";
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
-                HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png"))
-  );
+                HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
+                MaSP = SanPhanService.GenerateNewMaSP();
 
 
             }
@@ -132,6 +136,30 @@ namespace Store.ViewModels
             return null;
         }
 
+        [RelayCommand]
+        private void TangGia()
+        {
+            GiaSP += 1000;
+        }
 
+        [RelayCommand]
+        private void GiamGia()
+        {
+            if (GiaSP >= 2000)
+                GiaSP -= 1000;
+        }
+
+        [RelayCommand]
+        private void TangSoLuong()
+        {
+            SoLuongSP++;
+        }
+
+        [RelayCommand]
+        private void GiamSoLuong()
+        {
+            if (SoLuongSP > 1)
+                SoLuongSP--;
+        }
     }
 }

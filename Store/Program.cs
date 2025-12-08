@@ -13,10 +13,11 @@ sealed class Program
         SanPhanService.Initialize();
         UserService.Initialize();
         KhachHangService.Initialize();
+        HoaDonService.Initialize();
+        ChiTiet_HoaDonService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng
-        BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.

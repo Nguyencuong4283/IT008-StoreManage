@@ -5,6 +5,7 @@
     x:Class="Store.Views.AnalysePageView"
     x:DataType="viewModel:AnalysePageViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:Store.ViewModels"
@@ -66,11 +67,7 @@
                                     CornerRadius="8" 
                                     Height="350"
                                     Padding="20">
-                                <TextBlock Text="📈 Biểu đồ phân tích sẽ được hiển thị ở đây" 
-                                           FontSize="16" 
-                                           Foreground="#718096"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                
                             </Border>
                         </StackPanel>
                     </Border>

@@ -8,17 +8,24 @@ namespace Store.Models
 {
     public class HoaDon
     {
-        public int      MaHD { get; set; }
+        public string   MaHD { get; set; }
         public DateTime NgayLapHD { get; set; }
         public decimal  TongTienHD { get; set; }
         public decimal  GiamGiaHD { get; set; }
-        public int      MaKH { get; set; }
-        public string TenKH { get; set; }
-        public int      MaUser { get; set; }
+        public string     MaKH { get; set; }
+        public string      MaUser { get; set; }
         public string TenUser { get; set; }
         public int      SoHD { get; set; }
         public string   TrangThaiHD { get; set; }
-        
+
+        public KhachHang? KhachHang { get; set; }
+        public string TenKH
+        {
+            get => KhachHang?.TenKH ?? "";
+            set => KhachHang = KhachHang;
+        }
+
+
         public HoaDon() { }
     }
 }

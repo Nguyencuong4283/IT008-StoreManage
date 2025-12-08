@@ -23,5 +23,7 @@ Thumbs.db
 Desktop.ini
 
 # Chặn CSDL
-#Store/bin/Debug/net9.0/store
+Store/bin/Debug/net9.0/store
+Store/bin/
+Store/obj/
 

@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 
 namespace Store.ViewModels
 {
@@ -16,7 +18,7 @@ namespace Store.ViewModels
         [ObservableProperty] private string maKH;
         [ObservableProperty] private string tenKH;
         [ObservableProperty] private string sDT;
-        [ObservableProperty] private string gioiTinh = "Nam" ;
+        [ObservableProperty] private string gioiTinh = "Chọn giới tính" ;
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private string ghiChu;
 
@@ -50,6 +52,7 @@ namespace Store.ViewModels
                 
                 KhachHangService.InsertKhachHang(khachHang);
                 // Sau khi thêm thành công
+                WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm khách hàng: {tenKH}");
                 // Reset form
                 TenKH = "";

@@ -1,112 +1,137 @@
-<UserControl
-    d:DesignHeight="700"
-    d:DesignWidth="1000"
-    mc:Ignorable="d"
-    x:Class="Store.Views.EmployeePageView"
-    x:DataType="viewModel:EmployeePageViewModel"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="clr-namespace:Store.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
-        <Grid RowDefinitions="Auto,Auto,*">
-            <!-- Header & Controls -->
-            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="20,20,20,15">
-                <Grid ColumnDefinitions="*,Auto">
-                    <StackPanel Grid.Column="0">
-                        <TextBlock Text="Quản lý nhân sự" Classes="header" Margin="0,0,0,5"/>
-                        <TextBlock Text="Danh sách nhân viên và thông tin" Classes="body"/>
-                    </StackPanel>
-                    
-                    <Button Grid.Column="1" 
-                            Classes="primary"
-                            Height="42"
-                            Padding="24,0"
-                            VerticalAlignment="Center">
-                        + Thêm nhân viên
-                    </Button>
-                </Grid>
-            </Border>
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:viewModel="clr-namespace:Store.ViewModels"
+			 mc:Ignorable="d"
+			 d:DesignHeight="700"
+			 d:DesignWidth="1000"
+			 x:DataType="viewModel:EmployeePageViewModel"
+			 x:Class="Store.Views.EmployeePageView">
 
-            <!-- Search & Filter -->
-            <Border Grid.Row="1" Padding="20,15" BorderBrush="#E2E8F0" BorderThickness="0,1,0,1">
-                <StackPanel Orientation="Horizontal" Spacing="12">
-                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                        <ComboBox Background="White"
-                                  BorderThickness="0"
-                                  Width="180" 
-                                  FontSize="14"
-                                  PlaceholderText="Bộ lọc"
-                                  Padding="12,8"
-                                  CornerRadius="8"/>
-                    </Border>
-                    
-                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                        <TextBox Background="White"
-                                 BorderThickness="0"
-                                 Width="400" 
-                                 FontSize="14"
-                                 Watermark="🔍 Tìm kiếm nhân viên..."
-                                 Padding="12,8"
-                                 CornerRadius="8"/>
-                    </Border>
-                </StackPanel>
-            </Border>
+	<Border CornerRadius="16"
+			Background="{DynamicResource BgPage}"
+			Margin="10"
+			BoxShadow="0 4 20 0 #30000000">
 
-            <!-- Employee List -->
-            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="20">
-                <StackPanel Spacing="15">
-                    <!-- Employee Card Template -->
-                    <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
-                        <Grid ColumnDefinitions="80,*,Auto">
-                            <!-- Avatar -->
-                            <Border Grid.Column="0" 
-                                    Background="#F7FAFC" 
-                                    CornerRadius="40" 
-                                    Width="60" 
-                                    Height="60"
-                                    VerticalAlignment="Center">
-                                <TextBlock Text="👤" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
+		<Grid RowDefinitions="Auto,Auto,*">
+			<Border Grid.Row="0"
+					Background="{DynamicResource BgCard}"
+					CornerRadius="16,16,0,0"
+					Padding="20,20,20,15"
+					BorderBrush="{DynamicResource BorderColor}"
+					BorderThickness="0,0,0,1">
+				<Grid ColumnDefinitions="*,Auto">
+					<StackPanel Grid.Column="0">
+						<TextBlock Text="Quản lý nhân sự"
+								   Classes="header"
+								   Foreground="{DynamicResource TextPrimary}"
+								   Margin="0,0,0,5"/>
+						<TextBlock Text="Danh sách nhân viên và thông tin"
+								   Classes="body"
+								   Foreground="{DynamicResource TextSecondary}"/>
+					</StackPanel>
 
-                            <!-- Info -->
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="15,0">
-                                <TextBlock Text="Nhân viên mẫu" FontSize="16" FontWeight="SemiBold" Foreground="#2D3748"/>
-                                <TextBlock Text="Vị trí: Nhân viên bán hàng" FontSize="14" Foreground="#718096" Margin="0,5,0,0"/>
-                                <TextBlock Text="📞 0123456789 • 📧 email@example.com" FontSize="13" Foreground="#A0AEC0" Margin="0,5,0,0"/>
-                            </StackPanel>
+					<Button Grid.Column="1"
+							Command="{Binding ThemNhanVienButtonCommand}"
+							Classes="primary"
+							Height="42"
+							Padding="24,0"
+							VerticalAlignment="Center">
+						+ Thêm nhân viên
+					</Button>
+				</Grid>
+			</Border>
 
-                            <!-- Actions -->
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-                                <Button Classes="secondary" Padding="12,8">✏️ Sửa</Button>
-                                <Button Classes="danger" Padding="12,8">🗑️ Xóa</Button>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+			<Border Grid.Row="1"
+					Padding="20,15"
+					BorderBrush="{DynamicResource BorderColor}"
+					BorderThickness="0,0,0,1">
+				<StackPanel Orientation="Horizontal" Spacing="12">
 
-                    <!-- Empty State -->
-                    <Border Background="#F7FAFC" 
-                            CornerRadius="12" 
-                            Padding="40"
-                            Margin="0,20,0,0">
-                        <StackPanel HorizontalAlignment="Center" Spacing="15">
-                            <TextBlock Text="👥" FontSize="64" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Chưa có nhân viên nào" 
-                                       FontSize="18" 
-                                       FontWeight="SemiBold"
-                                       Foreground="#2D3748"
-                                       HorizontalAlignment="Center"/>
-                            <TextBlock Text="Thêm nhân viên đầu tiên để bắt đầu quản lý" 
-                                       FontSize="14" 
-                                       Foreground="#718096"
-                                       HorizontalAlignment="Center"/>
-                            <Button Classes="primary" Margin="0,10,0,0">+ Thêm nhân viên</Button>
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
-    </Border>
+					<ComboBox Classes="modern-combo"
+							  Width="180"
+							  PlaceholderText="Bộ lọc"/>
+
+					<TextBox Classes="modern-input"
+							 Width="400"
+							 Watermark="🔍 Tìm kiếm nhân viên..."/>
+				</StackPanel>
+			</Border>
+
+			<ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="20" Background="Transparent">
+				<Grid>
+					<ItemsControl ItemsSource="{Binding NhanViens}"
+								  IsVisible="{Binding NhanViens.Count}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Spacing="15">
+									<Border Classes="card" BoxShadow="0 2 8 0 #20000000" Margin="0 0 0 15">
+										<Grid ColumnDefinitions="80,*,Auto">
+											<Border Grid.Column="0"
+													Background="{DynamicResource BgHover}"
+													CornerRadius="40"
+													Width="60"
+													Height="60"
+													VerticalAlignment="Center">
+												<TextBlock Text="👤" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+											</Border>
+
+											<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="15,0">
+												<TextBlock Text="{Binding HoTen}"
+														   FontSize="16"
+														   FontWeight="SemiBold"
+														   Foreground="{DynamicResource TextPrimary}"/>
+												<TextBlock Text="Vị trí: Nhân viên bán hàng"
+														   FontSize="14"
+														   Foreground="{DynamicResource TextSecondary}"
+														   Margin="0,5,0,0"/>
+												<TextBlock FontSize="13"
+														   Foreground="{DynamicResource TextSecondary}"
+														   Margin="0,5,0,0">
+													<Run>📞 </Run><Run Text="{Binding SDT}"></Run><Run> • 📧 </Run><Run Text="{Binding Email}"></Run>
+												</TextBlock>
+											</StackPanel>
+
+											<StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+												<Button
+												Classes="secondary"
+												Padding="12,8"
+												 Command="{Binding $parent[ItemsControl].((viewModel:EmployeePageViewModel)DataContext).ChiTietButtonCommand}"
+												 CommandParameter="{Binding}"
+												VerticalAlignment="Center">
+													Chi tiết
+												</Button>
+											</StackPanel>
+										</Grid>
+									</Border>
+
+								</StackPanel>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+
+					<Border Background="{DynamicResource BgCard}"
+							CornerRadius="12"
+							Padding="40"
+							IsVisible="{Binding !NhanViens.Count}"
+							Margin="0,20,0,0">
+						<StackPanel HorizontalAlignment="Center" Spacing="15">
+							<TextBlock Text="👥" FontSize="64" HorizontalAlignment="Center"/>
+							<TextBlock Text="Chưa có nhân viên nào"
+									   FontSize="18"
+									   FontWeight="SemiBold"
+									   Foreground="{DynamicResource TextPrimary}"
+									   HorizontalAlignment="Center"/>
+							<TextBlock Text="Thêm nhân viên đầu tiên để bắt đầu quản lý"
+									   FontSize="14"
+									   Foreground="{DynamicResource TextSecondary}"
+									   HorizontalAlignment="Center"/>
+							<Button Classes="primary" Margin="73,10,0,0">+ Thêm nhân viên</Button>
+						</StackPanel>
+					</Border>
+				</Grid>
+			</ScrollViewer>
+		</Grid>
+	</Border>
 </UserControl>

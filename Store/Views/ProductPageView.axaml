@@ -1,161 +1,183 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 mc:Ignorable="d"
-			 d:DesignWidth="1000" d:DesignHeight="700"
-			 xmlns:vm="clr-namespace:Store.ViewModels"
-			 x:DataType="vm:ProductPageViewModel"
-			 x:Class="Store.Views.ProductPageView">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="1000" d:DesignHeight="700"
+             xmlns:vm="clr-namespace:Store.ViewModels"
+             x:DataType="vm:ProductPageViewModel"
+             x:Class="Store.Views.ProductPageView">
 
-	<Design.DataContext>
-		<vm:ProductPageViewModel/>
-	</Design.DataContext>
+    <Design.DataContext>
+       <vm:ProductPageViewModel/>
+    </Design.DataContext>
 
-	<Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
-		<Grid RowDefinitions="Auto,*">
-			<!-- Header & Controls -->
-			<Border Grid.Row="0" Background="#F9FAFB" CornerRadius="12,12,0,0" Padding="20,16">
-				<Grid ColumnDefinitions="*,Auto">
-					<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
-						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
-							<ComboBox ItemsSource="{Binding DanhSachBoLoc}" 
-									  Background="White"
-									  BorderThickness="0"
-									  Width="160" 
-									  FontSize="14"
-									  Padding="12,9"
-									  CornerRadius="8"
-									  VerticalContentAlignment="Center"/>
-						</Border>
-						
-						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
-							<ComboBox ItemsSource="{Binding DanhSachChiTiet}" 
-									  Background="White"
-									  BorderThickness="0"
-									  Width="140" 
-									  FontSize="14"
-									  PlaceholderText="Chi tiết"
-									  Padding="12,9"
-									  CornerRadius="8"
-									  VerticalContentAlignment="Center"/>
-						</Border>
-						
-						<Border CornerRadius="8" BorderBrush="#D1D5DB" BorderThickness="1.5">
-							<TextBox Background="White"
-									 BorderThickness="0"
-									 Width="300" 
-									 FontSize="14"
-									 Watermark="🔍 Tìm kiếm sản phẩm..."
-									 Padding="12,9"
-									 CornerRadius="8"
-									 VerticalContentAlignment="Center"/>
-						</Border>
-					</StackPanel>
-					
-					<Button Grid.Column="1" 
-							Command="{Binding ThemSanPhamButtonCommand}" 
-							Classes="primary"
-							Height="40"
-							Padding="20,0"
-							FontSize="14">
-						+ Thêm sản phẩm
-					</Button>
-				</Grid>
-			</Border>
+    <Border CornerRadius="16" 
+            Background="{DynamicResource BgPage}" 
+            Margin="10" 
+            BoxShadow="0 4 20 0 #30000000">
+        
+       <Grid RowDefinitions="Auto,Auto,*">
+           <Border Grid.Row="0" 
+                    Background="{DynamicResource BgCard}" 
+                    CornerRadius="16,16,0,0" 
+                    Padding="20,20,20,15"
+                    BorderBrush="{DynamicResource BorderColor}"
+                    BorderThickness="0,0,0,1">
+                <Grid ColumnDefinitions="*,Auto">
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Danh sách sản phẩm" 
+                                   Classes="header" 
+                                   Foreground="{DynamicResource TextPrimary}"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock Text="Theo dõi và quản lý các sản phẩm trong cửa hàng" 
+                                   Classes="body"
+                                   Foreground="{DynamicResource TextSecondary}"/>
+                    </StackPanel>
+                    
+                     <Button Grid.Column="1" 
+                        Command="{Binding ThemSanPhamButtonCommand}" 
+                        Classes="primary"
+                        Height="40"
+                        Padding="20,0"
+                        FontSize="14">
+                   + Thêm sản phẩm
+                </Button>
+                </Grid>
+            </Border>
+          <Border Grid.Row="1" 
+                  Background="Transparent" 
+                  Padding="20,16"
+                  BorderBrush="{DynamicResource BorderColor}"
+                  BorderThickness="0,0,0,1">
+             
+             <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                   
+                   <ComboBox ItemsSource="{Binding DanhSachBoLoc}" 
+                             SelectedItem="{Binding Filter}"
+                             Classes="modern-combo"
+                             Width="160" 
+                             PlaceholderText="Bộ lọc"/>
+                   
+                   <ComboBox ItemsSource="{Binding DanhSachChiTiet}" 
+                             SelectedItem="{Binding SelectedDetail}"
+                             Classes="modern-combo"
+                             Width="140" 
+                             PlaceholderText="Chi tiết"/>
+                   
+                   <TextBox Classes="modern-input"
+                            Width="300" 
+                            Watermark="🔍 Tìm kiếm sản phẩm..."
+                            Text="{Binding SearchKeyword}"/>
+                </StackPanel>
+                
+        
+             </Grid>
+          </Border>
 
-			<!-- Product Grid -->
-			<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="16" Background="White">
-				<Grid>
-					<!-- Product Grid -->
-					<ItemsControl ItemsSource="{Binding SanPhams}"
-								  IsVisible="{Binding SanPhams.Count}">
-						<ItemsControl.ItemsPanel>
-							<ItemsPanelTemplate>
-								<WrapPanel Orientation="Horizontal"/>
-							</ItemsPanelTemplate>
-						</ItemsControl.ItemsPanel>
-						<ItemsControl.ItemTemplate>
-							<DataTemplate>
-								<Button Background="Transparent" BorderThickness="0" Padding="0" Margin="8" Cursor="Hand">
-									<Border Width="200" 
-											Background="White" 
-											BorderBrush="#E5E7EB" 
-											BorderThickness="1" 
-											CornerRadius="10" 
-											BoxShadow="0 1 6 0 #10000000"
-											Padding="10">
-										<StackPanel Spacing="8">
-											<Border CornerRadius="8" 
-													ClipToBounds="True" 
-													Background="#F9FAFB"
-													Height="170" 
-													Width="180">
-												<Image Source="{Binding HinhAnhSP}" 
-													   Stretch="UniformToFill"/>
-											</Border>
+          <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="16" Background="Transparent">
+             <Grid Margin="0 0 0 100">
+                <ItemsControl ItemsSource="{Binding SanPhams}"
+                              IsVisible="{Binding SanPhams.Count}">
+                   <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                         <WrapPanel Orientation="Horizontal"/>
+                      </ItemsPanelTemplate>
+                   </ItemsControl.ItemsPanel>
+                   
+                   <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                         <Button Background="Transparent" 
+                                 BorderThickness="0" 
+                                 Padding="0" 
+                                 Margin="8" 
+                                 Cursor="Hand"
+                                 Command="{Binding $parent[UserControl].((vm:ProductPageViewModel)DataContext).XemChiTietSanPhamCommand}"
+                                 CommandParameter="{Binding}">
+                            
+                            <Border Width="200" 
+                                    Background="{DynamicResource BgCard}" 
+                                    BorderBrush="{DynamicResource BorderColor}" 
+                                    BorderThickness="1" 
+                                    CornerRadius="10" 
+                                    BoxShadow="0 1 6 0 #15000000"
+                                    Padding="0">
+                               <StackPanel>
+                                  <Border CornerRadius="10" 
+                                          ClipToBounds="True" 
+                                          Background="{DynamicResource BgHover}"
+                                          Height="199"
+                                          
+                                          Width="198">
+                                     <Image Source="{Binding HinhAnhSP}" 
+                                            Stretch="UniformToFill"/>
+                                  </Border>
 
-											<TextBlock Text="{Binding TenSP}" 
-													   FontSize="14" 
-													   FontWeight="SemiBold"
-													   Foreground="#111827"
-													   TextAlignment="Left"
-													   TextTrimming="CharacterEllipsis"
-													   MaxLines="2"
-													   TextWrapping="Wrap"
-													   LineHeight="18"/>
+                                  <TextBlock Text="{Binding TenSP}" 
+                                             FontSize="14" 
+                                             Margin="10,10,0,0"
+                                             FontWeight="SemiBold"
+                                             Foreground="{DynamicResource TextPrimary}"
+                                             TextAlignment="Left"
+                                             TextTrimming="CharacterEllipsis"
+                                             MaxLines="2"
+                                             TextWrapping="Wrap"
+                                             LineHeight="18"/>
 
-											<StackPanel Orientation="Horizontal" Spacing="6">
-												<TextBlock FontSize="15" 
-														   FontWeight="Bold"
-														   Foreground="#667EEA"
-														   VerticalAlignment="Center">
-													<Run Text="{Binding GiaSP}"/>
-													<Run Text=" ₫" FontSize="13"/>
-												</TextBlock>
-												<TextBlock Text="•" 
-														   Foreground="#D1D5DB" 
-														   VerticalAlignment="Center"
-														   FontSize="12"/>
-												<TextBlock FontSize="12" 
-														   Foreground="#6B7280"
-														   VerticalAlignment="Center">
-													<Run Text="SL: "/>
-													<Run Text="{Binding SoLuongSP}"/>
-												</TextBlock>
-											</StackPanel>
-										</StackPanel>
-									</Border>
-								</Button>
-							</DataTemplate>
-						</ItemsControl.ItemTemplate>
-					</ItemsControl>
-					
-					<!-- Empty State -->
-					<Border Background="#F7FAFC" 
-							CornerRadius="12" 
-							Padding="60,80"
-							IsVisible="{Binding !SanPhams.Count}">
-						<StackPanel HorizontalAlignment="Center" Spacing="15">
-							<TextBlock Text="📦" FontSize="64" HorizontalAlignment="Center"/>
-							<TextBlock Text="Chưa có sản phẩm nào" 
-									   FontSize="18" 
-									   FontWeight="SemiBold"
-									   Foreground="#2D3748"
-									   HorizontalAlignment="Center"/>
-							<TextBlock Text="Thêm sản phẩm đầu tiên để bắt đầu bán hàng" 
-									   FontSize="14" 
-									   Foreground="#718096"
-									   HorizontalAlignment="Center"/>
-							<Button Command="{Binding ThemSanPhamButtonCommand}"
-									Classes="primary" 
-									Margin="0,10,0,0">
-								+ Thêm sản phẩm
-							</Button>
-						</StackPanel>
-					</Border>
-				</Grid>
-			</ScrollViewer>
-		</Grid>
-	</Border>
+                                  <StackPanel Orientation="Horizontal" Spacing="6" Margin="10 5 0 5">
+                                     <TextBlock FontSize="15" 
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource PrimaryColor}"
+                                                VerticalAlignment="Center">
+                                        <Run Text="{Binding GiaSP}"/>
+                                        <Run Text=" ₫" FontSize="13"/>
+                                     </TextBlock>
+                                     
+                                     <TextBlock Text="•" 
+                                                Foreground="{DynamicResource TextSecondary}" 
+                                                VerticalAlignment="Center"
+                                                FontSize="12"/>
+                                     
+                                     <TextBlock FontSize="12" 
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                VerticalAlignment="Center">
+                                        <Run Text="SL: "/>
+                                        <Run Text="{Binding SoLuongSP}"/>
+                                     </TextBlock>
+                                  </StackPanel>
+                               </StackPanel>
+                            </Border>
+                         </Button>
+                      </DataTemplate>
+                   </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+                <Border Background="{DynamicResource BgCard}" 
+                        CornerRadius="12" 
+                        Padding="60,80"
+                        IsVisible="{Binding !SanPhams.Count}">
+                   <StackPanel HorizontalAlignment="Center" Spacing="15">
+                      <TextBlock Text="📦" FontSize="64" HorizontalAlignment="Center"/>
+                      <TextBlock Text="Chưa có sản phẩm nào" 
+                                 FontSize="18" 
+                                 FontWeight="SemiBold"
+                                 Foreground="{DynamicResource TextPrimary}"
+                                 HorizontalAlignment="Center"/>
+                      <TextBlock Text="Thêm sản phẩm đầu tiên để bắt đầu bán hàng" 
+                                 FontSize="14" 
+                                 Foreground="{DynamicResource TextSecondary}"
+                                 HorizontalAlignment="Center"/>
+                      <Button Command="{Binding ThemSanPhamButtonCommand}"
+                              Classes="primary" 
+                              Margin="0,10,0,0"
+                              HorizontalAlignment="Center">
+                         + Thêm sản phẩm
+                      </Button>
+                   </StackPanel>
+                </Border>
+             </Grid>
+          </ScrollViewer>
+       </Grid>
+    </Border>
 </UserControl>

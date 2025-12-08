@@ -1,21 +1,33 @@
-<UserControl
-    d:DesignHeight="700"
-    d:DesignWidth="1000"
-    mc:Ignorable="d"
-    x:Class="Store.Views.HistoryPageView"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" 
+             d:DesignWidth="1000"
+             x:Class="Store.Views.HistoryPageView">
     
-    <Border CornerRadius="16" Background="White" Margin="10" BoxShadow="0 4 20 0 #30000000">
+    <Border CornerRadius="16" 
+            Background="{DynamicResource BgPage}" 
+            Margin="10" 
+            BoxShadow="0 4 20 0 #30000000">
+        
         <Grid RowDefinitions="Auto,Auto,*">
-            <!-- Header & Controls -->
-            <Border Grid.Row="0" Background="#F7FAFC" CornerRadius="16,16,0,0" Padding="20,20,20,15">
+            <Border Grid.Row="0" 
+                    Background="{DynamicResource BgCard}" 
+                    CornerRadius="16,16,0,0" 
+                    Padding="20,20,20,15"
+                    BorderBrush="{DynamicResource BorderColor}"
+                    BorderThickness="0,0,0,1">
                 <Grid ColumnDefinitions="*,Auto">
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Lịch sử nhập kho" Classes="header" Margin="0,0,0,5"/>
-                        <TextBlock Text="Theo dõi các đợt nhập hàng vào kho" Classes="body"/>
+                        <TextBlock Text="Lịch sử nhập kho" 
+                                   Classes="header" 
+                                   Foreground="{DynamicResource TextPrimary}"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock Text="Theo dõi các đợt nhập hàng vào kho" 
+                                   Classes="body"
+                                   Foreground="{DynamicResource TextSecondary}"/>
                     </StackPanel>
                     
                     <Button Grid.Column="1" 
@@ -28,40 +40,28 @@
                 </Grid>
             </Border>
 
-            <!-- Search & Filter -->
-            <Border Grid.Row="1" Padding="20,15" BorderBrush="#E2E8F0" BorderThickness="0,1,0,1">
+            <Border Grid.Row="1" 
+                    Padding="20,15" 
+                    BorderBrush="{DynamicResource BorderColor}" 
+                    BorderThickness="0,0,0,1">
                 <StackPanel Orientation="Horizontal" Spacing="12">
-                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                        <ComboBox Background="White"
-                                  BorderThickness="0"
-                                  Width="180" 
-                                  FontSize="14"
-                                  PlaceholderText="Lọc theo tháng"
-                                  Padding="12,8"
-                                  CornerRadius="8"/>
-                    </Border>
                     
-                    <Border CornerRadius="8" BorderBrush="#E2E8F0" BorderThickness="1.5">
-                        <TextBox Background="White"
-                                 BorderThickness="0"
-                                 Width="400" 
-                                 FontSize="14"
-                                 Watermark="🔍 Tìm kiếm phiếu nhập..."
-                                 Padding="12,8"
-                                 CornerRadius="8"/>
-                    </Border>
+                    <ComboBox Classes="modern-combo"
+                              Width="180" 
+                              PlaceholderText="Lọc theo tháng"/>
+                    
+                    <TextBox Classes="modern-input"
+                             Width="400" 
+                             Watermark="🔍 Tìm kiếm phiếu nhập..."/>
                 </StackPanel>
             </Border>
 
-            <!-- History List -->
-            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="20">
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="20" Background="Transparent">
                 <StackPanel Spacing="12">
-                    <!-- History Item Template -->
                     <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
                         <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                            <!-- Icon -->
                             <Border Grid.Column="0" 
-                                    Background="#F7FAFC" 
+                                    Background="{DynamicResource BgHover}" 
                                     CornerRadius="10" 
                                     Width="50" 
                                     Height="50"
@@ -70,22 +70,32 @@
                                 <TextBlock Text="📦" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
 
-                            <!-- Info -->
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock Text="Phiếu nhập #NK001" FontSize="15" FontWeight="SemiBold" Foreground="#2D3748"/>
-                                <TextBlock Text="Ngày nhập: 01/01/2024" FontSize="13" Foreground="#718096" Margin="0,5,0,0"/>
+                                <TextBlock Text="Phiếu nhập #NK001" 
+                                           FontSize="15" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="{DynamicResource TextPrimary}"/>
+                                <TextBlock Text="Ngày nhập: 01/01/2024" 
+                                           FontSize="13" 
+                                           Foreground="{DynamicResource TextSecondary}" 
+                                           Margin="0,5,0,0"/>
                             </StackPanel>
 
-                            <!-- Amount -->
                             <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="20,0">
-                                <TextBlock Text="Tổng giá trị" FontSize="12" Foreground="#718096" TextAlignment="Right"/>
-                                <TextBlock FontSize="16" FontWeight="Bold" Foreground="#667EEA" TextAlignment="Right" Margin="0,5,0,0">
+                                <TextBlock Text="Tổng giá trị" 
+                                           FontSize="12" 
+                                           Foreground="{DynamicResource TextSecondary}" 
+                                           TextAlignment="Right"/>
+                                <TextBlock FontSize="16" 
+                                           FontWeight="Bold" 
+                                           Foreground="{DynamicResource PrimaryColor}" 
+                                           TextAlignment="Right" 
+                                           Margin="0,5,0,0">
                                     <Run Text="0"/>
                                     <Run Text=" ₫" FontSize="13"/>
                                 </TextBlock>
                             </StackPanel>
 
-                            <!-- Action -->
                             <Button Grid.Column="3" 
                                     Classes="secondary" 
                                     Padding="12,8"
@@ -95,8 +105,7 @@
                         </Grid>
                     </Border>
 
-                    <!-- Empty State -->
-                    <Border Background="#F7FAFC" 
+                    <Border Background="{DynamicResource BgCard}" 
                             CornerRadius="12" 
                             Padding="40"
                             Margin="0,20,0,0">
@@ -105,13 +114,13 @@
                             <TextBlock Text="Chưa có lịch sử nhập kho" 
                                        FontSize="18" 
                                        FontWeight="SemiBold"
-                                       Foreground="#2D3748"
+                                       Foreground="{DynamicResource TextPrimary}"
                                        HorizontalAlignment="Center"/>
                             <TextBlock Text="Tạo phiếu nhập kho đầu tiên để bắt đầu" 
                                        FontSize="14" 
-                                       Foreground="#718096"
+                                       Foreground="{DynamicResource TextSecondary}"
                                        HorizontalAlignment="Center"/>
-                            <Button Classes="primary" Margin="0,10,0,0">+ Nhập kho mới</Button>
+                            <Button Classes="primary" Margin="70,10,0,0">+ Nhập kho mới</Button>
                         </StackPanel>
                     </Border>
                 </StackPanel>

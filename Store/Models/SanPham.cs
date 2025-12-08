@@ -13,7 +13,10 @@ namespace Store.Models
         public Bitmap? HinhAnhSP { get; set; }        // 🔹 dùng để hiển thị trên UI
         public string KichThuocSP { get; set; } = string.Empty;
         public string LoaiSP { get; set; } = string.Empty;
+
+        public int IsDelete { get; set; }  
         public string? MoTaSP { get; set; }
+
         public string TenSP_Size_TonKho => $"{TenSP} | {KichThuocSP} | {SoLuongSP}";
         public SanPham() { }
     }
