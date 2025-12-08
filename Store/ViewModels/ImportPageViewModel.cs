@@ -111,9 +111,9 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     [RelayCommand]
     public void CreateImport()
     {
-        var importWindow = new Views.ImportWindowView
+        var importWindow = new Views.ImportPageView
         {
-            DataContext = new ImportWindowViewModel()
+            DataContext = new ImportPageViewModel()
         };
     }
     
