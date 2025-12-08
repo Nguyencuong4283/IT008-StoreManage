@@ -36,4 +36,9 @@ namespace Store.Messages
     {
         public IncomeChangedMessage(string action) : base(action) { }
     }
+    
+    public class ImportChangeMessage : ValueChangedMessage<string>
+    {
+        public ImportChangeMessage(string action) : base(action) { }
+    }
 }
