@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Store/Models/Income.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Store/Services/IncomeService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Store/Models/Import.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Store/Services/ImportService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Messages/DatabaseChangedMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Messages/DatabaseChangedMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Models/ChiTiet_NhapKho.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Models/ChiTiet_NhapKho.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Models/NhapKho.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/NhapKhoService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/HistoryPageViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/HistoryPageView.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/HistoryPageView.axaml.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +107,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -235,6 +223,8 @@
       <workItem from="1765174032103" duration="136000" />
       <workItem from="1765174355120" duration="260000" />
       <workItem from="1765195253434" duration="387000" />
+      <workItem from="1765195857879" duration="999000" />
+      <workItem from="1765196877275" duration="624000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -444,7 +434,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765090156315</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="thêm lại file bị thiếu">
+      <option name="closed" value="true" />
+      <created>1765195919101</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1765195919101</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +475,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="upload" />
     <MESSAGE value="add button" />
     <MESSAGE value="update" />
     <MESSAGE value="update style" />
@@ -502,7 +499,8 @@
     <MESSAGE value="Thêm tính năng tìm kiếm sản phẩm" />
     <MESSAGE value="Chỉnh sửa giao diện các trang" />
     <MESSAGE value="cập nhật tính năng tìm kiếm sản phẩm và chỉnh sửa các lỗi" />
-    <option name="LAST_COMMIT_MESSAGE" value="cập nhật tính năng tìm kiếm sản phẩm và chỉnh sửa các lỗi" />
+    <MESSAGE value="thêm lại file bị thiếu" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm lại file bị thiếu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
