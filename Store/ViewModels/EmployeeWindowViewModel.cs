@@ -14,7 +14,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
     private readonly SettingPageViewModel _settingPage = new();
     private readonly AccountSettingPageViewModel _accountSettingPage = new();
     private readonly CustomerPageViewModel _customerPage = new();
-    private readonly HistoryPageViewModel _historyPageView = new();
+    private readonly ImportPageViewModel _importPageView = new();
     private readonly AnalysePageViewModel _analysePageView = new();
 
     public EmployeeWindowViewModel() => CurrentPage = _homePage;
@@ -39,7 +39,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
     private void GoCustomer() => CurrentPage = _customerPage;
     
     [RelayCommand]
-    private void GoHistory() => CurrentPage = _historyPageView;
+    private void GoHistory() => CurrentPage = _importPageView;
 
     [RelayCommand]
     private void GoAnalyse() => CurrentPage = _analysePageView;
