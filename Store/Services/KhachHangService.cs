@@ -11,6 +11,7 @@ namespace Store.Services
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
+        // ----------------- Khởi tạo Database và bảng ----------------- //
         public static void Initialize()
         {
             Console.WriteLine($"Database Path: {dbPath}");

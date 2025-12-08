@@ -1,25 +1,36 @@
 using System;
 using Avalonia.Controls;
 using System.Collections.ObjectModel;
+using Avalonia.Threading;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
+using Store.Messages;
 using Store.Services;
 
 namespace Store.ViewModels;
 
-public class IncomePageViewModel : ViewModelBase
+public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChangedMessage>
 {
-    int currentYear = DateTime.Now.Year;
-    //====== Biểu đồ thống kê thu nhập theo năm ======//
+    [ObservableProperty] private int _totalOrders;
+    [ObservableProperty] private double _totalIncome;
+
+    int _currentYear = DateTime.Now.Year;
+    
     private readonly ObservableCollection<double> _values;
-    public ISeries[] _series { get; set; }
-    public Axis[] xAxis { get; set; }
-    public Axis[] yAxis { get; set; }
+    public ISeries[] Series { get; set; }
+    public Axis[] XAxis { get; set; }
+    public Axis[] YAxis { get; set; }
     public IncomePageViewModel()
     {
+        //===== Nhận thông báo cập nhật dữ liệu =====//
+        WeakReferenceMessenger.Default.Register<HoaDonChangedMessage>(this) ;
+        
+        //===== Cấu hình biểu đồ =====//
         _values = new ObservableCollection<double>();
         
-        _series = new ISeries[]
+        Series = new ISeries[]
         {
             new LineSeries<double>
             {
@@ -29,69 +40,62 @@ public class IncomePageViewModel : ViewModelBase
             }
         };
 
-        xAxis =
+        XAxis =
         [
             new Axis
             {
-                Name = $"Năm {currentYear}",
-                NameTextSize = 10,
-                Labels = [$"Tháng 1/{currentYear}" ,
-                          $"Tháng 2/{currentYear}" ,
-                          $"Tháng 3/{currentYear}" ,
-                          $"Tháng 4/{currentYear}" ,
-                          $"Tháng 5/{currentYear}" ,
-                          $"Tháng 6/{currentYear}" ,
-                          $"Tháng 7/{currentYear}" ,
-                          $"Tháng 8/{currentYear}" ,
-                          $"Tháng 9/{currentYear}" ,
-                          $"Tháng 10/{currentYear}" ,
-                          $"Tháng 11/{currentYear}" ,
-                          $"Tháng 12/{currentYear}"],
+                Name = $"Năm {_currentYear}",
+                NameTextSize = 15,
+                Labels = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
             }
         ];
 
-        yAxis =
+        YAxis =
         [
             new Axis
             {
                 Name = "Doanh thu (VNĐ)",
-                NameTextSize = 10,
+                NameTextSize = 15,
                 Labeler = value => value.ToString("N0")
             }
         ];
 
-        LoadData(currentYear);
+        LoadData(_currentYear);
         
     }
 
+    //===== Tải dữ liệu =====//
     private void LoadData(int year)
     {
-            var monthlyData = IncomeService.GetMonthlyIncome(year);
-
+            var list = IncomeService.GetMonthlyIncome(year);
+            
             _values.Clear();
-            foreach (var m in monthlyData)
+            foreach (var m in list)
             {
                 _values.Add(m);
             }
     }
     
-    //===== Hiển thị tổng thu nhập hiện tại =====//
-    public double TongThuNhap
+    //===== Xử lý khi nhận message HoaDon thay đổi =====//
+    public void Receive(HoaDonChangedMessage message)
     {
-        get
-        {
-            var income = IncomeService.Monthly_Stat(currentYear);
-            return income.TotalIncome;
-        }
+        System.Diagnostics.Debug.WriteLine($"[IncomePageViewModel] Nhận message: HoaDon {message}");
+        LoadData(_currentYear);
+        OnTotalIncomeChanged(_totalIncome);
+        OnTotalOrdersChanged(_totalOrders);
+    }
+    
+    //===== Hiển thị tổng thu nhập hiện tại =====//
+    partial void OnTotalIncomeChanged(double value)
+    {
+        var income = IncomeService.Monthly_Stat(_currentYear);
+        _totalIncome = (double)income.TotalIncome;
     }
     
     //===== Hiển thị tổng số đơn hàng đã thanh toán =====//
-    public double TongDonHang
+    partial void OnTotalOrdersChanged(int value)
     {
-        get
-        {
-            var orders = IncomeService.Monthly_Stat(currentYear);
-            return orders.TotalOrders;
-        }
+        var income = IncomeService.Monthly_Stat(_currentYear);
+        _totalOrders = income.TotalOrders;
     }
 }

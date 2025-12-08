@@ -31,4 +31,9 @@ namespace Store.Messages
             TableName = tableName;
         }
     }
+    
+    public class IncomeChangedMessage : ValueChangedMessage<string>
+    {
+        public IncomeChangedMessage(string action) : base(action) { }
+    }
 }
