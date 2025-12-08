@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Store/Models/Import.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Store/Services/ImportService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,10 +67,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Store/Models/Income.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Store/Services/IncomeService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Store/Models/Import.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Store/Services/ImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/nguyencuong/Desktop/IT008-StoreManage/Store/ViewModels/ProductPageViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -107,7 +104,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -225,6 +222,7 @@
       <workItem from="1765195253434" duration="387000" />
       <workItem from="1765195857879" duration="999000" />
       <workItem from="1765196877275" duration="624000" />
+      <workItem from="1765198032355" duration="562000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -442,7 +440,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765195919101</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Thêm ImportPageViewModel.cs">
+      <option name="closed" value="true" />
+      <created>1765197871128</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1765197871128</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +481,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="add button" />
     <MESSAGE value="update" />
     <MESSAGE value="update style" />
     <MESSAGE value="Fix UI" />
@@ -500,7 +505,8 @@
     <MESSAGE value="Chỉnh sửa giao diện các trang" />
     <MESSAGE value="cập nhật tính năng tìm kiếm sản phẩm và chỉnh sửa các lỗi" />
     <MESSAGE value="thêm lại file bị thiếu" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm lại file bị thiếu" />
+    <MESSAGE value="Thêm ImportPageViewModel.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm ImportPageViewModel.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,0 +1,167 @@
+<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="Store.Views.ImportPageView"
+    x:DataType="vm:ImportPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Store.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border
+        Background="{DynamicResource BgPage}"
+        BoxShadow="0 4 20 0 #30000000"
+        CornerRadius="16"
+        Margin="10">
+
+        <Grid RowDefinitions="Auto,Auto,*">
+            <Border
+                Background="{DynamicResource BgCard}"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,0,0,1"
+                CornerRadius="16,16,0,0"
+                Grid.Row="0"
+                Padding="20,20,20,15">
+                <Grid ColumnDefinitions="*,Auto">
+                    <StackPanel Grid.Column="0">
+                        <TextBlock
+                            Classes="header"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Margin="0,0,0,5"
+                            Text="Lịch sử nhập kho" />
+                        <TextBlock
+                            Classes="body"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Theo dõi các đợt nhập hàng vào kho" />
+                    </StackPanel>
+
+                    <Button
+                        Classes="primary"
+                        Grid.Column="1"
+                        Height="42"
+                        Padding="24,0"
+                        VerticalAlignment="Center">
+                        + Nhập kho mới
+                    </Button>
+                </Grid>
+            </Border>
+
+            <Border
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,0,0,1"
+                Grid.Row="1"
+                Padding="20,15">
+                <StackPanel Orientation="Horizontal" Spacing="12">
+
+                    <ComboBox
+                        Classes="modern-combo"
+                        ItemsSource="{Binding FilterList}"
+                        PlaceholderText="Lọc theo tháng"
+                        SelectedItem="{Binding SelectedFilter}"
+                        Width="180" />
+
+                    <TextBox
+                        Classes="modern-input"
+                        Watermark="🔍 Tìm kiếm phiếu nhập..."
+                        Text="{Binding SearchKeyword}"
+                        Width="400" />
+                </StackPanel>
+            </Border>
+
+            <ScrollViewer
+                Background="Transparent"
+                Grid.Row="2"
+                Padding="20"
+                VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="12">
+                    <Border BoxShadow="0 2 8 0 #20000000" Classes="card">
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                            <Border
+                                Background="{DynamicResource BgHover}"
+                                CornerRadius="10"
+                                Grid.Column="0"
+                                Height="50"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                Width="50">
+                                <TextBlock
+                                    FontSize="24"
+                                    HorizontalAlignment="Center"
+                                    Text="📦"
+                                    VerticalAlignment="Center" />
+                            </Border>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextPrimary}"
+                                    Text="Phiếu nhập #NK001" />
+                                <TextBlock
+                                    FontSize="13"
+                                    Foreground="{DynamicResource TextSecondary}"
+                                    Margin="0,5,0,0"
+                                    Text="Ngày nhập: 01/01/2024" />
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="2"
+                                Margin="20,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextSecondary}"
+                                    Text="Tổng giá trị"
+                                    TextAlignment="Right" />
+                                <TextBlock
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource PrimaryColor}"
+                                    Margin="0,5,0,0"
+                                    TextAlignment="Right">
+                                    <Run Text="0" />
+                                    <Run FontSize="13" Text=" ₫" />
+                                </TextBlock>
+                            </StackPanel>
+
+                            <Button
+                                Classes="secondary"
+                                Grid.Column="3"
+                                Padding="12,8"
+                                VerticalAlignment="Center">
+                                Chi tiết
+                            </Button>
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Background="{DynamicResource BgCard}"
+                        CornerRadius="12"
+                        Margin="0,20,0,0"
+                        Padding="40">
+                        <StackPanel HorizontalAlignment="Center" Spacing="15">
+                            <TextBlock
+                                FontSize="64"
+                                HorizontalAlignment="Center"
+                                Text="📦" />
+                            <TextBlock
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource TextPrimary}"
+                                HorizontalAlignment="Center"
+                                Text="Chưa có lịch sử nhập kho" />
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                HorizontalAlignment="Center"
+                                Text="Tạo phiếu nhập kho đầu tiên để bắt đầu" />
+                            <Button Classes="primary" Margin="70,10,0,0">+ Nhập kho mới</Button>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>
