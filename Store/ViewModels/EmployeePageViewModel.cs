@@ -21,7 +21,6 @@ public partial class EmployeePageViewModel : ViewModelBase
     [ObservableProperty] private string hoTen;
     [ObservableProperty] private string sDT;
     [ObservableProperty] private string email;
-
     [ObservableProperty] private ObservableCollection<User> nhanViens = new();
 
     public EmployeePageViewModel()
@@ -60,9 +59,9 @@ public partial class EmployeePageViewModel : ViewModelBase
     [RelayCommand]
     private void ThemNhanVienButton()
     {
-        var createWindow = new Views.CreateAcountWindowView
+        var createWindow = new Views.Auth.CreateAcountWindowView
         {
-            DataContext = new CreateAcountWindowViewModel()
+            DataContext = new Auth.CreateAcountWindowViewModel()
         };
         
         if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)

@@ -9,12 +9,12 @@
         Background="Transparent"
         SystemDecorations="None"
         mc:Ignorable="d"
-        x:Class="Store.Views.MainWindow"
+        x:Class="Store.Views.Auth.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         xmlns="https://github.com/avaloniaui"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="using:Store.ViewModels"
+        xmlns:vm="using:Store.ViewModels.Auth"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Border CornerRadius="16" 

@@ -18,7 +18,7 @@ public partial class AdminWindowView : Window
     }
     private void LogoutButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var mainWindow = new MainWindow();
+        var mainWindow = new Auth.MainWindow();
         mainWindow.Show();
         this.Close(); // đóng AdminWindow
     }

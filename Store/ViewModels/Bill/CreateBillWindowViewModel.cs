@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.ViewModels
+namespace Store.ViewModels.Bill
 {
    public partial class CreateBillWindowViewModel : ViewModelBase
     {

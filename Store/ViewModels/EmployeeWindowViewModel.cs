@@ -9,7 +9,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
     [ObservableProperty]
     private ViewModelBase _currentPage;
     private readonly HomePageViewModel _homePage = new();
-    private readonly OrderPageViewModel _orderPage = new();
+    private readonly Bill.OrderPageViewModel _orderPage = new();
     private readonly ProductPageViewModel _productPage = new();
     private readonly SettingPageViewModel _settingPage = new();
     private readonly AccountSettingPageViewModel _accountSettingPage = new();
