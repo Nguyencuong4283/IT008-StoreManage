@@ -1,153 +1,194 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:Store.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="700"
-             d:DesignWidth="1000"
-             x:DataType="vm:CustomerPageViewModel"
-             x:Class="Store.Views.CustomerPageView">
-    
-    <Border CornerRadius="16" 
-            Background="{DynamicResource BgPage}" 
-            Margin="10" 
-            BoxShadow="0 4 20 0 #30000000">
-        
+﻿<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="Store.Views.CustomerPageView"
+    x:DataType="vm:CustomerPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Store.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border
+        Background="{DynamicResource BgPage}"
+        BoxShadow="0 4 20 0 #30000000"
+        CornerRadius="16"
+        Margin="10">
+
         <Grid RowDefinitions="Auto,Auto,*">
-            <Border Grid.Row="0" 
-                    Background="{DynamicResource BgCard}" 
-                    CornerRadius="16,16,0,0" 
-                    Padding="20,20,20,15"
-                    BorderBrush="{DynamicResource BorderColor}"
-                    BorderThickness="0,0,0,1">
+            <Border
+                Background="{DynamicResource BgCard}"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,0,0,1"
+                CornerRadius="16,16,0,0"
+                Grid.Row="0"
+                Padding="20,20,20,15">
                 <Grid ColumnDefinitions="*,Auto">
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Danh sách khách hàng" 
-                                   Classes="header" 
-                                   Foreground="{DynamicResource TextPrimary}"
-                                   Margin="0,0,0,5"/>
-                        <TextBlock Text="Quản lý thông tin khách hàng" 
-                                   Classes="body"
-                                   Foreground="{DynamicResource TextSecondary}"/>
+                        <TextBlock
+                            Classes="header"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Margin="0,0,0,5"
+                            Text="Danh sách khách hàng" />
+                        <TextBlock
+                            Classes="body"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Quản lý thông tin khách hàng" />
                     </StackPanel>
-                    
-                    <Button Grid.Column="1" 
-                            Classes="primary"
-                            Height="42"
-                            Padding="24,0"
-                            Command="{Binding TaoKhachHangButtonCommand}"
-                            VerticalAlignment="Center">
+
+                    <Button
+                        Classes="primary"
+                        Command="{Binding TaoKhachHangButtonCommand}"
+                        Grid.Column="1"
+                        Height="42"
+                        Padding="24,0"
+                        VerticalAlignment="Center">
                         + Tạo khách hàng
                     </Button>
                 </Grid>
             </Border>
 
-            <Border Grid.Row="1" 
-                    Padding="20,15" 
-                    BorderBrush="{DynamicResource BorderColor}" 
-                    BorderThickness="0,0,0,1">
+            <Border
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,0,0,1"
+                Grid.Row="1"
+                Padding="20,15">
                 <StackPanel Orientation="Horizontal" Spacing="12">
-                    
-                    <ComboBox ItemsSource="{Binding DanhSachBoLoc}"
-                              SelectedItem="{Binding SelectedFilter}"
-                              Classes="modern-combo"
-                              Width="180" 
-                              PlaceholderText="Bộ lọc"
-                              PlaceholderForeground="{DynamicResource TextPlaceholder}"
-                              Background="{DynamicResource BgInput}"
-                              Foreground="{DynamicResource TextPrimary}"
-                              FontSize="14"
-                              Padding="12,8"
-                              CornerRadius="8"/>
-                    
-                    <TextBox Width="400" 
-                             Classes="modern-input"
-                             Watermark="🔍 Tìm kiếm khách hàng..."/>
+
+                    <ComboBox
+                        Background="{DynamicResource BgInput}"
+                        Classes="modern-combo"
+                        CornerRadius="8"
+                        FontSize="14"
+                        Foreground="{DynamicResource TextPrimary}"
+                        ItemsSource="{Binding DanhSachBoLoc}"
+                        Padding="12,8"
+                        PlaceholderForeground="{DynamicResource TextPlaceholder}"
+                        PlaceholderText="Bộ lọc"
+                        SelectedItem="{Binding SelectedFilter}"
+                        Width="180" />
+
+                    <TextBox
+                        Classes="modern-input"
+                        Text="{Binding SearchKeyword}"
+                        Watermark="🔍 Tìm kiếm khách hàng..."
+                        Width="400" />
                 </StackPanel>
             </Border>
-          
-          <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="16,8,16,16" Background="Transparent">
-             <Grid>
-                <ItemsControl ItemsSource="{Binding KhachHangs}"
-                              IsVisible="{Binding KhachHangs.Count}">
-                   <ItemsControl.ItemTemplate>
-                      <DataTemplate>
-                         
-                            <Border Classes="card" BoxShadow="0 2 8 0 #20000000" Margin="0 10 0 10">
-                               <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                                  <Border Grid.Column="0"
-                                          Background="{DynamicResource BgHover}"
-                                          CornerRadius="10"
-                                          Width="50"
-                                          Height="50"
-                                          VerticalAlignment="Center"
-                                          Margin="0,0,15,0">
-                                     <TextBlock Text=" 👻 " FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                                  </Border>
 
-                                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                     <TextBlock FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}">
-                                        <Run>Mã khách hàng : </Run>
-                                        <Run Text="{Binding MaKH}"/>
-                                     </TextBlock>
-                                     <TextBlock FontSize="13" Foreground="{DynamicResource TextSecondary}" Margin="0,5,0,0">
-                                        <Run>Tên khách hàng : </Run>
-                                        <Run Text="{Binding TenKH}"/>
-                                     </TextBlock>
-                                  </StackPanel>
+            <ScrollViewer
+                Background="Transparent"
+                Grid.Row="2"
+                Padding="16,8,16,16"
+                VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <ItemsControl IsVisible="{Binding KhachHangs.Count}" ItemsSource="{Binding KhachHangs}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
 
-                                  <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="20,0">
-                                     <TextBlock Text="{Binding SDT}" 
-                                                FontSize="12" 
-                                                Foreground="{DynamicResource TextSecondary}" 
-                                                TextAlignment="Right"/>
-                                     <TextBlock Text="{Binding DiaChi}" 
-                                                FontSize="16" 
-                                                FontWeight="Bold" 
-                                                Foreground="{DynamicResource PrimaryColor}" 
-                                                TextAlignment="Right" 
-                                                Margin="0,5,0,0"/>
-                                  </StackPanel>
+                                <Border
+                                    BoxShadow="0 2 8 0 #20000000"
+                                    Classes="card"
+                                    Margin="0,10,0,10">
+                                    <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                                        <Border
+                                            Background="{DynamicResource BgHover}"
+                                            CornerRadius="10"
+                                            Grid.Column="0"
+                                            Height="50"
+                                            Margin="0,0,15,0"
+                                            VerticalAlignment="Center"
+                                            Width="50">
+                                            <TextBlock
+                                                FontSize="24"
+                                                HorizontalAlignment="Center"
+                                                Margin="5"
+                                                Text=" 👻 "
+                                                VerticalAlignment="Center" />
+                                        </Border>
 
-                                  <Button Grid.Column="3"
-                                          Classes="secondary"
-                                          Padding="12,8"
-                                          Command="{Binding $parent[ItemsControl].((vm:CustomerPageViewModel)DataContext).ChiTietButtonCommand}"
-                                          CommandParameter="{Binding}"
-                                          VerticalAlignment="Center">
-                                     Chi tiết
-                                  </Button>
-                               </Grid>
-                            </Border>
-                      </DataTemplate>
-                   </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                
-                <Border Background="{DynamicResource BgCard}"
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock
+                                                FontSize="15"
+                                                FontWeight="SemiBold"
+                                                Foreground="{DynamicResource TextPrimary}">
+                                                <Run>Mã khách hàng :</Run>
+                                                <Run Text="{Binding MaKH}" />
+                                            </TextBlock>
+                                            <TextBlock
+                                                FontSize="13"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Margin="0,5,0,0">
+                                                <Run>Tên khách hàng :</Run>
+                                                <Run Text="{Binding TenKH}" />
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel
+                                            Grid.Column="2"
+                                            Margin="20,0"
+                                            VerticalAlignment="Center">
+                                            <TextBlock
+                                                FontSize="12"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Text="{Binding SDT}"
+                                                TextAlignment="Right" />
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource PrimaryColor}"
+                                                Margin="0,5,0,0"
+                                                Text="{Binding DiaChi}"
+                                                TextAlignment="Right" />
+                                        </StackPanel>
+
+                                        <Button
+                                            Classes="secondary"
+                                            Command="{Binding $parent[ItemsControl].((vm:CustomerPageViewModel)DataContext).ChiTietButtonCommand}"
+                                            CommandParameter="{Binding}"
+                                            Grid.Column="3"
+                                            Padding="12,8"
+                                            VerticalAlignment="Center">
+                                            Chi tiết
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Border
+                        Background="{DynamicResource BgCard}"
                         CornerRadius="12"
-                        Padding="60,80"
-                        IsVisible="{Binding !KhachHangs.Count}">
-                   <StackPanel HorizontalAlignment="Center" Spacing="15">
-                      <TextBlock Text="👥" FontSize="64" HorizontalAlignment="Center"/>
-                      <TextBlock Text="Chưa có khách hàng nào"
-                                 FontSize="18"
-                                 FontWeight="SemiBold"
-                                 Foreground="{DynamicResource TextPrimary}"
-                                 HorizontalAlignment="Center"/>
-                      <TextBlock Text="Tạo khách hàng đầu tiên để bắt đầu quản lý"
-                                 FontSize="14"
-                                 Foreground="{DynamicResource TextSecondary}"
-                                 HorizontalAlignment="Center"/>
-                      <Button Command="{Binding TaoKhachHangButtonCommand}"
-                              Classes="primary"
-                              Margin="74,10,0,0">
-                         + Tạo khách hàng
-                      </Button>
-                   </StackPanel>
-                </Border>
-             </Grid>
-          </ScrollViewer>
-       </Grid>
+                        IsVisible="{Binding !KhachHangs.Count}"
+                        Padding="60,80">
+                        <StackPanel HorizontalAlignment="Center" Spacing="15">
+                            <TextBlock
+                                FontSize="64"
+                                HorizontalAlignment="Center"
+                                Text="👥" />
+                            <TextBlock
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource TextPrimary}"
+                                HorizontalAlignment="Center"
+                                Text="Chưa có khách hàng nào" />
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                HorizontalAlignment="Center"
+                                Text="Tạo khách hàng đầu tiên để bắt đầu quản lý" />
+                            <Button
+                                Classes="primary"
+                                Command="{Binding TaoKhachHangButtonCommand}"
+                                Margin="74,10,0,0">
+                                + Tạo khách hàng
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
     </Border>
 </UserControl>

@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="cập">
+    <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Store/Models/Income.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Store/Services/IncomeService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Messages/DatabaseChangedMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Messages/DatabaseChangedMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Models/ChiTiet_NhapKho.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Models/ChiTiet_NhapKho.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Models/NhapKho.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Store.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Store.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/IncomePageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/IncomePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Services/NhapKhoService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/HistoryPageViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/HistoryPageView.axaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/HistoryPageView.axaml.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +30,11 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="KEEP" />
     <option name="UPDATE_TYPE" value="REBASE" />
@@ -31,6 +45,35 @@
     &quot;assignee&quot;: &quot;Nguyencuong4283&quot;
   }
 }</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Cường" />
+                    <option name="lastUsedInstant" value="1765158654" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1765158605" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="NguyenCaoCuong/review" />
+                    <option name="lastUsedInstant" value="1765158549" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Nguyencuong4283/IT008-StoreManage.git&quot;,
@@ -45,6 +88,10 @@
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -60,22 +107,27 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;.NET Project.Store.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Cường&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/nguyencuong/Desktop/IT008-StoreManage&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
       &quot;sqlite&quot;
+    ],
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Xaml&quot;
     ]
   }
 }</component>
@@ -85,10 +137,8 @@
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -182,6 +232,9 @@
       <workItem from="1765087204765" duration="2955000" />
       <workItem from="1765119564640" duration="4570000" />
       <workItem from="1765155281110" duration="2630000" />
+      <workItem from="1765174032103" duration="136000" />
+      <workItem from="1765174355120" duration="260000" />
+      <workItem from="1765195253434" duration="387000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />

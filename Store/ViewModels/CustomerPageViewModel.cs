@@ -49,11 +49,6 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         UpdateCustomerList(_allKhachHangs);
     }
 
-    public void RefreshData()
-    {
-        LoadKhachHangs();
-    }
-
     [RelayCommand]
     public void TaoKhachHangButton()
     {
