@@ -29,3 +29,5 @@ appsettings.*.json
 # OS files
 .DS_Store
 Thumbs.db
+/Models/Import.cs
+/Services/ImportService.cs

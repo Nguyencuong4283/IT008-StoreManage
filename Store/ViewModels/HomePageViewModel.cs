@@ -8,7 +8,6 @@ using CommunityToolkit.Mvvm.Messaging;
 using Store.Models;
 using Store.Services;
 using Store.Messages;
-using Store.Views;
 using System;
 using System.Collections.ObjectModel;
 
@@ -87,20 +86,20 @@ public partial class HomePageViewModel : ViewModelBase,
     [RelayCommand]
     private void TaoDonButton()
     {
-        CreateBillWindowView createBillWindow = new CreateBillWindowView();
+        var createBillWindow = new Store.Views.Bill.CreateBillWindowView();
         createBillWindow.Show();
     }
     [RelayCommand]
     private void ThemSanPhamButton()
     {
-        CreateProductWindowView createProductWindowView = new CreateProductWindowView();
+        var createProductWindowView = new CreateProductWindowView();
         createProductWindowView.Show();
         SoSanPham = SanPhanService.CountSanPham();
     }
     [RelayCommand]
     private void ThemKhachHangButton()
     {
-        CreateCustomerWindowView createCustomerWindowView = new CreateCustomerWindowView();
+        var createCustomerWindowView = new CreateCustomerWindowView();
         createCustomerWindowView.Show();
         // Sau khi thêm xong, cập nhật lại số lượng
         SoKhachHang = KhachHangService.CountKhachHang();

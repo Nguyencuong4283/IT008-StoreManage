@@ -13,7 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Store.ViewModels
+namespace Store.ViewModels.Auth
 {
     public partial class CreateAcountWindowViewModel : ViewModelBase
     {

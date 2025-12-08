@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Store.Views;
 
-public partial class HistoryPageView : UserControl
+public partial class ImportPageView : UserControl
 {
-    public HistoryPageView()
+    public ImportPageView()
     {
         InitializeComponent();
     }

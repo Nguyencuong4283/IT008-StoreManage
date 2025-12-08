@@ -62,6 +62,7 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$GhiChu", kh.GhiChu);
                 cmd.Parameters.AddWithValue("$TongMua", (double)kh.TongMua);
                 cmd.Parameters.AddWithValue("$IsDelete", 0);
+                
                 cmd.ExecuteNonQuery();
             }
         }
@@ -115,6 +116,7 @@ namespace Store.Services
                 return Convert.ToInt32(result);
             }
         }
+        
         // ----------------- UPDATE ----------------- //
         public static void UpdateKhachHang(KhachHang kh)
         {
@@ -173,9 +175,12 @@ namespace Store.Services
 
                 if (string.IsNullOrEmpty(result))
                     return "KH001";
-
-                int number = int.Parse(result.Substring(2));
-                return $"KH{(number + 1):D3}";
+                else
+                {
+                    int numericPart = int.Parse(result.Substring(2));
+                    numericPart++;
+                    return $"KH{numericPart:D3}";
+                }
             }
         }
     }

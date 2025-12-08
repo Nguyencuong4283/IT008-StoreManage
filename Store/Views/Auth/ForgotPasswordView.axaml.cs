@@ -1,8 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Store.ViewModels;
-namespace Store;
+using Store.ViewModels.Auth;
+
+namespace Store.Views.Auth;
 
 public partial class ForgotPasswordView : Window
 {

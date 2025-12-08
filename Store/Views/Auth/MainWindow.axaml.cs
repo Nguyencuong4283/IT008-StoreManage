@@ -1,9 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Store.Views;
-using Store.ViewModels;
+using Store.ViewModels.Auth;
 
-namespace Store.Views;
+namespace Store.Views.Auth;
 
 public partial class MainWindow : Window
 {
