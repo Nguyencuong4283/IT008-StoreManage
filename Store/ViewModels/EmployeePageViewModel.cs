@@ -29,7 +29,7 @@ public partial class EmployeePageViewModel : ViewModelBase
     }
     private  void LoadNhanViens()
     {
-       var list = UserService.GetAllUser();
+       var list = UserService.GetAllEmployee();
         nhanViens.Clear();
         foreach (var nv in list)
         {

@@ -169,7 +169,7 @@
                             
                             <Button Click="LogoutButton_Click" Classes="sidebar" Margin="0,150,0,0">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <TextBlock Text="📤" FontSize="18" VerticalAlignment="Center"/>
+                                    <TextBlock Text="🚪" FontSize="18" VerticalAlignment="Center"/>
                                     <TextBlock Text="Đăng xuất" FontSize="14" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>

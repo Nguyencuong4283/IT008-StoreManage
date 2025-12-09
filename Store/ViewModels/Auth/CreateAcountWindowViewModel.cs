@@ -63,7 +63,7 @@ namespace Store.ViewModels.Auth
                     NgaySinh = NgaySinh,
                     GioiTinh = GioiTinh,
                     HinhAnh = HinhAnhPath, // ✅ Lưu đường dẫn ảnh
-                    MaVT = "VT01" 
+                    MaVT = "VT02" 
                 };
                 UserService.InsertUser(user);
 

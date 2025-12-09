@@ -15,6 +15,7 @@ sealed class Program
         KhachHangService.Initialize();
         HoaDonService.Initialize();
         ChiTiet_HoaDonService.Initialize();
+        ImportService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
