@@ -1,12 +1,13 @@
-﻿using Avalonia.Platform;
+﻿using Avalonia.Controls;
+using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using LiveChartsCore.SkiaSharpView.Avalonia;
+using Store.Helpers;
+using Store.Messages;
 using Store.Models;
 using Store.Services;
-using Store.Messages;
-using Store.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace Store.ViewModels.Bill
 {
@@ -38,7 +41,7 @@ namespace Store.ViewModels.Bill
         [ObservableProperty] 
         private decimal tongThanhTien;
 
-
+        public Window? ParentWindow { get; set; }
 
         [ObservableProperty] private string thoiGianHienTai = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         [ObservableProperty] private int soHD;
@@ -155,6 +158,10 @@ namespace Store.ViewModels.Bill
                 // Bước 4: Đánh dấu đã thanh toán và xóa nháp
                 isHoaDonCreated = true;
                 DraftBillManager.ClearDraft();
+                // Gửi message cập nhật
+                WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage(MaHD));
+                // Đóng window sau khi xóa
+                ParentWindow?.Close();
             }
             catch (Exception ex)
             {
@@ -335,6 +342,13 @@ namespace Store.ViewModels.Bill
             TongTriGia = ChiTietHoaDons.Sum(ct => ct.DonGia * ct.SoLuong);
             TongGiamGia = ChiTietHoaDons.Sum(ct => ct.DonGia * ct.SoLuong * ct.KhuyenMai / 100);
             TongThanhTien = ChiTietHoaDons.Sum(ct => ct.ThanhTien);
+        }
+
+        [RelayCommand]
+        private void XoaChiTiet()
+        {
+            ChiTietHoaDons.Clear();
+            CapNhatTongTien();
         }
         
     }

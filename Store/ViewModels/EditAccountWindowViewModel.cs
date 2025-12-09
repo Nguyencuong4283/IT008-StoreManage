@@ -29,6 +29,13 @@ namespace Store.ViewModels
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private DateTime? ngaySinh;
         [ObservableProperty] private string gioiTinh;
+        [ObservableProperty] private string chucVu;
+        public ObservableCollection<string> DanhSachChucVu { get; } = new()
+        {
+           "Nhân Viên Bán Hàng",
+           "Quản Lý"
+        };
+        public Window? ParentWindow { get; set; }
 
         // Constructor mặc định cho XAML designer
         public EditAccountWindowViewModel()
@@ -44,7 +51,10 @@ namespace Store.ViewModels
                 _isDelete = user.IsDelete;
                 
                 tenDangNhap = user.TenDangNhap;
-                matKhau = "●●●●●●●●";
+                if(user.MaVT == "VT02")
+                    chucVu = "Nhân Viên Bán Hàng";
+                else if (user.MaVT == "VT01")
+                    chucVu = "Quản Lý";
                 hoTen = user.HoTen;
                 email = user.Email;
                 sDT = user.SDT;
@@ -73,7 +83,7 @@ namespace Store.ViewModels
             try
             {
                 // Validate input
-                if (string.IsNullOrWhiteSpace(TenDangNhap) || string.IsNullOrWhiteSpace(MatKhau) ||
+                if (string.IsNullOrWhiteSpace(TenDangNhap)  ||
                     string.IsNullOrWhiteSpace(HoTen) || string.IsNullOrWhiteSpace(Email))
                 {
                     System.Diagnostics.Debug.WriteLine("Vui lòng điền đầy đủ thông tin!");
@@ -84,7 +94,6 @@ namespace Store.ViewModels
                 {
                     MaNV = _maNV,
                     TenDangNhap = TenDangNhap,
-                    MatKhau = "●●●●●●●●●",
                     HoTen = HoTen,
                     Email = Email,
                     SDT = SDT ?? "",
@@ -95,13 +104,15 @@ namespace Store.ViewModels
                     MaVT = _maVT ?? "VT01",
                     IsDelete = _isDelete
                 };
+                if (chucVu == "Nhân Viên Bán Hàng")
+                    user.MaVT = "VT02";
+                else if (chucVu == "Quản Lý")
+                    user.MaVT = "VT01";
                 UserService.UpdateUser(user, updatePassword: false);
 
                 System.Diagnostics.Debug.WriteLine($"✅ Đã tạo cập nhật  thành công: {HoTen}");
 
-                // Đóng window sau khi tạo thành công
-                var window = GetActiveWindow();
-                window?.Close();
+                ParentWindow?.Close();
             }
             catch (Exception ex)
             {

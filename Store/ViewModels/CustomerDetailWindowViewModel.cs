@@ -1,5 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 using Store.Models;
 using Store.Services;
 using System;
@@ -19,7 +22,8 @@ namespace Store.ViewModels
         [ObservableProperty] private string gioiTinh;
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private string ghiChu;
-
+       
+      
         public CustomerDetailWindowViewModel() { }
         KhachHang KH { get; set; }
       
@@ -69,6 +73,8 @@ namespace Store.ViewModels
                     KhachHangService.UpdateKhachHang(KH);
                     System.Diagnostics.Debug.WriteLine($"✅ Đã xóa khách hàng: {MaKH}");
 
+                    // Gửi message
+                    WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(MaKH));
                     // Đóng window sau khi xóa
                     var closeWindow = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
                     closeWindow?.Close();

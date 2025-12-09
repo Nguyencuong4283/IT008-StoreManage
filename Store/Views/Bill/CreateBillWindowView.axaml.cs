@@ -12,17 +12,20 @@ public partial class CreateBillWindowView : Window
     {
         InitializeComponent();
         DataContext = new CreateBillWindowViewModel();
-        
-        // Hook vào sự kiện đóng window
-        Closing += OnWindowClosing;
+
+        if (DataContext is CreateBillWindowViewModel vm)
+        {
+            vm.ParentWindow = this;
+        }
+        // Khi nhấn Tab ở button "Thêm sản phẩm", quay lại ComboBox sản phẩm
+        ThemSanPham.KeyDown += (s, e) =>
+        {
+            if (e.Key == Key.Tab && !e.KeyModifiers.HasFlag(KeyModifiers.Shift))
+            {
+                e.Handled = true; // Ngăn hành vi Tab mặc định
+                CboSanPham.Focus(); // Quay lại ComboBox sản phẩm
+            }
+        };
     }
     
-    private void OnWindowClosing(object? sender, WindowClosingEventArgs e)
-    {
-        // Gọi method lưu nháp trong ViewModel
-        if (DataContext is CreateBillWindowViewModel viewModel)
-        {
-            viewModel.OnWindowClosing();
-        }
-    }
 }

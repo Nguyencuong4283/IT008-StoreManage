@@ -66,6 +66,7 @@ namespace Store.ViewModels
                     KichThuocSP = KichThuocSP,
                     MoTaSP = MoTaSP,
                     HinhAnhDuongDan = hinhAnhDuongDan, // Có thể sau này bạn sẽ load từ file
+                    IsDelete = 0
                 };
                 SanPhanService.InsertSanPham(sanPham);
                 // Sau khi thêm thành công
