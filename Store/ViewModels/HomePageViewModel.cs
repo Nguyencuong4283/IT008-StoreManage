@@ -5,6 +5,7 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using Store.Messages;
@@ -86,21 +87,18 @@ public partial class HomePageViewModel : ViewModelBase,
     [RelayCommand]
     private void TaoDonButton()
     {
-        var createBillWindow = new Store.Views.Bill.CreateBillWindowView();
-        createBillWindow.Show();
+        WindowManager.ShowCreateBillWindow();
     }
     [RelayCommand]
     private void ThemSanPhamButton()
     {
-        var createProductWindowView = new CreateProductWindowView();
-        createProductWindowView.Show();
+        WindowManager.ShowCreateProductWindow();
         SoSanPham = SanPhanService.CountSanPham();
     }
     [RelayCommand]
     private void ThemKhachHangButton()
     {
-        var createCustomerWindowView = new CreateCustomerWindowView();
-        createCustomerWindowView.Show();
+        WindowManager.ShowCreateCustomerWindow();
         // Sau khi thêm xong, cập nhật lại số lượng
         SoKhachHang = KhachHangService.CountKhachHang();
     }

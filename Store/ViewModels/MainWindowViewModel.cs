@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using System;
@@ -99,17 +100,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void RegisterButton()
     {
-        if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
-            && desktop.MainWindow is Avalonia.Controls.Window loginWindow)
-        {
-            var createAcountWindowView = new Store.Views.Auth.CreateAcountWindowView();
-            createAcountWindowView.Closed += (sender, args) =>
-            {
-                loginWindow.Show();
-            };
-            loginWindow.Hide();
-            createAcountWindowView.Show();
-        }
+        WindowManager.ShowCreateAccountWindow();
     }
     [RelayCommand]
     private void ForgotPasswordButton()

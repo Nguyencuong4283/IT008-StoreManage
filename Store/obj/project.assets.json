@@ -338,6 +338,18 @@
           }
         }
       },
+      "ColorTextBlock.Avalonia/11.0.0-d1": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.0.0-rc1.1"
+        },
+        "compile": {
+          "lib/net6.0/ColorTextBlock.Avalonia.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/ColorTextBlock.Avalonia.dll": {}
+        }
+      },
       "CommunityToolkit.Mvvm/8.4.0": {
         "type": "package",
         "compile": {
@@ -363,6 +375,23 @@
         },
         "runtime": {
           "lib/net8.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DialogHost.Avalonia/0.7.5": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.0.0-rc2.1",
+          "System.Reactive": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DialogHost.Avalonia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/DialogHost.Avalonia.dll": {
             "related": ".xml"
           }
         }
@@ -590,6 +619,19 @@
           "lib/net8.0/MailKit.dll": {
             "related": ".dll.config;.pdb;.xml"
           }
+        }
+      },
+      "Markdown.Avalonia.Tight/11.0.0-d1": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.0.0-rc1.1",
+          "ColorTextBlock.Avalonia": "11.0.0-d1"
+        },
+        "compile": {
+          "lib/net6.0/Markdown.Avalonia.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Markdown.Avalonia.dll": {}
         }
       },
       "MicroCom.Runtime/0.11.0": {
@@ -969,6 +1011,20 @@
           "lib/net8.0/MimeKit.dll": {
             "related": ".dll.config;.pdb;.xml"
           }
+        }
+      },
+      "MsBox.Avalonia/3.0.0-rc2": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "11.0.0-rc2.2",
+          "DialogHost.Avalonia": "0.7.5",
+          "Markdown.Avalonia.Tight": "11.0.0-d1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MsBox.Avalonia.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MsBox.Avalonia.dll": {}
         }
       },
       "QuestPDF/2025.12.0-alpha4": {
@@ -1435,6 +1491,22 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "System.Reactive/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Security.Cryptography.Pkcs/8.0.1": {
@@ -2003,6 +2075,21 @@
         "packageIcon.png"
       ]
     },
+    "ColorTextBlock.Avalonia/11.0.0-d1": {
+      "sha512": "sQAZgCwCS7vT5qGlxivrx6WAb1xkP47p4gAVmv5GQapfW8YXuk9a/t6QLmjJqFTJAAdk8M1EAUde0Ox5HPxjHA==",
+      "type": "package",
+      "path": "colortextblock.avalonia/11.0.0-d1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "colortextblock.avalonia.11.0.0-d1.nupkg.sha512",
+        "colortextblock.avalonia.nuspec",
+        "lib/net461/ColorTextBlock.Avalonia.dll",
+        "lib/net6.0/ColorTextBlock.Avalonia.dll",
+        "lib/netcoreapp2.0/ColorTextBlock.Avalonia.dll",
+        "lib/netstandard2.0/ColorTextBlock.Avalonia.dll"
+      ]
+    },
     "CommunityToolkit.Mvvm/8.4.0": {
       "sha512": "tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
       "type": "package",
@@ -2062,6 +2149,21 @@
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml",
         "readme.md"
+      ]
+    },
+    "DialogHost.Avalonia/0.7.5": {
+      "sha512": "jpXMSP2dy/K5UY6lclNjVgeqkitT+Vh8Aj4cLD64TShnDoBxfKOqHd8TMaFCkU5fa7hfhysdxZLZN2IrSwUZcw==",
+      "type": "package",
+      "path": "dialoghost.avalonia/0.7.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "dialoghost.avalonia.0.7.5.nupkg.sha512",
+        "dialoghost.avalonia.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/DialogHost.Avalonia.dll",
+        "lib/netstandard2.0/DialogHost.Avalonia.xml"
       ]
     },
     "ExCSS/4.3.1": {
@@ -2391,6 +2493,22 @@
         "lib/netstandard2.1/MailKit.xml",
         "mailkit.4.14.1.nupkg.sha512",
         "mailkit.nuspec"
+      ]
+    },
+    "Markdown.Avalonia.Tight/11.0.0-d1": {
+      "sha512": "fwl4wrvTdLFLUfkFezRY6SSfPmXIJcRyYChMDiMKFEGo1rKdPMnmcJbK+BWYXxZS+g66E6SFl/ca4kakhTk1HQ==",
+      "type": "package",
+      "path": "markdown.avalonia.tight/11.0.0-d1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Markdown.Avalonia.Tight.md",
+        "lib/net461/Markdown.Avalonia.dll",
+        "lib/net6.0/Markdown.Avalonia.dll",
+        "lib/netcoreapp2.0/Markdown.Avalonia.dll",
+        "lib/netstandard2.0/Markdown.Avalonia.dll",
+        "markdown.avalonia.tight.11.0.0-d1.nupkg.sha512",
+        "markdown.avalonia.tight.nuspec"
       ]
     },
     "MicroCom.Runtime/0.11.0": {
@@ -2947,6 +3065,18 @@
         "mimekit.nuspec"
       ]
     },
+    "MsBox.Avalonia/3.0.0-rc2": {
+      "sha512": "wncoyGqQ6iTx+0MqAzQPaLi8x4yqrWhNW4Yc25BgubYhZHa3GJAKmEqxEug40CFXOVpHAGhonlhHx/f3VZXURQ==",
+      "type": "package",
+      "path": "msbox.avalonia/3.0.0-rc2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MsBox.Avalonia.dll",
+        "msbox.avalonia.3.0.0-rc2.nupkg.sha512",
+        "msbox.avalonia.nuspec"
+      ]
+    },
     "QuestPDF/2025.12.0-alpha4": {
       "sha512": "sMMYyCR1OIPGZYRovWPvDWFUKe3QxkwVW6ZcQs/ezix3cJm2SiVonViOcM0whmfftS62EUblhrmNREwfW3twlw==",
       "type": "package",
@@ -3486,6 +3616,34 @@
         "version.txt"
       ]
     },
+    "System.Reactive/6.0.0": {
+      "sha512": "31kfaW4ZupZzPsI5PVe77VhnvFF55qgma7KZr/E0iFTs6fmdhhG8j0mgEx620iLTey1EynOkEfnyTjtNEpJzGw==",
+      "type": "package",
+      "path": "system.reactive/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net6.0-windows10.0.19041/_._",
+        "build/net6.0/_._",
+        "buildTransitive/net6.0-windows10.0.19041/_._",
+        "buildTransitive/net6.0/_._",
+        "icon.png",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net6.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net6.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net6.0/System.Reactive.dll",
+        "lib/net6.0/System.Reactive.xml",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.18362/System.Reactive.dll",
+        "lib/uap10.0.18362/System.Reactive.pri",
+        "lib/uap10.0.18362/System.Reactive.xml",
+        "readme.md",
+        "system.reactive.6.0.0.nupkg.sha512",
+        "system.reactive.nuspec"
+      ]
+    },
     "System.Security.Cryptography.Pkcs/8.0.1": {
       "sha512": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
       "type": "package",
@@ -3705,6 +3863,7 @@
       "Microsoft.Data.Sqlite >= 10.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.11",
       "MimeKit >= 4.14.0",
+      "MsBox.Avalonia >= 3.0.0-rc2",
       "QuestPDF >= 2025.12.0-alpha4",
       "Svg.Controls.Skia.Avalonia >= 11.3.6.2",
       "Svg.Skia >= 3.2.1",
@@ -3714,19 +3873,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\trand\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj",
+      "projectUniqueName": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
       "projectName": "Store",
-      "projectPath": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj",
-      "packagesPath": "C:\\Users\\trand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\obj\\",
+      "projectPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\trand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3810,6 +3974,10 @@
             "target": "Package",
             "version": "[4.14.0, )"
           },
+          "MsBox.Avalonia": {
+            "target": "Package",
+            "version": "[3.0.0-rc2, )"
+          },
           "QuestPDF": {
             "target": "Package",
             "version": "[2025.12.0-alpha4, )"
@@ -3851,7 +4019,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

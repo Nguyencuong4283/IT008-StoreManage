@@ -7,6 +7,7 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Store.Helpers;
 using Store.Messages;
 using Store.Models;
 using Store.Services;
@@ -53,8 +54,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     [RelayCommand]
     public void TaoKhachHangButton()
     {
-        var createCustomerWindowView = new CreateCustomerWindowView();
-        createCustomerWindowView.Show();
+        WindowManager.ShowCreateCustomerWindow();
     }
 
     [RelayCommand]

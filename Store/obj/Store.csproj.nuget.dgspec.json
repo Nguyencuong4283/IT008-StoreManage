@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj": {}
+    "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj": {
+    "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj",
+        "projectUniqueName": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
         "projectName": "Store",
-        "projectPath": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj",
-        "packagesPath": "C:\\Users\\trand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\obj\\",
+        "projectPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\trand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,6 +102,10 @@
               "target": "Package",
               "version": "[4.14.0, )"
             },
+            "MsBox.Avalonia": {
+              "target": "Package",
+              "version": "[3.0.0-rc2, )"
+            },
             "QuestPDF": {
               "target": "Package",
               "version": "[2025.12.0-alpha4, )"
@@ -139,7 +147,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
