@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj",
+        "projectName": "Store",
+        "projectPath": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\Store.csproj",
+        "packagesPath": "C:\\Users\\trand\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trand\\Downloads\\DoAn\\Store\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\trand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Avalonia": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Desktop": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Diagnostics": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Fonts.Inter": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Avalonia.Themes.Fluent": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
+            },
+            "LiteX.Email.Core": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "LiveChartsCore.SkiaSharpView.Avalonia": {
+              "target": "Package",
+              "version": "[2.0.0-rc6.1, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.14.1, )"
+            },
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.11, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.14.0, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.12.0-alpha4, )"
+            },
+            "Svg.Controls.Skia.Avalonia": {
+              "target": "Package",
+              "version": "[11.3.6.2, )"
+            },
+            "Svg.Skia": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "Xaml.Behaviors": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Xaml.Behaviors.Interactions.DragAndDrop": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            },
+            "Xaml.Behaviors.Interactions.Draggable": {
+              "target": "Package",
+              "version": "[11.3.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

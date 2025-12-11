@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -46,7 +47,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     {
         var list = KhachHangService.GetAllKhachHang();
         _allKhachHangs = list;
-        UpdateCustomerList(_allKhachHangs);
+        ApplyFilter();
     }
 
     [RelayCommand]
@@ -65,69 +66,58 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         };
         detailWindow.Show();
     }
-    //private void XemChiTietSanPham(SanPham sanPham)
-    //{
-    //    if (sanPham == null) return;
 
-    //    var detailWindow = new ProductDetailWindowView
-    //    {
-    //        DataContext = new ProductDetailWindowViewModel(sanPham)
-    //    };
-    //    detailWindow.Show();
-    //}
-
-    //===== tìm kiếm khách hàng =====//
+    //===== Tìm kiếm khách hàng =====//
     partial void OnSearchKeywordChanged(string value)
     {
-        SearchCustomers();
+        ApplyFilter();
     }
 
     partial void OnSelectedFilterChanged(string value)
     {
-        SearchCustomers();
+        ApplyFilter();
     }
 
-    private void SearchCustomers()
+    private void ApplyFilter()
     {
-        var allCustomers = KhachHangService.GetAllKhachHang();
-        var filterList = allCustomers;
+        IEnumerable<KhachHang> query = _allKhachHangs ?? new List<KhachHang>();
 
         if (!string.IsNullOrWhiteSpace(SearchKeyword))
         {
+            var keyword = SearchKeyword.Trim().ToLower();
+
             switch (SelectedFilter)
             {
                 // Tìm tên khách hàng
                 case "Tên khách hàng":
-                    filterList = allCustomers.FindAll(kh =>
-                        kh.TenKH != null && kh.TenKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0);
+                    query = query.Where(kh => !string.IsNullOrWhiteSpace(kh.TenKH) &&
+                                              kh.TenKH.ToLower().Contains(keyword));
                     break;
 
                 // Tìm mã khách hàng
                 case "Mã khách hàng":
-                    filterList = allCustomers.FindAll(kh =>
-                        kh.MaKH != null && kh.MaKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0);
+                    query = query.Where(kh => !string.IsNullOrWhiteSpace(kh.MaKH) &&
+                                              kh.MaKH.ToLower().Contains(keyword));
                     break;
 
                 // Tìm số điện thoại
                 case "Số điện thoại":
-                    filterList = allCustomers.FindAll(kh =>
-                        kh.SDT != null && kh.SDT.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0);
+                    query = query.Where(kh => !string.IsNullOrWhiteSpace(kh.SDT) &&
+                                              kh.SDT.Contains(keyword));
                     break;
 
-                // Tìm tất cả
                 default:
-                    filterList = allCustomers.FindAll(kh =>
-                        (kh.TenKH != null &&
-                         kh.TenKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (kh.MaKH != null && kh.MaKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (kh.SDT != null && kh.SDT.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                    // Tìm tất cả
+                    query = query.Where(kh =>
+                        (!string.IsNullOrWhiteSpace(kh.TenKH) && kh.TenKH.ToLower().Contains(keyword)) ||
+                        (!string.IsNullOrWhiteSpace(kh.MaKH) && kh.MaKH.ToLower().Contains(keyword)) ||
+                        (!string.IsNullOrWhiteSpace(kh.SDT) && kh.SDT.Contains(keyword))
                     );
                     break;
             }
-
-            // Cập nhật danh sách khách hàng hiển thị
-            UpdateCustomerList(filterList);
         }
+
+        UpdateCustomerList(query.ToList());
     }
 
     private void UpdateCustomerList(List<KhachHang> customers)

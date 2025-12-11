@@ -24,6 +24,9 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     [ObservableProperty] private string _filter = "Tất cả";
     [ObservableProperty] private string _selectedDetail = "Tất cả";
     [ObservableProperty] private ObservableCollection<SanPham> sanPhams = new();
+    [ObservableProperty] private decimal minPrice = 0m;
+    [ObservableProperty] private decimal maxPrice = decimal.MaxValue;
+    [ObservableProperty] private int minQuantity = 0;
 
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
     {
@@ -93,6 +96,20 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     {
         ApplyFilter();
     }
+    partial void OnMinPriceChanged(decimal value)
+    {
+        ApplyFilter();
+    }
+
+    partial void OnMaxPriceChanged(decimal value)
+    {
+        ApplyFilter();
+    }
+
+    partial void OnMinQuantityChanged(int value)
+    {
+        ApplyFilter();
+    }
 
     private void ApplyFilter()
     {
@@ -130,6 +147,9 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
                     break;
             }
         }
+
+        query = query.Where(sp => sp.GiaSP >= MinPrice && sp.GiaSP <= MaxPrice);
+        query = query.Where(sp => sp.SoLuongSP >= MinQuantity);
 
         // Cập nhật danh sách sản phẩm hiển thị
         UpdateProductsList(query);
