@@ -12,6 +12,7 @@ public partial class BillDetailWindowView : Window
     {
         InitializeComponent();
         DataContext = new BillDetailWindowViewModel();
+        
     }
 
  

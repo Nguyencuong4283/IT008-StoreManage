@@ -7,6 +7,7 @@ using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using System;
@@ -59,20 +60,8 @@ public partial class EmployeePageViewModel : ViewModelBase
     [RelayCommand]
     private void ThemNhanVienButton()
     {
-        var createWindow = new Views.Auth.CreateAcountWindowView
-        {
-            DataContext = new Auth.CreateAcountWindowViewModel()
-        };
-        
-        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            var owner = desktop.Windows.FirstOrDefault(w => w.IsActive) ?? desktop.MainWindow;
-            if (owner != null)
-            {
-                createWindow.ShowDialog(owner);
-                LoadNhanViens(); // Reload sau khi đóng dialog
-            }
-        }
+        WindowManager.ShowCreateAccountWindow();
+        LoadNhanViens(); // Reload sau khi đóng dialog
     }
     /*   private void LoadKhachHangs()
     {

@@ -142,9 +142,12 @@ namespace Store.ViewModels.Bill
                 };
                 HoaDonService.InsertHoaDon(hoaDon);
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã tạo hóa đơn: {MaHD}");
-                
+
+                KhachHangDuocChon.TongMua += TongThanhTien;
+                KhachHangService.UpdateKhachHang(KhachHangDuocChon);
+
                 // Bước 2: Lưu tất cả chi tiết hóa đơn vào database
-                foreach(var chiTiet in ChiTietHoaDons)
+                foreach (var chiTiet in ChiTietHoaDons)
                 {
                     ChiTiet_HoaDonService.InsertChiTiet_HoaDon(chiTiet);
                 }
@@ -160,6 +163,8 @@ namespace Store.ViewModels.Bill
                 DraftBillManager.ClearDraft();
                 // Gửi message cập nhật
                 WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage(MaHD));
+                WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(KhachHangDuocChon.MaKH));
+
                 // Đóng window sau khi xóa
                 ParentWindow?.Close();
             }

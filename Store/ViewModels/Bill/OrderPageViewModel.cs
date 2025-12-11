@@ -5,6 +5,7 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using Store.Messages;
@@ -66,8 +67,7 @@ public partial class OrderPageViewModel : ViewModelBase,
     [RelayCommand]
     private void CreateBillButton()
     {
-        var createBillWindow = new Store.Views.Bill.CreateBillWindowView();
-        createBillWindow.Show();
+        WindowManager.ShowCreateBillWindow();
     }
     [RelayCommand]
     private void ChiTietButton(HoaDon hoaDon)

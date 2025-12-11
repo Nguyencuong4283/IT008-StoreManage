@@ -22,8 +22,10 @@ namespace Store.ViewModels
         [ObservableProperty] private string gioiTinh;
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private string ghiChu;
-       
-      
+        [ObservableProperty] private decimal tongMua;
+        [ObservableProperty] private string hang;
+
+
         public CustomerDetailWindowViewModel() { }
         KhachHang KH { get; set; }
       
@@ -37,6 +39,8 @@ namespace Store.ViewModels
                GioiTinh = khachhang.GioiTinh;
                DiaChi = khachhang.DiaChi;
                GhiChu = khachhang.GhiChu;
+                TongMua = khachhang.TongMua;
+                Hang = khachhang.Hang;
             }
             KH = khachhang;
         }

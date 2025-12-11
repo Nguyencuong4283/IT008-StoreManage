@@ -115,6 +115,65 @@ namespace Store.Services
 
             return users;
         }
+        // Kiểm tra dữ liệu trùng 
+        //Email
+        public static bool EmailExist(string email)
+        {
+            var users = new List<User>();
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                SELECT Email, IsDelete
+                FROM Users";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var user = new User
+                        {
+                           
+                            Email = reader.IsDBNull(0) ? "" : reader.GetString(0),
+                          
+                            IsDelete = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
+                        };
+                        if (user.IsDelete == 0 && email == user.Email)
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public static bool TenDangNhapExist(string tenDangNhap)
+        {
+            var users = new List<User>();
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                SELECT TenDangNhap, IsDelete
+                FROM Users";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var user = new User
+                        {
+                            TenDangNhap = reader.IsDBNull(0) ? "" : reader.GetString(0),
+                            IsDelete = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
+                        };
+                        if (user.IsDelete == 0 && tenDangNhap == user.TenDangNhap)
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public static List<User> GetAllEmployee()
         {
             var users = new List<User>();
