@@ -20,87 +20,87 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Store
-build_property.ProjectDir = D:\HỌC TẬP\IT008-Lập trình trực quan\Store\IT008-StoreManage\Store\
+build_property.ProjectDir = /Users/cuongnguyen/Desktop/IT008-StoreManage/Store/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Styles/Styles.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Styles/Styles.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/App.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Styles/icon.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Styles/icon.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/AccountSettingPageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/AccountSettingPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/AdminWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/AdminWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/AnalysePageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/AnalysePageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/Auth/CreateAcountWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Auth/CreateAcountWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/Auth/ForgotPasswordView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Auth/ForgotPasswordView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/Auth/MainWindow.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Auth/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/Bill/BillDetailWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Bill/BillDetailWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/Bill/CreateBillWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Bill/CreateBillWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/Bill/OrderPageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Bill/OrderPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/CreateCustomerWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/CreateCustomerWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/CreateImportWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/CreateImportWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/CreateProductWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/CreateProductWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/CustomerDetailWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/CustomerDetailWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/CustomerPageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/CustomerPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/EditAccountWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/EditAccountWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/EmployeePageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/EmployeePageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/EmployeeWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/EmployeeWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/HomePageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/HomePageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/ImportPageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/ImportPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/IncomePageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/IncomePageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/ProductDetailWindowView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/ProductDetailWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/ProductPageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/ProductPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[D:/HỌC TẬP/IT008-Lập trình trực quan/Store/IT008-StoreManage/Store/Views/SettingPageView.axaml]
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/SettingPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

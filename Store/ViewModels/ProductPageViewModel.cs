@@ -1,7 +1,6 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -24,10 +23,7 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     [ObservableProperty] private string _filter = "Tất cả";
     [ObservableProperty] private string _selectedDetail = "Tất cả";
     [ObservableProperty] private ObservableCollection<SanPham> sanPhams = new();
-    [ObservableProperty] private decimal minPrice = 0m;
-    [ObservableProperty] private decimal maxPrice = decimal.MaxValue;
-    [ObservableProperty] private int minQuantity = 0;
-
+    private List<SanPham> _allSanPham = new();
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
     {
         "Tất cả",
@@ -86,73 +82,72 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     //===== Tìm kiếm và lọc sản phẩm =====//
     partial void OnSearchKeywordChanged(string value)
     {
-        ApplyFilter();
+        SearchProducts();
     }
     partial void OnFilterChanged(string value)
     {
-        ApplyFilter();
+        SearchProducts();
     }
     partial void OnSelectedDetailChanged(string value)
     {
-        ApplyFilter();
-    }
-    partial void OnMinPriceChanged(decimal value)
-    {
-        ApplyFilter();
+        SearchProducts();
     }
 
-    partial void OnMaxPriceChanged(decimal value)
+    private void SearchProducts()
     {
-        ApplyFilter();
-    }
-
-    partial void OnMinQuantityChanged(int value)
-    {
-        ApplyFilter();
-    }
-
-    private void ApplyFilter()
-    {
-        IEnumerable<SanPham> query = _allSanPhams;
-
-        if (!string.IsNullOrEmpty(Filter) && !Filter.Equals("Tất cả", StringComparison.OrdinalIgnoreCase))
-            query = query.Where(sp => sp.LoaiSP == Filter);
-
+        var allProducts = _allSanPhams;
+        var filterList = allProducts;
+        // Lọc theo loại sản phẩm
+        if (Filter != "Tất cả")
+        {
+            filterList = filterList.FindAll(sp => sp.LoaiSP == Filter);
+        }
+        // Tìm kiếm theo từ khóa
         if (!string.IsNullOrWhiteSpace(SearchKeyword))
         {
-            var keyword = SearchKeyword.ToLower().Trim();
-
             switch (SelectedDetail)
             {
-                // Tìm giá sản phẩm
-                case "Giá sản phẩm":
-                    query = query.Where(sp => sp.GiaSP.ToString().Contains(keyword));
-                    break;
-
-                // Tìm tên sản phẩm
+                // Tìm theo tên sản phẩm
                 case "Tên sản phẩm":
-                    query = query.Where(sp => sp.TenSP.ToLower().Contains(keyword));
+                    filterList = filterList.FindAll(sp => sp.TenSP.ToLower().Contains(SearchKeyword.ToLower()));
                     break;
-
-                // Tìm số lượng
+                
+                // Tìm theo giá sản phẩm
+                case "Giá sản phẩm":   
+                    if (decimal.TryParse(SearchKeyword, out decimal giaSP))
+                    {
+                        filterList = filterList.FindAll(sp => sp.GiaSP == giaSP);
+                    }
+                    else
+                    {
+                        filterList = new List<SanPham>();
+                    }
+                    break;
+                
+                // Tìm theo số lượng
                 case "Số lượng":
-                    query = query.Where(sp => sp.SoLuongSP.ToString().Contains(keyword));
+                    if (int.TryParse(SearchKeyword, out int soLuong))
+                    {
+                        filterList = filterList.FindAll(sp => sp.SoLuongSP == soLuong);
+                    }
+                    else
+                    {
+                        filterList = new List<SanPham>();
+                    }
                     break;
-
-                default: // Tất cả
-                    query = query.Where(sp =>
-                        sp.TenSP.ToLower().Contains(keyword) ||
-                        sp.GiaSP.ToString().Contains(keyword) ||
-                        sp.SoLuongSP.ToString().Contains(keyword));
+                
+                // Tìm tất cả
+                default:
+                    filterList = filterList.FindAll(sp =>
+                        sp.TenSP.ToLower().Contains(SearchKeyword.ToLower()) ||
+                        sp.GiaSP.ToString().Contains(SearchKeyword) ||
+                        sp.SoLuongSP.ToString().Contains(SearchKeyword)
+                    );
                     break;
             }
         }
-
-        query = query.Where(sp => sp.GiaSP >= MinPrice && sp.GiaSP <= MaxPrice);
-        query = query.Where(sp => sp.SoLuongSP >= MinQuantity);
-
         // Cập nhật danh sách sản phẩm hiển thị
-        UpdateProductsList(query);
+        UpdateProductsList(filterList);
     }
     private void UpdateProductsList(IEnumerable<SanPham> products)
     {

@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj": {}
+    "/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Store.csproj": {}
   },
   "projects": {
-    "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj": {
+    "/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
+        "projectUniqueName": "/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Store.csproj",
         "projectName": "Store",
-        "projectPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\Store.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\HỌC TẬP\\IT008-Lập trình trực quan\\Store\\IT008-StoreManage\\Store\\obj\\",
+        "projectPath": "/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Store.csproj",
+        "packagesPath": "/Users/cuongnguyen/.nuget/packages/",
+        "outputPath": "/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/cuongnguyen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -147,7 +141,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/cuongnguyen/.dotnet/sdk/9.0.308/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
