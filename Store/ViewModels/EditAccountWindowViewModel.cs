@@ -126,7 +126,7 @@ namespace Store.ViewModels
         }
 
         [RelayCommand]
-        public async Task ThemAnhButtonAsync()
+        public async Task InsertPictureAsyncButton()
         {
             var dialog = new OpenFileDialog()
             {

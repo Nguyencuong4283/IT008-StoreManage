@@ -89,8 +89,8 @@ namespace Store.ViewModels.Bill
             else
             {
                 // Tạo hóa đơn mới
-                MaHD = HoaDonService.GenerateNewMaHD();
-                SoHD = HoaDonService.GetNextSoHD();
+                MaHD = OrderService.GenerateNewOrderID();
+                SoHD = OrderService.GetNextOrderNumber();
                 System.Diagnostics.Debug.WriteLine($"[ViewModel] Khởi tạo hóa đơn mới: {MaHD}, SoHD: {SoHD}");
             }
             
@@ -140,16 +140,16 @@ namespace Store.ViewModels.Bill
                     SoHD = SoHD,
                     TrangThaiHD = "Đã thanh toán"
                 };
-                HoaDonService.InsertHoaDon(hoaDon);
+                OrderService.InsertOrder(hoaDon);
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã tạo hóa đơn: {MaHD}");
 
                 KhachHangDuocChon.TongMua += TongThanhTien;
-                KhachHangService.UpdateKhachHang(KhachHangDuocChon);
+                CustomerService.UpdateCustomer(KhachHangDuocChon);
 
                 // Bước 2: Lưu tất cả chi tiết hóa đơn vào database
                 foreach (var chiTiet in ChiTietHoaDons)
                 {
-                    ChiTiet_HoaDonService.InsertChiTiet_HoaDon(chiTiet);
+                    DetailOrderService.InsertOderDetail(chiTiet);
                 }
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã lưu {ChiTietHoaDons.Count} chi tiết hóa đơn");
                 
@@ -235,7 +235,7 @@ namespace Store.ViewModels.Bill
         }
         private void LoadKhachHang()
         {
-            var ds = KhachHangService.GetAllKhachHang();
+            var ds = CustomerService.GetAllCustomer();
             danhSachKhachHang = new ObservableCollection<KhachHang>(ds);
         }
         private void LoadSanPham()

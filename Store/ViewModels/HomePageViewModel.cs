@@ -72,10 +72,10 @@ public partial class HomePageViewModel : ViewModelBase,
             // Chạy các query trong background thread
             await System.Threading.Tasks.Task.Run(() =>
             {
-                SoKhachHang = KhachHangService.CountKhachHang();
-                SoSanPham = SanPhanService.CountSanPham();
-                SoHoaDon = HoaDonService.CountHoaDon();
-                DoanhThuHomNay = HoaDonService.GetTongTienHomNay();
+                SoKhachHang = CustomerService.CountCusomter();
+                SoSanPham = ProductService.CountProduct();
+                SoHoaDon = OrderService.CountOrder();
+                DoanhThuHomNay = OrderService.GetTodayToTalIncome();
             });
         }
         catch (Exception ex)
@@ -85,28 +85,28 @@ public partial class HomePageViewModel : ViewModelBase,
     }
     
     [RelayCommand]
-    private void TaoDonButton()
+    private void CreateOderButton()
     {
         WindowManager.ShowCreateBillWindow();
     }
     [RelayCommand]
-    private void ThemSanPhamButton()
+    private void InsertProductButton()
     {
         WindowManager.ShowCreateProductWindow();
-        SoSanPham = SanPhanService.CountSanPham();
+        SoSanPham = ProductService.CountProduct();
     }
     [RelayCommand]
-    private void ThemKhachHangButton()
+    private void InsertCustomerButton()
     {
         WindowManager.ShowCreateCustomerWindow();
         // Sau khi thêm xong, cập nhật lại số lượng
-        SoKhachHang = KhachHangService.CountKhachHang();
+        SoKhachHang = CustomerService.CountCusomter();
     }
     private void LoadHoaDons()
     {
         try
         {
-            var list = HoaDonService.GetAllHoaDon();
+            var list = OrderService.GetAllOrder();
 
             hoaDons.Clear();
             foreach (var kh in list)

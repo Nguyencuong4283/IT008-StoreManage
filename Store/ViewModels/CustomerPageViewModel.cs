@@ -31,7 +31,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     public CustomerPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<KhachHangChangedMessage>(this);
-        LoadKhachHangs();
+        LoadCustomer();
     }
     public void Receive(KhachHangChangedMessage message)
     {
@@ -39,25 +39,25 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         // Đảm bảo cập nhật trên UI thread
         Dispatcher.UIThread.Post(() =>
         {
-            LoadKhachHangs();
+            LoadCustomer();
         });
     }
-    private void LoadKhachHangs()
+    private void LoadCustomer()
     {
-        var list = KhachHangService.GetAllKhachHang();
+        var list = CustomerService.GetAllCustomer();
         _allKhachHangs = list;
         UpdateCustomerList(_allKhachHangs);
     }
 
     [RelayCommand]
-    public void TaoKhachHangButton()
+    public void CreateCustomerButton()
     {
         var createCustomerWindowView = new CreateCustomerWindowView();
         createCustomerWindowView.Show();
     }
 
     [RelayCommand]
-    public void ChiTietButtonCommand(KhachHang khachHang)
+    public void DetailButtonCommand(KhachHang khachHang)
     {
         var detailWindow = new CustomerDetailWindowView
         {
@@ -89,7 +89,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
 
     private void SearchCustomers()
     {
-        var allCustomers = KhachHangService.GetAllKhachHang();
+        var allCustomers = CustomerService.GetAllCustomer();
         var filterList = allCustomers;
 
         if (!string.IsNullOrWhiteSpace(SearchKeyword))

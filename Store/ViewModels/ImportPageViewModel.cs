@@ -41,7 +41,7 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
 
     private void LoadImports()
     {
-        var list = ImportService.GetAllNhapKho();
+        var list = ImportService.GetAllImport();
         allImports = list;
         UpdateImportList(allImports);
     }
@@ -68,7 +68,7 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
 
     private void SearchImports()
     {
-        var allImports = ImportService.GetAllNhapKho();
+        var allImports = ImportService.GetAllImport();
         var filterList = allImports;
 
         if (!string.IsNullOrWhiteSpace(SearchKeyword))

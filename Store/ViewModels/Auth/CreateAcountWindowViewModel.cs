@@ -65,7 +65,7 @@ namespace Store.ViewModels.Auth
 
 
         [RelayCommand]
-        private void DangKyButton()
+        private void RegisterButton()
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Store.ViewModels.Auth
                     KiemTraDangNhap = "Email không hợp lệ!";
                     return;
                 }
-                else if (UserService.TenDangNhapExist(TenDangNhap) == false)
+                else if (UserService.UserNameExist(TenDangNhap) == false)
                 {
                     KiemTraDangNhap = "Tên đăng nhập đã tồn tại!";
                     return;
@@ -137,7 +137,7 @@ namespace Store.ViewModels.Auth
         }
 
         [RelayCommand]
-        public async Task ThemAnhButtonAsync()
+        public async Task InsertPictureButtonAsync()
         {
             var dialog = new OpenFileDialog()
             {

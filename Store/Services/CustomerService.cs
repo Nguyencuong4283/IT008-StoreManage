@@ -3,11 +3,10 @@ using Store.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Avalonia.Media.Imaging;
 
 namespace Store.Services
 {
-    public static class KhachHangService
+    public static class CustomerService
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
@@ -41,12 +40,12 @@ namespace Store.Services
         }
 
         // ----------------- Tạo Khách hàng ----------------- //
-        public static void InsertKhachHang(KhachHang kh)
+        public static void InsertCustomer(KhachHang kh)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
-                string newMaKH = GenerateNewMaKH();
+                string newMaKH = GenerateCustommerID();
 
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
@@ -68,7 +67,7 @@ namespace Store.Services
         }
 
         // ----------------- Đọc ----------------- //
-        public static List<KhachHang> GetAllKhachHang()
+        public static List<KhachHang> GetAllCustomer()
         {
             var khachHangs = new List<KhachHang>();
 
@@ -105,7 +104,7 @@ namespace Store.Services
             return khachHangs;
         }
         //Đếm khách hàng
-        public static int CountKhachHang()
+        public static int CountCusomter()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -118,7 +117,7 @@ namespace Store.Services
         }
         
         // ----------------- UPDATE ----------------- //
-        public static void UpdateKhachHang(KhachHang kh)
+        public static void UpdateCustomer(KhachHang kh)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -150,8 +149,8 @@ namespace Store.Services
             }
         }
 
-        // ----------------- DELETE -----------------
-        public static void DeleteKhachHang(string maKH)
+        // ----------------- DELETE ----------------- //
+        public static void DeleteCustomer(string maKH)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -163,8 +162,8 @@ namespace Store.Services
             }
         }
 
-        // ----------------- Generate ID -----------------
-        public static string GenerateNewMaKH()
+        // ----------------- Generate ID ----------------- //
+        public static string GenerateCustommerID()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

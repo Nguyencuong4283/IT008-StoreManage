@@ -12,9 +12,9 @@ sealed class Program
         // ✅ Khởi tạo CSDL (tạo file store.db + bảng nếu chưa có)
         SanPhanService.Initialize();
         UserService.Initialize();
-        KhachHangService.Initialize();
-        HoaDonService.Initialize();
-        ChiTiet_HoaDonService.Initialize();
+        CustomerService.Initialize();
+        OrderService.Initialize();
+        DetailOrderService.Initialize();
         ImportService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng

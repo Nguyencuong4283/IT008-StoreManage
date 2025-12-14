@@ -91,7 +91,7 @@ namespace Store.ViewModels
             }
         }
         [RelayCommand]
-        public async Task ThemAnhButtonAsync()
+        public async Task InsertPictureButtonAsync()
         {
             var dialog = new OpenFileDialog()
             {
@@ -138,26 +138,26 @@ namespace Store.ViewModels
         }
 
         [RelayCommand]
-        private void TangGia()
+        private void IncreasePrice()
         {
             GiaSP += 1000;
         }
 
         [RelayCommand]
-        private void GiamGia()
+        private void DecreasePrice()
         {
             if (GiaSP >= 2000)
                 GiaSP -= 1000;
         }
 
         [RelayCommand]
-        private void TangSoLuong()
+        private void IncreaseNumberOfProduct()
         {
             SoLuongSP++;
         }
 
         [RelayCommand]
-        private void GiamSoLuong()
+        private void DecreaseNumberOfProduct()
         {
             if (SoLuongSP > 1)
                 SoLuongSP--;

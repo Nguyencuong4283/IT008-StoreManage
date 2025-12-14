@@ -26,9 +26,9 @@ public partial class EmployeePageViewModel : ViewModelBase
 
     public EmployeePageViewModel()
     {
-        LoadNhanViens();
+        LoadEmployee();
     }
-    private  void LoadNhanViens()
+    private  void LoadEmployee()
     {
        var list = UserService.GetAllEmployee();
         nhanViens.Clear();
@@ -38,7 +38,7 @@ public partial class EmployeePageViewModel : ViewModelBase
         }
     }
     [RelayCommand]
-    private async Task ChiTietButton(User user)
+    private async Task DetailButton(User user)
     {
         if (user == null) return;
         
@@ -53,19 +53,19 @@ public partial class EmployeePageViewModel : ViewModelBase
             if (owner != null)
             {
                 await editWindow.ShowDialog(owner);
-                LoadNhanViens(); // Reload sau khi đóng dialog
+                LoadEmployee(); // Reload sau khi đóng dialog
             }
         }
     }
     [RelayCommand]
-    private void ThemNhanVienButton()
+    private void InsertEmployeeButton()
     {
         WindowManager.ShowCreateAccountWindow();
-        LoadNhanViens(); // Reload sau khi đóng dialog
+        LoadEmployee(); // Reload sau khi đóng dialog
     }
     /*   private void LoadKhachHangs()
     {
-        var list = KhachHangService.GetAllKhachHang();
+        var list = CustomerService.GetAllKhachHang();
 
         khachHangs.Clear();
         foreach (var kh in list)

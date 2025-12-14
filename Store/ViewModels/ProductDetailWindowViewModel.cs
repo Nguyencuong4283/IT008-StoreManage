@@ -76,7 +76,7 @@ namespace Store.ViewModels
                     }
 
                     SP.IsDelete = 1;
-                    SanPhanService.UpdateSanPham(SP);
+                    ProductService.UpdateProduct(SP);
                     System.Diagnostics.Debug.WriteLine($"✅ Đã xóa san pham: {MaSP}");
 
                     // Gửi message

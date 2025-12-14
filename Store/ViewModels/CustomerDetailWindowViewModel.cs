@@ -46,7 +46,7 @@ namespace Store.ViewModels
         }
 
         [RelayCommand]
-        private async Task XoaKhachHangButton()
+        private async Task DeleteCustomerButton()
         {
             try
             {
@@ -74,7 +74,7 @@ namespace Store.ViewModels
                     }
 
                     KH.IsDelete = 1;
-                    KhachHangService.UpdateKhachHang(KH);
+                    CustomerService.UpdateCustomer(KH);
                     System.Diagnostics.Debug.WriteLine($"✅ Đã xóa khách hàng: {MaKH}");
 
                     // Gửi message

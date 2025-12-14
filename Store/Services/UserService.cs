@@ -51,7 +51,7 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                string newMaNV = GenerateNewMaUser();
+                string newMaNV = GenerateNewUserID();
 
                 cmd.CommandText = @"
                 INSERT INTO Users 
@@ -147,7 +147,7 @@ namespace Store.Services
             }
             return true;
         }
-        public static bool TenDangNhapExist(string tenDangNhap)
+        public static bool UserNameExist(string tenDangNhap)
         {
             var users = new List<User>();
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -334,7 +334,7 @@ namespace Store.Services
         }
 
         // ------------------ AUTO ID ------------------
-        public static string GenerateNewMaUser()
+        public static string GenerateNewUserID()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

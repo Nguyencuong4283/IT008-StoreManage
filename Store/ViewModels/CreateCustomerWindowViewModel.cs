@@ -31,11 +31,11 @@ namespace Store.ViewModels
         };
         public CreateCustomerWindowViewModel()
         {
-           MaKH = KhachHangService.GenerateNewMaKH();
+           MaKH = CustomerService.GenerateCustommerID();
            
         }
         [RelayCommand]
-        public void TaoKhachHangButton()
+        public void CreateCusomterButton()
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Store.ViewModels
                     TongMua = (decimal)0,
                 };
                 
-                KhachHangService.InsertKhachHang(khachHang);
+                CustomerService.InsertCustomer(khachHang);
                 // Sau khi thêm thành công
                 WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm khách hàng: {tenKH}");
@@ -62,7 +62,7 @@ namespace Store.ViewModels
                 GioiTinh = "";
                 DiaChi = "";
                 GhiChu = "";
-                MaKH =KhachHangService.GenerateNewMaKH(); // tạo mã mới cho lần tiếp theo
+                MaKH =CustomerService.GenerateCustommerID(); // tạo mã mới cho lần tiếp theo
             }
             catch (Exception ex)
             {

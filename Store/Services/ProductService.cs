@@ -9,7 +9,7 @@ using Avalonia.Media.Imaging;
 
 namespace Store.Services
 {
-    public static class SanPhanService 
+    public static class ProductService 
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
@@ -85,12 +85,12 @@ namespace Store.Services
         }
         //CRUD
         //Create
-        public static void InsertSanPham(SanPham sp)
+        public static void InsertProduct(SanPham sp)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
-                string newMaSP = GenerateNewMaSP();
+                string newMaSP = GenerateNewProductID();
 
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
@@ -112,7 +112,7 @@ namespace Store.Services
         }
 
         //Read one
-        public static SanPham GetOneSanPham(string MaSP)
+        public static SanPham GetProduct(string MaSP)
         {
             var sanPham = new SanPham();
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -156,7 +156,7 @@ namespace Store.Services
             }
         }
         //Đếm số lượng sản phẩm
-        public static int CountSanPham()
+        public static int CountProduct()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -168,7 +168,7 @@ namespace Store.Services
             }
         }
         //Read All
-        public static List<SanPham> GetAllSanPham()
+        public static List<SanPham> GetAllProduct()
         {
             var sanPhams = new List<SanPham>();
 
@@ -216,7 +216,7 @@ namespace Store.Services
             return sanPhams;
         }
         //Update
-        public static void UpdateSanPham(SanPham sp)
+        public static void UpdateProduct(SanPham sp)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -247,7 +247,7 @@ namespace Store.Services
         }
 
         // Delete
-        public static void DeleteSanPham(string maSP)
+        public static void DeleteProduct(string maSP)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -259,7 +259,7 @@ namespace Store.Services
             }
         }
         //Tạo MaSP
-        public static string GenerateNewMaSP()
+        public static string GenerateNewProductID()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

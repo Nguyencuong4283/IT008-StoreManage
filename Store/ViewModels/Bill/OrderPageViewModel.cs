@@ -54,7 +54,7 @@ public partial class OrderPageViewModel : ViewModelBase,
     }
     private void LoadHoaDons()
     {
-        var list = HoaDonService.GetAllHoaDon();
+        var list = OrderService.GetAllOrder();
 
         allOrder = list;
 
