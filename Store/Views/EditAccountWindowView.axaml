@@ -90,11 +90,13 @@
                          </StackPanel>
                          
                          <StackPanel Grid.Column="1" Margin="8,0,0,0">
-                            <TextBlock Text="Mật khẩu" Classes="label"/>
-                            <TextBox Text="{Binding MatKhau, Mode=TwoWay}"
-                                     Classes="modern-input"
-                                     IsReadOnly="True"
-                                     Watermark="●●●●●●●●"/>
+                            <TextBlock Text="Chức vụ" Classes="label"/>
+                           <ComboBox ItemsSource="{Binding DanhSachChucVu}"
+                                                      SelectedItem="{Binding ChucVu, Mode=TwoWay}"
+                                                      Classes="modern-combo"
+                                                      Width="300"
+                                                      HorizontalAlignment="Left"
+                                                      PlaceholderText="Chọn giới tính" />
                          </StackPanel>
                       </Grid>
 
@@ -157,6 +159,9 @@
                               HorizontalAlignment="Stretch">
                          Cập nhật 
                       </Button>
+                       <StackPanel  Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" Margin="0 30 0 0">
+							<Button Command="{Binding DeleteCommand}" Classes="danger" Width="616" Height="44" FontSize="16" Padding="12,8">🗑️ Xóa</Button>
+						</StackPanel>
                    </StackPanel>
                 </Grid>
              </ScrollViewer>

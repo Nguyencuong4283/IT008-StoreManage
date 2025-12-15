@@ -48,7 +48,7 @@ namespace Store.ViewModels
         public CreateProductWindowViewModel()
         {
             // Tự động tạo mã sản phẩm ban đầu
-            MaSP = SanPhamService.GenerateNewMaSP();
+            MaSP = ProductService.GenerateNewMaSP();
         }
 
         [RelayCommand]
@@ -66,8 +66,9 @@ namespace Store.ViewModels
                     KichThuocSP = KichThuocSP,
                     MoTaSP = MoTaSP,
                     HinhAnhDuongDan = hinhAnhDuongDan, // Có thể sau này bạn sẽ load từ file
+                    IsDelete = 0
                 };
-                SanPhamService.InsertSanPham(sanPham);
+                ProductService.InsertProduct(sanPham);
                 // Sau khi thêm thành công
                 WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm: {TenSP}");
@@ -80,7 +81,7 @@ namespace Store.ViewModels
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
                 HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
-                MaSP = SanPhamService.GenerateNewMaSP();
+                MaSP = ProductService.GenerateNewMaSP();
 
 
             }
@@ -90,7 +91,7 @@ namespace Store.ViewModels
             }
         }
         [RelayCommand]
-        public async Task ThemAnhButtonAsync()
+        public async Task InsertPictureButtonAsync()
         {
             var dialog = new OpenFileDialog()
             {
@@ -137,26 +138,26 @@ namespace Store.ViewModels
         }
 
         [RelayCommand]
-        private void TangGia()
+        private void IncreasePrice()
         {
             GiaSP += 1000;
         }
 
         [RelayCommand]
-        private void GiamGia()
+        private void DecreasePrice()
         {
             if (GiaSP >= 2000)
                 GiaSP -= 1000;
         }
 
         [RelayCommand]
-        private void TangSoLuong()
+        private void IncreaseNumberOfProduct()
         {
             SoLuongSP++;
         }
 
         [RelayCommand]
-        private void GiamSoLuong()
+        private void DecreaseNumberOfProduct()
         {
             if (SoLuongSP > 1)
                 SoLuongSP--;

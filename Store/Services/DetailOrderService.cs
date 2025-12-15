@@ -6,11 +6,11 @@ using System.IO;
 
 namespace Store.Services
 {
-    public static class ChiTiet_HoaDonService
+    public static class DetailOrderService
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
-        // ------------------ INIT TABLE ------------------
+        // ------------------ INIT TABLE ------------------ //
         public static void Initialize()
         {
             Console.WriteLine($"Database Path: {dbPath}");
@@ -39,8 +39,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ CREATE ------------------
-        public static void InsertChiTiet_HoaDon(ChiTiet_HoaDon ct)
+        // ------------------ CREATE ------------------ //
+        public static void InsertOderDetail(ChiTiet_HoaDon ct)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -62,8 +62,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ READ ALL ------------------
-        public static List<ChiTiet_HoaDon> GetAllChiTiet_HoaDon()
+        // ------------------ READ ALL ------------------ //
+        public static List<ChiTiet_HoaDon> GetAllOrderDetail()
         {
             var chiTiets = new List<ChiTiet_HoaDon>();
 
@@ -96,7 +96,7 @@ namespace Store.Services
             return chiTiets;
         }
 
-        public static List<ChiTiet_HoaDon> GetChiTiet_HoaDon(string maHD)
+        public static List<ChiTiet_HoaDon> GetOrderDetail(string maHD)
         {
             var chiTiets = new List<ChiTiet_HoaDon>();
 
@@ -145,8 +145,8 @@ namespace Store.Services
 
             return chiTiets;
         }
-        // ------------------ READ BY MaHD ------------------
-        public static List<ChiTiet_HoaDon> GetChiTiet_HoaDonByMaHD(string maHD)
+        // ------------------ READ BY MaHD ------------------ //
+        public static List<ChiTiet_HoaDon> GetOrderDetailByCustomerID(string maHD)
         {
             var chiTiets = new List<ChiTiet_HoaDon>();
 
@@ -181,8 +181,8 @@ namespace Store.Services
             return chiTiets;
         }
 
-        // ------------------ READ ONE ------------------
-        public static ChiTiet_HoaDon? GetChiTiet_HoaDonByKey(string maHD, string maSP)
+        // ------------------ READ ONE ------------------ //
+        public static ChiTiet_HoaDon? GetOrderDetailByKey(string maHD, string maSP)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -215,8 +215,8 @@ namespace Store.Services
             return null;
         }
 
-        // ------------------ UPDATE ------------------
-        public static void UpdateChiTiet_HoaDon(ChiTiet_HoaDon ct)
+        // ------------------ UPDATE ------------------ //
+        public static void UpdateOrderDetail(ChiTiet_HoaDon ct)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -241,8 +241,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ DELETE ------------------
-        public static void DeleteChiTiet_HoaDon(string maHD, string maSP)
+        // ------------------ DELETE ------------------ //
+        public static void DeleteOrderDetail(string maHD, string maSP)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -255,8 +255,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ DELETE BY MaHD ------------------
-        public static void DeleteChiTiet_HoaDonByMaHD(string maHD)
+        // ------------------ DELETE BY MaHD ------------------ //
+        public static void DeleteOrderDetailByOrderID(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -268,8 +268,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ TÍNH TỔNG TIỀN ------------------
-        public static decimal GetTongTienByMaHD(string maHD)
+        // ------------------ TOTAL INCOME ------------------ //
+        public static decimal GetTongTienByOrderID(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -287,8 +287,8 @@ namespace Store.Services
         }
 
 
-        // ------------------ INSERT NHIỀU CHI TIẾT ------------------
-        public static void InsertMultipleChiTiet_HoaDon(List<ChiTiet_HoaDon> chiTiets)
+        // ------------------ INSERT DETAIL ------------------ //
+        public static void InsertMultipleOrderDetail(List<ChiTiet_HoaDon> chiTiets)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -325,8 +325,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ ĐẾM SỐ LƯỢNG CHI TIẾT ------------------
-        public static int GetCountByMaHD(string maHD)
+        // ------------------ COUNT DETAIL------------------ //
+        public static int GetCountByOrderID(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -340,7 +340,7 @@ namespace Store.Services
             }
         }
 
-        // ------------------ KIỂM TRA TỒN TẠI ------------------
+        // ------------------ CHECK EXISTENCE ------------------ //
         public static bool Exists(string maHD, string maSP)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -355,12 +355,9 @@ namespace Store.Services
                 return result != null && Convert.ToInt32(result) > 0;
             }
         }
-
-        // ------------------ TÍNH TỔNG GIẢM GIÁ ------------------
-
-
-        // ------------------ TÍNH TỔNG GIẢM GIÁ ------------------
-        public static decimal GetTongGiamGiaByMaHD(string maHD)
+        
+        // ------------------ CALCULATE DISCOUNT ------------------ //
+        public static decimal GetTotalDiscountByOrderID(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -374,8 +371,8 @@ namespace Store.Services
             }
         }
 
-        // ------------------ TÍNH TỔNG TRỊ GIÁ (TRƯỚC GIẢM) ------------------
-        public static decimal GetTongTriGiaByMaHD(string maHD)
+        // ------------------ TÍNH TỔNG TRỊ GIÁ (TRƯỚC GIẢM) ------------------ //
+        public static decimal GetTotalValueByOrderID(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

@@ -5,6 +5,7 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using Store.Messages;
@@ -71,10 +72,10 @@ public partial class HomePageViewModel : ViewModelBase,
             // Chạy các query trong background thread
             await System.Threading.Tasks.Task.Run(() =>
             {
-                SoKhachHang = KhachHangService.CountKhachHang();
-                SoSanPham = SanPhamService.CountSanPham();
-                SoHoaDon = HoaDonService.CountHoaDon();
-                DoanhThuHomNay = HoaDonService.GetTongTienHomNay();
+                SoKhachHang = CustomerService.CountCusomter();
+                SoSanPham = ProductService.CountProduct();
+                SoHoaDon = OrderService.CountOrder();
+                DoanhThuHomNay = OrderService.GetTodayToTalIncome();
             });
         }
         catch (Exception ex)
@@ -84,31 +85,28 @@ public partial class HomePageViewModel : ViewModelBase,
     }
     
     [RelayCommand]
-    private void TaoDonButton()
+    private void CreateOderButton()
     {
-        var createBillWindow = new Store.Views.Bill.CreateBillWindowView();
-        createBillWindow.Show();
+        WindowManager.ShowCreateBillWindow();
     }
     [RelayCommand]
-    private void ThemSanPhamButton()
+    private void InsertProductButton()
     {
-        var createProductWindowView = new CreateProductWindowView();
-        createProductWindowView.Show();
-        SoSanPham = SanPhamService.CountSanPham();
+        WindowManager.ShowCreateProductWindow();
+        SoSanPham = ProductService.CountProduct();
     }
     [RelayCommand]
-    private void ThemKhachHangButton()
+    private void InsertCustomerButton()
     {
-        var createCustomerWindowView = new CreateCustomerWindowView();
-        createCustomerWindowView.Show();
+        WindowManager.ShowCreateCustomerWindow();
         // Sau khi thêm xong, cập nhật lại số lượng
-        SoKhachHang = KhachHangService.CountKhachHang();
+        SoKhachHang = CustomerService.CountCusomter();
     }
     private void LoadHoaDons()
     {
         try
         {
-            var list = HoaDonService.GetAllHoaDon();
+            var list = OrderService.GetAllOrder();
 
             hoaDons.Clear();
             foreach (var kh in list)

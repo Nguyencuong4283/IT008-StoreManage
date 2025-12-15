@@ -63,7 +63,7 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
         }
     }
     [RelayCommand]
-    private void DoiMatKhauButton()
+    private void ChangePasswordButton()
     {
         var currentUser = UserService.GetOneUser(_maDN);
         if(matKhauNew != matKhauNewConfirm || matKhauNew == null || UserService.VerifyPassword(matKhauNow, currentUser.MatKhau) != true)

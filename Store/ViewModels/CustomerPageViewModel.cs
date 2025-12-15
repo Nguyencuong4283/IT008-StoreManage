@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -32,7 +31,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     public CustomerPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<KhachHangChangedMessage>(this);
-        LoadKhachHangs();
+        LoadCustomer();
     }
     public void Receive(KhachHangChangedMessage message)
     {
@@ -40,25 +39,25 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         // Đảm bảo cập nhật trên UI thread
         Dispatcher.UIThread.Post(() =>
         {
-            LoadKhachHangs();
+            LoadCustomer();
         });
     }
-    private void LoadKhachHangs()
+    private void LoadCustomer()
     {
-        var list = KhachHangService.GetAllKhachHang();
+        var list = CustomerService.GetAllCustomer();
         _allKhachHangs = list;
-        ApplyFilter();
+        UpdateCustomerList(_allKhachHangs);
     }
 
     [RelayCommand]
-    public void TaoKhachHangButton()
+    public void CreateCustomerButton()
     {
         var createCustomerWindowView = new CreateCustomerWindowView();
         createCustomerWindowView.Show();
     }
 
     [RelayCommand]
-    public void ChiTietButtonCommand(KhachHang khachHang)
+    public void DetailButtonCommand(KhachHang khachHang)
     {
         var detailWindow = new CustomerDetailWindowView
         {
@@ -66,58 +65,68 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         };
         detailWindow.Show();
     }
+    //private void XemChiTietSanPham(SanPham sanPham)
+    //{
+    //    if (sanPham == null) return;
 
-    //===== Tìm kiếm khách hàng =====//
+    //    var detailWindow = new ProductDetailWindowView
+    //    {
+    //        DataContext = new ProductDetailWindowViewModel(sanPham)
+    //    };
+    //    detailWindow.Show();
+    //}
+
+    //===== tìm kiếm khách hàng =====//
     partial void OnSearchKeywordChanged(string value)
     {
-        ApplyFilter();
+        SearchCustomers();
     }
 
     partial void OnSelectedFilterChanged(string value)
     {
-        ApplyFilter();
+        SearchCustomers();
     }
 
-    private void ApplyFilter()
+    private void SearchCustomers()
     {
-        IEnumerable<KhachHang> query = _allKhachHangs ?? new List<KhachHang>();
+        var allCustomers = CustomerService.GetAllCustomer();
+        var filterList = allCustomers;
 
         if (!string.IsNullOrWhiteSpace(SearchKeyword))
         {
-            var keyword = SearchKeyword.Trim().ToLower();
-
             switch (SelectedFilter)
             {
                 // Tìm tên khách hàng
                 case "Tên khách hàng":
-                    query = query.Where(kh => !string.IsNullOrWhiteSpace(kh.TenKH) &&
-                                              kh.TenKH.ToLower().Contains(keyword));
+                    filterList = allCustomers.FindAll(kh =>
+                        kh.TenKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0);
                     break;
 
                 // Tìm mã khách hàng
                 case "Mã khách hàng":
-                    query = query.Where(kh => !string.IsNullOrWhiteSpace(kh.MaKH) &&
-                                              kh.MaKH.ToLower().Contains(keyword));
+                    filterList = allCustomers.FindAll(kh =>
+                        kh.MaKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0);
                     break;
 
                 // Tìm số điện thoại
                 case "Số điện thoại":
-                    query = query.Where(kh => !string.IsNullOrWhiteSpace(kh.SDT) &&
-                                              kh.SDT.Contains(keyword));
+                    filterList = allCustomers.FindAll(kh =>
+                        kh.SDT.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0);
                     break;
 
+                // Tìm tất cả
                 default:
-                    // Tìm tất cả
-                    query = query.Where(kh =>
-                        (!string.IsNullOrWhiteSpace(kh.TenKH) && kh.TenKH.ToLower().Contains(keyword)) ||
-                        (!string.IsNullOrWhiteSpace(kh.MaKH) && kh.MaKH.ToLower().Contains(keyword)) ||
-                        (!string.IsNullOrWhiteSpace(kh.SDT) && kh.SDT.Contains(keyword))
+                    filterList = allCustomers.FindAll(kh =>
+                        (kh.TenKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (kh.MaKH.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (kh.SDT.IndexOf(SearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0)
                     );
                     break;
             }
-        }
 
-        UpdateCustomerList(query.ToList());
+            // Cập nhật danh sách khách hàng hiển thị
+            UpdateCustomerList(filterList);
+        }
     }
 
     private void UpdateCustomerList(List<KhachHang> customers)

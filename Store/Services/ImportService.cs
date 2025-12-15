@@ -121,7 +121,7 @@ public class ImportService
 
 
     // ----------------- Lấy dữ liệu ----------------- //
-    public static List<Import> GetAllNhapKho()
+    public static List<Import> GetAllImport()
     {
         var nhapKhoList = new List<Import>();
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -154,7 +154,7 @@ public class ImportService
     }
 
     // ----------------- Xóa Nhập kho ----------------- //
-    public static void DeleteNhapKho(string maNK)
+    public static void DeleteImport(string maNK)
     {
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
         {
@@ -171,7 +171,7 @@ public class ImportService
     }
 
     // ----------------- Cập nhật Nhập kho ----------------- //
-    public static void UpdateNhapKho(Import nk)
+    public static void UpdateImport(Import nk)
     {
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
         {
@@ -196,7 +196,7 @@ public class ImportService
     }
 
     // ----------------- Tạo Mã Nhập kho mới ----------------- //
-    private static string GenerateNewMaNK()
+    private static string GenerateNewImportID()
     {
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
         {

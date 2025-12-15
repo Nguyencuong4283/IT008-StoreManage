@@ -5,6 +5,8 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 using Store.Models;
 using Store.Services;
 using System;
@@ -29,6 +31,14 @@ namespace Store.ViewModels
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private DateTime? ngaySinh;
         [ObservableProperty] private string gioiTinh;
+        [ObservableProperty] private string chucVu;
+        User NV { get; set; }
+        public ObservableCollection<string> DanhSachChucVu { get; } = new()
+        {
+           "Nhân Viên Bán Hàng",
+           "Quản Lý"
+        };
+        public Window? ParentWindow { get; set; }
 
         // Constructor mặc định cho XAML designer
         public EditAccountWindowViewModel()
@@ -44,7 +54,10 @@ namespace Store.ViewModels
                 _isDelete = user.IsDelete;
                 
                 tenDangNhap = user.TenDangNhap;
-                matKhau = "●●●●●●●●";
+                if(user.MaVT == "VT02")
+                    chucVu = "Nhân Viên Bán Hàng";
+                else if (user.MaVT == "VT01")
+                    chucVu = "Quản Lý";
                 hoTen = user.HoTen;
                 email = user.Email;
                 sDT = user.SDT;
@@ -58,7 +71,9 @@ namespace Store.ViewModels
                 {
                     hinhAnh = new Bitmap(hinhAnhPath);
                 }
+
             }
+            NV = user;
         }
         // ✅ đường dẫn để lưu DB
         [ObservableProperty] private string hinhAnhPath;
@@ -73,7 +88,7 @@ namespace Store.ViewModels
             try
             {
                 // Validate input
-                if (string.IsNullOrWhiteSpace(TenDangNhap) || string.IsNullOrWhiteSpace(MatKhau) ||
+                if (string.IsNullOrWhiteSpace(TenDangNhap)  ||
                     string.IsNullOrWhiteSpace(HoTen) || string.IsNullOrWhiteSpace(Email))
                 {
                     System.Diagnostics.Debug.WriteLine("Vui lòng điền đầy đủ thông tin!");
@@ -84,24 +99,25 @@ namespace Store.ViewModels
                 {
                     MaNV = _maNV,
                     TenDangNhap = TenDangNhap,
-                    MatKhau = "●●●●●●●●●",
                     HoTen = HoTen,
                     Email = Email,
                     SDT = SDT ?? "",
                     DiaChi = DiaChi ?? "",
-                    NgaySinh = NgaySinh,
+                    NgaySinh = NgaySinh.Value,
                     GioiTinh = GioiTinh ?? "",
                     HinhAnh = HinhAnhPath ?? "",
                     MaVT = _maVT ?? "VT01",
                     IsDelete = _isDelete
                 };
+                if (chucVu == "Nhân Viên Bán Hàng")
+                    user.MaVT = "VT02";
+                else if (chucVu == "Quản Lý")
+                    user.MaVT = "VT01";
                 UserService.UpdateUser(user, updatePassword: false);
 
                 System.Diagnostics.Debug.WriteLine($"✅ Đã tạo cập nhật  thành công: {HoTen}");
 
-                // Đóng window sau khi tạo thành công
-                var window = GetActiveWindow();
-                window?.Close();
+                ParentWindow?.Close();
             }
             catch (Exception ex)
             {
@@ -110,7 +126,7 @@ namespace Store.ViewModels
         }
 
         [RelayCommand]
-        public async Task ThemAnhButtonAsync()
+        public async Task InsertPictureAsyncButton()
         {
             var dialog = new OpenFileDialog()
             {
@@ -148,7 +164,122 @@ namespace Store.ViewModels
                 System.Diagnostics.Debug.WriteLine($"Ảnh đã chọn: {HinhAnhPath}");
             }
         }
+        [RelayCommand]
+        private async Task Delete()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(_maNV))
+                {
+                    System.Diagnostics.Debug.WriteLine("Không có mã nhân viên  để xóa");
+                    return;
+                }
 
+                // Hiển thị dialog xác nhận
+                if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+                {
+                    var window = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
+                    if (window != null)
+                    {
+                        var result = await ShowConfirmDialog(window,
+                            "Xác nhận xóa",
+                            $"Bạn có chắc chắn muốn xóa nhân viên  '{_maNV}' không?");
+
+                        if (!result)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Người dùng đã hủy xóa nhân viên");
+                            return;
+                        }
+                    }
+
+                    NV.IsDelete = 1;
+                    UserService.UpdateUser(NV);
+                    System.Diagnostics.Debug.WriteLine($"✅ Đã xóa nhân viên: {_maNV}");
+
+                    // Gửi message
+                    WeakReferenceMessenger.Default.Send(new NhanVienChangedMessage(_maNV));
+                    // Đóng window sau khi xóa
+                    var closeWindow = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
+                    closeWindow?.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"❌ Lỗi khi xóa nhân viên: {ex.Message}");
+            }
+        }
+
+        private async Task<bool> ShowConfirmDialog(Avalonia.Controls.Window owner, string title, string message)
+        {
+            var dialog = new Avalonia.Controls.Window
+            {
+                Title = title,
+                Width = 400,
+                Height = 180,
+                WindowStartupLocation = Avalonia.Controls.WindowStartupLocation.CenterOwner,
+                CanResize = false
+            };
+
+            var stackPanel = new Avalonia.Controls.StackPanel
+            {
+                Margin = new Avalonia.Thickness(20),
+                Spacing = 20
+            };
+
+            var messageText = new Avalonia.Controls.TextBlock
+            {
+                Text = message,
+                TextWrapping = Avalonia.Media.TextWrapping.Wrap,
+                FontSize = 14
+
+            };
+
+            var buttonPanel = new Avalonia.Controls.StackPanel
+            {
+                Orientation = Avalonia.Layout.Orientation.Horizontal,
+                HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                Spacing = 10
+            };
+
+            bool result = false;
+
+            var yesButton = new Avalonia.Controls.Button
+            {
+                Content = "Có",
+                Width = 100,
+                
+                Height = 35
+            };
+            yesButton.Click += (s, e) =>
+            {
+                result = true;
+                dialog.Close();
+            };
+
+            var noButton = new Avalonia.Controls.Button
+            {
+                Content = "Không",
+                Width = 100,
+                Height = 35
+            };
+            noButton.Click += (s, e) =>
+            {
+                result = false;
+                dialog.Close();
+            };
+
+            buttonPanel.Children.Add(yesButton);
+            buttonPanel.Children.Add(noButton);
+
+            stackPanel.Children.Add(messageText);
+            stackPanel.Children.Add(buttonPanel);
+
+            dialog.Content = stackPanel;
+
+            await dialog.ShowDialog(owner);
+            return result;
+        }
+    
         private Window? GetActiveWindow()
         {
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)

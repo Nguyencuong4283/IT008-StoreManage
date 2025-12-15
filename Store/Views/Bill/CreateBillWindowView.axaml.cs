@@ -12,17 +12,12 @@ public partial class CreateBillWindowView : Window
     {
         InitializeComponent();
         DataContext = new CreateBillWindowViewModel();
+
+        if (DataContext is CreateBillWindowViewModel vm)
+        {
+            vm.ParentWindow = this;
+        }
         
-        // Hook vào sự kiện đóng window
-        Closing += OnWindowClosing;
     }
     
-    private void OnWindowClosing(object? sender, WindowClosingEventArgs e)
-    {
-        // Gọi method lưu nháp trong ViewModel
-        if (DataContext is CreateBillWindowViewModel viewModel)
-        {
-            viewModel.OnWindowClosing();
-        }
-    }
 }

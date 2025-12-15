@@ -1,12 +1,13 @@
-﻿using Avalonia.Platform;
+﻿using Avalonia.Controls;
+using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using LiveChartsCore.SkiaSharpView.Avalonia;
+using Store.Helpers;
+using Store.Messages;
 using Store.Models;
 using Store.Services;
-using Store.Messages;
-using Store.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace Store.ViewModels.Bill
 {
@@ -38,7 +41,7 @@ namespace Store.ViewModels.Bill
         [ObservableProperty] 
         private decimal tongThanhTien;
 
-
+        public Window? ParentWindow { get; set; }
 
         [ObservableProperty] private string thoiGianHienTai = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         [ObservableProperty] private int soHD;
@@ -86,8 +89,8 @@ namespace Store.ViewModels.Bill
             else
             {
                 // Tạo hóa đơn mới
-                MaHD = HoaDonService.GenerateNewMaHD();
-                SoHD = HoaDonService.GetNextSoHD();
+                MaHD = OrderService.GenerateNewOrderID();
+                SoHD = OrderService.GetNextOrderNumber();
                 System.Diagnostics.Debug.WriteLine($"[ViewModel] Khởi tạo hóa đơn mới: {MaHD}, SoHD: {SoHD}");
             }
             
@@ -137,13 +140,16 @@ namespace Store.ViewModels.Bill
                     SoHD = SoHD,
                     TrangThaiHD = "Đã thanh toán"
                 };
-                HoaDonService.InsertHoaDon(hoaDon);
+                OrderService.InsertOrder(hoaDon);
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã tạo hóa đơn: {MaHD}");
-                
+
+                KhachHangDuocChon.TongMua += TongThanhTien;
+                CustomerService.UpdateCustomer(KhachHangDuocChon);
+
                 // Bước 2: Lưu tất cả chi tiết hóa đơn vào database
-                foreach(var chiTiet in ChiTietHoaDons)
+                foreach (var chiTiet in ChiTietHoaDons)
                 {
-                    ChiTiet_HoaDonService.InsertChiTiet_HoaDon(chiTiet);
+                    DetailOrderService.InsertOderDetail(chiTiet);
                 }
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã lưu {ChiTietHoaDons.Count} chi tiết hóa đơn");
                 
@@ -155,6 +161,12 @@ namespace Store.ViewModels.Bill
                 // Bước 4: Đánh dấu đã thanh toán và xóa nháp
                 isHoaDonCreated = true;
                 DraftBillManager.ClearDraft();
+                // Gửi message cập nhật
+                WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage(MaHD));
+                WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(KhachHangDuocChon.MaKH));
+
+                // Đóng window sau khi xóa
+                ParentWindow?.Close();
             }
             catch (Exception ex)
             {
@@ -223,12 +235,12 @@ namespace Store.ViewModels.Bill
         }
         private void LoadKhachHang()
         {
-            var ds = KhachHangService.GetAllKhachHang();
+            var ds = CustomerService.GetAllCustomer();
             danhSachKhachHang = new ObservableCollection<KhachHang>(ds);
         }
         private void LoadSanPham()
         {
-            var ds1 = SanPhamService.GetAllSanPham();
+            var ds1 = ProductService.GetAllProduct();
             danhSachSanPham = new ObservableCollection<SanPham>(ds1);
         }
         private void LoadUser()
@@ -335,6 +347,13 @@ namespace Store.ViewModels.Bill
             TongTriGia = ChiTietHoaDons.Sum(ct => ct.DonGia * ct.SoLuong);
             TongGiamGia = ChiTietHoaDons.Sum(ct => ct.DonGia * ct.SoLuong * ct.KhuyenMai / 100);
             TongThanhTien = ChiTietHoaDons.Sum(ct => ct.ThanhTien);
+        }
+
+        [RelayCommand]
+        private void XoaChiTiet()
+        {
+            ChiTietHoaDons.Clear();
+            CapNhatTongTien();
         }
         
     }

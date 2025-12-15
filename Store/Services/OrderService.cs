@@ -8,11 +8,11 @@ using System.IO;
 
 namespace Store.Services
 {
-    public static class HoaDonService
+    public static class OrderService
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
-        // ------------------ INIT TABLE ------------------
+        // ------------------ INIT TABLE ------------------ //
         public static void Initialize()
         {
             Console.WriteLine($"Database Path: {dbPath}");
@@ -43,8 +43,8 @@ namespace Store.Services
         }
 
 
-        // ------------------ CREATE ------------------
-        public static void InsertHoaDon(HoaDon hd)
+        // ------------------ CREATE ------------------ //
+        public static void InsertOrder(HoaDon hd)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -73,7 +73,7 @@ namespace Store.Services
         }
 
         //So   HD tự động tăng
-        public static int GetNextSoHD()
+        public static int GetNextOrderNumber()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -87,8 +87,8 @@ namespace Store.Services
         }
 
 
-        // ------------------ READ ALL ------------------
-        public static List<HoaDon> GetAllHoaDon()
+        // ------------------ READ ALL ------------------ //
+        public static List<HoaDon> GetAllOrder()
         {
             var hoaDons = new List<HoaDon>();
 
@@ -143,8 +143,8 @@ namespace Store.Services
             return hoaDons;
         }
 
-        // ------------------ READ ONE ------------------
-        public static HoaDon? GetHoaDonById(string maHD)
+        // ------------------ READ ONE ------------------ //
+        public static HoaDon? GetOrderById(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -198,7 +198,7 @@ namespace Store.Services
         }
 
         // ------------------ UPDATE ------------------
-        public static void UpdateHoaDon(HoaDon hd)
+        public static void UpdateOrder(HoaDon hd)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -233,7 +233,7 @@ namespace Store.Services
         }
 
         // ------------------ DELETE ------------------
-        public static void DeleteHoaDon(string maHD)
+        public static void DeleteOrder(string maHD)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -249,7 +249,7 @@ namespace Store.Services
         }
 
         //ID
-        public static string GenerateNewMaHD()
+        public static string GenerateNewOrderID()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -266,7 +266,7 @@ namespace Store.Services
             }
         }
         //Đếm hoá đơn 
-        public static int CountHoaDon()
+        public static int CountOrder()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -278,7 +278,7 @@ namespace Store.Services
             }
         }
         //Tổng tiền hôm nay
-        public static decimal GetTongTienHomNay()
+        public static decimal GetTodayToTalIncome()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -298,7 +298,7 @@ namespace Store.Services
 
         //Tổng tiền tháng , năm nay
 
-        public static decimal GetTongTienThangNam(int thang, int nam)
+        public static decimal GetToTalIncomeMonthInYear(int thang, int nam)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

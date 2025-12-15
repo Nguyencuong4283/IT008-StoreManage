@@ -9,7 +9,7 @@ using Avalonia.Media.Imaging;
 
 namespace Store.Services
 {
-    public static class SanPhamService 
+    public static class ProductService 
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
@@ -24,35 +24,79 @@ namespace Store.Services
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
-                var cmd = connection.CreateCommand();
-                cmd.CommandText = @"
-                CREATE TABLE IF NOT EXISTS SanPham (
-                    MaSP TEXT PRIMARY KEY,
-                    TenSP TEXT NOT NULL,
-                    GiaSP REAL NOT NULL,
-                    SoLuongSP INTEGER NOT NULL,
-                    HinhAnhDuongDan TEXT NOT NULL,
-                    KichThuocSP TEXT NOT NULL,
-                    LoaiSP TEXT NOT NULL,
-                    MoTaSP TEXT
-                );";
-                cmd.ExecuteNonQuery();
+                
+                // Check if table exists and needs migration
+                var checkCmd = connection.CreateCommand();
+                checkCmd.CommandText = "SELECT sql FROM sqlite_master WHERE type='table' AND name='SanPham'";
+                var existingSchema = checkCmd.ExecuteScalar()?.ToString();
+                
+                if (!string.IsNullOrEmpty(existingSchema) && existingSchema.Contains("HinhAnhDuongDan TEXT NOT NULL"))
+                {
+                    // Migrate: recreate table without NOT NULL constraint on HinhAnhDuongDan
+                    Console.WriteLine("Migrating SanPham table schema...");
+                    var migrateCmd = connection.CreateCommand();
+                    migrateCmd.CommandText = @"
+                        BEGIN TRANSACTION;
+                        
+                        CREATE TABLE SanPham_new (
+                            MaSP TEXT PRIMARY KEY,
+                            TenSP TEXT NOT NULL,
+                            GiaSP REAL NOT NULL,
+                            SoLuongSP INTEGER NOT NULL,
+                            HinhAnhDuongDan TEXT,
+                            KichThuocSP TEXT NOT NULL,
+                            LoaiSP TEXT NOT NULL,
+                            MoTaSP TEXT,
+                            IsDelete INTEGER DEFAULT 0
+                        );
+                        
+                        INSERT INTO SanPham_new (MaSP, TenSP, GiaSP, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete)
+                        SELECT MaSP, TenSP, GiaSP, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete
+                        FROM SanPham;
+                        
+                        DROP TABLE SanPham;
+                        
+                        ALTER TABLE SanPham_new RENAME TO SanPham;
+                        
+                        COMMIT;
+                    ";
+                    migrateCmd.ExecuteNonQuery();
+                    Console.WriteLine("Migration completed.");
+                }
+                else
+                {
+                    // Create table if it doesn't exist
+                    var cmd = connection.CreateCommand();
+                    cmd.CommandText = @"
+                    CREATE TABLE IF NOT EXISTS SanPham (
+                        MaSP TEXT PRIMARY KEY,
+                        TenSP TEXT NOT NULL,
+                        GiaSP REAL NOT NULL,
+                        SoLuongSP INTEGER NOT NULL,
+                        HinhAnhDuongDan TEXT,
+                        KichThuocSP TEXT NOT NULL,
+                        LoaiSP TEXT NOT NULL,
+                        MoTaSP TEXT,
+                        IsDelete INTEGER DEFAULT 0
+                    );";
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
         //CRUD
         //Create
-        public static void InsertSanPham(SanPham sp)
+        public static void InsertProduct(SanPham sp)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
-                string newMaSP = GenerateNewMaSP();
+                string newMaSP = GenerateNewProductID();
 
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
                 INSERT INTO SanPham 
-                (MaSP, TenSP, GiaSP, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP)
-                VALUES ($MaSP, $TenSP, $GiaSP, $SoLuongSP, $HinhAnhDuongDan, $KichThuocSP, $LoaiSP, $MoTaSP)";
+                (MaSP, TenSP, GiaSP, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete)
+                VALUES ($MaSP, $TenSP, $GiaSP, $SoLuongSP, $HinhAnhDuongDan, $KichThuocSP, $LoaiSP, $MoTaSP, $IsDelete)";
                 cmd.Parameters.AddWithValue("$MaSP", newMaSP);
                 cmd.Parameters.AddWithValue("$TenSP", sp.TenSP);
                 cmd.Parameters.AddWithValue("$GiaSP", (double)sp.GiaSP);
@@ -61,12 +105,14 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$KichThuocSP", sp.KichThuocSP);
                 cmd.Parameters.AddWithValue("$LoaiSP", sp.LoaiSP);
                 cmd.Parameters.AddWithValue("$MoTaSP", sp.MoTaSP ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$IsDelete", 0);
+
                 cmd.ExecuteNonQuery();
             }
         }
 
         //Read one
-        public static SanPham GetOneSanPham(string MaSP)
+        public static SanPham GetProduct(string MaSP)
         {
             var sanPham = new SanPham();
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -110,19 +156,19 @@ namespace Store.Services
             }
         }
         //Đếm số lượng sản phẩm
-        public static int CountSanPham()
+        public static int CountProduct()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT COUNT(*) FROM SanPham";
+                cmd.CommandText = "SELECT COUNT(*) FROM SanPham WHERE IsDelete = 0";
                 var result = cmd.ExecuteScalar();
                 return Convert.ToInt32(result);
             }
         }
         //Read All
-        public static List<SanPham> GetAllSanPham()
+        public static List<SanPham> GetAllProduct()
         {
             var sanPhams = new List<SanPham>();
 
@@ -130,7 +176,7 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan FROM SanPham";
+                cmd.CommandText = "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan, IsDelete FROM SanPham";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -145,6 +191,8 @@ namespace Store.Services
                             LoaiSP = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             KichThuocSP = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             MoTaSP = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                            IsDelete = reader.IsDBNull(8) ? 0 : reader.GetInt32(8)
+
                         };
 
                         if (!reader.IsDBNull(7))
@@ -157,8 +205,10 @@ namespace Store.Services
                             }
                             catch { }
                         }
-
-                        sanPhams.Add(sp);
+                        if (sp.IsDelete == 0)
+                        {
+                            sanPhams.Add(sp);
+                        }
                     }
                 }
             }
@@ -166,7 +216,7 @@ namespace Store.Services
             return sanPhams;
         }
         //Update
-        public static void UpdateSanPham(SanPham sp)
+        public static void UpdateProduct(SanPham sp)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -180,7 +230,8 @@ namespace Store.Services
                     HinhAnhDuongDan = $HinhAnhDuongDan,
                     KichThuocSP = $KichThuocSP,
                     LoaiSP = $LoaiSP,
-                    MoTaSP = $MoTaSP
+                    MoTaSP = $MoTaSP,
+                    IsDelete = $IsDelete
                 WHERE MaSP = $MaSP";
                 cmd.Parameters.AddWithValue("$MaSP", sp.MaSP);
                 cmd.Parameters.AddWithValue("$TenSP", sp.TenSP);
@@ -190,13 +241,13 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$KichThuocSP", sp.KichThuocSP);
                 cmd.Parameters.AddWithValue("$LoaiSP", sp.LoaiSP);
                 cmd.Parameters.AddWithValue("$MoTaSP", sp.MoTaSP ?? (object)DBNull.Value);
-
+                cmd.Parameters.AddWithValue("$IsDelete", sp.IsDelete);
                 cmd.ExecuteNonQuery();
             }
         }
 
         // Delete
-        public static void DeleteSanPham(string maSP)
+        public static void DeleteProduct(string maSP)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
@@ -208,7 +259,7 @@ namespace Store.Services
             }
         }
         //Tạo MaSP
-        public static string GenerateNewMaSP()
+        public static string GenerateNewProductID()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

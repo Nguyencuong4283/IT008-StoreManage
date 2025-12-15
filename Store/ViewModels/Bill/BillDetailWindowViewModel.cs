@@ -50,7 +50,7 @@ namespace Store.ViewModels.Bill
 
                 SoHD = hoaDon.SoHD;
                 ThoiGianHienTai = hoaDon.NgayLapHD.ToString("dd/MM/yyyy HH:mm:ss");
-                var chiTietList = ChiTiet_HoaDonService.GetChiTiet_HoaDon(hoaDon.MaHD);
+                var chiTietList = DetailOrderService.GetOrderDetail(hoaDon.MaHD);
                 ChiTietHoaDons.Clear();
                 foreach (var ct in chiTietList)
                 {

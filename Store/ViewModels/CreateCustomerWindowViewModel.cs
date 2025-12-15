@@ -1,5 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 using Store.Models;
 using Store.Services;
 using System;
@@ -8,8 +11,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Messaging;
-using Store.Messages;
 
 namespace Store.ViewModels
 {
@@ -21,7 +22,7 @@ namespace Store.ViewModels
         [ObservableProperty] private string gioiTinh = "Chọn giới tính" ;
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private string ghiChu;
-
+        public Window? ParentWindow { get; set; }
         public ObservableCollection<string> DanhSachGioiTinh { get; } = new()
         {
             "Nam",
@@ -30,11 +31,11 @@ namespace Store.ViewModels
         };
         public CreateCustomerWindowViewModel()
         {
-           MaKH = KhachHangService.GenerateNewMaKH();
+           MaKH = CustomerService.GenerateCustommerID();
            
         }
         [RelayCommand]
-        public void TaoKhachHangButton()
+        public void CreateCusomterButton()
         {
             try
             {
@@ -50,17 +51,18 @@ namespace Store.ViewModels
                     TongMua = (decimal)0,
                 };
                 
-                KhachHangService.InsertKhachHang(khachHang);
+                CustomerService.InsertCustomer(khachHang);
                 // Sau khi thêm thành công
                 WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm khách hàng: {tenKH}");
+                ParentWindow?.Close();
                 // Reset form
                 TenKH = "";
                 SDT = "";
                 GioiTinh = "";
                 DiaChi = "";
                 GhiChu = "";
-                MaKH =KhachHangService.GenerateNewMaKH(); // tạo mã mới cho lần tiếp theo
+                MaKH =CustomerService.GenerateCustommerID(); // tạo mã mới cho lần tiếp theo
             }
             catch (Exception ex)
             {

@@ -10,11 +10,12 @@ sealed class Program
     public static void Main(string[] args)
     {
         // ✅ Khởi tạo CSDL (tạo file store.db + bảng nếu chưa có)
-        SanPhamService.Initialize();
+        ProductService.Initialize();
         UserService.Initialize();
-        KhachHangService.Initialize();
-        HoaDonService.Initialize();
-        ChiTiet_HoaDonService.Initialize();
+        CustomerService.Initialize();
+        OrderService.Initialize();
+        DetailOrderService.Initialize();
+        ImportService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);

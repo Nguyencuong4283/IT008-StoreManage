@@ -145,7 +145,7 @@
 
                                         <Button
                                             Classes="secondary"
-                                            Command="{Binding $parent[ItemsControl].((vm:CustomerPageViewModel)DataContext).ChiTietButtonCommand}"
+                                            Command="{Binding $parent[ItemsControl].((vm:CustomerPageViewModel)DataContext).DetailButtonCommand}"
                                             CommandParameter="{Binding}"
                                             Grid.Column="3"
                                             Padding="12,8"

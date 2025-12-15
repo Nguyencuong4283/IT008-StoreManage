@@ -26,7 +26,7 @@ public partial class CreateImportWindowViewModel : ViewModelBase
     public CreateImportWindowViewModel()
     {
         SanPhamList = new ObservableCollection<SanPham>(
-            SanPhamService.GetAllSanPham()
+            ProductService.GetAllProduct()
         );
     }
 

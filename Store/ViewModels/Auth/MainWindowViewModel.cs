@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using Store.Views;
@@ -100,8 +101,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void RegisterButton()
     {
-        var createAcountWindowView = new Store.Views.Auth.CreateAcountWindowView();
-        createAcountWindowView.Show();
+        WindowManager.ShowCreateAccountWindow();
     }
     [RelayCommand]
     private void ForgotPasswordButton()
