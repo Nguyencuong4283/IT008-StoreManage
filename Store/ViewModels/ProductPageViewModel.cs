@@ -60,7 +60,7 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     }
     private void LoadSanPhams()
     {
-        var list = SanPhanService.GetAllSanPham();
+        var list = SanPhamService.GetAllSanPham();
         _allSanPhams = list;
         UpdateProductsList(_allSanPhams);
     }

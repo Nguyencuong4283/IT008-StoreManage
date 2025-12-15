@@ -9,7 +9,7 @@ using Avalonia.Media.Imaging;
 
 namespace Store.Services
 {
-    public static class SanPhanService 
+    public static class SanPhamService 
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 

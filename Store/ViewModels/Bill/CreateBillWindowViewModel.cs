@@ -228,7 +228,7 @@ namespace Store.ViewModels.Bill
         }
         private void LoadSanPham()
         {
-            var ds1 = SanPhanService.GetAllSanPham();
+            var ds1 = SanPhamService.GetAllSanPham();
             danhSachSanPham = new ObservableCollection<SanPham>(ds1);
         }
         private void LoadUser()

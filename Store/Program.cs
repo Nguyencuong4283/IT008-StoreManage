@@ -10,7 +10,7 @@ sealed class Program
     public static void Main(string[] args)
     {
         // ✅ Khởi tạo CSDL (tạo file store.db + bảng nếu chưa có)
-        SanPhanService.Initialize();
+        SanPhamService.Initialize();
         UserService.Initialize();
         KhachHangService.Initialize();
         HoaDonService.Initialize();

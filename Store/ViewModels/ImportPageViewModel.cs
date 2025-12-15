@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Store.Messages;
 using Store.Models;
 using Store.Services;
+using Store.Views;
 
 namespace Store.ViewModels;
 
@@ -109,12 +110,15 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     }
     
     [RelayCommand]
+
     public void CreateImport()
     {
-        var importWindow = new Views.ImportPageView
+        var win = new CreateImportWindowView
         {
-            DataContext = new ImportPageViewModel()
+            DataContext = new CreateImportWindowViewModel() 
         };
+        win.Show();
     }
-    
+
+
 }

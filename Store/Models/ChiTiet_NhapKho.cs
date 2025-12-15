@@ -9,7 +9,7 @@ namespace Store.Models
     public class ChiTiet_NhapKho
     {
         public string     MaNK { get; set; }
-        public int      MaSP { get; set; }
+        public string      MaSP { get; set; }
         public int      SoLuong { get; set;}
         public decimal  DonGia { get; set; }
         public decimal  ThanhTien { get; set; }

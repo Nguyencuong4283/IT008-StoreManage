@@ -26,41 +26,99 @@ public class ImportService
             connection.Open();
             var cmd = connection.CreateCommand();
             cmd.CommandText = @"
-                CREATE TABLE IF NOT EXISTS Import (
-                    MaNhapKho TEXT PRIMARY KEY,
-                    NgayNhap TEXT NOT NULL,
-                    NhaCungCap TEXT NOT NULL,
-                    TongTien REAL NOT NULL,
-                    GhiChu TEXT,
-                    IsDelete INTEGER DEFAULT 0
-                );";
+            -- ===== Bảng Import =====
+            CREATE TABLE IF NOT EXISTS Import (
+            MaNhapKho TEXT PRIMARY KEY,
+            NgayNhap TEXT NOT NULL,
+            NhaCungCap TEXT NOT NULL,
+            MaUser INTEGER,
+            TongTien REAL,
+            GhiChu TEXT,
+            IsDelete INTEGER DEFAULT 0
+            );
+
+            -- ===== Bảng Chi tiết nhập kho =====
+            CREATE TABLE IF NOT EXISTS ChiTiet_NhapKho (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            MaNK TEXT NOT NULL,
+            MaSP TEXT NOT NULL,
+            SoLuong INTEGER,
+            DonGia REAL,
+            ThanhTien REAL
+            );
+
+            -- ===== Bảng Sản phẩm =====
+            CREATE TABLE IF NOT EXISTS SanPham (
+            MaSP TEXT PRIMARY KEY,
+            TenSP TEXT,
+            GiaSP REAL,
+            SoLuongSP INTEGER,
+            KichThuocSP TEXT,
+            LoaiSP TEXT,
+            IsDelete INTEGER DEFAULT 0,
+            MoTaSP TEXT,
+            HinhAnhDuongDan TEXT
+            );
+            ";
             cmd.ExecuteNonQuery();
         }
     }
 
     // ----------------- Tạo Nhập kho ----------------- //
-    public static void InsertNhapKho(Import nk)
+    public static void InsertNhapKho(
+    Import nk,
+    List<ChiTiet_NhapKho> chiTietList
+    )
     {
-        using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+        using var connection = new SqliteConnection($"Data Source={dbPath}");
+        connection.Open();
+        using var tran = connection.BeginTransaction();
+
+        var maNK = GenerateNewMaNK();
+
+        var cmdImport = connection.CreateCommand();
+        cmdImport.CommandText = @"
+        INSERT INTO Import
+        (MaNhapKho, NgayNhap, NhaCungCap, MaUser, TongTien, GhiChu, IsDelete)
+        VALUES ($MaNK, $NgayNhap, $NCC, $MaUser, $TongTien, $GhiChu, 0)";
+        cmdImport.Parameters.AddWithValue("$MaNK", maNK);
+        cmdImport.Parameters.AddWithValue("$NgayNhap", nk.NgayNhap.ToString("yyyy-MM-dd"));
+        cmdImport.Parameters.AddWithValue("$NCC", nk.NhaCungCap);
+        cmdImport.Parameters.AddWithValue("$MaUser", nk.MaUser);
+        cmdImport.Parameters.AddWithValue("$TongTien", nk.TongTien);
+        cmdImport.Parameters.AddWithValue("$GhiChu", nk.GhiChu ?? "");
+        cmdImport.ExecuteNonQuery();
+
+        foreach (var ct in chiTietList)
         {
-            connection.Open();
-            var newMaNK = GenerateNewMaNK();
+            ct.MaNK = maNK;
+            ct.ThanhTien = ct.SoLuong * ct.DonGia;
 
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = @"
-            INSERT INTO Import 
-            (MaNhapKho, NgayNhap, NhaCungCap, TongTien, GhiChu, IsDelete)
-            VALUES ($MaNhapKho, $NgayNhap, $NhaCungCap, $TongTien, $GhiChu, $IsDelete)";
-            cmd.Parameters.AddWithValue("$MaNhapKho", newMaNK);
-            cmd.Parameters.AddWithValue("$NgayNhap", nk.NgayNhap.ToString("yyyy-MM-dd"));
-            cmd.Parameters.AddWithValue("$NhaCungCap", nk.NhaCungCap);
-            cmd.Parameters.AddWithValue("$TongTien", nk.TongTien);
-            cmd.Parameters.AddWithValue("$GhiChu", nk.GhiChu ?? string.Empty);
-            cmd.Parameters.AddWithValue("$IsDelete", 0);
+            var cmdCT = connection.CreateCommand();
+            cmdCT.CommandText = @"
+            INSERT INTO ChiTiet_NhapKho
+            (MaNK, MaSP, SoLuong, DonGia, ThanhTien)
+            VALUES ($MaNK, $MaSP, $SL, $DG, $TT)";
+            cmdCT.Parameters.AddWithValue("$MaNK", ct.MaNK);
+            cmdCT.Parameters.AddWithValue("$MaSP", ct.MaSP);
+            cmdCT.Parameters.AddWithValue("$SL", ct.SoLuong);
+            cmdCT.Parameters.AddWithValue("$DG", ct.DonGia);
+            cmdCT.Parameters.AddWithValue("$TT", ct.ThanhTien);
+            cmdCT.ExecuteNonQuery();
 
-            cmd.ExecuteNonQuery();
+            var cmdUpdate = connection.CreateCommand();
+            cmdUpdate.CommandText = @"
+            UPDATE SanPham
+            SET SoLuongSP = SoLuongSP + $SL
+            WHERE MaSP = $MaSP";
+            cmdUpdate.Parameters.AddWithValue("$SL", ct.SoLuong);
+            cmdUpdate.Parameters.AddWithValue("$MaSP", ct.MaSP);
+            cmdUpdate.ExecuteNonQuery();
         }
+
+        tran.Commit();
     }
+
 
     // ----------------- Lấy dữ liệu ----------------- //
     public static List<Import> GetAllNhapKho()

@@ -72,7 +72,7 @@ public partial class HomePageViewModel : ViewModelBase,
             await System.Threading.Tasks.Task.Run(() =>
             {
                 SoKhachHang = KhachHangService.CountKhachHang();
-                SoSanPham = SanPhanService.CountSanPham();
+                SoSanPham = SanPhamService.CountSanPham();
                 SoHoaDon = HoaDonService.CountHoaDon();
                 DoanhThuHomNay = HoaDonService.GetTongTienHomNay();
             });
@@ -94,7 +94,7 @@ public partial class HomePageViewModel : ViewModelBase,
     {
         var createProductWindowView = new CreateProductWindowView();
         createProductWindowView.Show();
-        SoSanPham = SanPhanService.CountSanPham();
+        SoSanPham = SanPhamService.CountSanPham();
     }
     [RelayCommand]
     private void ThemKhachHangButton()
