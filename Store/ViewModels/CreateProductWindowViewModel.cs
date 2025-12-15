@@ -48,7 +48,7 @@ namespace Store.ViewModels
         public CreateProductWindowViewModel()
         {
             // Tự động tạo mã sản phẩm ban đầu
-            MaSP = SanPhanService.GenerateNewMaSP();
+            MaSP = ProductService.GenerateNewProductID();
         }
 
         [RelayCommand]
@@ -68,7 +68,7 @@ namespace Store.ViewModels
                     HinhAnhDuongDan = hinhAnhDuongDan, // Có thể sau này bạn sẽ load từ file
                     IsDelete = 0
                 };
-                SanPhanService.InsertSanPham(sanPham);
+                ProductService.InsertProduct(sanPham);
                 // Sau khi thêm thành công
                 WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm: {TenSP}");
@@ -81,7 +81,7 @@ namespace Store.ViewModels
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
                 HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
-                MaSP = SanPhanService.GenerateNewMaSP();
+                MaSP = ProductService.GenerateNewProductID();
 
 
             }

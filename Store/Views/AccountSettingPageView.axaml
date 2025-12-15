@@ -1,125 +1,149 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:Store.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="940"
-             x:DataType="vm:AccountSettingPageViewModel"
-             x:Class="Store.Views.AccountSettingPageView">
-    
+<UserControl
+    d:DesignHeight="940"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="Store.Views.AccountSettingPageView"
+    x:DataType="vm:AccountSettingPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Store.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Design.DataContext>
-       <vm:AccountSettingPageViewModel/>
+        <vm:AccountSettingPageViewModel />
     </Design.DataContext>
 
-    <Border CornerRadius="16" 
-            Background="{DynamicResource BgPage}" 
-            Margin="10" 
-            BoxShadow="0 4 20 0 #30000000">
-       
-       <Grid RowDefinitions="Auto,*">
-          <Border Grid.Row="0" 
-                  Background="{DynamicResource BgCard}" 
-                  CornerRadius="16,16,0,0" 
-                  Padding="30,25"
-                  BorderBrush="{DynamicResource BorderColor}"
-                  BorderThickness="0,0,0,1">
-             <StackPanel>
-                <TextBlock Text="Cài đặt tài khoản" 
-                           Classes="header" 
-                           Foreground="{DynamicResource TextPrimary}"
-                           Margin="0,0,0,10"/>
-                <TextBlock Text="Quản lý thông tin cá nhân và bảo mật" 
-                           Classes="body"
-                           Foreground="{DynamicResource TextSecondary}"/>
-             </StackPanel>
-          </Border>
+    <Border
+        Background="{DynamicResource BgPage}"
+        BoxShadow="0 4 20 0 #30000000"
+        CornerRadius="16"
+        Margin="10">
 
-          <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="30">
-             <StackPanel Spacing="20">
-                
-                <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
-                   <Grid ColumnDefinitions="Auto,*">
-                      <Border Grid.Column="0"
-                            Background="{DynamicResource BgHover}"
-                            CornerRadius="60"
-                            Width="120"
-                            Height="120"
-                            VerticalAlignment="Top"
-                            Margin="0,0,30,0"
-                            ClipToBounds="True">
-                         <Image Source="{Binding HinhAnh}"
-                               Width="120"
-                               Height="120"
-                               Stretch="UniformToFill"/>
-                      </Border>
-
-                      <StackPanel Grid.Column="1" Spacing="15">
-                         <StackPanel Spacing="10">
-                            <TextBlock Text="Họ và tên" Classes="label"/>
-                            <TextBox Text="{Binding HoTen, Mode=TwoWay}" 
-                                     Classes="modern-input"
-                                     IsReadOnly="True"/>
-                         </StackPanel>
-
-                         <StackPanel Spacing="10">
-                            <TextBlock Text="Email" Classes="label"/>
-                            <TextBox Text="{Binding Email, Mode=TwoWay}" 
-                                     Classes="modern-input"
-                                     IsReadOnly="True"/>
-                         </StackPanel>
-
-                         <StackPanel Spacing="10">
-                            <TextBlock Text="Số điện thoại" Classes="label"/>
-                            <TextBox Text="{Binding SDT, Mode=TwoWay}" 
-                                     Classes="modern-input"
-                                     IsReadOnly="True"/>
-                         </StackPanel>
-                      </StackPanel>
-                   </Grid>
-                </Border>
-
-                <Border Classes="card" BoxShadow="0 2 8 0 #20000000">
-                   <StackPanel Spacing="15">
-                      <TextBlock Text="🔒 Bảo mật" 
-                                 Classes="subheader"
-                                 Foreground="{DynamicResource TextPrimary}"/>
-
-                      <StackPanel Spacing="10">
-                         <TextBlock Text="Mật khẩu hiện tại" Classes="label"/>
-                         <TextBox Text="{Binding MatKhauNow, Mode=TwoWay}"
-                                  Classes="modern-input"
-                                  PasswordChar="●"/>
-                      </StackPanel>
-
-                      <StackPanel Spacing="10">
-                         <TextBlock Text="Mật khẩu mới" Classes="label"/>
-                         <TextBox Text="{Binding MatKhauNew, Mode=TwoWay}"
-                                  Classes="modern-input"
-                                  PasswordChar="●"/>
-                      </StackPanel>
-
-                      <StackPanel Spacing="10">
-                         <TextBlock Text="Xác nhận mật khẩu mới" Classes="label"/>
-                         <TextBox Text="{Binding MatKhauNewConfirm, Mode=TwoWay}"
-                                  Classes="modern-input"
-                                  PasswordChar="●"/>
-                      </StackPanel>
-
-                      <Button Classes="secondary" 
-                              Command="{Binding DoiMatKhauButtonCommand}" 
-                              Padding="15,10" 
-                              HorizontalAlignment="Left">
-                         🔑 Đổi mật khẩu
-                      </Button>
-                   </StackPanel>
-                </Border>
-
-                <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Right" Margin="0 0 0 50">
-                   <Button Classes="secondary" Padding="20,12">Hủy</Button>
-                   <Button Classes="primary" Padding="20,12">💾 Lưu thay đổi</Button>
+        <Grid RowDefinitions="Auto,*">
+            <Border
+                Background="{DynamicResource BgCard}"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,0,0,1"
+                CornerRadius="16,16,0,0"
+                Grid.Row="0"
+                Padding="30,25">
+                <StackPanel>
+                    <TextBlock
+                        Classes="header"
+                        Foreground="{DynamicResource TextPrimary}"
+                        Margin="0,0,0,10"
+                        Text="Cài đặt tài khoản" />
+                    <TextBlock
+                        Classes="body"
+                        Foreground="{DynamicResource TextSecondary}"
+                        Text="Quản lý thông tin cá nhân và bảo mật" />
                 </StackPanel>
-             </StackPanel>
-          </ScrollViewer>
-       </Grid>
+            </Border>
+
+            <ScrollViewer
+                Grid.Row="1"
+                Padding="30"
+                VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="20">
+
+                    <Border BoxShadow="0 2 8 0 #20000000" Classes="card">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Border
+                                Background="{DynamicResource BgHover}"
+                                ClipToBounds="True"
+                                CornerRadius="60"
+                                Grid.Column="0"
+                                Height="120"
+                                Margin="0,0,30,0"
+                                VerticalAlignment="Top"
+                                Width="120">
+                                <Image
+                                    Height="120"
+                                    Source="{Binding HinhAnh}"
+                                    Stretch="UniformToFill"
+                                    Width="120" />
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Spacing="15">
+                                <StackPanel Spacing="10">
+                                    <TextBlock Classes="label" Text="Họ và tên" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        IsReadOnly="True"
+                                        Text="{Binding HoTen, Mode=TwoWay}" />
+                                </StackPanel>
+
+                                <StackPanel Spacing="10">
+                                    <TextBlock Classes="label" Text="Email" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        IsReadOnly="True"
+                                        Text="{Binding Email, Mode=TwoWay}" />
+                                </StackPanel>
+
+                                <StackPanel Spacing="10">
+                                    <TextBlock Classes="label" Text="Số điện thoại" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        IsReadOnly="True"
+                                        Text="{Binding SDT, Mode=TwoWay}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border BoxShadow="0 2 8 0 #20000000" Classes="card">
+                        <StackPanel Spacing="15">
+                            <TextBlock
+                                Classes="subheader"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Text="🔒 Bảo mật" />
+
+                            <StackPanel Spacing="10">
+                                <TextBlock Classes="label" Text="Mật khẩu hiện tại" />
+                                <TextBox
+                                    Classes="modern-input"
+                                    PasswordChar="●"
+                                    Text="{Binding MatKhauNow, Mode=TwoWay}" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="10">
+                                <TextBlock Classes="label" Text="Mật khẩu mới" />
+                                <TextBox
+                                    Classes="modern-input"
+                                    PasswordChar="●"
+                                    Text="{Binding MatKhauNew, Mode=TwoWay}" />
+                            </StackPanel>
+
+                            <StackPanel Spacing="10">
+                                <TextBlock Classes="label" Text="Xác nhận mật khẩu mới" />
+                                <TextBox
+                                    Classes="modern-input"
+                                    PasswordChar="●"
+                                    Text="{Binding MatKhauNewConfirm, Mode=TwoWay}" />
+                            </StackPanel>
+
+                            <Button
+                                Classes="secondary"
+                                Command="{Binding ChangePasswordButtonCommand}"
+                                HorizontalAlignment="Left"
+                                Padding="15,10">
+                                🔑 Đổi mật khẩu
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,50"
+                        Orientation="Horizontal"
+                        Spacing="15">
+                        <Button Classes="secondary" Padding="20,12">Hủy</Button>
+                        <Button Classes="primary" Padding="20,12">💾 Lưu thay đổi</Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Border>
 </UserControl>

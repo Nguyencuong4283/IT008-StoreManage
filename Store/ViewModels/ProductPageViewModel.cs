@@ -44,19 +44,19 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     public ProductPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<SanPhamChangedMessage>(this);
-        LoadSanPhams();
+        LoadProduct();
     }
     public void Receive(SanPhamChangedMessage message)
     {
         // Đảm bảo cập nhật trên UI thread
         Dispatcher.UIThread.Post(() =>
         {
-            LoadSanPhams();
+            LoadProduct();
         });
     }
-    private void LoadSanPhams()
+    private void LoadProduct()
     {
-        var list = SanPhanService.GetAllSanPham();
+        var list = ProductService.GetAllProduct();
         _allSanPhams = list;
         UpdateProductsList(_allSanPhams);
     }
@@ -66,7 +66,7 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     {
         CreateProductWindowView createProductWindowView = new();
         createProductWindowView.Show();
-        LoadSanPhams();
+        LoadProduct();
     }
 
     [RelayCommand]

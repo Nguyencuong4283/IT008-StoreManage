@@ -1,123 +1,136 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:vm="using:Store.ViewModels"
-		mc:Ignorable="d" d:DesignWidth="650"
-		d:DesignHeight="800"
-		Height="800"
-		Width="650"
-		Background="Transparent"
-		SystemDecorations="None"
-		x:DataType="vm:CreateCustomerWindowViewModel"
-		WindowStartupLocation="CenterScreen"
-		x:Class="Store.CreateCustomerWindowView"
-		Title="Create Product">
+﻿<Window
+    Background="Transparent"
+    Height="800"
+    SystemDecorations="None"
+    Title="Create Product"
+    Width="650"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="800"
+    d:DesignWidth="650"
+    mc:Ignorable="d"
+    x:Class="Store.CreateCustomerWindowView"
+    x:DataType="vm:CreateCustomerWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Store.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-	<Border CornerRadius="20"
-			BoxShadow="0 10 40 5 #40000000"
-			BorderBrush="{DynamicResource BorderColor}"
-			BorderThickness="2"
-			Background="{DynamicResource BgPage}">
+    <Border
+        Background="{DynamicResource BgPage}"
+        BorderBrush="{DynamicResource BorderColor}"
+        BorderThickness="2"
+        BoxShadow="0 10 40 5 #40000000"
+        CornerRadius="20">
 
-		<Grid>
-			<Button Command="{Binding $parent[Window].Close}"
-					Classes="close-btn"
-					HorizontalAlignment="Right"
-					VerticalAlignment="Top"
-					Margin="0,5,10,0"
-					IsTabStop="False"
-					ZIndex="10">
-				✕
-			</Button>
+        <Grid>
+            <Button
+                Classes="close-btn"
+                Command="{Binding $parent[Window].Close}"
+                HorizontalAlignment="Right"
+                IsTabStop="False"
+                Margin="0,5,10,0"
+                VerticalAlignment="Top"
+                ZIndex="10">
+                ✕
+            </Button>
 
-			<Border Background="{DynamicResource BgCard}"
-					CornerRadius="16"
-					Margin="60,70,60,60"
-					BoxShadow="0 8 32 0 #20000000"
-					Padding="50,40">
-				<StackPanel>
-					<TextBlock FontSize="28"
-							   FontWeight="Bold"
-							   Foreground="{DynamicResource TextPrimary}"
-							   TextAlignment="Center"
-							   Margin="0,0,0,40">
-						Tạo khách hàng mới
-					</TextBlock>
+            <Border
+                Background="{DynamicResource BgCard}"
+                BoxShadow="0 8 32 0 #20000000"
+                CornerRadius="16"
+                Margin="60,70,60,60"
+                Padding="50,40">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="28"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource TextPrimary}"
+                        Margin="0,0,0,40"
+                        TextAlignment="Center">
+                        Tạo khách hàng mới
+                    </TextBlock>
 
-					<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
-						<StackPanel Grid.Column="0" Margin="0,0,10,0">
-							<TextBlock Text="Mã khách hàng" Classes="label"/>
-							<TextBox Text="{Binding MaKH}"
-									 Classes="modern-input"
-									 IsReadOnly="True"
-									 IsTabStop="False"
-									 Foreground="{DynamicResource PrimaryText}"/>
-						</StackPanel>
+                    <Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <TextBlock Classes="label" Text="Mã khách hàng" />
+                            <TextBox
+                                Classes="modern-input"
+                                Foreground="{DynamicResource PrimaryText}"
+                                IsReadOnly="True"
+                                IsTabStop="False"
+                                Text="{Binding MaKH}" />
+                        </StackPanel>
 
-						<StackPanel Grid.Column="1" Margin="10,0,0,0">
-							<TextBlock Text="Tên khách hàng" Classes="label"/>
-							<TextBox Text="{Binding TenKH, Mode=TwoWay}"
-									 Classes="modern-input"
-									 Watermark="Nguyễn Văn A">
-								<Interaction.Behaviors>
-									<FocusOnAttachedBehavior />
-								</Interaction.Behaviors>
-							</TextBox>
-						</StackPanel>
-					</Grid>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Classes="label" Text="Tên khách hàng" />
+                            <TextBox
+                                Classes="modern-input"
+                                Text="{Binding TenKH, Mode=TwoWay}"
+                                Watermark="Nguyễn Văn A">
+                                <Interaction.Behaviors>
+                                    <FocusOnAttachedBehavior />
+                                </Interaction.Behaviors>
+                            </TextBox>
+                        </StackPanel>
+                    </Grid>
 
-					<Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
-						<StackPanel Grid.Column="0" Margin="0,0,10,0">
-							<TextBlock Text="Số điện thoại" Classes="label"/>
-							<TextBox Text="{Binding SDT, Mode=TwoWay}"
-									 Classes="modern-input"
-									 Watermark="+84 xxx xxx xxx"/>
-						</StackPanel>
+                    <Grid ColumnDefinitions="*,*" Margin="0,0,0,20">
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <TextBlock Classes="label" Text="Số điện thoại" />
+                            <TextBox
+                                Classes="modern-input"
+                                Text="{Binding SDT, Mode=TwoWay}"
+                                Watermark="+84 xxx xxx xxx" />
+                        </StackPanel>
 
-						<StackPanel Grid.Column="1" Margin="10,0,0,0">
-							<TextBlock Text="Giới tính" Classes="label"/>
-							<ComboBox ItemsSource="{Binding DanhSachGioiTinh, Mode=OneWay}"
-									  SelectedItem="{Binding GioiTinh}"
-									  Classes="modern-combo"
-									  HorizontalAlignment="Stretch"
-									  PlaceholderText="Chọn giới tính"/>
-						</StackPanel>
-					</Grid>
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBlock Classes="label" Text="Giới tính" />
+                            <ComboBox
+                                Classes="modern-combo"
+                                HorizontalAlignment="Stretch"
+                                ItemsSource="{Binding DanhSachGioiTinh, Mode=OneWay}"
+                                PlaceholderText="Chọn giới tính"
+                                SelectedItem="{Binding GioiTinh}" />
+                        </StackPanel>
+                    </Grid>
 
-					<StackPanel Margin="0,0,0,20">
-						<TextBlock Text="Địa chỉ" Classes="label"/>
-						<TextBox Text="{Binding DiaChi, Mode=TwoWay}"
-								 Classes="modern-input"
-								 Height="70"
-								 AcceptsReturn="True"
-								 TextWrapping="Wrap"
-								 Watermark="Nhập địa chỉ đầy đủ..."
-								 VerticalContentAlignment="Top"/>
-					</StackPanel>
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Classes="label" Text="Địa chỉ" />
+                        <TextBox
+                            AcceptsReturn="True"
+                            Classes="modern-input"
+                            Height="70"
+                            Text="{Binding DiaChi, Mode=TwoWay}"
+                            TextWrapping="Wrap"
+                            VerticalContentAlignment="Top"
+                            Watermark="Nhập địa chỉ đầy đủ..." />
+                    </StackPanel>
 
-					<StackPanel Margin="0,0,0,30">
-						<TextBlock Text="Ghi chú" Classes="label"/>
-						<TextBox Text="{Binding GhiChu, Mode=TwoWay}"
-								 Classes="modern-input"
-								 Height="100"
-								 AcceptsReturn="True"
-								 TextWrapping="Wrap"
-								 Watermark="Thêm ghi chú (tùy chọn)..."
-								 VerticalContentAlignment="Top"/>
-					</StackPanel>
+                    <StackPanel Margin="0,0,0,30">
+                        <TextBlock Classes="label" Text="Ghi chú" />
+                        <TextBox
+                            AcceptsReturn="True"
+                            Classes="modern-input"
+                            Height="100"
+                            Text="{Binding GhiChu, Mode=TwoWay}"
+                            TextWrapping="Wrap"
+                            VerticalContentAlignment="Top"
+                            Watermark="Thêm ghi chú (tùy chọn)..." />
+                    </StackPanel>
 
-					<Button Command="{Binding TaoKhachHangButtonCommand}"
-							Classes="primary"
-							Height="52"
-							FontSize="16"
-							HorizontalAlignment="Stretch"
-							HorizontalContentAlignment="Center">
-						✓ Tạo khách hàng
-					</Button>
-				</StackPanel>
-			</Border>
-		</Grid>
-	</Border>
+                    <Button
+                        Classes="primary"
+                        Command="{Binding CreateCusomterButtonCommand}"
+                        FontSize="16"
+                        Height="52"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center">
+                        ✓ Tạo khách hàng
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
 
 </Window>
