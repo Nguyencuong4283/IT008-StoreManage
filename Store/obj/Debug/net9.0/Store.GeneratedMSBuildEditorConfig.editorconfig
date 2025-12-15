@@ -104,3 +104,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/SettingPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/Tesst.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

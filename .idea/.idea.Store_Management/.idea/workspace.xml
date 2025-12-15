@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/ChiTiet_HoaDon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/DetailOrderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/HoaDonService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/OrderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/ImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/ImportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/KhachHangService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/CustomerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/SanPhamService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Services/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AccountSettingPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AccountSettingPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/Auth/CreateAcountWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/Auth/CreateAcountWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/Bill/BillDetailWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/Bill/BillDetailWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/Bill/CreateBillWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/Bill/CreateBillWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/Bill/OrderPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/Bill/OrderPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CreateCustomerWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CreateCustomerWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CreateProductWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CreateProductWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CustomerDetailWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CustomerDetailWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CustomerPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EditAccountWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EditAccountWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EmployeePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeePageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/HomePageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/HomePageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ImportPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ImportPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ProductDetailWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ProductDetailWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +230,7 @@
       <workItem from="1765459910744" duration="383000" />
       <workItem from="1765525905297" duration="2212000" />
       <workItem from="1765716654953" duration="598000" />
-      <workItem from="1765717269654" duration="2816000" />
+      <workItem from="1765717269654" duration="3068000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -496,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765527942318</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Thay đổi tên hàm và tên file">
+      <option name="closed" value="true" />
+      <created>1765720118206</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1765720118206</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,7 +513,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fix UI" />
     <MESSAGE value="sửa lỗi UI" />
     <MESSAGE value="Thêm cửa sổ đăng nhập cho nhân viên" />
     <MESSAGE value="chỉnh sửa lại giao diện của nhân viên" />
@@ -554,7 +537,8 @@
     <MESSAGE value="Thêm ImportPageViewModel.cs" />
     <MESSAGE value="Thêm ImportPageView.axaml.cs" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="Thay đổi tên hàm và tên file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thay đổi tên hàm và tên file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
