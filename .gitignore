@@ -26,4 +26,5 @@ Desktop.ini
 Store/bin/Debug/net9.0/store
 Store/bin/
 Store/obj/
-
+# Chặn idea
+.idea/
