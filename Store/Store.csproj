@@ -59,8 +59,21 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Views\CustomerDetailWindowView.axaml.cs">
+      <Compile Update="Views\Customer\CustomerDetailWindowView.axaml.cs">
         <DependentUpon>CustomerDetailWindowView.axaml</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ViewModels\Import\" />
+      <Folder Include="ViewModels\Manager\" />
+      <Folder Include="ViewModels\Report\" />
+      <Folder Include="ViewModels\Setting\" />
+      <Folder Include="ViewModels\Product\" />
+      <Folder Include="Views\Import\" />
+      <Folder Include="Views\Manager\" />
+      <Folder Include="Views\Report\" />
+      <Folder Include="Views\Setting\" />
+      <Folder Include="Views\Product\" />
     </ItemGroup>
 </Project>
