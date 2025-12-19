@@ -12,7 +12,8 @@ namespace Store.Helpers
 
         public static void ShowCreateAccountWindow()
         {
-            ShowSingletonWindow("CreateAccount", () => new CreateAcountWindowView());
+            var window = new CreateAcountWindowView();
+            window.Show();
         }
 
         public static void ShowCreateBillWindow()

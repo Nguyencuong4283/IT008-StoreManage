@@ -1,13 +1,13 @@
 <Window
     Background="Transparent"
-    Height="800"
+    ExtendClientAreaTitleBarHeightHint="-1"
+    ExtendClientAreaToDecorationsHint="True"
     Icon="/Assets/avalonia-logo.ico"
-    SystemDecorations="None"
+    SystemDecorations="Full"
     Title="ShopQuality - Employees"
-    TransparencyLevelHint="transparent"
-    Width="1200"
+    TransparencyLevelHint="acrylicBlur"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="800"
+    d:DesignHeight="1500"
     d:DesignWidth="1200"
     mc:Ignorable="d"
     x:Class="Store.Views.EmployeeWindowView"
@@ -76,7 +76,7 @@
 
                 <Grid ColumnDefinitions="240,*,Auto" Margin="20,0">
                     <StackPanel
-                        Grid.Column="0"
+                        Margin="0,0,0,-10"
                         Orientation="Horizontal"
                         Spacing="10"
                         VerticalAlignment="Center">

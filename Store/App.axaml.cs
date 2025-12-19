@@ -29,6 +29,7 @@ public partial class App : Application
             {
                 DataContext = new MainWindowViewModel(),
             };
+            desktop.ShutdownMode = Avalonia.Controls.ShutdownMode.OnLastWindowClose;
         }
 
         base.OnFrameworkInitializationCompleted();

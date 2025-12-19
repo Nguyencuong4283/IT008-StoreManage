@@ -6,22 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="875b7909-7468-4dae-82ad-6052b50ea99d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Store_Management/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Helpers/WindowManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Helpers/WindowManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Styles/Styles.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Styles/Styles.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/Bill/CreateBillWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/Bill/CreateBillWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/CreateProductWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/CreateProductWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/ProductPageViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/AccountSettingPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AccountSettingPageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/AdminWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/ViewModels/MainWindowViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/Auth/CreateAcountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/Auth/CreateAcountWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateCustomerWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CreateProductWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerDetailWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerDetailWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/CustomerPageView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/EditAccountWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EditAccountWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/AdminWindowView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/Auth/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/Auth/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/Auth/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/Auth/MainWindow.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/Views/HomePageView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/HomePageView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Store/obj/Debug/net9.0/Store.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
@@ -87,13 +83,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Store/Models/Import.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Services/ImportService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/cuongnguyen/Desktop/IT008-StoreManage/Store/ViewModels/CustomerPageViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/ViewModels/EmployeeWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/cuongnguyen/Desktop/IT008-StoreManage/Store/ViewModels/ProductPageViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/cuongnguyen/Desktop/IT008-StoreManage/Store/Views/AdminWindowView.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Store/Views/EmployeeWindowView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -119,7 +112,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Cường&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/nguyencuong/Desktop/IT008-StoreManage&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -249,6 +242,8 @@
       <workItem from="1765525905297" duration="2212000" />
       <workItem from="1765716654953" duration="598000" />
       <workItem from="1765717269654" duration="3068000" />
+      <workItem from="1765808451761" duration="3318000" />
+      <workItem from="1765845443287" duration="6520000" />
     </task>
     <task id="LOCAL-00001" summary="add button">
       <option name="closed" value="true" />
@@ -498,7 +493,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765720118206</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fix tên hàm trong UI">
+      <option name="closed" value="true" />
+      <created>1765807343251</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1765807343251</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +534,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="sửa lỗi UI" />
     <MESSAGE value="Thêm cửa sổ đăng nhập cho nhân viên" />
     <MESSAGE value="chỉnh sửa lại giao diện của nhân viên" />
     <MESSAGE value="chỉnh lại avatar" />
@@ -556,7 +558,8 @@
     <MESSAGE value="Thêm ImportPageView.axaml.cs" />
     <MESSAGE value="fix" />
     <MESSAGE value="Thay đổi tên hàm và tên file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Thay đổi tên hàm và tên file" />
+    <MESSAGE value="Fix tên hàm trong UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix tên hàm trong UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,4 +1,5 @@
 
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -8,6 +9,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
     private ViewModelBase _currentPage;
+    
     private readonly HomePageViewModel _homePage = new();
     private readonly Bill.OrderPageViewModel _orderPage = new();
     private readonly ProductPageViewModel _productPage = new();
@@ -18,8 +20,7 @@ public partial class EmployeeWindowViewModel : ViewModelBase
     private readonly AnalysePageViewModel _analysePageView = new();
 
     public EmployeeWindowViewModel() => CurrentPage = _homePage;
-
-
+    
     [RelayCommand]
     private void GoHome() => CurrentPage = _homePage;
 

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Store.ViewModels;
@@ -7,9 +8,7 @@ public partial class AdminWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
     private ViewModelBase _currentPage;
-
-
-
+    
     private readonly HomePageViewModel _homePage = new();
     private readonly Bill.OrderPageViewModel _orderPage = new();
     private readonly ProductPageViewModel _productPage = new();

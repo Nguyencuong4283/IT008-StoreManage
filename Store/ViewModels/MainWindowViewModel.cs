@@ -7,7 +7,10 @@ using Store.Models;
 using Store.Services;
 using System;
 using System.Collections.ObjectModel;
-using Store.Views; 
+using Avalonia.Controls.ApplicationLifetimes;
+using Store.Views;
+using Store.Views.Auth;
+
 namespace Store.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
@@ -101,13 +104,21 @@ public partial class MainWindowViewModel : ViewModelBase
     private void RegisterButton()
     {
         WindowManager.ShowCreateAccountWindow();
+        
+        if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            // Kiểm tra xem MainWindow có tồn tại không trước khi đóng
+            if (desktop.MainWindow != null)
+            {
+                desktop.MainWindow.Close();
+            }
+        }
     }
+
     [RelayCommand]
     private void ForgotPasswordButton()
     {
         var forgotPasswordView = new Store.Views.Auth.ForgotPasswordView();
         forgotPasswordView.Show();
     }
-
-
 }

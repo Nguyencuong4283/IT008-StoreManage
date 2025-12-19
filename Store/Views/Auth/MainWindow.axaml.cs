@@ -12,7 +12,7 @@ public partial class MainWindow : Window
         DataContext = new MainWindowViewModel();
         this.AttachedToVisualTree += (s, e) =>
         {
-            // Tìm control theo tên và focus
+            // TÃ¬m control TextBox theo tÃªn vÃ  Ä‘áº·t focus
             var textBox = this.FindControl<TextBox>("UsernameTextBox");
             textBox?.Focus();
         };

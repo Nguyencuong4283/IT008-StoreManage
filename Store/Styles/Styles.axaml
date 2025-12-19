@@ -279,17 +279,32 @@
 
 
     <Style Selector="Button.MacBtn">
-        <Setter Property="Width" Value="14" />
-        <Setter Property="Height" Value="14" />
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Height" Value="12" />
         <Setter Property="CornerRadius" Value="7" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Margin" Value="4,0" />
+        <Setter Property="Padding" Value="-1" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Foreground" Value="#50000000" />
         <Setter Property="FontSize" Value="11" />
         <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="RenderTransformOrigin" Value="50%,50%" />
+        <Setter Property="RenderTransform" Value="scale(1)" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition
+                    Duration="0:0:0.2"
+                    Easing="CubicEaseOut"
+                    Property="RenderTransform" />
+                <DoubleTransition Duration="0:0:0.2" Property="Opacity" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button.MacBtn:pointerover">
+        <Setter Property="RenderTransform" Value="scale(1.2)" />
+        <Setter Property="ZIndex" Value="1" />
     </Style>
 
     <Style Selector="Button.MacBtn &gt; TextBlock">
