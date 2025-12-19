@@ -6,6 +6,9 @@ using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using Store.Views;
+using Store.Views.Manager;
+using Store.Views.Employee;
+using Store.ViewModels.Manager;
 using System;
 using System.Collections.ObjectModel;
 
