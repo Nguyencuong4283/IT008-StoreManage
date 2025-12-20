@@ -2,6 +2,10 @@ using Avalonia.Controls;
 using Store.Views;
 using Store.Views.Auth;
 using Store.Views.Bill;
+using Store.Views.Customer;
+using Store.Views.Product;
+using Store.Views.Import;
+using Store.Views.Manager;
 using System.Collections.Generic;
 
 namespace Store.Helpers

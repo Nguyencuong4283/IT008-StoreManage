@@ -1,265 +1,320 @@
-﻿<Styles xmlns="https://github.com/avaloniaui" 
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia">
-    
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Design.PreviewWith>
-       <ThemeVariantScope RequestedThemeVariant="Dark" >
-       <Border Padding="20" Width="400" Background="{DynamicResource BgPage}">
-          <StackPanel Spacing="10">
-             <TextBlock Classes="header">Header Text</TextBlock>
-             <TextBlock Classes="subheader">Subheader Text</TextBlock>
-             <TextBlock Classes="label">Label Text</TextBlock>
-             <TextBlock Classes="body">Body text</TextBlock>
-             <Separator Height="20"/>
-             <Button Classes="primary">Primary Button</Button>
-             <Button Classes="secondary">Secondary Button</Button>
-             <Button Classes="danger">Danger Button</Button>
-             <Button Classes="icon-btn">🔍</Button>
-             <Button Classes="close-btn">✕</Button>
-             <Separator Height="20"/>
-             <TextBox Classes="modern-input" Watermark="Modern Input" Text="Input Text"/>
-             <ComboBox Classes="modern-combo" PlaceholderText="Select Item">
-                <ComboBoxItem>Option 1</ComboBoxItem>
-                <ComboBoxItem>Option 2</ComboBoxItem>
-             </ComboBox>
-             <Separator Height="20"/>
-             <Border Classes="card">
-                <TextBlock>Card Content</TextBlock>
-             </Border>
-             <Border CornerRadius="8" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1.5">
-                <CalendarDatePicker Classes="calendar"/>
-             </Border>
-          </StackPanel>
-       </Border>
-       </ThemeVariantScope>
+        <ThemeVariantScope RequestedThemeVariant="Dark">
+            <Border
+                Background="{DynamicResource BgPage}"
+                Padding="20"
+                Width="400">
+                <StackPanel Spacing="10">
+                    <TextBlock Classes="header">Header Text</TextBlock>
+                    <TextBlock Classes="subheader">Subheader Text</TextBlock>
+                    <TextBlock Classes="label">Label Text</TextBlock>
+                    <TextBlock Classes="body">Body text</TextBlock>
+                    <Separator Height="20" />
+                    <Button Classes="primary">Primary Button</Button>
+                    <Button Classes="secondary">Secondary Button</Button>
+                    <Button Classes="danger">Danger Button</Button>
+                    <Button Classes="icon-btn">🔍</Button>
+                    <Button Classes="close-btn">✕</Button>
+                    <Separator Height="20" />
+                    <TextBox
+                        Classes="modern-input"
+                        Text="Input Text"
+                        Watermark="Modern Input" />
+                    <ComboBox Classes="modern-combo" PlaceholderText="Select Item">
+                        <ComboBoxItem>Option 1</ComboBoxItem>
+                        <ComboBoxItem>Option 2</ComboBoxItem>
+                    </ComboBox>
+                    <Separator Height="20" />
+                    <Border Classes="card">
+                        <TextBlock>Card Content</TextBlock>
+                    </Border>
+                    <Border
+                        BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1.5"
+                        CornerRadius="8">
+                        <CalendarDatePicker Classes="calendar" />
+                    </Border>
+
+                    <Button Classes="MacBtn CloseBtn">
+                        x
+                    </Button>
+                </StackPanel>
+            </Border>
+        </ThemeVariantScope>
     </Design.PreviewWith>
 
     <Style Selector="Button.primary">
-       <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
-       <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/> 
-       <Setter Property="FontSize" Value="14"/>
-       <Setter Property="FontWeight" Value="SemiBold"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="Padding" Value="16,10"/>
-       <Setter Property="BorderThickness" Value="0"/>
-       <Setter Property="Cursor" Value="Hand"/>
-       <Setter Property="HorizontalContentAlignment" Value="Center"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="Button.primary:pointerover /template/ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource PrimaryHover}"/>
-       <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryHover}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
     </Style>
     <Style Selector="Button.primary:pressed /template/ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource PrimaryHover}"/>
-       <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryHover}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
     </Style>
 
     <Style Selector="Button.secondary">
-       <Setter Property="Background" Value="{DynamicResource BgCard}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-       <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
-       <Setter Property="BorderThickness" Value="1.5"/>
-       <Setter Property="FontSize" Value="14"/>
-       <Setter Property="FontWeight" Value="Medium"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="Padding" Value="16,10"/>
-       <Setter Property="Cursor" Value="Hand"/>
-       <Setter Property="HorizontalContentAlignment" Value="Center"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource BgCard}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="Button.secondary:pointerover /template/ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource BgHover}"/>
-       <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource BgHover}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
     <Style Selector="Button.secondary:pressed /template/ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
     </Style>
 
     <Style Selector="Button.danger">
-       <Setter Property="Background" Value="{DynamicResource DangerColor}"/>
-       <Setter Property="Foreground" Value="White"/>
-       <Setter Property="FontSize" Value="14"/>
-       <Setter Property="FontWeight" Value="SemiBold"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="Padding" Value="16,10"/>
-       <Setter Property="BorderThickness" Value="0"/>
-       <Setter Property="Cursor" Value="Hand"/>
-       <Setter Property="HorizontalContentAlignment" Value="Center"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource DangerColor}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="Button.danger:pointerover /template/ContentPresenter">
-       <Setter Property="Background" Value="#DC2626"/> </Style>
+        <Setter Property="Background" Value="#DC2626" />
+    </Style>
 
     <Style Selector="Button.close-btn">
-       <Setter Property="Background" Value="{DynamicResource DangerColor}"/>
-       <Setter Property="Foreground" Value="White"/>
-       <Setter Property="FontSize" Value="16"/>
-       <Setter Property="FontWeight" Value="Bold"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="Width" Value="36"/>
-       <Setter Property="Height" Value="36"/>
-       <Setter Property="BorderThickness" Value="0"/>
-       <Setter Property="Cursor" Value="Hand"/>
-       <Setter Property="HorizontalContentAlignment" Value="Center"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource DangerColor}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Width" Value="36" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="Button.close-btn:pointerover /template/ContentPresenter">
-       <Setter Property="Background" Value="#DC2626"/>
+        <Setter Property="Background" Value="#DC2626" />
     </Style>
 
     <Style Selector="Button.icon-btn">
-       <Setter Property="Background" Value="Transparent"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
-       <Setter Property="BorderThickness" Value="0"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="Width" Value="36"/>
-       <Setter Property="Height" Value="36"/>
-       <Setter Property="Cursor" Value="Hand"/>
-       <Setter Property="HorizontalContentAlignment" Value="Center"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Width" Value="36" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="Button.icon-btn:pointerover /template/ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource BgHover}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource BgHover}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
 
     <Style Selector="TextBox.modern-input">
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-       <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
-       <Setter Property="CaretBrush" Value="{DynamicResource PrimaryColor}"/>
-       <Setter Property="BorderThickness" Value="1.5"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="FontSize" Value="14"/>
-       <Setter Property="Padding" Value="12,10"/>
-       <Setter Property="MinHeight" Value="40"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style Selector="TextBox.modern-input:focus /template/ Border#PART_BorderElement">
-       <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}"/>
-       <Setter Property="BorderThickness" Value="1.5"/>
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
     </Style>
     <Style Selector="TextBox.modern-input:pointerover /template/ Border#PART_BorderElement">
-       <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}"/>
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
     </Style>
 
     <Style Selector="ComboBox.modern-combo">
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-       <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
-       <Setter Property="BorderThickness" Value="1.5"/>
-       <Setter Property="CornerRadius" Value="8"/>
-       <Setter Property="FontSize" Value="14"/>
-       <Setter Property="Padding" Value="12,10"/>
-       <Setter Property="MinHeight" Value="40"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
-       <Setter Property="PlaceholderForeground" Value="{DynamicResource TextPlaceholder}"/>
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource TextPlaceholder}" />
     </Style>
     <Style Selector="ComboBox.modern-combo:pointerover /template/ Border#Background">
-       <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}"/>
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
     </Style>
     <Style Selector="ComboBox.modern-combo:focus /template/ Border#Background">
-       <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}" />
     </Style>
     <Style Selector="ComboBox.modern-combo:dropdownopen /template/ Border#Background">
-       <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}" />
     </Style>
-    
+
     <Style Selector="Border.card">
-       <Setter Property="Background" Value="{DynamicResource BgCard}"/>
-       <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
-       <Setter Property="BorderThickness" Value="1"/>
-       <Setter Property="CornerRadius" Value="12"/>
-       <Setter Property="Padding" Value="20"/>
+        <Setter Property="Background" Value="{DynamicResource BgCard}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="20" />
     </Style>
-    <Style Selector="Border.card:pointerover">
-       </Style>
+    <Style Selector="Border.card:pointerover" />
 
     <Style Selector="TextBlock.header">
-       <Setter Property="FontSize" Value="24"/>
-       <Setter Property="FontWeight" Value="Bold"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-       <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <Style Selector="TextBlock.subheader">
-       <Setter Property="FontSize" Value="18"/>
-       <Setter Property="FontWeight" Value="SemiBold"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-       <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <Style Selector="TextBlock.label">
-       <Setter Property="FontSize" Value="13"/>
-       <Setter Property="FontWeight" Value="Medium"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
-       <Setter Property="Margin" Value="0,0,0,6"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="Margin" Value="0,0,0,6" />
     </Style>
 
     <Style Selector="TextBlock.body">
-       <Setter Property="FontSize" Value="14"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
-       <Setter Property="LineHeight" Value="20"/>
-       <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <Style Selector="CalendarDatePicker.calendar /template/ TextBox">
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/> 
-       <Setter Property="Padding" Value="10,0"/>
-       <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
-    
+
     <Style Selector="CalendarDatePicker.calendar /template/ Border">
-       <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
-       <Setter Property="BorderThickness" Value="1.5"/>
-       <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
-    
+
     <Style Selector="CalendarDatePicker.calendar /template/ Button">
-       <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
     </Style>
-    
+
     <Style Selector="CalendarDatePicker.calendar:pointerover /template/ Border">
-       <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextSecondary}" />
     </Style>
     <Style Selector="CalendarDatePicker.calendar:pointerover /template/ TextBox">
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
-    
+
     <Style Selector="CalendarDatePicker.calendar:focus /template/ Border">
-       <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryColor}" />
     </Style>
-    
+
     <Style Selector="Button.sidebar">
-       <Setter Property="Background" Value="Transparent"/>
-       <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style Selector="Button.sidebar:pointerover /template/ ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource BgHover}"/>
-       <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource BgHover}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
     <Style Selector="Button.sidebar:pressed /template/ ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource BgInput}"/>
+        <Setter Property="Background" Value="{DynamicResource BgInput}" />
     </Style>
 
     <Style Selector="Button.btn1">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style Selector="Button.btn1:pointerover /template/ ContentPresenter">
-       <Setter Property="Background" Value="{DynamicResource BgHover}"/>
-       <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Background" Value="{DynamicResource BgHover}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
 
-   <Style Selector="avalonia|CartesianChart">
-      <Setter Property="Background" Value="{DynamicResource BgCard}"/>
-   </Style>
+    <Style Selector="avalonia|CartesianChart">
+        <Setter Property="Background" Value="{DynamicResource BgCard}" />
+    </Style>
+
+    <!--  Mac Window Buttons Style  -->
+
+    <Style Selector="Button.MacBtn">
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="14" />
+        <Setter Property="CornerRadius" Value="7" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="4,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#50000000" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style Selector="Button.MacBtn &gt; TextBlock">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="Button.MacBtn:pointerover &gt; TextBlock">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+
+    <Style Selector="Button.CloseBtn:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#FF5F56" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Content" Value="X" />
+    </Style>
+
+    <Style Selector="Button.MinBtn:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#FFBD2E" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Content" Value="-" />
+    </Style>
+
+    <Style Selector="Button.MaxBtn:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#27C93F" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Content" Value="+" />
+    </Style>
 </Styles>

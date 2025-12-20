@@ -1,0 +1,297 @@
+<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="Store.Views.Home.HomePageView"
+    x:DataType="vm:HomePageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Store.ViewModels.Home"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:HomePageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" Spacing="20">
+
+            <Border BoxShadow="0 4 20 0 #30000000" Classes="card">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="100%,0%" StartPoint="0%,0%">
+                        <GradientStop Color="#667EEA" Offset="0" />
+                        <GradientStop Color="#764BA2" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid ColumnDefinitions="*,Auto" Margin="10">
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="28"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Margin="0,0,0,10"
+                            Text="Chào mừng trở lại! 👋" />
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="#E0E0E0"
+                            Text="Hệ thống quản lý cửa hàng ShopQuality" />
+                    </StackPanel>
+                    <TextBlock
+                        FontSize="80"
+                        Grid.Column="1"
+                        Text="🛍️"
+                        VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
+                <Border
+                    BoxShadow="0 2 8 0 #20000000"
+                    Classes="card"
+                    Grid.Column="0">
+                    <StackPanel Spacing="10">
+                        <TextBlock FontSize="32" Text="💰" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Doanh thu hôm nay" />
+                        <TextBlock
+                            FontSize="22"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource PrimaryColor}">
+                            <Run Text="{Binding DoanhThuHomNay}" />
+                            <Run Text=" ₫" />
+                        </TextBlock>
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{DynamicResource Success}"
+                            Text="↗ +0% so với hôm qua" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    BoxShadow="0 2 8 0 #20000000"
+                    Classes="card"
+                    Grid.Column="1">
+                    <StackPanel Spacing="10">
+                        <TextBlock FontSize="32" Text="📦" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Đơn hàng mới" />
+                        <TextBlock
+                            FontSize="22"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Success}"
+                            Text="{Binding SoHoaDon}" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{DynamicResource Warning}"
+                            Text="Chờ xử lý" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    BoxShadow="0 2 8 0 #20000000"
+                    Classes="card"
+                    Grid.Column="2">
+                    <StackPanel Spacing="10">
+                        <TextBlock FontSize="32" Text="👻" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Khách hàng" />
+                        <TextBlock
+                            FontSize="22"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Info}"
+                            Text="{Binding SoKhachHang}" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Tổng số khách" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    BoxShadow="0 2 8 0 #20000000"
+                    Classes="card"
+                    Grid.Column="3">
+                    <StackPanel Spacing="10">
+                        <TextBlock FontSize="32" Text="📊" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Sản phẩm" />
+                        <TextBlock
+                            FontSize="22"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Warning}"
+                            Text="{Binding SoSanPham}" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Trong kho" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
+
+                <Border
+                    BoxShadow="0 2 8 0 #20000000"
+                    Classes="card"
+                    Grid.Column="0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <ItemsControl IsVisible="{Binding HoaDons.Count}" ItemsSource="{Binding HoaDons}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            BorderBrush="{DynamicResource BorderColor}"
+                                            BorderThickness="1"
+                                            BoxShadow="0 2 8 0 #15000000"
+                                            Classes="card"
+                                            Margin="0,3,0,3">
+                                            <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                                                <Border
+                                                    Background="{DynamicResource BgHover}"
+                                                    CornerRadius="10"
+                                                    Grid.Column="0"
+                                                    Height="50"
+                                                    Margin="0,0,15,0"
+                                                    VerticalAlignment="Center"
+                                                    Width="50">
+                                                    <TextBlock
+                                                        FontSize="24"
+                                                        HorizontalAlignment="Center"
+                                                        Text="📋"
+                                                        VerticalAlignment="Center" />
+                                                </Border>
+
+                                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                    <TextBlock
+                                                        FontSize="15"
+                                                        FontWeight="SemiBold"
+                                                        Foreground="{DynamicResource TextPrimary}">
+                                                        <Run>Số hóa đơn :</Run>
+                                                        <Run Text="{Binding SoHD}" />
+                                                    </TextBlock>
+                                                    <TextBlock
+                                                        FontSize="13"
+                                                        Foreground="{DynamicResource TextSecondary}"
+                                                        Margin="0,5,0,0">
+                                                        <Run Text="" />
+                                                        <Run Text="{Binding TenKH}" />
+                                                    </TextBlock>
+                                                </StackPanel>
+
+                                                <StackPanel
+                                                    Grid.Column="2"
+                                                    Margin="10,0"
+                                                    VerticalAlignment="Center">
+                                                    <TextBlock
+                                                        FontSize="12"
+                                                        Foreground="{DynamicResource TextSecondary}"
+                                                        Text="{Binding NgayLapHD}"
+                                                        TextAlignment="Right" />
+                                                    <TextBlock
+                                                        FontSize="16"
+                                                        FontWeight="Bold"
+                                                        Foreground="{DynamicResource PrimaryColor}"
+                                                        Margin="0,5,0,0"
+                                                        TextAlignment="Right">
+                                                        <Run Text="{Binding TongTienHD}" />
+                                                        <Run Text=" ₫" />
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Border
+                                Background="{DynamicResource BgHover}"
+                                CornerRadius="12"
+                                IsVisible="{Binding !HoaDons.Count}"
+                                Padding="60,80">
+                                <StackPanel HorizontalAlignment="Center" Spacing="15">
+                                    <TextBlock
+                                        FontSize="64"
+                                        HorizontalAlignment="Center"
+                                        Text="📋" />
+                                    <TextBlock
+                                        FontSize="18"
+                                        FontWeight="SemiBold"
+                                        Foreground="{DynamicResource TextPrimary}"
+                                        HorizontalAlignment="Center"
+                                        Text="Chưa có hóa đơn nào" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+
+                <Border
+                    BoxShadow="0 2 8 0 #20000000"
+                    Classes="card"
+                    Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock
+                            Classes="subheader"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Margin="0,0,0,15"
+                            Text="Thao tác nhanh" />
+
+                        <StackPanel Spacing="10">
+                            <Button
+                                Classes="primary"
+                                Command="{Binding CreateOderButtonCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock FontSize="18" Text="➕" />
+                                    <TextBlock FontSize="14" Text="Tạo đơn hàng mới" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button
+                                Classes="secondary"
+                                Command="{Binding InsertProductButtonCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock FontSize="18" Text="📦" />
+                                    <TextBlock FontSize="14" Text="Thêm sản phẩm" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button
+                                Classes="secondary"
+                                Command="{Binding InsertCustomerButtonCommand}"
+                                HorizontalAlignment="Stretch"
+                                Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock FontSize="18" Text="👤" />
+                                    <TextBlock FontSize="14" Text="Thêm khách hàng" />
+                                </StackPanel>
+                            </Button>
+
+                            <Button
+                                Classes="secondary"
+                                HorizontalAlignment="Stretch"
+                                Padding="15">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock FontSize="18" Text="📥" />
+                                    <TextBlock FontSize="14" Text="Nhập kho" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
