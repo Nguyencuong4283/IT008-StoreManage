@@ -277,6 +277,7 @@
         <Setter Property="Background" Value="{DynamicResource BgCard}" />
     </Style>
 
+    <!--  Mac Window Buttons Style  -->
 
     <Style Selector="Button.MacBtn">
         <Setter Property="Width" Value="14" />
@@ -302,15 +303,18 @@
     <Style Selector="Button.CloseBtn:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="#FF5F56" />
         <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Content" Value="X" />
     </Style>
 
     <Style Selector="Button.MinBtn:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="#FFBD2E" />
         <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Content" Value="-" />
     </Style>
 
     <Style Selector="Button.MaxBtn:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="#27C93F" />
         <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Content" Value="+" />
     </Style>
 </Styles>

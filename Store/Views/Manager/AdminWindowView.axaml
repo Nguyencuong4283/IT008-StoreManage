@@ -1,13 +1,17 @@
 <Window
     Background="Transparent"
-    Height="800"
+    CanMaximize="True"
+    CanMinimize="True"
+    CanResize="True"
+    ExtendClientAreaToDecorationsHint="True"
+    Height="810"
     Icon="/Assets/avalonia-logo.ico"
     SystemDecorations="None"
     Title="ShopQuality - Admin"
     TransparencyLevelHint="transparent"
     Width="1200"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="800"
+    d:DesignHeight="810"
     d:DesignWidth="1200"
     mc:Ignorable="d"
     x:Class="Store.Views.Manager.AdminWindowView"
@@ -61,8 +65,8 @@
 
         <Grid
             ColumnDefinitions="240,*"
-            RowDefinitions="80,*"
-            ShowGridLines="True">
+            PointerPressed="Header_PointerPressed"
+            RowDefinitions="80,*">
 
             <Border
                 BoxShadow="0 2 8 0 #15000000"
@@ -75,30 +79,17 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
-                <Grid
-                    ColumnDefinitions="240,*,Auto"
-                    Margin="20,0"
-                    ShowGridLines="True">
-                    <Grid RowDefinitions="30,*" ShowGridLines="True">
-                        <StackPanel
-                            Margin="12,0"
-                            Orientation="Horizontal"
-                            Spacing="5">
-                            <Button Classes="CloseBtn">
-                                <TextBlock Text="✕" />
-                            </Button>
+                <Grid ColumnDefinitions="240,*,Auto" Margin="20,0">
+                    <Grid RowDefinitions="15,*">
 
-                            <Button Classes="MacBtn MinBtn">
-                                <TextBlock Text="−" />
-                            </Button>
-
-                            <Button Classes="MacBtn MaxBtn">
-                                <TextBlock Text="+" />
-                            </Button>
+                        <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+                            <Button Classes="MacBtn CloseBtn" Click="CloseBtn" />
+                            <Button Classes="MacBtn MinBtn" Click="MinimizeBtn" />
+                            <Button Classes="MacBtn MaxBtn" Click="MaximizeBtn" />
                         </StackPanel>
+
                         <StackPanel
                             Grid.Row="1"
-                            Margin="0,0,0,-10"
                             Orientation="Horizontal"
                             Spacing="10"
                             VerticalAlignment="Center">
@@ -118,33 +109,6 @@
                         Margin="20,0"
                         MaxWidth="500" />
 
-                    <StackPanel
-                        Grid.Column="2"
-                        Orientation="Horizontal"
-                        Spacing="8"
-                        VerticalAlignment="Center">
-                        <Button Classes="top-icon">
-                            <TextBlock
-                                FontSize="18"
-                                HorizontalAlignment="Center"
-                                Text="📆"
-                                VerticalAlignment="Center" />
-                        </Button>
-                        <Button Classes="top-icon">
-                            <TextBlock
-                                FontSize="18"
-                                HorizontalAlignment="Center"
-                                Text="📒"
-                                VerticalAlignment="Center" />
-                        </Button>
-                        <Button Classes="top-icon">
-                            <TextBlock
-                                FontSize="18"
-                                HorizontalAlignment="Center"
-                                Text="👤"
-                                VerticalAlignment="Center" />
-                        </Button>
-                    </StackPanel>
                 </Grid>
             </Border>
 
