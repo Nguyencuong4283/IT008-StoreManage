@@ -66,14 +66,12 @@
         ClipToBounds="True"
         CornerRadius="16">
 
-        <Grid
-            ColumnDefinitions="240,*"
-            PointerPressed="Header_PointerPressed"
-            RowDefinitions="80,*">
+        <Grid ColumnDefinitions="240,*" RowDefinitions="80,*">
             <Border
                 BoxShadow="0 2 8 0 #15000000"
                 Grid.Column="0"
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="2"
+                PointerPressed="Header_PointerPressed">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="100%,0%" StartPoint="0%,0%">
                         <GradientStop Color="#667EEA" Offset="0" />

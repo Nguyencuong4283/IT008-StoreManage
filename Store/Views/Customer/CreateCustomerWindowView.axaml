@@ -3,6 +3,7 @@
     Height="800"
     SystemDecorations="None"
     Title="Create Product"
+    TransparencyLevelHint="transparent"
     Width="650"
     WindowStartupLocation="CenterScreen"
     d:DesignHeight="800"

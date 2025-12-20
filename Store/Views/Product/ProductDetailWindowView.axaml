@@ -1,144 +1,186 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
-		Height="600"
-		Width="800"
-		Background="Transparent"
-		SystemDecorations="None"
-		WindowStartupLocation="CenterScreen"
-		xmlns:vm="using:Store.ViewModels.Product"
-		x:Class="Store.Views.Product.ProductDetailWindowView"
-		x:DataType="vm:ProductDetailWindowViewModel"
-		Title="Chi tiết sản phẩm">
+﻿<Window
+    Background="Transparent"
+    Height="600"
+    SystemDecorations="None"
+    Title="Chi tiết sản phẩm"
+    TransparencyLevelHint="transparent"
+    Width="800"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="600"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Store.Views.Product.ProductDetailWindowView"
+    x:DataType="vm:ProductDetailWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Store.ViewModels.Product"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-	<Design.DataContext>
-		<vm:ProductDetailWindowViewModel />
-	</Design.DataContext>
+    <Design.DataContext>
+        <vm:ProductDetailWindowViewModel />
+    </Design.DataContext>
 
-	<Border CornerRadius="20"
-			BoxShadow="0 10 40 5 #40000000"
-			BorderBrush="{DynamicResource BorderColor}"
-			BorderThickness="2"
-			Background="{DynamicResource BgPage}">
+    <Border
+        Background="{DynamicResource BgPage}"
+        BorderBrush="{DynamicResource BorderColor}"
+        BorderThickness="2"
+        BoxShadow="0 10 40 5 #40000000"
+        CornerRadius="20">
 
-		<Grid>
-			<Button Command="{Binding $parent[Window].Close}"
-					Classes="close-btn"
-					HorizontalAlignment="Right"
-					VerticalAlignment="Top"
-					Margin="0,15,15,0"
-					ZIndex="10">
-				✕
-			</Button>
+        <Grid>
+            <Button
+                Classes="close-btn"
+                Command="{Binding $parent[Window].Close}"
+                HorizontalAlignment="Right"
+                Margin="0,15,15,0"
+                VerticalAlignment="Top"
+                ZIndex="10">
+                ✕
+            </Button>
 
-			<Border Background="{DynamicResource BgCard}"
-					CornerRadius="16"
-					Margin="30"
-					BoxShadow="0 8 32 0 #20000000"
-					Padding="40">
+            <Border
+                Background="{DynamicResource BgCard}"
+                BoxShadow="0 8 32 0 #20000000"
+                CornerRadius="16"
+                Margin="30"
+                Padding="40">
 
-				<Grid ColumnDefinitions="300,*">
-					<Border Grid.Column="0"
-							Background="{DynamicResource BgInput}"
-							CornerRadius="12"
-							Width="280"
-							Height="280"
-							ClipToBounds="True"
-							BoxShadow="0 4 12 0 #20000000"
-							VerticalAlignment="Top">
-						<Image Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
-					</Border>
+                <Grid ColumnDefinitions="300,*">
+                    <Border
+                        Background="{DynamicResource BgInput}"
+                        BoxShadow="0 4 12 0 #20000000"
+                        ClipToBounds="True"
+                        CornerRadius="12"
+                        Grid.Column="0"
+                        Height="280"
+                        VerticalAlignment="Top"
+                        Width="280">
+                        <Image Source="{Binding HinhAnhSP}" Stretch="UniformToFill" />
+                    </Border>
 
-					<StackPanel Grid.Column="1" Margin="30,0,0,0">
-						<TextBlock Text="{Binding TenSP}"
-								   FontSize="28"
-								   FontWeight="Bold"
-								   Foreground="{DynamicResource TextPrimary}"
-								   TextWrapping="Wrap"
-								   Margin="0,0,0,15"/>
+                    <StackPanel Grid.Column="1" Margin="30,0,0,0">
+                        <TextBlock
+                            FontSize="28"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Margin="0,0,0,15"
+                            Text="{Binding TenSP}"
+                            TextWrapping="Wrap" />
 
-						<TextBlock FontSize="24"
-								   FontWeight="Bold"
-								   Foreground="{DynamicResource PrimaryColor}"
-								   Margin="0,0,0,20">
-							<Run Text="{Binding GiaSP}"/>
-							<Run Text=" ₫" FontSize="18"/>
-						</TextBlock>
+                        <TextBlock
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource PrimaryColor}"
+                            Margin="0,0,0,20">
+                            <Run Text="{Binding GiaSP}" />
+                            <Run FontSize="18" Text=" ₫" />
+                        </TextBlock>
 
-						<Separator Background="{DynamicResource BorderColor}" Height="1" Margin="0,0,0,20"/>
+                        <Separator
+                            Background="{DynamicResource BorderColor}"
+                            Height="1"
+                            Margin="0,0,0,20" />
 
-						<Grid ColumnDefinitions="140,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" Margin="0,0,0,20">
+                        <Grid
+                            ColumnDefinitions="140,*"
+                            Margin="0,0,0,20"
+                            RowDefinitions="Auto,Auto,Auto,Auto,Auto">
 
-							<TextBlock Grid.Row="0" Grid.Column="0"
-									   Text="Mã sản phẩm:"
-									   FontSize="14"
-									   Foreground="{DynamicResource TextSecondary}"
-									   Margin="0,0,0,12"/>
-							<TextBlock Grid.Row="0" Grid.Column="1"
-									   Text="{Binding MaSP}"
-									   FontSize="14"
-									   FontWeight="Medium"
-									   Foreground="{DynamicResource TextPrimary}"
-									   Margin="0,0,0,12"/>
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Margin="0,0,0,12"
+                                Text="Mã sản phẩm:" />
+                            <TextBlock
+                                FontSize="14"
+                                FontWeight="Medium"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Margin="0,0,0,12"
+                                Text="{Binding MaSP}" />
 
-							<TextBlock Grid.Row="1" Grid.Column="0"
-									   Text="Loại sản phẩm:"
-									   FontSize="14"
-									   Foreground="{DynamicResource TextSecondary}"
-									   Margin="0,0,0,12"/>
-							<TextBlock Grid.Row="1" Grid.Column="1"
-									   Text="{Binding LoaiSP}"
-									   FontSize="14"
-									   FontWeight="Medium"
-									   Foreground="{DynamicResource TextPrimary}"
-									   Margin="0,0,0,12"/>
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="0,0,0,12"
+                                Text="Loại sản phẩm:" />
+                            <TextBlock
+                                FontSize="14"
+                                FontWeight="Medium"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="0,0,0,12"
+                                Text="{Binding LoaiSP}" />
 
-							<TextBlock Grid.Row="2" Grid.Column="0"
-									   Text="Kích cỡ:"
-									   FontSize="14"
-									   Foreground="{DynamicResource TextSecondary}"
-									   Margin="0,0,0,12"/>
-							<TextBlock Grid.Row="2" Grid.Column="1"
-									   Text="{Binding KichCoSP}"
-									   FontSize="14"
-									   FontWeight="Medium"
-									   Foreground="{DynamicResource TextPrimary}"
-									   Margin="0,0,0,12"/>
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                Grid.Column="0"
+                                Grid.Row="2"
+                                Margin="0,0,0,12"
+                                Text="Kích cỡ:" />
+                            <TextBlock
+                                FontSize="14"
+                                FontWeight="Medium"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                Margin="0,0,0,12"
+                                Text="{Binding KichCoSP}" />
 
-							<TextBlock Grid.Row="3" Grid.Column="0"
-									   Text="Số lượng:"
-									   FontSize="14"
-									   Foreground="{DynamicResource TextSecondary}"
-									   Margin="0,0,0,12"/>
-							<TextBlock Grid.Row="3" Grid.Column="1"
-									   Text="{Binding SoLuongSP}"
-									   FontSize="14"
-									   FontWeight="Medium"
-									   Foreground="{DynamicResource TextPrimary}"
-									   Margin="0,0,0,12"/>
-						</Grid>
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                Grid.Column="0"
+                                Grid.Row="3"
+                                Margin="0,0,0,12"
+                                Text="Số lượng:" />
+                            <TextBlock
+                                FontSize="14"
+                                FontWeight="Medium"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                Margin="0,0,0,12"
+                                Text="{Binding SoLuongSP}" />
+                        </Grid>
 
-						<TextBlock Text="Mô tả sản phẩm"
-								   FontSize="16"
-								   FontWeight="SemiBold"
-								   Foreground="{DynamicResource TextPrimary}"
-								   Margin="0,10,0,10"/>
-						<TextBlock Text="{Binding MoTaSP}"
-								   FontSize="14"
-								   Height="100"
-								   Foreground="{DynamicResource TextSecondary}"
-								   TextWrapping="Wrap"
-								   LineHeight="22"/>
+                        <TextBlock
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Margin="0,10,0,10"
+                            Text="Mô tả sản phẩm" />
+                        <TextBlock
+                            FontSize="14"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Height="100"
+                            LineHeight="22"
+                            Text="{Binding MoTaSP}"
+                            TextWrapping="Wrap" />
 
-						<StackPanel  Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-							<Button Classes="secondary" Padding="12,8">✏️ Sửa</Button>
-							<Button Command="{Binding DeleteCommand}" Classes="danger" Padding="12,8">🗑️ Xóa</Button>
-						</StackPanel>
-					</StackPanel>
-				</Grid>
-			</Border>
-		</Grid>
-	</Border>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalAlignment="Center">
+                            <Button Classes="secondary" Padding="12,8">✏️ Sửa</Button>
+                            <Button
+                                Classes="danger"
+                                Command="{Binding DeleteCommand}"
+                                Padding="12,8">
+                                🗑️ Xóa
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </Window>
