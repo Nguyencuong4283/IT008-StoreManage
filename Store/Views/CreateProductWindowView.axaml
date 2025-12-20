@@ -52,7 +52,7 @@
 					<Image Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
 				</Border>
 
-				<Button Command="{Binding ThemAnhButtonCommand}"
+				<Button Command="{Binding InsertPictureButtonCommand}"
 						Width="340"
 						Classes="primary"
 						Height="48"
@@ -120,7 +120,7 @@
 											BorderThickness="0"
 											FontSize="12"
 											Cursor="Hand"
-											Command="{Binding TangGiaCommand}"
+											Command="{Binding IncreasePriceCommand}"
 											VerticalContentAlignment="Center"/>
 
 									<Button Grid.Column="2"
@@ -133,7 +133,7 @@
 											FontSize="12"
 											Cursor="Hand"
 											CornerRadius="0,8,8,0"
-											Command="{Binding GiamGiaCommand}"
+											Command="{Binding DecreasePriceCommand}"
 											VerticalContentAlignment="Center"/>
 								</Grid>
 							</Border>
@@ -177,7 +177,7 @@
 											BorderThickness="0"
 											FontSize="12"
 											Cursor="Hand"
-											Command="{Binding TangSoLuongCommand}"
+											Command="{Binding IncreaseNumberOfProductCommand}"
 											VerticalContentAlignment="Center"/>
 									<Button Grid.Column="2"
 											Content="▼"
@@ -189,7 +189,7 @@
 											FontSize="12"
 											Cursor="Hand"
 											CornerRadius="0,8,8,0"
-											Command="{Binding GiamSoLuongCommand}"
+											Command="{Binding DecreaseNumberOfProductCommand}"
 											VerticalContentAlignment="Center"/>
 								</Grid>
 							</Border>

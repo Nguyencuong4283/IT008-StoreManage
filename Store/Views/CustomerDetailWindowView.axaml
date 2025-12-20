@@ -124,7 +124,7 @@
 					<Button
 					Classes="danger"
 					Height="52"
-					Command="{Binding XoaKhachHangButtonCommand}"
+					Command="{Binding DeleteCustomerButtonCommand}"
 					FontSize="16"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Center">

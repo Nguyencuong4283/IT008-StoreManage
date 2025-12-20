@@ -106,7 +106,7 @@
                       </StackPanel>
 
                       <Button Classes="secondary" 
-                              Command="{Binding DoiMatKhauButtonCommand}" 
+                              Command="{Binding ChangePasswordButtonCommand}" 
                               Padding="15,10" 
                               HorizontalAlignment="Left">
                          🔑 Đổi mật khẩu

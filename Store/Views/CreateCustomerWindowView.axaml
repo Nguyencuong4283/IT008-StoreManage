@@ -107,7 +107,7 @@
 								 VerticalContentAlignment="Top"/>
 					</StackPanel>
 
-					<Button Command="{Binding TaoKhachHangButtonCommand}"
+					<Button Command="{Binding CreateCusomterButtonCommand}"
 							Classes="primary"
 							Height="52"
 							FontSize="16"

@@ -33,7 +33,7 @@
 					</StackPanel>
 
 					<Button Grid.Column="1"
-							Command="{Binding ThemNhanVienButtonCommand}"
+							Command="{Binding InsertEmployeeButtonCommand}"
 							Classes="primary"
 							Height="42"
 							Padding="24,0"
@@ -97,7 +97,7 @@
 												<Button
 												Classes="secondary"
 												Padding="12,8"
-												 Command="{Binding $parent[ItemsControl].((viewModel:EmployeePageViewModel)DataContext).ChiTietButtonCommand}"
+												 Command="{Binding $parent[ItemsControl].((viewModel:EmployeePageViewModel)DataContext).DetailButtonCommand}"
 												 CommandParameter="{Binding}"
 												VerticalAlignment="Center">
 													Chi tiết

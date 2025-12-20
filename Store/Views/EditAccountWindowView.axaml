@@ -69,7 +69,7 @@
                                 Stretch="Fill"/>
                       </Border>
                       
-                      <Button Command="{Binding ThemAnhButtonCommand}" 
+                      <Button Command="{Binding InsertPictureAsyncButtonCommand}" 
                               Classes="primary"
                               Width="260" 
                               Height="42"

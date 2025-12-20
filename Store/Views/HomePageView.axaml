@@ -156,21 +156,21 @@
                               Margin="0,0,0,15"/>
                    
                    <StackPanel Spacing="10">
-                      <Button Command="{Binding TaoDonButtonCommand}" Classes="primary" HorizontalAlignment="Stretch" Padding="15">
+                      <Button Command="{Binding CreateOrderButtonCommand}" Classes="primary" HorizontalAlignment="Stretch" Padding="15">
                          <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="➕" FontSize="18"/>
                             <TextBlock Text="Tạo đơn hàng mới" FontSize="14"/>
                          </StackPanel>
                       </Button>
                       
-                      <Button Command="{Binding ThemSanPhamButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                      <Button Command="{Binding InsertProductButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
                          <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="📦" FontSize="18"/>
                             <TextBlock Text="Thêm sản phẩm" FontSize="14"/>
                          </StackPanel>
                       </Button>
                       
-                      <Button Command="{Binding ThemKhachHangButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
+                      <Button Command="{Binding InsertCustomerButtonCommand}" Classes="secondary" HorizontalAlignment="Stretch" Padding="15">
                          <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="👤" FontSize="18"/>
                             <TextBlock Text="Thêm khách hàng" FontSize="14"/>

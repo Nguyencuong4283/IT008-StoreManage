@@ -74,7 +74,7 @@ public class ImportService
         connection.Open();
         using var tran = connection.BeginTransaction();
 
-        var maNK = GenerateNewMaNK();
+        var maNK = GenerateNewImportID();
 
         var cmdImport = connection.CreateCommand();
         cmdImport.CommandText = @"

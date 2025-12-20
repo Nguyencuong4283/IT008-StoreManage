@@ -71,7 +71,7 @@
 											   Stretch="Fill" />
 									</Border>
 
-									<Button Command="{Binding ThemAnhButtonCommand}"
+									<Button Command="{Binding InsertPictureButtonCommand}"
 											Classes="primary"
 											Width="260"
 											Height="42"
@@ -172,7 +172,7 @@
 												 VerticalContentAlignment="Top" />
 									</StackPanel>
 
-									<Button Command="{Binding DangKyButtonCommand}"
+									<Button Command="{Binding RegisterButtonCommand}"
 											Classes="primary"
 											Height="44"
 											FontSize="14"

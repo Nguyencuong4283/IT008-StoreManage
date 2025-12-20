@@ -48,7 +48,7 @@ namespace Store.ViewModels
         public CreateProductWindowViewModel()
         {
             // Tự động tạo mã sản phẩm ban đầu
-            MaSP = ProductService.GenerateNewMaSP();
+            MaSP = ProductService.GenerateNewProductID();
         }
 
         [RelayCommand]
@@ -81,7 +81,7 @@ namespace Store.ViewModels
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
                 HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
-                MaSP = ProductService.GenerateNewMaSP();
+                MaSP = ProductService.GenerateNewProductID();
 
 
             }
