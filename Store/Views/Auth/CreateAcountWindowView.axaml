@@ -81,16 +81,15 @@
                                         <Image Source="{Binding HinhAnh, Mode=TwoWay}" Stretch="Fill" />
                                     </Border>
 
-                                    <Button
-                                        Classes="primary"
-                                        Command="{Binding InsertPictureButtonCommand}"
-                                        FontSize="14"
-                                        Height="42"
-                                        HorizontalAlignment="Center"
-                                        Width="260">
-                                        📷 Chọn ảnh đại diện
-                                    </Button>
-                                </StackPanel>
+									<Button Command="{Binding InsertPictureButtonCommand}"
+											Classes="primary"
+											Width="260"
+											Height="42"
+											FontSize="14"
+											HorizontalAlignment="Center">
+										📷 Chọn ảnh đại diện
+									</Button>
+								</StackPanel>
 
                                 <StackPanel Grid.Column="1" Margin="0,0,0,0">
                                     <Border
@@ -191,16 +190,15 @@
                                             Watermark="Nhập địa chỉ đầy đủ" />
                                     </StackPanel>
 
-                                    <Button
-                                        Classes="primary"
-                                        Command="{Binding RegisterButtonCommand}"
-                                        FontSize="14"
-                                        Height="44"
-                                        HorizontalAlignment="Stretch">
-                                        ✓ Tạo tài khoản
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
+									<Button Command="{Binding RegisterButtonCommand}"
+											Classes="primary"
+											Height="44"
+											FontSize="14"
+											HorizontalAlignment="Stretch">
+										✓ Tạo tài khoản
+									</Button>
+								</StackPanel>
+							</Grid>
 
                         </Grid>
                     </Grid>

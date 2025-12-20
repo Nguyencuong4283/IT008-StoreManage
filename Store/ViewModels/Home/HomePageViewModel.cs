@@ -85,7 +85,7 @@ public partial class HomePageViewModel : ViewModelBase,
     }
     
     [RelayCommand]
-    private void CreateOderButton()
+    private void CreateOrderButton()
     {
         WindowManager.ShowCreateBillWindow();
     }

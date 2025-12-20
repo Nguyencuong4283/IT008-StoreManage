@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Store.Views.Import;
+namespace Store.Views;
 
 public partial class CreateImportWindowView : Window
 {

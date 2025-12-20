@@ -248,7 +248,7 @@
                         <StackPanel Spacing="10">
                             <Button
                                 Classes="primary"
-                                Command="{Binding CreateOderButtonCommand}"
+                                Command="{Binding CreateOrderButtonCommand}"
                                 HorizontalAlignment="Stretch"
                                 Padding="15">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
