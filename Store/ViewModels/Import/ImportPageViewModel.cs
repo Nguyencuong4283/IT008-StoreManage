@@ -110,14 +110,10 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     }
     
     [RelayCommand]
-
     public void CreateImport()
     {
-        var win = new CreateImportWindowView
-        {
-            DataContext = new CreateImportWindowViewModel() 
-        };
-        win.Show();
+        var createImportWindowView = new CreateImportWindowView();
+        createImportWindowView.Show();
     }
 
 

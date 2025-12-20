@@ -196,7 +196,7 @@ public class ImportService
     }
 
     // ----------------- Tạo Mã Nhập kho mới ----------------- //
-    private static string GenerateNewImportID()
+    public static string GenerateNewImportID()
     {
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
         {

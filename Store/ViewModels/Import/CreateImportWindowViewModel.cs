@@ -11,6 +11,7 @@ using System.Linq;
 
 public partial class CreateImportWindowViewModel : ViewModelBase
 {
+    [ObservableProperty] private string maNhapKho = "";
     [ObservableProperty] private string nhaCungCap = "";
     [ObservableProperty] private string? ghiChu;
     public DateOnly NgayNhap { get; } = DateOnly.FromDateTime(DateTime.Now);
@@ -67,4 +68,5 @@ public partial class CreateImportWindowViewModel : ViewModelBase
         ImportService.InsertNhapKho(nk, ChiTietList.ToList());
         WeakReferenceMessenger.Default.Send(new ImportChangeMessage("Created"));
     }
+    
 }
