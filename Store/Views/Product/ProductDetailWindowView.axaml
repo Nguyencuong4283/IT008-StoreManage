@@ -170,7 +170,7 @@
                             Orientation="Horizontal"
                             Spacing="10"
                             VerticalAlignment="Center">
-                            <Button Classes="secondary" Padding="12,8">✏️ Sửa</Button>
+                          
                             <Button
                                 Classes="danger"
                                 Command="{Binding DeleteCommand}"

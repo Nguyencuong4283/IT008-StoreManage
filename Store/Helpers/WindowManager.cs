@@ -33,6 +33,10 @@ namespace Store.Helpers
         {
             ShowSingletonWindow("CreateCustomer", () => new CreateCustomerWindowView());
         }
+        public static void ShowCreateImportWindow()
+        {
+            ShowSingletonWindow("CreateImport", () => new CreateImportWindowView());
+        }
 
         private static void ShowSingletonWindow(string windowKey, System.Func<Window> createWindow)
         {

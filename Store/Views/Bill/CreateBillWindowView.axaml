@@ -163,6 +163,7 @@
                                                 Padding="12,10"
                                                 Text="{Binding SoLuong, Mode=TwoWay}"
                                                 VerticalContentAlignment="Center" />
+
                                         </Border>
                                     </StackPanel>
 

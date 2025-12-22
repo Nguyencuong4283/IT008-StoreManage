@@ -38,6 +38,7 @@ public partial class HomePageViewModel : ViewModelBase,
         WeakReferenceMessenger.Default.Register<HoaDonChangedMessage>(this);
         WeakReferenceMessenger.Default.Register<SanPhamChangedMessage>(this);
         WeakReferenceMessenger.Default.Register<KhachHangChangedMessage>(this);
+
         
         // Load dữ liệu async để tránh đơ UI
         LoadStatistics();
@@ -101,6 +102,11 @@ public partial class HomePageViewModel : ViewModelBase,
         WindowManager.ShowCreateCustomerWindow();
         // Sau khi thêm xong, cập nhật lại số lượng
         SoKhachHang = CustomerService.CountCusomter();
+    }
+    [RelayCommand]
+    private void InsertImportButton()
+    {
+        WindowManager.ShowCreateImportWindow();
     }
     private void LoadHoaDons()
     {
