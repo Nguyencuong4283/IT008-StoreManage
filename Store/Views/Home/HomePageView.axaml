@@ -281,6 +281,7 @@
 
                             <Button
                                 Classes="secondary"
+                                 Command="{Binding InsertImportButtonCommand}"
                                 HorizontalAlignment="Stretch"
                                 Padding="15">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
