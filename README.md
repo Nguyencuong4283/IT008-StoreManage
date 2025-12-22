@@ -3,7 +3,6 @@
 -Thành viên thực hiện :
  + Lê Văn An
  + Nguyễn Cao Cường
- + Trần Đình Sang
 
 -Mô tả : 
     +Công nghệ : 
