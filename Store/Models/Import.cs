@@ -8,14 +8,14 @@ namespace Store.Models;
 
 public class Import
 {
-    public string MaNK { get; set; }
+    public string MaNK { get; set; } = string.Empty;
     public DateOnly NgayNhap { get; set; }
-    public string NhaCungCap { get; set; }
+    public string NhaCungCap { get; set; } = string.Empty;
     public int MaUser { get; set; }
-    public User User { get; set; }
+    public User? User { get; set; }
     public decimal TongTien { get; set; }
-    public string GhiChu { get; set; }
+    public string? GhiChu { get; set; }
     public int IsDelete { get; set; }
-    public Import() {}
     
+    public Import() {}
 }

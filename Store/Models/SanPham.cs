@@ -18,6 +18,7 @@ namespace Store.Models
         public string? MoTaSP { get; set; }
 
         public string TenSP_Size_TonKho => $"{TenSP} | {KichThuocSP} | {SoLuongSP}";
+        public string TenSP_Size => $"{TenSP} | {KichThuocSP}";
         public SanPham() { }
     }
 }

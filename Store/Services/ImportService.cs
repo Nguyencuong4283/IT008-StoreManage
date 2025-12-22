@@ -74,14 +74,12 @@ public class ImportService
         connection.Open();
         using var tran = connection.BeginTransaction();
 
-        var maNK = GenerateNewImportID();
-
         var cmdImport = connection.CreateCommand();
         cmdImport.CommandText = @"
         INSERT INTO Import
         (MaNhapKho, NgayNhap, NhaCungCap, MaUser, TongTien, GhiChu, IsDelete)
         VALUES ($MaNK, $NgayNhap, $NCC, $MaUser, $TongTien, $GhiChu, 0)";
-        cmdImport.Parameters.AddWithValue("$MaNK", maNK);
+        cmdImport.Parameters.AddWithValue("$MaNK", nk.MaNK);
         cmdImport.Parameters.AddWithValue("$NgayNhap", nk.NgayNhap.ToString("yyyy-MM-dd"));
         cmdImport.Parameters.AddWithValue("$NCC", nk.NhaCungCap);
         cmdImport.Parameters.AddWithValue("$MaUser", nk.MaUser);
@@ -91,7 +89,7 @@ public class ImportService
 
         foreach (var ct in chiTietList)
         {
-            ct.MaNK = maNK;
+            ct.MaNK = nk.MaNK;
             ct.ThanhTien = ct.SoLuong * ct.DonGia;
 
             var cmdCT = connection.CreateCommand();
@@ -129,7 +127,7 @@ public class ImportService
             connection.Open();
             var cmd = connection.CreateCommand();
             cmd.CommandText = @"
-                SELECT MaNhapKho, NgayNhap, NhaCungCap, TongTien, GhiChu 
+                SELECT MaNhapKho, NgayNhap, NhaCungCap, MaUser, TongTien, GhiChu, IsDelete 
                 FROM Import
                 WHERE IsDelete = 0
                 ORDER BY NgayNhap DESC;";
@@ -142,10 +140,12 @@ public class ImportService
                         MaNK = reader.GetString(0),
                         NgayNhap = DateOnly.Parse(reader.GetString(1)),
                         NhaCungCap = reader.GetString(2),
-                        TongTien = reader.GetDecimal(3),
-                        GhiChu = reader.IsDBNull(4) ? string.Empty : reader.GetString(4)
+                        MaUser = reader.GetInt32(3),
+                        TongTien = reader.GetDecimal(4),
+                        GhiChu = reader.IsDBNull(5) ? string.Empty : reader.GetString(5),
+                        IsDelete = reader.GetInt32(6)
                     };
-                    if (nk.IsDelete == 0) nhapKhoList.Add(nk);
+                    nhapKhoList.Add(nk);
                 }
             }
         }
@@ -185,7 +185,7 @@ public class ImportService
                     GhiChu = $GhiChu
                 WHERE MaNhapKho = $MaNhapKho";
 
-            cmd.Parameters.AddWithValue("$NgayNhap", nk.NgayNhap.ToString("dd/MM/yyyy"));
+            cmd.Parameters.AddWithValue("$NgayNhap", nk.NgayNhap.ToString("yyyy-MM-dd"));
             cmd.Parameters.AddWithValue("$NhaCungCap", nk.NhaCungCap);
             cmd.Parameters.AddWithValue("$TongTien", nk.TongTien);
             cmd.Parameters.AddWithValue("$GhiChu", nk.GhiChu ?? string.Empty);
@@ -195,7 +195,47 @@ public class ImportService
         }
     }
 
-    // ----------------- Tạo Mã Nhập kho mới ----------------- //
+    // ----------------- Lấy chi tiết nhập kho ----------------- //
+    public static List<ChiTiet_NhapKho> GetImportDetail(string maNK)
+    {
+        var chiTietList = new List<ChiTiet_NhapKho>();
+        using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+        {
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = @"
+                SELECT ct.MaNK, ct.MaSP, ct.SoLuong, ct.DonGia, ct.ThanhTien,
+                       sp.TenSP, sp.KichThuocSP, sp.LoaiSP
+                FROM ChiTiet_NhapKho ct
+                LEFT JOIN SanPham sp ON ct.MaSP = sp.MaSP
+                WHERE ct.MaNK = $MaNK";
+            cmd.Parameters.AddWithValue("$MaNK", maNK);
+            
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var chiTiet = new ChiTiet_NhapKho
+                    {
+                        MaNK = reader.GetString(0),
+                        MaSP = reader.GetString(1),
+                        SoLuong = reader.GetInt32(2),
+                        DonGia = reader.GetDecimal(3),
+                        ThanhTien = reader.GetDecimal(4),
+                        SanPham = new SanPham
+                        {
+                            MaSP = reader.GetString(1),
+                            TenSP = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                            KichThuocSP = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                            LoaiSP = reader.IsDBNull(7) ? "" : reader.GetString(7)
+                        }
+                    };
+                    chiTietList.Add(chiTiet);
+                }
+            }
+        }
+        return chiTietList;
+    }
     public static string GenerateNewImportID()
     {
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -220,4 +260,5 @@ public class ImportService
             }
         }
     }
+
 }

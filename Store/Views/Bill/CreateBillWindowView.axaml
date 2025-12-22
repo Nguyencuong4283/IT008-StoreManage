@@ -1,13 +1,13 @@
 ﻿<Window
     Background="Transparent"
-    Height="900"
+    Height="800"
     SystemDecorations="None"
     Title="CreateBillWindowView"
     TransparencyLevelHint="transparent"
-    Width="900"
+    Width="700"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="900"
-    d:DesignWidth="900"
+    d:DesignHeight="800"
+    d:DesignWidth="700"
     mc:Ignorable="d"
     x:Class="Store.Views.Bill.CreateBillWindowView"
     x:DataType="vm:CreateBillWindowViewModel"
@@ -22,6 +22,7 @@
         BorderBrush="{DynamicResource BorderColor}"
         BorderThickness="2"
         BoxShadow="0 10 40 5 #40000000"
+         ClipToBounds="True"
         CornerRadius="20">
 
         <Grid>
@@ -40,7 +41,7 @@
                 Background="{DynamicResource BgCard}"
                 BoxShadow="0 8 32 0 #20000000"
                 CornerRadius="16"
-                Margin="10,50,10,20">
+                Margin="0,0,0,0">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid Margin="40" RowDefinitions="Auto,Auto,Auto,Auto">
 
@@ -178,21 +179,24 @@
                                     <Button
                                         Classes="primary"
                                         Command="{Binding ThemSanPhamCommand}"
-                                        Width="110">
+                                        FontSize="11"
+                                        Width="80">
                                         + Thêm
                                     </Button>
                                     <Button
                                         Classes="danger"
                                         Command="{Binding XoaChiTietCommand}"
                                         IsTabStop="False"
-                                        Width="110">
+                                         FontSize="11"
+                                        Width="80">
                                         🗑️ Xóa
                                     </Button>
                                     <Button
                                         Classes="primary"
                                         Command="{Binding ThanhToanCommand}"
                                         IsTabStop="False"
-                                        Width="140">
+                                         FontSize="11"
+                                        Width="110">
                                         💳 Thanh toán
                                     </Button>
                                 </StackPanel>

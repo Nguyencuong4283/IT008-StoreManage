@@ -5,7 +5,7 @@ namespace Store.ViewModels.Setting;
 
 public partial class SettingPageViewModel : ViewModelBase
 {
-    public string Setting1 { get; set; } = "Cài đặt";
+    public string Setting1 { get; set; } = "ShopQuality";
     
     [ObservableProperty]
     private bool _isDarkMode;

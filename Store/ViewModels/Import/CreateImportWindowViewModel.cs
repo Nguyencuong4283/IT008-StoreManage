@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Store.Messages;
@@ -9,64 +10,194 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-public partial class CreateImportWindowViewModel : ViewModelBase
+namespace Store.ViewModels.Import
 {
-    [ObservableProperty] private string maNhapKho = "";
-    [ObservableProperty] private string nhaCungCap = "";
-    [ObservableProperty] private string? ghiChu;
-    public DateOnly NgayNhap { get; } = DateOnly.FromDateTime(DateTime.Now);
-
-    public ObservableCollection<ChiTiet_NhapKho> ChiTietList { get; } = new();
-
-    [ObservableProperty] private SanPham? selectedSanPham;
-    [ObservableProperty] private int soLuong;
-    [ObservableProperty] private decimal donGia;
-
-    public ObservableCollection<SanPham> SanPhamList { get; }
-
-    public CreateImportWindowViewModel()
+    public partial class CreateImportWindowViewModel : ViewModelBase
     {
-        SanPhamList = new ObservableCollection<SanPham>(
-            ProductService.GetAllProduct()
-        );
-    }
+        [ObservableProperty] private string maNhapKho;
+        [ObservableProperty] private string nhaCungCap = string.Empty;
+        [ObservableProperty] private string? ghiChu;
+        [ObservableProperty] private string thoiGianHienTai = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        
+        [ObservableProperty] private int soLuong = 1;
+        [ObservableProperty] private decimal donGia;
+        [ObservableProperty] private decimal tongTien;
 
-    [RelayCommand]
-    void AddSanPham()
-    {
-        if (SelectedSanPham == null || SoLuong <= 0)
-            return;
+        public Window? ParentWindow { get; set; }
 
-        ChiTietList.Add(new ChiTiet_NhapKho
+        public ObservableCollection<ChiTiet_NhapKho> ChiTietList { get; } = new();
+
+        [ObservableProperty] 
+        private ObservableCollection<SanPham> danhSachSanPham = new();
+        
+        [ObservableProperty] 
+        private SanPham? sanPhamDuocChon;
+
+        public CreateImportWindowViewModel()
         {
-            MaSP = SelectedSanPham.MaSP,
-            SanPham = SelectedSanPham,
-            SoLuong = SoLuong,
-            DonGia = DonGia,
-            ThanhTien = SoLuong * DonGia
-        });
+            LoadSanPham();
+            maNhapKho = ImportService.GenerateNewImportID();
+        }
 
-        SoLuong = 0;
-        DonGia = 0;
-    }
-
-    [RelayCommand]
-    void SaveImport()
-    {
-        if (ChiTietList.Count == 0)
-            return;
-
-        var nk = new Import
+        private void LoadSanPham()
         {
-            NgayNhap = NgayNhap,
-            NhaCungCap = NhaCungCap,
-            TongTien = ChiTietList.Sum(x => x.ThanhTien),
-            GhiChu = GhiChu,
-            MaUser = 1
-        };
+            var ds = ProductService.GetAllProduct();
+            DanhSachSanPham = new ObservableCollection<SanPham>(ds);
+        }
 
-        ImportService.InsertNhapKho(nk, ChiTietList.ToList());
-        WeakReferenceMessenger.Default.Send(new ImportChangeMessage("Created"));
+        // Cập nhật giá khi chọn sản phẩm
+        partial void OnSanPhamDuocChonChanged(SanPham? value)
+        {
+            if (value != null)
+            {
+                DonGia = value.GiaSP;
+            }
+        }
+
+        [RelayCommand]
+        private void Tang()
+        {
+            SoLuong++;
+        }
+
+        [RelayCommand]
+        private void Giam()
+        {
+            if (SoLuong > 1)
+                SoLuong--;
+        }
+
+        [RelayCommand]
+        private void ThemSanPham()
+        {
+            // Kiểm tra sản phẩm được chọn
+            if (SanPhamDuocChon == null)
+            {
+                System.Diagnostics.Debug.WriteLine("Chưa chọn sản phẩm");
+                return;
+            }
+
+            // Kiểm tra số lượng và đơn giá hợp lệ
+            if (SoLuong <= 0)
+            {
+                System.Diagnostics.Debug.WriteLine("Số lượng phải lớn hơn 0");
+                return;
+            }
+
+            if (DonGia <= 0)
+            {
+                System.Diagnostics.Debug.WriteLine("Đơn giá phải lớn hơn 0");
+                return;
+            }
+
+            try
+            {
+                // Tính thành tiền
+                decimal thanhTien = DonGia * SoLuong;
+
+                // Kiểm tra sản phẩm đã tồn tại trong chi tiết nhập kho chưa
+                var chiTietTonTai = ChiTietList.FirstOrDefault(ct => ct.MaSP == SanPhamDuocChon.MaSP);
+                
+                if (chiTietTonTai != null)
+                {
+                    // Nếu đã có, cập nhật số lượng và thành tiền
+                    chiTietTonTai.SoLuong += SoLuong;
+                    chiTietTonTai.DonGia = DonGia;
+                    chiTietTonTai.ThanhTien = chiTietTonTai.SoLuong * chiTietTonTai.DonGia;
+                    
+                    // Xóa và thêm lại để trigger UI update
+                    var index = ChiTietList.IndexOf(chiTietTonTai);
+                    ChiTietList.RemoveAt(index);
+                    ChiTietList.Insert(index, chiTietTonTai);
+                    
+                    System.Diagnostics.Debug.WriteLine($"Đã cập nhật số lượng sản phẩm: {SanPhamDuocChon.TenSP}, SoLuong mới: {chiTietTonTai.SoLuong}");
+                }
+                else
+                {
+                    // Thêm chi tiết nhập kho mới
+                    var chiTietMoi = new ChiTiet_NhapKho
+                    {            
+                        MaNK = MaNhapKho,
+                        MaSP = SanPhamDuocChon.MaSP,
+                        SoLuong = SoLuong,
+                        DonGia = DonGia,
+                        ThanhTien = thanhTien,
+                        SanPham = SanPhamDuocChon // Gán thông tin sản phẩm để hiển thị
+                    };
+                    ChiTietList.Add(chiTietMoi);
+                    System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm mới: {SanPhamDuocChon.TenSP}, SoLuong: {SoLuong}");
+                }
+                
+                // Cập nhật tổng tiền sau khi thêm/cập nhật
+                CapNhatTongTien();
+
+                // Reset form
+                SoLuong = 1;
+                DonGia = 0;
+                SanPhamDuocChon = null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi thêm chi tiết nhập kho: {ex.Message}");
+            }
+        }
+
+        // Phương thức cập nhật tổng tiền
+        private void CapNhatTongTien()
+        {
+            TongTien = ChiTietList.Sum(ct => ct.ThanhTien);
+        }
+
+        [RelayCommand]
+        private void XoaChiTiet()
+        {
+            ChiTietList.Clear();
+            CapNhatTongTien();
+        }
+
+        [RelayCommand]
+        private void TaoPhieuNhap()
+        {
+            // Kiểm tra điều kiện
+            if (string.IsNullOrWhiteSpace(NhaCungCap))
+            {
+                System.Diagnostics.Debug.WriteLine("[TaoPhieuNhap] Chưa nhập nhà cung cấp");
+                return;
+            }
+            
+            if (ChiTietList.Count == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("[TaoPhieuNhap] Chưa có sản phẩm nào trong phiếu nhập");
+                return;
+            }
+            
+            try
+            {
+                // Tạo phiếu nhập kho
+                var nk = new Models.Import
+                {
+                    MaNK = MaNhapKho,
+                    NgayNhap = DateOnly.FromDateTime(DateTime.Now),
+                    NhaCungCap = NhaCungCap,
+                    TongTien = TongTien,
+                    GhiChu = GhiChu,
+                    MaUser = 1
+                };
+
+                ImportService.InsertNhapKho(nk, ChiTietList.ToList());
+                System.Diagnostics.Debug.WriteLine($"[TaoPhieuNhap] Đã tạo phiếu nhập kho: {MaNhapKho}");
+                
+                // Gửi message cập nhật
+                WeakReferenceMessenger.Default.Send(new ImportChangeMessage("Created"));
+
+                // Đóng window
+                ParentWindow?.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[TaoPhieuNhap] Lỗi: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[TaoPhieuNhap] Stack trace: {ex.StackTrace}");
+            }
+        }
     }
-    
 }

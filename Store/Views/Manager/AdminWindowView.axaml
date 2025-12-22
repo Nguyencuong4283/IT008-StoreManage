@@ -106,6 +106,9 @@
                         Height="42"
                         Margin="20,0"
                         MaxWidth="500" />
+                   
+                        
+
 
                 </Grid>
             </Border>
@@ -224,21 +227,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button
-                                Classes="sidebar"
-                                Click="LogoutButton_Click"
-                                Margin="0,150,0,0">
-                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <TextBlock
-                                        FontSize="18"
-                                        Text="🚪"
-                                        VerticalAlignment="Center" />
-                                    <TextBlock
-                                        FontSize="14"
-                                        Text="Đăng xuất"
-                                        VerticalAlignment="Center" />
-                                </StackPanel>
-                            </Button>
+                          
                         </StackPanel>
                     </ScrollViewer>
 
@@ -247,18 +236,34 @@
                         BorderThickness="0,1,0,0"
                         Grid.Row="1"
                         Padding="12">
-                        <Button Classes="sidebar" Command="{Binding GoSettingCommand}">
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <TextBlock
-                                    FontSize="18"
-                                    Text="⚙️"
-                                    VerticalAlignment="Center" />
-                                <TextBlock
-                                    FontSize="14"
-                                    Text="Cài đặt"
-                                    VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button>
+                       <StackPanel>
+							<Button
+							Classes="sidebar"
+							Click="LogoutButton_Click">
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<TextBlock
+									FontSize="18"
+									Text="🚪"
+									VerticalAlignment="Center" />
+									<TextBlock
+									FontSize="14"
+									Text="Đăng xuất"
+									VerticalAlignment="Center" />
+								</StackPanel>
+							</Button>
+							<Button Classes="sidebar" Command="{Binding GoSettingCommand}">
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<TextBlock
+									FontSize="18"
+									Text="⚙️"
+									VerticalAlignment="Center" />
+									<TextBlock
+									FontSize="14"
+									Text="Cài đặt"
+									VerticalAlignment="Center" />
+								</StackPanel>
+							</Button>
+						</StackPanel>
                     </Border>
                 </Grid>
             </Border>

@@ -1,9 +1,8 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="using:Store.Views"
-        xmlns:vm="using:Store.ViewModels.Bill"
+        xmlns:vm="using:Store.ViewModels.Import"
         mc:Ignorable="d"
         d:DesignWidth="700"
         d:DesignHeight="800"
@@ -12,15 +11,15 @@
         Background="Transparent"
         SystemDecorations="None"
         WindowStartupLocation="CenterScreen"
-        x:Class="Store.Views.Bill.BillDetailWindowView"
-        x:DataType="vm:BillDetailWindowViewModel"
-        Title="BillDetailWindowView">
+        x:Class="Store.Views.Import.ImportDetailWindowView"
+        x:DataType="vm:ImportDetailWindowViewModel"
+        Title="Chi tiết phiếu nhập kho">
 
     <Border CornerRadius="20" 
             BoxShadow="0 10 40 5 #40000000" 
             BorderBrush="{DynamicResource BorderColor}" 
             BorderThickness="2"
-             ClipToBounds="True"
+            ClipToBounds="True"
             Background="{DynamicResource BgPage}">
         
        <Grid>
@@ -40,7 +39,7 @@
                 <Grid RowDefinitions="Auto,Auto,Auto,Auto" Margin="40">
                    
                    <TextBlock Grid.Row="0"
-                              Text="Chi tiết hóa đơn"
+                              Text="Chi tiết phiếu nhập kho"
                               Classes="header"
                               Foreground="{DynamicResource TextPrimary}"
                               TextAlignment="Center"
@@ -49,16 +48,16 @@
                    <Grid Grid.Row="1" ColumnDefinitions="*,*" Margin="0,0,0,30">
                       <StackPanel Grid.Column="0" Margin="0,0,20,0" Spacing="20">
                          <StackPanel>
-                            <TextBlock Text="Nhân viên" Classes="label"/>
-                              <TextBox Classes="modern-input"
-                                     Text="{Binding TenNhanVien}"
+                            <TextBlock Text="Mã nhập kho" Classes="label"/>
+                            <TextBox Classes="modern-input"
+                                     Text="{Binding MaNhapKho}"
                                      IsReadOnly="True"/>
                          </StackPanel>
 
                          <StackPanel>
-                            <TextBlock Text="Khách hàng" Classes="label"/>
-                              <TextBox Classes="modern-input"
-                                     Text="{Binding TenKhachHang}"
+                            <TextBlock Text="Nhà cung cấp" Classes="label"/>
+                            <TextBox Classes="modern-input"
+                                     Text="{Binding NhaCungCap}"
                                      IsReadOnly="True"/>
                          </StackPanel>
 
@@ -67,23 +66,23 @@
                       <StackPanel Grid.Column="1" Margin="20,0,0,0" Spacing="20">
                         
                          <StackPanel>
-                            <TextBlock Text="Thời gian" Classes="label"/>
+                            <TextBlock Text="Ngày nhập" Classes="label"/>
                             <TextBox Classes="modern-input"
                                      IsReadOnly="True"
-                                     Text="{Binding ThoiGianHienTai}"/>
+                                     Text="{Binding ThoiGianNhap}"/>
                          </StackPanel>
 
                          <StackPanel>
-                            <TextBlock Text="Số hóa đơn" Classes="label"/>
+                            <TextBlock Text="Ghi chú" Classes="label"/>
                             <TextBox Classes="modern-input"
-                                     Text="{Binding SoHD}"
+                                     Text="{Binding GhiChu}"
                                      IsReadOnly="True"/>
                          </StackPanel>
                       </StackPanel>
                    </Grid>
 
                    <StackPanel Grid.Row="2" Margin="0,0,0,20">
-                      <TextBlock Text="Danh sách sản phẩm" 
+                      <TextBlock Text="Danh sách sản phẩm nhập kho" 
                                  Classes="subheader" 
                                  Foreground="{DynamicResource TextPrimary}" 
                                  Margin="0,0,0,15"/>
@@ -96,7 +95,7 @@
                          <Grid ColumnDefinitions="100,*,120,120,150">
                             <TextBlock Grid.Column="0" Text="Mã SP" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextSecondary}"/>
                             <TextBlock Grid.Column="1" Text="Tên sản phẩm" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextSecondary}"/>
-                            <TextBlock Grid.Column="2" Text="Size" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextSecondary}"/>
+                            <TextBlock Grid.Column="2" Text="Đơn giá" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextSecondary}"/>
                             <TextBlock Grid.Column="3" Text="Số lượng" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextSecondary}"/>
                             <TextBlock Grid.Column="4" Text="Thành tiền" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource TextSecondary}" TextAlignment="Right"/>
                          </Grid>
@@ -109,7 +108,7 @@
                               MinHeight="100"
                               MaxHeight="250">
                          <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <ItemsControl ItemsSource="{Binding ChiTietHoaDons}">
+                            <ItemsControl ItemsSource="{Binding ChiTietNhapKho}">
                                <ItemsControl.ItemTemplate>
                                   <DataTemplate>
                                      <Border BorderBrush="{DynamicResource BorderColor}"
@@ -117,11 +116,11 @@
                                              Padding="15,12">
                                         <Grid ColumnDefinitions="100,*,120,120,150">
                                            <TextBlock Grid.Column="0" Text="{Binding MaSP}" FontSize="14" Foreground="{DynamicResource TextPrimary}" VerticalAlignment="Center"/>
-                                           <TextBlock Grid.Column="1" Text="{Binding TenSP}" FontSize="14" Foreground="{DynamicResource TextPrimary}" VerticalAlignment="Center"/>
-                                           <TextBlock Grid.Column="2" Text="{Binding KichThuocSP}" FontSize="14" Foreground="{DynamicResource TextSecondary}" VerticalAlignment="Center"/>
+                                           <TextBlock Grid.Column="1" Text="{Binding SanPham.TenSP}" FontSize="14" Foreground="{DynamicResource TextPrimary}" VerticalAlignment="Center"/>
+                                           <TextBlock Grid.Column="2" Text="{Binding DonGia, StringFormat='{}{0:N0} ₫'}" FontSize="14" Foreground="{DynamicResource TextSecondary}" VerticalAlignment="Center"/>
                                            <TextBlock Grid.Column="3" Text="{Binding SoLuong}" FontSize="14" Foreground="{DynamicResource TextSecondary}" VerticalAlignment="Center"/>
                                            <TextBlock Grid.Column="4" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource PrimaryColor}" VerticalAlignment="Center" TextAlignment="Right">
-                                              <Run Text="{Binding ThanhTien}"/>
+                                              <Run Text="{Binding ThanhTien, StringFormat='{}{0:N0}'}"/>
                                               <Run Text=" ₫"/>
                                            </TextBlock>
                                         </Grid>
@@ -137,36 +136,15 @@
                            Background="{DynamicResource BgHover}"
                            CornerRadius="12"
                            Padding="20">
-                      <StackPanel Spacing="15">
-                         <Grid ColumnDefinitions="*,200">
-                            <TextBlock Grid.Column="0" Text="Giảm giá:" FontSize="16" Foreground="{DynamicResource TextSecondary}"/>
-                            <TextBlock Grid.Column="1" 
-                                       Text="{Binding TongGiamGia, StringFormat='{}{0:N0} ₫'}"
-                                       FontSize="16" 
-                                       FontWeight="SemiBold" 
-                                       Foreground="{DynamicResource TextPrimary}" 
-                                       TextAlignment="Right"/>
-                         </Grid>
-                         <Grid ColumnDefinitions="*,200">
-                            <TextBlock Grid.Column="0" Text="Tổng trị giá:" FontSize="16" Foreground="{DynamicResource TextSecondary}"/>
-                            <TextBlock Grid.Column="1" 
-                                       Text="{Binding TongTriGia, StringFormat='{}{0:N0} ₫'}"
-                                       FontSize="16" 
-                                       FontWeight="SemiBold" 
-                                       Foreground="{DynamicResource TextPrimary}" 
-                                       TextAlignment="Right"/>
-                         </Grid>
-                         <Separator Background="{DynamicResource BorderColor}" Height="1"/>
-                         <Grid ColumnDefinitions="*,200">
-                            <TextBlock Grid.Column="0" Text="Thành tiền:" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource TextPrimary}"/>
-                            <TextBlock Grid.Column="1" 
-                                       Text="{Binding TongThanhTien, StringFormat='{}{0:N0} ₫'}"
-                                       FontSize="20" 
-                                       FontWeight="Bold" 
-                                       Foreground="{DynamicResource PrimaryColor}" 
-                                       TextAlignment="Right"/>
-                         </Grid>
-                      </StackPanel>
+                      <Grid ColumnDefinitions="*,200">
+                         <TextBlock Grid.Column="0" Text="Tổng tiền nhập:" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource TextPrimary}"/>
+                         <TextBlock Grid.Column="1" 
+                                    Text="{Binding TongTien, StringFormat='{}{0:N0} ₫'}"
+                                    FontSize="20" 
+                                    FontWeight="Bold" 
+                                    Foreground="{DynamicResource PrimaryColor}" 
+                                    TextAlignment="Right"/>
+                      </Grid>
                    </Border>
                 </Grid>
              </ScrollViewer>

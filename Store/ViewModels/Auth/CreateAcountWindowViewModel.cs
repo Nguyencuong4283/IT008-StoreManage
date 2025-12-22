@@ -5,7 +5,9 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.VisualBasic;
+using Store.Messages;
 using Store.Models;
 using Store.Services;
 using System;
@@ -125,6 +127,8 @@ namespace Store.ViewModels.Auth
                 UserService.InsertUser(user);
 
                 System.Diagnostics.Debug.WriteLine($"✅ Đã tạo tài khoản thành công: {HoTen}");
+                WeakReferenceMessenger.Default.Send(new NhanVienChangedMessage("Insert"));
+               
 
                 // Đóng window sau khi tạo thành công
                 var window = GetActiveWindow();

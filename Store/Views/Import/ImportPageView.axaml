@@ -77,69 +77,83 @@
                 Padding="20"
                 VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="12">
-                    <Border BoxShadow="0 2 8 0 #20000000" Classes="card">
-                        <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                            <Border
-                                Background="{DynamicResource BgHover}"
-                                CornerRadius="10"
-                                Grid.Column="0"
-                                Height="50"
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                Width="50">
-                                <TextBlock
-                                    FontSize="24"
-                                    HorizontalAlignment="Center"
-                                    Text="📦"
-                                    VerticalAlignment="Center" />
-                            </Border>
+                    <!-- Hiển thị danh sách nhập kho -->
+                    <ItemsControl ItemsSource="{Binding Imports}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BoxShadow="0 2 8 0 #20000000" Classes="card" Margin="0,0,0,12">
+                                    <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                                        <Border
+                                            Background="{DynamicResource BgHover}"
+                                            CornerRadius="10"
+                                            Grid.Column="0"
+                                            Height="50"
+                                            Margin="0,0,15,0"
+                                            VerticalAlignment="Center"
+                                            Width="50">
+                                            <TextBlock
+                                                FontSize="24"
+                                                HorizontalAlignment="Center"
+                                                Text="📦"
+                                                VerticalAlignment="Center" />
+                                        </Border>
 
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock
-                                    FontSize="15"
-                                    FontWeight="SemiBold"
-                                    Foreground="{DynamicResource TextPrimary}"
-                                    Text="Phiếu nhập #NK001" />
-                                <TextBlock
-                                    FontSize="13"
-                                    Foreground="{DynamicResource TextSecondary}"
-                                    Margin="0,5,0,0"
-                                    Text="Ngày nhập: 01/01/2024" />
-                            </StackPanel>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock
+                                                FontSize="15"
+                                                FontWeight="SemiBold"
+                                                Foreground="{DynamicResource TextPrimary}"
+                                                Text="{Binding MaNK, StringFormat='Phiếu nhập #{0}'}" />
+                                            <TextBlock
+                                                FontSize="13"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Margin="0,2,0,0"
+                                                Text="{Binding NgayNhap, StringFormat='Ngày nhập: {0:dd/MM/yyyy}'}" />
+                                            <TextBlock
+                                                FontSize="13"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Margin="0,2,0,0"
+                                                Text="{Binding NhaCungCap, StringFormat='Nhà cung cấp: {0}'}" />
+                                        </StackPanel>
 
-                            <StackPanel
-                                Grid.Column="2"
-                                Margin="20,0"
-                                VerticalAlignment="Center">
-                                <TextBlock
-                                    FontSize="12"
-                                    Foreground="{DynamicResource TextSecondary}"
-                                    Text="Tổng giá trị"
-                                    TextAlignment="Right" />
-                                <TextBlock
-                                    FontSize="16"
-                                    FontWeight="Bold"
-                                    Foreground="{DynamicResource PrimaryColor}"
-                                    Margin="0,5,0,0"
-                                    TextAlignment="Right">
-                                    <Run Text="0" />
-                                    <Run FontSize="13" Text=" ₫" />
-                                </TextBlock>
-                            </StackPanel>
+                                        <StackPanel
+                                            Grid.Column="2"
+                                            Margin="20,0"
+                                            VerticalAlignment="Center">
+                                            <TextBlock
+                                                FontSize="12"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Text="Tổng giá trị"
+                                                TextAlignment="Right" />
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource PrimaryColor}"
+                                                Margin="0,5,0,0"
+                                                Text="{Binding TongTien, StringFormat='{}{0:N0} ₫'}"
+                                                TextAlignment="Right" />
+                                        </StackPanel>
 
-                            <Button
-                                Classes="secondary"
-                                Grid.Column="3"
-                                Padding="12,8"
-                                VerticalAlignment="Center">
-                                Chi tiết
-                            </Button>
-                        </Grid>
-                    </Border>
+                                        <Button
+                                            Classes="secondary"
+                                            Command="{Binding $parent[ItemsControl].((vm:ImportPageViewModel)DataContext).ViewImportDetailCommand}"
+                                            CommandParameter="{Binding}"
+                                            Grid.Column="3"
+                                            Padding="12,8"
+                                            VerticalAlignment="Center">
+                                            Chi tiết
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
+                    <!-- Hiển thị khi không có dữ liệu -->
                     <Border
                         Background="{DynamicResource BgCard}"
                         CornerRadius="12"
+                        IsVisible="{Binding !Imports.Count}"
                         Margin="0,20,0,0"
                         Padding="40">
                         <StackPanel HorizontalAlignment="Center" Spacing="15">
@@ -161,7 +175,7 @@
                             <Button
                                 Classes="primary"
                                 Command="{Binding CreateImportCommand}"
-                                Margin="70,10,0,0">
+                                Margin="0,10,0,0">
                                 + Nhập kho mới
                             </Button>
                         </StackPanel>

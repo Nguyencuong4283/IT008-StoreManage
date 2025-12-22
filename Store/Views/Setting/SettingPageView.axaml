@@ -48,19 +48,7 @@
                                 <TextBox Text="{Binding Setting1}" Classes="modern-input"/>
                             </StackPanel>
 
-                            <StackPanel Spacing="10">
-                                <TextBlock Text="Địa chỉ" 
-                                           Classes="label"
-                                           Foreground="{DynamicResource TextSecondary}"/>
-                                <TextBox Classes="modern-input"/>
-                            </StackPanel>
-
-                            <StackPanel Spacing="10">
-                                <TextBlock Text="Số điện thoại" 
-                                           Classes="label"
-                                           Foreground="{DynamicResource TextSecondary}"/>
-                                <TextBox Classes="modern-input"/>
-                            </StackPanel>
+                          
                         </StackPanel>
                     </Border>
 

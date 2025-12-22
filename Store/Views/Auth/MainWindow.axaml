@@ -158,6 +158,9 @@
 								HorizontalAlignment="Stretch">
 							Đăng nhập
 						</Button>
+						<Button Command="{Binding AdminOpenButtonCommand}">
+							Admin Login
+						</Button>
 					</StackPanel>
 				</Border>
 			</Grid>

@@ -10,6 +10,7 @@ using Store.Messages;
 using Store.Models;
 using Store.Services;
 using Store.Views;
+using Store.Views.Import;
 
 namespace Store.ViewModels.Import;
 
@@ -103,10 +104,10 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
                     );
                     break;
             }
-
-            // Cập nhật danh sách hiển thị
-            UpdateImportList(filterList);
         }
+
+        // Cập nhật danh sách hiển thị
+        UpdateImportList(filterList);
     }
     
     [RelayCommand]
@@ -114,6 +115,17 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     {
         var createImportWindowView = new CreateImportWindowView();
         createImportWindowView.Show();
+    }
+
+    [RelayCommand]
+    public void ViewImportDetail(Models.Import import)
+    {
+        if (import != null)
+        {
+            var importDetailWindow = new ImportDetailWindowView();
+            importDetailWindow.DataContext = new ImportDetailWindowViewModel(import);
+            importDetailWindow.Show();
+        }
     }
 
 
