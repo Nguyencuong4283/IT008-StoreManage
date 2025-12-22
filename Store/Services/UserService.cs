@@ -51,7 +51,7 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                string newMaNV = GenerateNewMaUser();
+                string newMaNV = GenerateNewUserID();
 
                 cmd.CommandText = @"
                 INSERT INTO Users 
@@ -107,7 +107,105 @@ namespace Store.Services
                             MaVT = reader.IsDBNull(10) ? "" : reader.GetString(10),
                             IsDelete = reader.IsDBNull(11) ? 0 : reader.GetInt32(11),
                         };
-                        if(user.IsDelete == 0 )
+                        if(user.IsDelete == 0)
+                            users.Add(user);
+                    }
+                }
+            }
+
+            return users;
+        }
+        // Kiểm tra dữ liệu trùng 
+        //Email
+        public static bool EmailExist(string email)
+        {
+            var users = new List<User>();
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                SELECT Email, IsDelete
+                FROM Users";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var user = new User
+                        {
+                           
+                            Email = reader.IsDBNull(0) ? "" : reader.GetString(0),
+                          
+                            IsDelete = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
+                        };
+                        if (user.IsDelete == 0 && email == user.Email)
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public static bool UserNameExist(string tenDangNhap)
+        {
+            var users = new List<User>();
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                SELECT TenDangNhap, IsDelete
+                FROM Users";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var user = new User
+                        {
+                            TenDangNhap = reader.IsDBNull(0) ? "" : reader.GetString(0),
+                            IsDelete = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
+                        };
+                        if (user.IsDelete == 0 && tenDangNhap == user.TenDangNhap)
+                            return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static List<User> GetAllEmployee()
+        {
+            var users = new List<User>();
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT, IsDelete
+                FROM Users";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var user = new User
+                        {
+                            MaNV = reader.IsDBNull(0) ? "" : reader.GetString(0),
+                            TenDangNhap = reader.IsDBNull(1) ? "" : reader.GetString(1),
+                            MatKhau = reader.IsDBNull(2) ? "" : reader.GetString(2),
+                            HoTen = reader.IsDBNull(3) ? "" : reader.GetString(3),
+                            Email = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                            SDT = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                            DiaChi = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                            NgaySinh = reader.IsDBNull(7) ? (DateTime?)null : DateTime.Parse(reader.GetString(7)),
+                            GioiTinh = reader.IsDBNull(8) ? "" : reader.GetString(8),
+                            HinhAnh = reader.IsDBNull(9) ? "" : reader.GetString(9),
+                            MaVT = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                            IsDelete = reader.IsDBNull(11) ? 0 : reader.GetInt32(11),
+                        };
+                        if (user.IsDelete == 0 && user.MaVT == "VT02")
                             users.Add(user);
                     }
                 }
@@ -236,7 +334,7 @@ namespace Store.Services
         }
 
         // ------------------ AUTO ID ------------------
-        public static string GenerateNewMaUser()
+        public static string GenerateNewUserID()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

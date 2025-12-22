@@ -4,8 +4,8 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using Store.ViewModels;
-using Store.Views;
+using Store.ViewModels.Auth;
+using Store.Views.Auth;
 
 namespace Store;
 

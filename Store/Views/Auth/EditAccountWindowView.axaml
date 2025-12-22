@@ -1,0 +1,202 @@
+﻿<Window
+    Background="Transparent"
+    Height="800"
+    SystemDecorations="None"
+    Title="EditAccountWindowView"
+    Width="1200"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    mc:Ignorable="d"
+    x:Class="Store.Views.Auth.EditAccountWindowView"
+    x:DataType="vm:EditAccountWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Store.ViewModels.Auth"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Window.DataContext>
+        <vm:EditAccountWindowViewModel />
+    </Window.DataContext>
+
+    <Border
+        Background="{DynamicResource BgPage}"
+        BoxShadow="0 10 40 5 #30000000"
+        ClipToBounds="True"
+        CornerRadius="16"
+        Height="800"
+        Width="1200">
+
+        <Grid>
+            <Button
+                Classes="close-btn"
+                Command="{Binding $parent[Window].Close}"
+                HorizontalAlignment="Right"
+                Margin="0,16,16,0"
+                VerticalAlignment="Top"
+                ZIndex="10">
+                ✕
+            </Button>
+
+            <Border
+                Background="{DynamicResource BgCard}"
+                BoxShadow="0 8 32 0 #15000000"
+                CornerRadius="16"
+                Margin="70,50,70,50">
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid ColumnDefinitions="360,*" Margin="40">
+
+                        <StackPanel
+                            Grid.Column="0"
+                            Margin="0,30,30,0"
+                            VerticalAlignment="Top">
+                            <TextBlock
+                                FontSize="24"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Margin="0,0,0,5"
+                                TextAlignment="Center">
+                                <Run>Thông tin tài khoản</Run>
+                            </TextBlock>
+                            <TextBlock
+                                FontSize="24"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource TextPrimary}"
+                                Margin="0,0,0,27"
+                                TextAlignment="Center">
+                                <Run>Nhân viên</Run>
+                            </TextBlock>
+
+                            <Border
+                                Background="{DynamicResource BgHover}"
+                                BoxShadow="0 4 12 0 #10000000"
+                                ClipToBounds="True"
+                                CornerRadius="260"
+                                Height="260"
+                                Margin="0,0,0,16"
+                                Width="260">
+                                <Image Source="{Binding HinhAnh, Mode=TwoWay}" Stretch="Fill" />
+                            </Border>
+
+                            <Button
+                                Classes="primary"
+                                Command="{Binding InsertPictureAsyncButtonCommand}"
+                                FontSize="14"
+                                Height="42"
+                                HorizontalAlignment="Center"
+                                Width="260">
+                                📷 Chọn ảnh đại diện
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="0,30,0,0">
+
+                            <Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
+                                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                    <TextBlock Classes="label" Text="Tên đăng nhập" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        Text="{Binding TenDangNhap, Mode=TwoWay}"
+                                        Watermark="Nhập tên đăng nhập" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                    <TextBlock Classes="label" Text="Chức vụ" />
+                                    <ComboBox
+                                        Classes="modern-combo"
+                                        HorizontalAlignment="Left"
+                                        ItemsSource="{Binding DanhSachChucVu}"
+                                        PlaceholderText="Chọn giới tính"
+                                        SelectedItem="{Binding ChucVu, Mode=TwoWay}"
+                                        Width="300" />
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
+                                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                    <TextBlock Classes="label" Text="Họ và tên" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        Text="{Binding HoTen, Mode=TwoWay}"
+                                        Watermark="Nhập họ và tên" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                    <TextBlock Classes="label" Text="Giới tính" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        IsReadOnly="True"
+                                        Text="{Binding GioiTinh, Mode=TwoWay}" />
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*" Margin="0,0,0,16">
+                                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                    <TextBlock Classes="label" Text="Ngày sinh" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        IsReadOnly="True"
+                                        Text="{Binding NgaySinh, Mode=TwoWay}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                    <TextBlock Classes="label" Text="Số điện thoại" />
+                                    <TextBox
+                                        Classes="modern-input"
+                                        Text="{Binding SDT, Mode=TwoWay}"
+                                        Watermark="+84 xxx xxx xxx" />
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Margin="0,0,0,16">
+                                <TextBlock Classes="label" Text="Email" />
+                                <TextBox
+                                    Classes="modern-input"
+                                    Text="{Binding Email, Mode=TwoWay}"
+                                    Watermark="example@email.com" />
+                            </StackPanel>
+
+                            <StackPanel Margin="0,0,0,24">
+                                <TextBlock Classes="label" Text="Địa chỉ" />
+                                <TextBox
+                                    AcceptsReturn="True"
+                                    Classes="modern-input"
+                                    Height="80"
+                                    Text="{Binding DiaChi, Mode=TwoWay}"
+                                    TextWrapping="Wrap"
+                                    VerticalContentAlignment="Top"
+                                    Watermark="Nhập địa chỉ đầy đủ" />
+                            </StackPanel>
+
+                            <Button
+                                Classes="primary"
+                                Command="{Binding DangKyButtonCommand}"
+                                FontSize="16"
+                                Height="44"
+                                HorizontalAlignment="Stretch">
+                                Cập nhật
+                            </Button>
+                            <StackPanel
+                                Margin="0,30,0,0"
+                                Orientation="Horizontal"
+                                Spacing="10"
+                                VerticalAlignment="Center">
+                                <Button
+                                    Classes="danger"
+                                    Command="{Binding DeleteCommand}"
+                                    FontSize="16"
+                                    Height="44"
+                                    Padding="12,8"
+                                    Width="616">
+                                    🗑️ Xóa
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

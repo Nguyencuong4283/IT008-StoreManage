@@ -1,0 +1,186 @@
+﻿using Microsoft.Data.Sqlite;
+using Store.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Store.Services
+{
+    public static class CustomerService
+    {
+        private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
+
+        // ----------------- Khởi tạo Database và bảng ----------------- //
+        public static void Initialize()
+        {
+            Console.WriteLine($"Database Path: {dbPath}");
+
+            string dbDirectory = Path.GetDirectoryName(dbPath)!;
+            if (!Directory.Exists(dbDirectory))
+                Directory.CreateDirectory(dbDirectory);
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                CREATE TABLE IF NOT EXISTS KhachHang (
+                    MaKH TEXT PRIMARY KEY,
+                    TenKH TEXT NOT NULL CHECK(TenKH <> ''),
+                    SDT TEXT NOT NULL CHECK(SDT <> ''),
+                    GioiTinh TEXT NOT NULL,
+                    DiaChi TEXT CHECK(DiaChi <> ''),
+                    Hang TEXT,
+                    GhiChu TEXT,
+                    TongMua REAL,
+                    IsDelete INTEGER DEFAULT 0
+                );";
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ----------------- Tạo Khách hàng ----------------- //
+        public static void InsertCustomer(KhachHang kh)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                string newMaKH = GenerateCustommerID();
+
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                INSERT INTO KhachHang 
+                (MaKH, TenKH, SDT, GioiTinh, DiaChi, Hang, GhiChu, TongMua, IsDelete)
+                VALUES ($MaKH, $TenKH, $SDT, $GioiTinh, $DiaChi, $Hang, $GhiChu, $TongMua, $IsDelete)";
+                cmd.Parameters.AddWithValue("$MaKH", newMaKH);
+                cmd.Parameters.AddWithValue("$TenKH", kh.TenKH);
+                cmd.Parameters.AddWithValue("$SDT", kh.SDT);
+                cmd.Parameters.AddWithValue("$GioiTinh", kh.GioiTinh);
+                cmd.Parameters.AddWithValue("$DiaChi", kh.DiaChi);
+                cmd.Parameters.AddWithValue("$Hang", kh.Hang);
+                cmd.Parameters.AddWithValue("$GhiChu", kh.GhiChu);
+                cmd.Parameters.AddWithValue("$TongMua", (double)kh.TongMua);
+                cmd.Parameters.AddWithValue("$IsDelete", 0);
+                
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ----------------- Đọc ----------------- //
+        public static List<KhachHang> GetAllCustomer()
+        {
+            var khachHangs = new List<KhachHang>();
+
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT MaKH, TenKH, SDT, GioiTinh, DiaChi, Hang, GhiChu, TongMua, IsDelete FROM KhachHang";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var kh = new KhachHang
+                        {
+                            MaKH = reader.GetString(0),
+                            TenKH = reader.IsDBNull(1) ? "" : reader.GetString(1),
+                            SDT = reader.IsDBNull(2) ? "" : reader.GetString(2),
+                            GioiTinh = reader.IsDBNull(3) ? "" : reader.GetString(3),
+                            DiaChi = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                            Hang = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                            GhiChu = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                            TongMua = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7),
+                            IsDelete = reader.IsDBNull(8) ? 0 : reader.GetInt32(8)
+                        };
+                        if (kh.IsDelete == 0)
+                        {
+                            khachHangs.Add(kh);
+                        }
+                    }
+                }
+            }
+
+            return khachHangs;
+        }
+        //Đếm khách hàng
+        public static int CountCusomter()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM KhachHang WHERE IsDelete = 0";
+                var result = cmd.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+        }
+        
+        // ----------------- UPDATE ----------------- //
+        public static void UpdateCustomer(KhachHang kh)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                UPDATE KhachHang
+                SET TenKH = $TenKH,
+                    SDT = $SDT,
+                    GioiTinh = $GioiTinh,
+                    DiaChi = $DiaChi,
+                    Hang = $Hang,
+                    GhiChu = $GhiChu,
+                    TongMua = $TongMua,
+                    IsDelete = $IsDelete
+                WHERE MaKH = $MaKH";
+
+                cmd.Parameters.AddWithValue("$MaKH", kh.MaKH);
+                cmd.Parameters.AddWithValue("$TenKH", kh.TenKH);
+                cmd.Parameters.AddWithValue("$SDT", kh.SDT);
+                cmd.Parameters.AddWithValue("$GioiTinh", kh.GioiTinh);
+                cmd.Parameters.AddWithValue("$DiaChi", kh.DiaChi);
+                cmd.Parameters.AddWithValue("$Hang", kh.Hang);
+                cmd.Parameters.AddWithValue("$GhiChu", kh.GhiChu);
+                cmd.Parameters.AddWithValue("$TongMua", (double)kh.TongMua);
+                cmd.Parameters.AddWithValue("$IsDelete", kh.IsDelete);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ----------------- DELETE ----------------- //
+        public static void DeleteCustomer(string maKH)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM KhachHang WHERE MaKH = $MaKH";
+                cmd.Parameters.AddWithValue("$MaKH", maKH);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ----------------- Generate ID ----------------- //
+        public static string GenerateCustommerID()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT MaKH FROM KhachHang ORDER BY MaKH DESC LIMIT 1";
+                var result = cmd.ExecuteScalar()?.ToString();
+
+                if (string.IsNullOrEmpty(result))
+                    return "KH001";
+                else
+                {
+                    int numericPart = int.Parse(result.Substring(2));
+                    numericPart++;
+                    return $"KH{numericPart:D3}";
+                }
+            }
+        }
+    }
+}

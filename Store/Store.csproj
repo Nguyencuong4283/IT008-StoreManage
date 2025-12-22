@@ -39,6 +39,7 @@
         <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.11" />
         <PackageReference Include="MimeKit" Version="4.14.0" />
+        <PackageReference Include="MsBox.Avalonia" Version="3.0.0-rc2" />
         <PackageReference Include="QuestPDF" Version="2025.12.0-alpha4" />
         <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.6.2" />
         <PackageReference Include="Svg.Skia" Version="3.2.1" />
@@ -58,8 +59,19 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Views\CustomerDetailWindowView.axaml.cs">
+      <Compile Update="Views\Customer\CustomerDetailWindowView.axaml.cs">
         <DependentUpon>CustomerDetailWindowView.axaml</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ViewModels\Manager\" />
+      <Folder Include="ViewModels\Report\" />
+      <Folder Include="ViewModels\Setting\" />
+      <Folder Include="ViewModels\Product\" />
+      <Folder Include="Views\Manager\" />
+      <Folder Include="Views\Report\" />
+      <Folder Include="Views\Setting\" />
+      <Folder Include="Views\Product\" />
     </ItemGroup>
 </Project>

@@ -11,6 +11,10 @@ namespace Store.Messages
         {
         }
     }
+    public class NhanVienChangedMessage : ValueChangedMessage<string>
+    {
+        public NhanVienChangedMessage(string action) : base(action) { }
+    }
 
     // Các message khác (giữ nguyên hoặc cập nhật tương tự nếu cần)
     public class HoaDonChangedMessage : ValueChangedMessage<string>

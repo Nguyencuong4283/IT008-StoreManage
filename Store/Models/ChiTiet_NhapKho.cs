@@ -8,13 +8,14 @@ namespace Store.Models
 {
     public class ChiTiet_NhapKho
     {
-        public int      MaNK { get; set; }
-        public int      MaSP { get; set; }
-        public int      SoLuong { get; set;}
-        public decimal  DonGia { get; set; }
-        public decimal  ThanhTien { get; set; }
-        public Import? NhapKho { get; set; }
+        public string MaNK { get; set; } = string.Empty;
+        public string MaSP { get; set; } = string.Empty;
+        public int SoLuong { get; set;}
+        public decimal DonGia { get; set; }
+        public decimal ThanhTien { get; set; }
+      
         public SanPham? SanPham { get; set; }
+        
         public ChiTiet_NhapKho() { }
     }
 }
