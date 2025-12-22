@@ -1,66 +1,50 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using LiveChartsCore.SkiaSharpView.Avalonia;
 using Store.Helpers;
 using Store.Messages;
 using Store.Models;
 using Store.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
+using Avalonia.Controls.Notifications;
 
 
 namespace Store.ViewModels.Bill
 {
-   public partial class CreateBillWindowViewModel : ViewModelBase
+    public partial class CreateBillWindowViewModel : ViewModelBase
     {
-        
-        [ObservableProperty] 
-        private int soLuong;
-        
-        [ObservableProperty] 
-        private decimal giaSP;
-        
-        [ObservableProperty] 
-        private int khuyenMai;
+        [ObservableProperty] private int soLuong;
 
-        [ObservableProperty]
-        private decimal tongGiamGia;
-        
-        [ObservableProperty] 
-        private decimal tongTriGia;
+        [ObservableProperty] private decimal giaSP;
 
-        [ObservableProperty] 
-        private decimal tongThanhTien;
+        [ObservableProperty] private int khuyenMai;
+
+        [ObservableProperty] private decimal tongGiamGia;
+
+        [ObservableProperty] private decimal tongTriGia;
+
+        [ObservableProperty] private decimal tongThanhTien;
 
         public Window? ParentWindow { get; set; }
 
         [ObservableProperty] private string thoiGianHienTai = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         [ObservableProperty] private int soHD;
-        [ObservableProperty]
-        private ObservableCollection<ChiTiet_HoaDon> chiTietHoaDons = new();
+        [ObservableProperty] private ObservableCollection<ChiTiet_HoaDon> chiTietHoaDons = new();
 
-        [ObservableProperty]
-        private ObservableCollection<KhachHang> danhSachKhachHang = new();
-        [ObservableProperty]
-        private ObservableCollection<SanPham> danhSachSanPham = new();
-        [ObservableProperty]
-        private ObservableCollection<User> danhSachNhanVien = new();
+        [ObservableProperty] private ObservableCollection<KhachHang> danhSachKhachHang = new();
+        [ObservableProperty] private ObservableCollection<SanPham> danhSachSanPham = new();
+        [ObservableProperty] private ObservableCollection<User> danhSachNhanVien = new();
 
-        [ObservableProperty]
-        private KhachHang? khachHangDuocChon; 
-        [ObservableProperty]
-        private SanPham? sanPhamDuocChon;
-        [ObservableProperty]
-        private User? nhanVienDuocChon;
+        [ObservableProperty] private KhachHang? khachHangDuocChon;
+        [ObservableProperty] private SanPham? sanPhamDuocChon;
+        [ObservableProperty] private User? nhanVienDuocChon;
+        
+        public WindowNotificationManager? NotificationManager { get; set; }
 
         private string MaHD;
         private bool isHoaDonCreated = false;
@@ -71,7 +55,7 @@ namespace Store.ViewModels.Bill
             LoadKhachHang();
             LoadSanPham();
             LoadUser();
-            
+
             // Kiểm tra xem có hóa đơn nháp không
             if (DraftBillManager.HasDraft)
             {
@@ -82,9 +66,10 @@ namespace Store.ViewModels.Bill
                 ChiTietHoaDons = draft.Items;
                 KhachHangDuocChon = draft.KhachHang;
                 NhanVienDuocChon = draft.NhanVien;
-                
+
                 CapNhatTongTien();
-                System.Diagnostics.Debug.WriteLine($"[ViewModel] Đã load hóa đơn nháp: {MaHD}, {ChiTietHoaDons.Count} sản phẩm");
+                System.Diagnostics.Debug.WriteLine(
+                    $"[ViewModel] Đã load hóa đơn nháp: {MaHD}, {ChiTietHoaDons.Count} sản phẩm");
             }
             else
             {
@@ -93,10 +78,10 @@ namespace Store.ViewModels.Bill
                 SoHD = OrderService.GetNextOrderNumber();
                 System.Diagnostics.Debug.WriteLine($"[ViewModel] Khởi tạo hóa đơn mới: {MaHD}, SoHD: {SoHD}");
             }
-            
+
             SoLuong = 1; // Khởi tạo số lượng mặc định
         }
-        
+
         // Lưu nháp khi đóng window (nếu chưa thanh toán)
         public void OnWindowClosing()
         {
@@ -108,7 +93,6 @@ namespace Store.ViewModels.Bill
         }
 
 
-        
         // Thanh toán và xuất hóa đơn
         [RelayCommand]
         private async Task ThanhToan()
@@ -119,13 +103,13 @@ namespace Store.ViewModels.Bill
                 System.Diagnostics.Debug.WriteLine("[ThanhToan] Chưa chọn khách hàng hoặc nhân viên");
                 return;
             }
-            
+
             if (ChiTietHoaDons.Count == 0)
             {
                 System.Diagnostics.Debug.WriteLine("[ThanhToan] Chưa có sản phẩm nào trong hóa đơn");
                 return;
             }
-            
+
             try
             {
                 // Bước 1: Tạo hóa đơn trong database
@@ -151,20 +135,26 @@ namespace Store.ViewModels.Bill
                 {
                     DetailOrderService.InsertOderDetail(chiTiet);
                 }
+
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã lưu {ChiTietHoaDons.Count} chi tiết hóa đơn");
+
+                // Bước 3: hiện thông báo và xuất file hóa đơn PDF
+                NotificationManager?.Show("Thêm đơn hàng thành công" , NotificationType.Success);
                 
-                // Bước 3: Xuất file hóa đơn PDF
-                await XuatFileHoaDon();
-                
-                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Hoàn tất thanh toán hóa đơn {MaHD}");
-                
-                // Bước 4: Đánh dấu đã thanh toán và xóa nháp
-                isHoaDonCreated = true;
-                DraftBillManager.ClearDraft();
                 // Gửi message cập nhật
                 WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage(MaHD));
                 WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(KhachHangDuocChon.MaKH));
+                
+                await Task.Delay(1500);
+                
+                await XuatFileHoaDon();
 
+                System.Diagnostics.Debug.WriteLine($"[ThanhToan] Hoàn tất thanh toán hóa đơn {MaHD}");
+
+                // Bước 4: Đánh dấu đã thanh toán và xóa nháp
+                isHoaDonCreated = true;
+                DraftBillManager.ClearDraft();
+                
                 // Đóng window sau khi xóa
                 ParentWindow?.Close();
             }
@@ -174,7 +164,7 @@ namespace Store.ViewModels.Bill
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Stack trace: {ex.StackTrace}");
             }
         }
-        
+
         // Xuất file hóa đơn PDF
         private async Task XuatFileHoaDon()
         {
@@ -186,11 +176,11 @@ namespace Store.ViewModels.Bill
                 {
                     Directory.CreateDirectory(billsFolder);
                 }
-                
+
                 // Tạo tên file PDF
                 string fileName = $"HoaDon_{MaHD}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
                 string filePath = Path.Combine(billsFolder, fileName);
-                
+
                 // Xuất PDF sử dụng PdfExportService
                 await Task.Run(() =>
                 {
@@ -208,9 +198,9 @@ namespace Store.ViewModels.Bill
                         outputPath: filePath
                     );
                 });
-                
+
                 System.Diagnostics.Debug.WriteLine($"[XuatFileHoaDon] Đã xuất file PDF: {filePath}");
-                
+
                 // Mở file PDF sau khi xuất
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
@@ -224,7 +214,7 @@ namespace Store.ViewModels.Bill
                 System.Diagnostics.Debug.WriteLine($"[XuatFileHoaDon] Stack trace: {ex.StackTrace}");
             }
         }
-        
+
         // Cập nhật giá khi chọn sản phẩm
         partial void OnSanPhamDuocChonChanged(SanPham? value)
         {
@@ -233,26 +223,30 @@ namespace Store.ViewModels.Bill
                 GiaSP = value.GiaSP;
             }
         }
+
         private void LoadKhachHang()
         {
             var ds = CustomerService.GetAllCustomer();
             danhSachKhachHang = new ObservableCollection<KhachHang>(ds);
         }
+
         private void LoadSanPham()
         {
             var ds1 = ProductService.GetAllProduct();
             danhSachSanPham = new ObservableCollection<SanPham>(ds1);
         }
+
         private void LoadUser()
         {
             var ds2 = UserService.GetAllUser();
             danhSachNhanVien = new ObservableCollection<User>(ds2);
         }
+
         [RelayCommand]
         private void Tang()
         {
-            if(SoLuong < SanPhamDuocChon.SoLuongSP)
-             SoLuong++;
+            if (SoLuong < SanPhamDuocChon.SoLuongSP)
+                SoLuong++;
         }
 
         [RelayCommand]
@@ -261,6 +255,7 @@ namespace Store.ViewModels.Bill
             if (SoLuong > 1)
                 SoLuong--;
         }
+
         [RelayCommand]
         private void ThemSanPham()
         {
@@ -294,25 +289,28 @@ namespace Store.ViewModels.Bill
 
                 // Kiểm tra sản phẩm đã tồn tại trong chi tiết hóa đơn chưa
                 var chiTietTonTai = ChiTietHoaDons.FirstOrDefault(ct => ct.MaSP == SanPhamDuocChon.MaSP);
-                
+
                 if (chiTietTonTai != null)
                 {
                     // Nếu đã có, cập nhật số lượng và thành tiền (CHỈ TRONG MEMORY)
                     chiTietTonTai.SoLuong += SoLuong;
-                    chiTietTonTai.ThanhTien = (chiTietTonTai.DonGia - (chiTietTonTai.DonGia * chiTietTonTai.KhuyenMai / 100)) * chiTietTonTai.SoLuong;
-                    
+                    chiTietTonTai.ThanhTien =
+                        (chiTietTonTai.DonGia - (chiTietTonTai.DonGia * chiTietTonTai.KhuyenMai / 100)) *
+                        chiTietTonTai.SoLuong;
+
                     // Xóa và thêm lại để trigger UI update
                     var index = ChiTietHoaDons.IndexOf(chiTietTonTai);
                     ChiTietHoaDons.RemoveAt(index);
                     ChiTietHoaDons.Insert(index, chiTietTonTai);
-                    
-                    System.Diagnostics.Debug.WriteLine($"Đã cập nhật số lượng sản phẩm (tạm): {SanPhamDuocChon.TenSP}, SoLuong mới: {chiTietTonTai.SoLuong}");
+
+                    System.Diagnostics.Debug.WriteLine(
+                        $"Đã cập nhật số lượng sản phẩm (tạm): {SanPhamDuocChon.TenSP}, SoLuong mới: {chiTietTonTai.SoLuong}");
                 }
                 else
                 {
                     // Thêm chi tiết hóa đơn mới (CHỈ TRONG MEMORY)
                     var chiTietMoi = new ChiTiet_HoaDon
-                    {            
+                    {
                         MaHD = MaHD,
                         MaSP = SanPhamDuocChon.MaSP,
                         SoLuong = SoLuong,
@@ -322,9 +320,10 @@ namespace Store.ViewModels.Bill
                         SanPham = SanPhamDuocChon //Gán thông tin sản phẩm để hiển thị
                     };
                     ChiTietHoaDons.Add(chiTietMoi);
-                    System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm mới (tạm): {SanPhamDuocChon.TenSP}, SoLuong: {SoLuong}");
+                    System.Diagnostics.Debug.WriteLine(
+                        $"Đã thêm sản phẩm mới (tạm): {SanPhamDuocChon.TenSP}, SoLuong: {SoLuong}");
                 }
-                
+
                 // Cập nhật tổng tiền sau khi thêm/cập nhật
                 CapNhatTongTien();
 
@@ -355,6 +354,5 @@ namespace Store.ViewModels.Bill
             ChiTietHoaDons.Clear();
             CapNhatTongTien();
         }
-        
     }
 }

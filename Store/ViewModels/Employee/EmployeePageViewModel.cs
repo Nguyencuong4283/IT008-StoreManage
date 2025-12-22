@@ -16,18 +16,33 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Controls.Notifications;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 
 namespace Store.ViewModels.Employee;
 
-public partial class EmployeePageViewModel : ViewModelBase
+public partial class EmployeePageViewModel : ViewModelBase, IRecipient<AccountChangeMessage>
 {
     [ObservableProperty] private string hoTen;
     [ObservableProperty] private string sDT;
     [ObservableProperty] private string email;
     [ObservableProperty] private ObservableCollection<User> nhanViens = new();
+    
+    public WindowNotificationManager? NotificationManager { get; set; }
+    
+    //Nhận thông báo khi có thay đổi nhân viên
+    public void Receive(AccountChangeMessage message)
+    {
+        if(message.Value == "Inserted" || message.Value == "Updated" || message.Value == "Deleted")
+        {
+            Dispatcher.UIThread.Post(() => { LoadEmployee(); });
+        }
+    }
 
     public EmployeePageViewModel()
     {
+        WeakReferenceMessenger.Default.Register<AccountChangeMessage>(this);
         LoadEmployee();
     }
     private  void LoadEmployee()
@@ -63,16 +78,6 @@ public partial class EmployeePageViewModel : ViewModelBase
     private void InsertEmployeeButton()
     {
         WindowManager.ShowCreateAccountWindow();
-        LoadEmployee(); // Reload sau khi đóng dialog
     }
-    /*   private void LoadKhachHangs()
-    {
-        var list = CustomerService.GetAllKhachHang();
-
-        khachHangs.Clear();
-        foreach (var kh in list)
-        {
-            khachHangs.Add(kh);
-        }
-    }*/
+    
 }

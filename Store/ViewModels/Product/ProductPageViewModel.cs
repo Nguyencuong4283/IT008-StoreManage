@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Avalonia.Controls.Notifications;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -25,6 +26,9 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     [ObservableProperty] private string _selectedDetail = "Tất cả";
     [ObservableProperty] private ObservableCollection<SanPham> sanPhams = new();
     private List<SanPham> _allSanPham = new();
+    
+    public WindowNotificationManager? NotificationManager { get; set; }
+    
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
     {
         "Tất cả",
@@ -42,11 +46,14 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
         "Tên sản phẩm",
         "Số lượng"
     };
+    
     public ProductPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<SanPhamChangedMessage>(this);
         LoadProduct();
     }
+    
+    //Nhận thông báo khi có thay đổi sản phẩm
     public void Receive(SanPhamChangedMessage message)
     {
         // Đảm bảo cập nhật trên UI thread
@@ -54,6 +61,16 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
         {
             LoadProduct();
         });
+
+        if (message.Value == "Insert")
+        {
+            NotificationManager?.Show("Thêm sản phầm thành công!", NotificationType.Success);    
+        }
+        
+        else if (message.Value == "Delete")
+        {
+            NotificationManager?.Show("Xóa sản phầm thành công!", NotificationType.Success);    
+        }
     }
     private void LoadProduct()
     {

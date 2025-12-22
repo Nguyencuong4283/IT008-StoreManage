@@ -11,23 +11,29 @@ using Store.Views.Employee;
 using Store.ViewModels.Manager;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Avalonia.Controls.Notifications;
 
 namespace Store.ViewModels.Auth;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    [ObservableProperty] private string tenDangNhap;
+    [ObservableProperty] private string matKhau;
+    [ObservableProperty] private string kiemTraDangNhap;
+    
     public string maDN = "";
+    
+    public WindowNotificationManager? NotificationManager { get; set; }
+    
     public class LoginSuccessMessage
     {
         public string MaDN { get; }
         public LoginSuccessMessage(string maDN) => MaDN = maDN;
     }
-
-    [ObservableProperty] private string tenDangNhap;
-    [ObservableProperty] private string matKhau;
-    [ObservableProperty] private string kiemTraDangNhap;
+    
     [RelayCommand]
-    private void LogInButton()
+    private async Task LogInButton()
     {
         try
         {
@@ -62,6 +68,7 @@ public partial class MainWindowViewModel : ViewModelBase
                     adminWindow.Show();
                     
                     maDN = user.MaNV;
+                    
                     WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
 
                     // Đóng MainWindow hiện tại
@@ -80,6 +87,7 @@ public partial class MainWindowViewModel : ViewModelBase
                     staffWindow.Show();
                     
                     maDN = user.MaNV;
+                    
                     WeakReferenceMessenger.Default.Send(new LoginSuccessMessage(maDN));
                     
                     if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop

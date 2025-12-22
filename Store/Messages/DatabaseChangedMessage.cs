@@ -7,9 +7,7 @@ namespace Store.Messages
     // Kế thừa ValueChangedMessage<string> để chứa nội dung Action ("Insert", "Update", "Delete")
     public class KhachHangChangedMessage : ValueChangedMessage<string>
     {
-        public KhachHangChangedMessage(string action) : base(action)
-        {
-        }
+        public KhachHangChangedMessage(string action) : base(action) { }
     }
     public class NhanVienChangedMessage : ValueChangedMessage<string>
     {
@@ -44,5 +42,20 @@ namespace Store.Messages
     public class ImportChangeMessage : ValueChangedMessage<string>
     {
         public ImportChangeMessage(string action) : base(action) { }
+    }
+    
+    public class CustomerDebtChangedMessage : ValueChangedMessage<string>
+    {
+        public CustomerDebtChangedMessage(string action) : base(action) { }
+    }
+    
+    public class UserChangeMessage : ValueChangedMessage<string>
+    {
+        public UserChangeMessage(string action) : base(action) { }
+    }
+    
+    public class AccountChangeMessage : ValueChangedMessage<string>
+    {
+        public AccountChangeMessage(string action) : base(action) { }
     }
 }

@@ -163,7 +163,12 @@
                                 Foreground="{DynamicResource TextSecondary}"
                                 HorizontalAlignment="Center"
                                 Text="Thêm nhân viên đầu tiên để bắt đầu quản lý" />
-                            <Button Classes="primary" Margin="73,10,0,0">+ Thêm nhân viên</Button>
+                            <Button
+                                Classes="primary"
+                                Command="{Binding InsertEmployeeButtonCommand}"
+                                Margin="73,10,0,0">
+                                + Thêm nhân viên
+                            </Button>
                         </StackPanel>
                     </Border>
                 </Grid>

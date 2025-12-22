@@ -5,9 +5,7 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.VisualBasic;
-using Store.Messages;
 using Store.Models;
 using Store.Services;
 using System;
@@ -15,6 +13,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Controls.Notifications;
+using CommunityToolkit.Mvvm.Messaging;
+using Store.Messages;
 
 namespace Store.ViewModels.Auth
 {
@@ -34,6 +35,8 @@ namespace Store.ViewModels.Auth
 
         // ✅ ảnh hiển thị trên UI
         [ObservableProperty] private Bitmap hinhAnh = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_2.png")));
+
+        public WindowNotificationManager? NotificationManager { get; set; }
 
         public ObservableCollection<string> DanhSachGioiTinh { get; } = new()
         {
@@ -67,7 +70,7 @@ namespace Store.ViewModels.Auth
 
 
         [RelayCommand]
-        private void RegisterButton()
+        private async Task RegisterButton()
         {
             try
             {
@@ -127,9 +130,14 @@ namespace Store.ViewModels.Auth
                 UserService.InsertUser(user);
 
                 System.Diagnostics.Debug.WriteLine($"✅ Đã tạo tài khoản thành công: {HoTen}");
-                WeakReferenceMessenger.Default.Send(new NhanVienChangedMessage("Insert"));
-               
-
+                
+                NotificationManager?.Show("Tạo tài khoản thành công!", NotificationType.Success);
+                
+                await Task.Delay(1000);
+                
+                // Gửi message để thông báo tạo tài khoản thành công
+                WeakReferenceMessenger.Default.Send(new AccountChangeMessage("Inserted"));
+                
                 // Đóng window sau khi tạo thành công
                 var window = GetActiveWindow();
                 window?.Close();

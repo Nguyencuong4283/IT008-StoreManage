@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Avalonia.Controls.Notifications;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -19,6 +20,8 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     [ObservableProperty] private string searchKeyword;
     [ObservableProperty] private string _selectedFilter = "Tất cả";
     private List<KhachHang> _allKhachHangs = new();
+    
+    public WindowNotificationManager? NotificationManager { get; set; }
 
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
     {
@@ -27,7 +30,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         "Mã khách hàng",
         "Số điện thoại"
     };
-
+    
     public CustomerPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<KhachHangChangedMessage>(this);
@@ -41,6 +44,11 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         {
             LoadCustomer();
         });
+
+        if (message.Value == "Insert")
+        {
+            NotificationManager?.Show("Thêm khách hàng thành công!", NotificationType.Success);
+        }
     }
     private void LoadCustomer()
     {

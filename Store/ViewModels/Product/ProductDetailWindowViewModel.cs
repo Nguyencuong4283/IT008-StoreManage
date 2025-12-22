@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Avalonia.Controls.Notifications;
 
 
 namespace Store.ViewModels.Product
@@ -31,7 +32,7 @@ namespace Store.ViewModels.Product
             // Constructor mặc định cho Design.DataContext
         }
         SanPham SP { get; set; }
-
+        
         public ProductDetailWindowViewModel(SanPham sanPham)
         {
             if (sanPham != null)
@@ -81,6 +82,7 @@ namespace Store.ViewModels.Product
 
                     // Gửi message
                     WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage(maSP));
+                    WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Delete"));
                     // Đóng window sau khi xóa
                     var closeWindow = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
                     closeWindow?.Close();

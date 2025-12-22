@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Controls.Notifications;
 using CommunityToolkit.Mvvm.Messaging;
 using Store.Messages;
 
@@ -29,6 +30,7 @@ namespace Store.ViewModels.Product
         [ObservableProperty] private string moTaSP;
         [ObservableProperty] private string hinhAnhDuongDan;
         [ObservableProperty] private Bitmap hinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
+        
         public ObservableCollection<string> DanhSachLoaiSP { get; } = new()
         {
            "Quần ngắn",
@@ -69,9 +71,11 @@ namespace Store.ViewModels.Product
                     IsDelete = 0
                 };
                 ProductService.InsertProduct(sanPham);
+                
                 // Sau khi thêm thành công
                 WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Insert"));
                 System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm: {TenSP}");
+                
                 // Reset form
                 TenSP = "";
                 GiaSP = 0;
@@ -83,7 +87,9 @@ namespace Store.ViewModels.Product
                 HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
                 MaSP = ProductService.GenerateNewProductID();
 
-
+                //Đóng cửa sổ sau khi thêm thành công
+                var window = GetActiveWindow();
+                window?.Close();
             }
             catch (Exception ex)
             {
