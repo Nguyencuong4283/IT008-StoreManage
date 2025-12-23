@@ -77,11 +77,14 @@
                 Padding="20"
                 VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="12">
-                    <!-- Hiển thị danh sách nhập kho -->
+                    <!--  Hiển thị danh sách nhập kho  -->
                     <ItemsControl ItemsSource="{Binding Imports}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border BoxShadow="0 2 8 0 #20000000" Classes="card" Margin="0,0,0,12">
+                                <Border
+                                    BoxShadow="0 2 8 0 #20000000"
+                                    Classes="card"
+                                    Margin="0,0,0,12">
                                     <Grid ColumnDefinitions="Auto,*,Auto,Auto">
                                         <Border
                                             Background="{DynamicResource BgHover}"
@@ -149,14 +152,17 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <!-- Hiển thị khi không có dữ liệu -->
+                    <!--  Hiển thị khi không có dữ liệu  -->
                     <Border
                         Background="{DynamicResource BgCard}"
                         CornerRadius="12"
                         IsVisible="{Binding !Imports.Count}"
                         Margin="0,20,0,0"
                         Padding="40">
-                        <StackPanel HorizontalAlignment="Center" Spacing="15">
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Margin="20,0"
+                            Spacing="15">
                             <TextBlock
                                 FontSize="64"
                                 HorizontalAlignment="Center"
@@ -175,6 +181,7 @@
                             <Button
                                 Classes="primary"
                                 Command="{Binding CreateImportCommand}"
+                                HorizontalAlignment="Center"
                                 Margin="0,10,0,0">
                                 + Nhập kho mới
                             </Button>

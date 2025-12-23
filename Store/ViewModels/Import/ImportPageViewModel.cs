@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Avalonia.Controls.Notifications;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -20,6 +21,8 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     [ObservableProperty] private string searchKeyword;
     [ObservableProperty] private string selectedFilter = "Tất cả";
     private List<Models.Import> allImports = new();
+    
+    public WindowNotificationManager? NotificationManager { get; set; }
 
     public ObservableCollection<string> FilterList { get; } = new()
     {
@@ -39,6 +42,11 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     {
         Debug.WriteLine($"[ImportPageViewModel] Nhận message: Import {message.Value}");
         Dispatcher.UIThread.Post(() => { LoadImports(); });
+        
+        if(message.Value == "Created")
+        {
+            NotificationManager?.Show("Thêm phiếu nhập kho thành công!", NotificationType.Success);
+        }
     }
 
     private void LoadImports()

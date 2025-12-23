@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Controls.Notifications;
 
 namespace Store.ViewModels.Auth
 {
@@ -33,6 +34,9 @@ namespace Store.ViewModels.Auth
         [ObservableProperty] private string gioiTinh;
         [ObservableProperty] private string chucVu;
         User NV { get; set; }
+        
+        public WindowNotificationManager? NotificationManager { get; set; }
+        
         public ObservableCollection<string> DanhSachChucVu { get; } = new()
         {
            "Nhân Viên Bán Hàng",
@@ -41,9 +45,7 @@ namespace Store.ViewModels.Auth
         public Window? ParentWindow { get; set; }
 
         // Constructor mặc định cho XAML designer
-        public EditAccountWindowViewModel()
-        {
-        }
+        public EditAccountWindowViewModel() { }
 
         public EditAccountWindowViewModel(User user)
         {
@@ -83,7 +85,7 @@ namespace Store.ViewModels.Auth
 
 
         [RelayCommand]
-        private void DangKyButton()
+        private async Task DangKyButton()
         {
             try
             {
@@ -116,12 +118,20 @@ namespace Store.ViewModels.Auth
                 UserService.UpdateUser(user, updatePassword: false);
 
                 System.Diagnostics.Debug.WriteLine($"✅ Đã tạo cập nhật  thành công: {HoTen}");
+                
+                NotificationManager?.Show("✅ Cập nhật tài khoản thành công!", NotificationType.Success);
+                
+                WeakReferenceMessenger.Default.Send(new UserChangeMessage("Insert"));
+                
+                await Task.Delay(1000); // hiện thông báo thành công rồi đóng
 
                 ParentWindow?.Close();
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"❌ Lỗi khi cập nhật User: {ex.Message}\n{ex.StackTrace}");
+                
+                NotificationManager?.Show("Cập nhật tài khoản không thành công", NotificationType.Error);
             }
         }
 
@@ -195,9 +205,15 @@ namespace Store.ViewModels.Auth
                     NV.IsDelete = 1;
                     UserService.UpdateUser(NV);
                     System.Diagnostics.Debug.WriteLine($"✅ Đã xóa nhân viên: {_maNV}");
+                    
+                    NotificationManager?.Show("✅ Xóa nhân viên thành công!", NotificationType.Success);
 
                     // Gửi message
                     WeakReferenceMessenger.Default.Send(new NhanVienChangedMessage(_maNV));
+                    
+                    // Chờ một chút để người dùng thấy thông báo
+                    await Task.Delay(1000);
+                    
                     // Đóng window sau khi xóa
                     var closeWindow = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
                     closeWindow?.Close();
@@ -206,6 +222,8 @@ namespace Store.ViewModels.Auth
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"❌ Lỗi khi xóa nhân viên: {ex.Message}");
+                
+                NotificationManager?.Show("Xóa nhân viên không thành công", NotificationType.Error);
             }
         }
 

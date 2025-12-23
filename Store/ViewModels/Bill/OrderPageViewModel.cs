@@ -26,8 +26,7 @@ public partial class OrderPageViewModel : ViewModelBase,
     [ObservableProperty] private DateTime  ngayLapHD;
     [ObservableProperty] private decimal tongTienHD;
     
-    [ObservableProperty]
-    private ObservableCollection<HoaDon> hoaDons = new();
+    [ObservableProperty] private ObservableCollection<HoaDon> hoaDons = new();
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
     { "Tất cả",
      "TenKH",
