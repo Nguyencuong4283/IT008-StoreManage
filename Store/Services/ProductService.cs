@@ -246,6 +246,32 @@ namespace Store.Services
             }
         }
 
+        public static void TruSoLuongSanPham(string maSP, int soLuongTru)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+        UPDATE SanPham
+        SET SoLuongSP = SoLuongSP - $SoLuongTru
+        WHERE MaSP = $MaSP
+        AND SoLuongSP >= $SoLuongTru";
+
+                cmd.Parameters.AddWithValue("$SoLuongTru", soLuongTru);
+                cmd.Parameters.AddWithValue("$MaSP", maSP);
+
+                int rows = cmd.ExecuteNonQuery();
+                if (rows == 0)
+                {
+                    throw new Exception("Số lượng sản phẩm không đủ hoặc mã sản phẩm không tồn tại");
+                }
+            }
+        }
+
+
+
         // Delete
         public static void DeleteProduct(string maSP)
         {

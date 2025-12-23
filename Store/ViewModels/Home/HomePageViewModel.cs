@@ -30,6 +30,7 @@ public partial class HomePageViewModel : ViewModelBase,
     [ObservableProperty] private string tenKH;
     [ObservableProperty] private DateTime ngayLapHD;
     [ObservableProperty] private decimal tongTienHD;
+    [ObservableProperty] private double isIncrease;
     [ObservableProperty]
     private ObservableCollection<HoaDon> hoaDons = new();
     public HomePageViewModel()
@@ -77,6 +78,8 @@ public partial class HomePageViewModel : ViewModelBase,
                 SoSanPham = ProductService.CountProduct();
                 SoHoaDon = OrderService.CountOrder();
                 DoanhThuHomNay = OrderService.GetTodayToTalIncome();
+                isIncrease = GetIncrease();
+
             });
         }
         catch (Exception ex)
@@ -84,7 +87,28 @@ public partial class HomePageViewModel : ViewModelBase,
             System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Lỗi load statistics: {ex.Message}");
         }
     }
-    
+    private double GetIncrease()
+    {
+        try
+        {
+            double today = IncomeService.GetTodayIncome();
+            double yesterday = IncomeService.GetYesterdayIncome();
+
+            if (yesterday == 0)
+                return 0;
+
+            // Tính % tăng/giảm và làm tròn 2 chữ số thập phân
+            return Math.Round(((today - yesterday) / yesterday) * 100, 2);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(
+                $"[HomePageViewModel] Lỗi tính toán tăng trưởng: {ex.Message}"
+            );
+            return 0;
+        }
+    }
+
     [RelayCommand]
     private void CreateOrderButton()
     {

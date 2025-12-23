@@ -7,6 +7,9 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <LangVersion>latest</LangVersion>
+        <!-- Trimming configuration -->
+        <TrimmerDefaultAction>link</TrimmerDefaultAction>
+        <TrimMode>partial</TrimMode>
     </PropertyGroup>
 
     <ItemGroup>
@@ -73,5 +76,10 @@
       <Folder Include="Views\Report\" />
       <Folder Include="Views\Setting\" />
       <Folder Include="Views\Product\" />
+    </ItemGroup>
+
+    <!-- Preserve Views and ViewModels from trimming -->
+    <ItemGroup>
+      <TrimmerRootAssembly Include="Store" />
     </ItemGroup>
 </Project>

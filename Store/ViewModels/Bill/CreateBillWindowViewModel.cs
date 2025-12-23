@@ -150,6 +150,8 @@ namespace Store.ViewModels.Bill
                 foreach (var chiTiet in ChiTietHoaDons)
                 {
                     DetailOrderService.InsertOderDetail(chiTiet);
+                    
+                    ProductService.TruSoLuongSanPham(chiTiet.MaSP, chiTiet.SoLuong);
                 }
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã lưu {ChiTietHoaDons.Count} chi tiết hóa đơn");
                 
@@ -164,6 +166,7 @@ namespace Store.ViewModels.Bill
                 // Gửi message cập nhật
                 WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage(MaHD));
                 WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(KhachHangDuocChon.MaKH));
+                WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Updated"));
 
                 // Đóng window sau khi xóa
                 ParentWindow?.Close();
