@@ -3,6 +3,7 @@
     Height="800"
     SystemDecorations="None"
     Title="EditAccountWindowView"
+    TransparencyLevelHint="transparent"
     Width="1200"
     WindowStartupLocation="CenterScreen"
     d:DesignHeight="800"
