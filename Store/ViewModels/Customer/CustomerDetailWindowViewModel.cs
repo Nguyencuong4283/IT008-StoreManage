@@ -28,9 +28,16 @@ namespace Store.ViewModels.Customer
 
         public CustomerDetailWindowViewModel() { }
         KhachHang KH { get; set; }
+
       
+        public void SetKhachHang(KhachHang khachhang)
+        {
+            KH = khachhang;
+        }
+
         public CustomerDetailWindowViewModel(KhachHang khachhang)
         {
+          
            if (khachhang != null)
            {
                MaKH = khachhang.MaKH;

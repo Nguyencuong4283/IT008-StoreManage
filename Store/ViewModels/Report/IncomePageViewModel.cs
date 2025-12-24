@@ -13,8 +13,8 @@ namespace Store.ViewModels.Report;
 
 public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChangedMessage>
 {
-    [ObservableProperty] private int _totalOrders;
-    [ObservableProperty] private double _totalIncome;
+    [ObservableProperty] private int totalOrders;
+    [ObservableProperty] private double totalIncome;
 
     int _currentYear = DateTime.Now.Year;
     
@@ -81,21 +81,21 @@ public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChang
     {
         System.Diagnostics.Debug.WriteLine($"[IncomePageViewModel] Nhận message: HoaDon {message}");
         LoadData(_currentYear);
-        OnTotalIncomeChanged(_totalIncome);
-        OnTotalOrdersChanged(_totalOrders);
+        OnTotalIncomeChanged(totalIncome);
+        OnTotalOrdersChanged(totalOrders);
     }
     
     //===== Hiển thị tổng thu nhập hiện tại =====//
     partial void OnTotalIncomeChanged(double value)
     {
         var income = IncomeService.Monthly_Stat(_currentYear);
-        _totalIncome = (double)income.TotalIncome;
+        totalIncome = (double)income.TotalIncome;
     }
     
     //===== Hiển thị tổng số đơn hàng đã thanh toán =====//
     partial void OnTotalOrdersChanged(int value)
     {
         var income = IncomeService.Monthly_Stat(_currentYear);
-        _totalOrders = income.TotalOrders;
+        totalOrders = income.TotalOrders;
     }
 }

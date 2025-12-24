@@ -134,6 +134,8 @@ namespace Store.ViewModels.Bill
                 foreach (var chiTiet in ChiTietHoaDons)
                 {
                     DetailOrderService.InsertOderDetail(chiTiet);
+                    
+                    ProductService.TruSoLuongSanPham(chiTiet.MaSP, chiTiet.SoLuong);
                 }
 
                 System.Diagnostics.Debug.WriteLine($"[ThanhToan] Đã lưu {ChiTietHoaDons.Count} chi tiết hóa đơn");
@@ -154,8 +156,13 @@ namespace Store.ViewModels.Bill
                 // Bước 4: Đánh dấu đã thanh toán và xóa nháp
                 isHoaDonCreated = true;
                 DraftBillManager.ClearDraft();
-                
-                // Đóng window sau khi xóa
+
+                // Gửi message cập nhật
+                WeakReferenceMessenger.Default.Send(new HoaDonChangedMessage(MaHD));
+                WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(KhachHangDuocChon.MaKH));
+                WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Updated"));
+
+
                 ParentWindow?.Close();
             }
             catch (Exception ex)

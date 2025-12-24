@@ -1,12 +1,17 @@
 using Avalonia.Controls;
+using Store.Models;
+using Store.ViewModels.Bill;
+using Store.ViewModels.Customer;
+using Store.ViewModels.Import;
 using Store.Views;
 using Store.Views.Auth;
 using Store.Views.Bill;
 using Store.Views.Customer;
-using Store.Views.Product;
 using Store.Views.Import;
 using Store.Views.Manager;
+using Store.Views.Product;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace Store.Helpers
 {
@@ -37,7 +42,71 @@ namespace Store.Helpers
         {
             ShowSingletonWindow("CreateImport", () => new CreateImportWindowView());
         }
+        public static void ShowBillDetailWindow(HoaDon hoaDon)
+        {
+            const string key = "BillDetailWindow";
 
+            if (_openWindows.TryGetValue(key, out var existingWindow))
+            {
+                if (existingWindow.DataContext is BillDetailWindowViewModel vm)
+                {
+                    vm.SetHoaDon(hoaDon); // cập nhật dữ liệu mới
+                }
+
+                existingWindow.Activate();
+                return;
+            }
+
+            var window = new BillDetailWindowView
+            {
+                DataContext = new BillDetailWindowViewModel(hoaDon)
+            };
+
+            _openWindows[key] = window;
+
+            window.Closed += (_, __) => _openWindows.Remove(key);
+            window.Show();
+        }
+        public static void ShowCustomerDetailWindow(KhachHang khachHang)
+        {
+            const string key = "CustomerDetailWindow";
+            if (_openWindows.TryGetValue(key, out var existingWindow))
+            {
+                if (existingWindow.DataContext is CustomerDetailWindowViewModel vm)
+                {
+                    vm.SetKhachHang(khachHang); // cập nhật dữ liệu mới
+                }
+                existingWindow.Activate();
+                return;
+            }
+            var window = new CustomerDetailWindowView
+            {
+                DataContext = new CustomerDetailWindowViewModel(khachHang)
+            };
+            _openWindows[key] = window;
+            window.Closed += (_, __) => _openWindows.Remove(key);
+            window.Show();
+        }
+        public static void ShowImportDetailWindow(Import phieuNhap)
+        {
+            const string key = "ImportDetailWindow";
+            if (_openWindows.TryGetValue(key, out var existingWindow))
+            {
+                if (existingWindow.DataContext is ImportDetailWindowViewModel vm)
+                {
+                    vm.SetImport(phieuNhap); // cập nhật dữ liệu mới
+                }
+                existingWindow.Activate();
+                return;
+            }
+            var window = new ImportDetailWindowView
+            {
+                DataContext = new ImportDetailWindowViewModel(phieuNhap)
+            };
+            _openWindows[key] = window;
+            window.Closed += (_, __) => _openWindows.Remove(key);
+            window.Show();
+        }
         private static void ShowSingletonWindow(string windowKey, System.Func<Window> createWindow)
         {
             // Kiểm tra xem cửa sổ đã mở chưa

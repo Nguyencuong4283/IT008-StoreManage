@@ -33,6 +33,8 @@ public partial class OrderPageViewModel : ViewModelBase,
      "NgayLapHD",
      "TongTienHD"
     };
+
+
     
 
     [ObservableProperty] private string searchKeyword;
@@ -72,11 +74,7 @@ public partial class OrderPageViewModel : ViewModelBase,
     private void ChiTietButton(HoaDon hoaDon)
     {
         if(hoaDon == null) return;
-        var detailWindow = new Store.Views.Bill.BillDetailWindowView
-        {
-            DataContext = new BillDetailWindowViewModel(hoaDon)
-        };
-        detailWindow.Show();
+        WindowManager.ShowBillDetailWindow(hoaDon);
 
     }
     //private void XemChiTietSanPham(SanPham sanPham)

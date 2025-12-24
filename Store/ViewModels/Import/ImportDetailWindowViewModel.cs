@@ -18,6 +18,11 @@ namespace Store.ViewModels.Import
         {
             // Constructor mặc định
         }
+        Store.Models.Import imp { get; set; }
+        public void SetImport(Store.Models.Import import)
+        {
+            imp = import;
+        }
 
         public ImportDetailWindowViewModel(Store.Models.Import import)
         {
@@ -36,7 +41,9 @@ namespace Store.ViewModels.Import
                 {
                     ChiTietNhapKho.Add(ct);
                 }
+               
             }
+            imp = import;
         }
     }
 }

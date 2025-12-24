@@ -94,4 +94,51 @@ public static class IncomeService
 
         return Ms;
     }
+
+    // Lấy tổng doanh thu hôm nay 
+    public static double GetTodayIncome()
+    {
+        double totalIncome = 0;
+
+        using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+
+            command.CommandText = @"
+        SELECT IFNULL(SUM(TongTienHD), 0)
+        FROM HoaDon
+        WHERE DATE(NgayLapHD) = DATE('now','localtime')
+        AND TrangThaiHD = 'Đã thanh toán'";
+
+            var result = command.ExecuteScalar();
+            totalIncome = result != null ? Convert.ToDouble(result) : 0;
+        }
+
+        return totalIncome;
+    }
+    // Lấy tổng doanh thu ngày trước
+    public static double GetYesterdayIncome()
+    {
+        double totalIncome = 0;
+
+        using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+
+            command.CommandText = @"
+        SELECT IFNULL(SUM(TongTienHD), 0)
+        FROM HoaDon
+        WHERE DATE(NgayLapHD) = DATE('now','-1 day','localtime')
+        AND TrangThaiHD = 'Đã thanh toán'";
+
+            var result = command.ExecuteScalar();
+            totalIncome = result != null ? Convert.ToDouble(result) : 0;
+        }
+
+        return totalIncome;
+    }
+
+
 }

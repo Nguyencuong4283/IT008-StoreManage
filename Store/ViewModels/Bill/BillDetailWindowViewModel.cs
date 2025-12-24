@@ -33,7 +33,20 @@ namespace Store.ViewModels.Bill
 
         [ObservableProperty]
         private decimal tongThanhTien;
+
+        private HoaDon _hoaDon;
+        public HoaDon HoaDon
+        {
+            get => _hoaDon;
+            set => SetProperty(ref _hoaDon, value);
+        }
+
        
+        public void SetHoaDon(HoaDon hoaDon)
+        {
+            HoaDon = hoaDon;
+        }
+
         [ObservableProperty]
         private ObservableCollection<ChiTiet_HoaDon> chiTietHoaDons = new();
 
@@ -43,6 +56,7 @@ namespace Store.ViewModels.Bill
         }
         public BillDetailWindowViewModel(HoaDon hoaDon)
         {
+            HoaDon = hoaDon;
             if (hoaDon != null)
             {
                 TenNhanVien = hoaDon.TenUser;
