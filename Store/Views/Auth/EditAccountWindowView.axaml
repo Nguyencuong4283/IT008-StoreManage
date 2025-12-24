@@ -1,9 +1,9 @@
 ﻿<Window
     Background="Transparent"
     Height="700"
+    Width="1000"
     SystemDecorations="None"
     Title="EditAccountWindowView"
-    Width="1000"
     WindowStartupLocation="CenterScreen"
     d:DesignHeight="700"
     d:DesignWidth="1000"

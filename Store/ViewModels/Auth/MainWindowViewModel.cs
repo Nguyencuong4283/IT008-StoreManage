@@ -120,14 +120,4 @@ public partial class MainWindowViewModel : ViewModelBase
         var forgotPasswordView = new Store.Views.Auth.ForgotPasswordView();
         forgotPasswordView.Show();
     }
-    [RelayCommand]
-    private void AdminOpenButton()
-    {
-        var adminWindow = new AdminWindowView();
-        var adminVM = new AdminWindowViewModel();
-        adminWindow.DataContext = adminVM;
-        adminWindow.Show();
-
-    }
-
 }

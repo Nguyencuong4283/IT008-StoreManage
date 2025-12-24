@@ -3,6 +3,7 @@
     Height="800"
     SystemDecorations="None"
     Title="Tạo phiếu nhập kho"
+    TransparencyLevelHint="transparent"
     Width="700"
     WindowStartupLocation="CenterScreen"
     d:DesignHeight="800"
@@ -21,7 +22,7 @@
         BorderBrush="{DynamicResource BorderColor}"
         BorderThickness="2"
         BoxShadow="0 10 40 5 #40000000"
-         ClipToBounds="True"
+        ClipToBounds="True"
         CornerRadius="20">
 
         <Grid>
@@ -39,8 +40,7 @@
             <Border
                 Background="{DynamicResource BgCard}"
                 BoxShadow="0 8 32 0 #20000000"
-                CornerRadius="16"
-              >
+                CornerRadius="16">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid Margin="40" RowDefinitions="Auto,Auto,Auto,Auto">
 
@@ -75,7 +75,7 @@
                                         Classes="modern-input"
                                         Text="{Binding NhaCungCap, Mode=TwoWay}"
                                         Watermark="Nhập tên nhà cung cấp">
-                                         <Interaction.Behaviors>
+                                        <Interaction.Behaviors>
                                             <FocusOnAttachedBehavior />
                                         </Interaction.Behaviors>
                                     </TextBox>
@@ -229,23 +229,23 @@
                                     <Button
                                         Classes="primary"
                                         Command="{Binding ThemSanPhamCommand}"
-                                         FontSize="11"
+                                        FontSize="11"
                                         Width="80">
                                         + Thêm
                                     </Button>
                                     <Button
                                         Classes="danger"
                                         Command="{Binding XoaChiTietCommand}"
-                                        IsTabStop="False"
                                         FontSize="11"
+                                        IsTabStop="False"
                                         Width="80">
                                         🗑️ Xóa
                                     </Button>
                                     <Button
                                         Classes="primary"
                                         Command="{Binding TaoPhieuNhapCommand}"
-                                        IsTabStop="False"
                                         FontSize="11"
+                                        IsTabStop="False"
                                         Width="110">
                                         ✓ Tạo phiếu
                                     </Button>

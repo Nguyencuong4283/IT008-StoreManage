@@ -1,4 +1,5 @@
 using System;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using Avalonia.Interactivity;
@@ -29,7 +30,7 @@ public partial class AccountSettingPageView : UserControl
             var NotificationManager = new WindowNotificationManager(topLevel)
             {
                 Position = NotificationPosition.TopCenter,
-                MaxItems = 1
+                MaxItems = 1,
             };
             
             if (DataContext is AccountSettingPageViewModel vm)
