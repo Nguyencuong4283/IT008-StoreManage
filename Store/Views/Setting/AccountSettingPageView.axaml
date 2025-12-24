@@ -94,7 +94,7 @@
                     </Border>
 
                     <Border BoxShadow="0 2 8 0 #20000000" Classes="card">
-                        <StackPanel Spacing="15">
+                        <StackPanel Margin="0,0,0,70" Spacing="15">
                             <TextBlock
                                 Classes="subheader"
                                 Foreground="{DynamicResource TextPrimary}"
@@ -133,15 +133,6 @@
                             </Button>
                         </StackPanel>
                     </Border>
-
-                    <StackPanel
-                        HorizontalAlignment="Right"
-                        Margin="0,0,0,50"
-                        Orientation="Horizontal"
-                        Spacing="15">
-                        <Button Classes="secondary" Padding="20,12">Hủy</Button>
-                        <Button Classes="primary" Padding="20,12">💾 Lưu thay đổi</Button>
-                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

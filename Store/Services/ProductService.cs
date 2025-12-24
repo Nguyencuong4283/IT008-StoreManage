@@ -9,7 +9,7 @@ using Avalonia.Media.Imaging;
 
 namespace Store.Services
 {
-    public static class ProductService 
+    public static class ProductService
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
@@ -24,12 +24,12 @@ namespace Store.Services
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
-                
+
                 // Check if table exists and needs migration
                 var checkCmd = connection.CreateCommand();
                 checkCmd.CommandText = "SELECT sql FROM sqlite_master WHERE type='table' AND name='SanPham'";
                 var existingSchema = checkCmd.ExecuteScalar()?.ToString();
-                
+
                 if (!string.IsNullOrEmpty(existingSchema) && existingSchema.Contains("HinhAnhDuongDan TEXT NOT NULL"))
                 {
                     // Migrate: recreate table without NOT NULL constraint on HinhAnhDuongDan
@@ -83,6 +83,7 @@ namespace Store.Services
                 }
             }
         }
+
         //CRUD
         //Create
         public static void InsertProduct(SanPham sp)
@@ -119,7 +120,8 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan FROM SanPham";
+                cmd.CommandText =
+                    "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan FROM SanPham";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -144,17 +146,22 @@ namespace Store.Services
                                 if (File.Exists(imagePath))
                                     sp.HinhAnhSP = new Bitmap(imagePath);
                             }
-                            catch { }
+                            catch
+                            {
+                            }
                         }
+
                         if (MaSP == sp.MaSP)
                         {
                             return sp;
                         }
                     }
+
                     return null;
                 }
             }
         }
+
         //Đếm số lượng sản phẩm
         public static int CountProduct()
         {
@@ -167,6 +174,7 @@ namespace Store.Services
                 return Convert.ToInt32(result);
             }
         }
+
         //Read All
         public static List<SanPham> GetAllProduct()
         {
@@ -176,7 +184,8 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan, IsDelete FROM SanPham";
+                cmd.CommandText =
+                    "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan, IsDelete FROM SanPham";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -192,7 +201,6 @@ namespace Store.Services
                             KichThuocSP = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             MoTaSP = reader.IsDBNull(6) ? "" : reader.GetString(6),
                             IsDelete = reader.IsDBNull(8) ? 0 : reader.GetInt32(8)
-
                         };
 
                         if (!reader.IsDBNull(7))
@@ -203,8 +211,11 @@ namespace Store.Services
                                 if (File.Exists(imagePath))
                                     sp.HinhAnhSP = new Bitmap(imagePath);
                             }
-                            catch { }
+                            catch
+                            {
+                            }
                         }
+
                         if (sp.IsDelete == 0)
                         {
                             sanPhams.Add(sp);
@@ -215,6 +226,7 @@ namespace Store.Services
 
             return sanPhams;
         }
+
         //Update
         public static void UpdateProduct(SanPham sp)
         {
@@ -271,7 +283,6 @@ namespace Store.Services
         }
 
 
-
         // Delete
         public static void DeleteProduct(string maSP)
         {
@@ -284,6 +295,7 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
+
         //Tạo MaSP
         public static string GenerateNewProductID()
         {
@@ -346,5 +358,23 @@ namespace Store.Services
         //
         //     return sanPhams;
         // }
+
+        //===== Cập nhật số lượng sản phẩm khi có phát sinh nhập kho =====//
+        public static void UpdateProductQuantity(string maSP, int soLuongNhap)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                UPDATE SanPham
+                SET SoLuongSP = SoLuongSP + $SoLuongNhap
+                WHERE MaSP = $MaSP";
+                cmd.Parameters.AddWithValue("$SoLuongNhap", soLuongNhap);
+                cmd.Parameters.AddWithValue("$MaSP", maSP);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

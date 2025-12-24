@@ -22,7 +22,7 @@
         BorderBrush="{DynamicResource BorderColor}"
         BorderThickness="2"
         BoxShadow="0 10 40 5 #40000000"
-         ClipToBounds="True"
+        ClipToBounds="True"
         CornerRadius="20">
 
         <Grid>
@@ -159,7 +159,6 @@
                                                 BorderThickness="0"
                                                 FontSize="15"
                                                 Foreground="{DynamicResource TextPrimary}"
-                                                Grid.Column="0"
                                                 Padding="12,10"
                                                 Text="{Binding SoLuong, Mode=TwoWay}"
                                                 VerticalContentAlignment="Center" />
@@ -187,16 +186,16 @@
                                     <Button
                                         Classes="danger"
                                         Command="{Binding XoaChiTietCommand}"
+                                        FontSize="11"
                                         IsTabStop="False"
-                                         FontSize="11"
                                         Width="80">
                                         🗑️ Xóa
                                     </Button>
                                     <Button
                                         Classes="primary"
                                         Command="{Binding ThanhToanCommand}"
+                                        FontSize="11"
                                         IsTabStop="False"
-                                         FontSize="11"
                                         Width="110">
                                         💳 Thanh toán
                                     </Button>

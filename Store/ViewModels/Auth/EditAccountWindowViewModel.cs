@@ -121,11 +121,19 @@ namespace Store.ViewModels.Auth
                 
                 NotificationManager?.Show("✅ Cập nhật tài khoản thành công!", NotificationType.Success);
                 
-                WeakReferenceMessenger.Default.Send(new UserChangeMessage("Insert"));
+                WeakReferenceMessenger.Default.Send(new AccountChangeMessage("Update"));
                 
-                await Task.Delay(1000); // hiện thông báo thành công rồi đóng
+                await Task.Delay(1000);
 
-                ParentWindow?.Close();
+                if (ParentWindow != null)
+                {
+                    ParentWindow.Close();
+                }
+                else
+                {
+                    var activeWindow = GetActiveWindow();
+                    activeWindow?.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -186,7 +194,7 @@ namespace Store.ViewModels.Auth
                 }
 
                 // Hiển thị dialog xác nhận
-                if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+                if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 {
                     var window = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
                     if (window != null)
@@ -206,13 +214,9 @@ namespace Store.ViewModels.Auth
                     UserService.UpdateUser(NV);
                     System.Diagnostics.Debug.WriteLine($"✅ Đã xóa nhân viên: {_maNV}");
                     
-                    NotificationManager?.Show("✅ Xóa nhân viên thành công!", NotificationType.Success);
-
                     // Gửi message
                     WeakReferenceMessenger.Default.Send(new NhanVienChangedMessage(_maNV));
-                    
-                    // Chờ một chút để người dùng thấy thông báo
-                    await Task.Delay(1000);
+                    WeakReferenceMessenger.Default.Send(new AccountChangeMessage("Delete"));
                     
                     // Đóng window sau khi xóa
                     var closeWindow = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
@@ -227,24 +231,24 @@ namespace Store.ViewModels.Auth
             }
         }
 
-        private async Task<bool> ShowConfirmDialog(Avalonia.Controls.Window owner, string title, string message)
+        private async Task<bool> ShowConfirmDialog(Window owner, string title, string message)
         {
-            var dialog = new Avalonia.Controls.Window
+            var dialog = new Window
             {
                 Title = title,
                 Width = 400,
                 Height = 180,
-                WindowStartupLocation = Avalonia.Controls.WindowStartupLocation.CenterOwner,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
                 CanResize = false
             };
 
-            var stackPanel = new Avalonia.Controls.StackPanel
+            var stackPanel = new StackPanel
             {
-                Margin = new Avalonia.Thickness(20),
+                Margin = new Thickness(20),
                 Spacing = 20
             };
 
-            var messageText = new Avalonia.Controls.TextBlock
+            var messageText = new TextBlock
             {
                 Text = message,
                 TextWrapping = Avalonia.Media.TextWrapping.Wrap,
@@ -252,7 +256,7 @@ namespace Store.ViewModels.Auth
 
             };
 
-            var buttonPanel = new Avalonia.Controls.StackPanel
+            var buttonPanel = new StackPanel
             {
                 Orientation = Avalonia.Layout.Orientation.Horizontal,
                 HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
@@ -261,7 +265,7 @@ namespace Store.ViewModels.Auth
 
             bool result = false;
 
-            var yesButton = new Avalonia.Controls.Button
+            var yesButton = new Button
             {
                 Content = "Có",
                 Width = 100,

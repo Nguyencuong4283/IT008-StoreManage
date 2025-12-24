@@ -86,6 +86,7 @@ namespace Store.ViewModels.Customer
 
                     // Gửi message
                     WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage(MaKH));
+                    WeakReferenceMessenger.Default.Send(new KhachHangChangedMessage("Delete"));
                     // Đóng window sau khi xóa
                     var closeWindow = desktop.Windows.FirstOrDefault(w => w.DataContext == this);
                     closeWindow?.Close();

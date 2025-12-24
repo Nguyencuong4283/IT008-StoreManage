@@ -11,6 +11,7 @@ using Store.Messages;
 using Store.Views;
 using System;
 using System.Collections.ObjectModel;
+using Avalonia.Controls.Notifications;
 using static Store.ViewModels.Auth.MainWindowViewModel;
 
 namespace Store.ViewModels.Setting;
@@ -26,6 +27,8 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
     [ObservableProperty] private Bitmap hinhAnh;
 
     private string _maDN;
+    
+    public WindowNotificationManager? NotificationManager { get; set; }
 
     public AccountSettingPageViewModel()
     {
@@ -81,5 +84,8 @@ public partial class AccountSettingPageViewModel : ViewModelBase,
             matKhauNow = "";
             matKhauNewConfirm = "";
         }
+        
+        NotificationManager?.Show("Đổi mật khẩu thành công!", NotificationType.Success);
+        
     }
 }

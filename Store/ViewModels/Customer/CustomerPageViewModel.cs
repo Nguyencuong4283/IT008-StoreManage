@@ -20,7 +20,7 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     [ObservableProperty] private string searchKeyword;
     [ObservableProperty] private string _selectedFilter = "Tất cả";
     private List<KhachHang> _allKhachHangs = new();
-    
+
     public WindowNotificationManager? NotificationManager { get; set; }
 
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
@@ -30,26 +30,29 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
         "Mã khách hàng",
         "Số điện thoại"
     };
-    
+
     public CustomerPageViewModel()
     {
         WeakReferenceMessenger.Default.Register<KhachHangChangedMessage>(this);
         LoadCustomer();
     }
+
     public void Receive(KhachHangChangedMessage message)
     {
         Debug.WriteLine($"[CustomerPageViewModel] Nhận message: KhachHang {message.Value}");
         // Đảm bảo cập nhật trên UI thread
-        Dispatcher.UIThread.Post(() =>
-        {
-            LoadCustomer();
-        });
+        Dispatcher.UIThread.Post(() => { LoadCustomer(); });
 
         if (message.Value == "Insert")
         {
             NotificationManager?.Show("Thêm khách hàng thành công!", NotificationType.Success);
         }
+        else if (message.Value == "Delete")
+        {
+            NotificationManager?.Show("Xóa khách hàng thành công!", NotificationType.Success);
+        }
     }
+
     private void LoadCustomer()
     {
         var list = CustomerService.GetAllCustomer();

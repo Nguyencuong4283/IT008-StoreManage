@@ -189,6 +189,7 @@ namespace Store.ViewModels.Import
                 
                 // Gửi message cập nhật
                 WeakReferenceMessenger.Default.Send(new ImportChangeMessage("Created"));
+                WeakReferenceMessenger.Default.Send(new SanPhamChangedMessage("Updated"));
 
                 // Đóng window
                 ParentWindow?.Close();

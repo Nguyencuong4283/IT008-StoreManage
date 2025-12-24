@@ -95,7 +95,7 @@ public static class IncomeService
         return Ms;
     }
 
-    // Lấy tổng doanh thu hôm nay 
+    //===== Lấy tổng doanh thu hôm nay =====//
     public static double GetTodayIncome()
     {
         double totalIncome = 0;
@@ -117,7 +117,8 @@ public static class IncomeService
 
         return totalIncome;
     }
-    // Lấy tổng doanh thu ngày trước
+
+    //===== Lấy tổng doanh thu ngày trước =====//
     public static double GetYesterdayIncome()
     {
         double totalIncome = 0;
@@ -139,6 +140,4 @@ public static class IncomeService
 
         return totalIncome;
     }
-
-
 }

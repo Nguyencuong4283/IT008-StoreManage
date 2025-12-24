@@ -136,7 +136,7 @@ namespace Store.ViewModels.Auth
                 await Task.Delay(1000);
                 
                 // Gửi message để thông báo tạo tài khoản thành công
-                WeakReferenceMessenger.Default.Send(new AccountChangeMessage("Inserted"));
+                WeakReferenceMessenger.Default.Send(new AccountChangeMessage("Insert"));
                 
                 // Đóng window sau khi tạo thành công
                 var window = GetActiveWindow();

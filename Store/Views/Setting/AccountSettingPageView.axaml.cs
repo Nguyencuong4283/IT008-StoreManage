@@ -1,6 +1,9 @@
-using Avalonia;
+using System;
 using Avalonia.Controls;
+using Avalonia.Controls.Notifications;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Store.ViewModels.Setting;
 
 namespace Store.Views.Setting;
 
@@ -9,16 +12,30 @@ public partial class AccountSettingPageView : UserControl
     public AccountSettingPageView()
     {
         InitializeComponent();
-      
     }
-    private void ComboBox_ActualThemeVariantChanged(object? sender, System.EventArgs e)
+    
+    private void InitializeComponent()
     {
+        AvaloniaXamlLoader.Load(this);
     }
 
-    private void ComboBox_ActualThemeVariantChanged_1(object? sender, System.EventArgs e)
+    protected override void OnLoaded(RoutedEventArgs e)
     {
+        base.OnLoaded(e);
+        
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel != null)
+        {
+            var NotificationManager = new WindowNotificationManager(topLevel)
+            {
+                Position = NotificationPosition.TopCenter,
+                MaxItems = 1
+            };
+            
+            if (DataContext is AccountSettingPageViewModel vm)
+            {
+                vm.NotificationManager = NotificationManager;
+            }
+        }
     }
-
-
-
 }

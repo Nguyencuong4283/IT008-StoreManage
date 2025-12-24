@@ -63,15 +63,6 @@
                             <Run Text="{Binding DoanhThuHomNay}" />
                             <Run Text=" ₫" />
                         </TextBlock>
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{DynamicResource Success}"
-                            >
-                            <Run>↗</Run>
-                            <Run Text="{Binding IsIncrease}" Foreground="Green"></Run>
-                            <Run>% so với hôm qua</Run>
-                        </TextBlock>
-
                     </StackPanel>
                 </Border>
 
@@ -286,7 +277,7 @@
 
                             <Button
                                 Classes="secondary"
-                                 Command="{Binding InsertImportButtonCommand}"
+                                Command="{Binding InsertImportButtonCommand}"
                                 HorizontalAlignment="Stretch"
                                 Padding="15">
                                 <StackPanel Orientation="Horizontal" Spacing="10">

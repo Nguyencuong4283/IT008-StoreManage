@@ -74,6 +74,11 @@ public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChang
             {
                 _values.Add(m);
             }
+            
+            var stats = IncomeService.Monthly_Stat(year);
+            
+            TotalOrders = stats.TotalOrders;
+            TotalIncome = stats.TotalIncome;
     }
     
     //===== Xử lý khi nhận message HoaDon thay đổi =====//
@@ -81,21 +86,5 @@ public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChang
     {
         System.Diagnostics.Debug.WriteLine($"[IncomePageViewModel] Nhận message: HoaDon {message}");
         LoadData(_currentYear);
-        OnTotalIncomeChanged(totalIncome);
-        OnTotalOrdersChanged(totalOrders);
-    }
-    
-    //===== Hiển thị tổng thu nhập hiện tại =====//
-    partial void OnTotalIncomeChanged(double value)
-    {
-        var income = IncomeService.Monthly_Stat(_currentYear);
-        totalIncome = (double)income.TotalIncome;
-    }
-    
-    //===== Hiển thị tổng số đơn hàng đã thanh toán =====//
-    partial void OnTotalOrdersChanged(int value)
-    {
-        var income = IncomeService.Monthly_Stat(_currentYear);
-        totalOrders = income.TotalOrders;
     }
 }

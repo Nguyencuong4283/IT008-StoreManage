@@ -58,11 +58,14 @@
 
                     <ComboBox
                         Classes="modern-combo"
+                        ItemsSource="{Binding DanhSachBoLoc}"
                         PlaceholderText="Bộ lọc"
+                        SelectedItem="{Binding SelectedFilter}"
                         Width="180" />
 
                     <TextBox
                         Classes="modern-input"
+                        Text="{Binding SearchKeyword}"
                         Watermark="🔍 Tìm kiếm nhân viên..."
                         Width="400" />
                 </StackPanel>
