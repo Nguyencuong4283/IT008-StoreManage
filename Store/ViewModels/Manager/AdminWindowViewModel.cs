@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.ViewModels.Customer;
 using Store.ViewModels.Home;
@@ -7,15 +8,15 @@ using Store.ViewModels.Report;
 using Store.ViewModels.Setting;
 using Store.ViewModels.Employee;
 using Store.ViewModels.Import;
+using Avalonia.Threading;
 
 namespace Store.ViewModels.Manager;
 
 public partial class AdminWindowViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private ViewModelBase _currentPage;
-
-
+    [ObservableProperty] private ViewModelBase _currentPage;
+    
+    [ObservableProperty] private string _currentTime = DateTime.Now.ToString("HH:mm:ss \n dd/MM/yyyy");
 
     private readonly HomePageViewModel _homePage = new();
     private readonly Bill.OrderPageViewModel _orderPage = new();
@@ -27,10 +28,7 @@ public partial class AdminWindowViewModel : ViewModelBase
     private readonly EmployeePageViewModel _employeePage = new();
     private readonly ImportPageViewModel _importPageView = new();
     private readonly AnalysePageViewModel _analysePageView = new();
-
-    public AdminWindowViewModel() => CurrentPage = _homePage;
-
-
+    
     [RelayCommand]
     private void GoHome() => CurrentPage = _homePage;
 
@@ -60,4 +58,22 @@ public partial class AdminWindowViewModel : ViewModelBase
 
     [RelayCommand]
     private void GoAnalyse() => CurrentPage = _analysePageView;
+    
+    public AdminWindowViewModel()
+    {
+        CurrentPage = _homePage;
+        Clock();
+    }
+    
+    private void Clock()
+    {
+        DispatcherTimer timer = new DispatcherTimer();
+        timer.Interval = TimeSpan.FromSeconds(1);
+        timer.Tick += (sender, e) =>
+        {
+            CurrentTime = DateTime.Now.ToString("HH:mm:ss \n dd/MM/yyyy");
+        };
+        timer.Start();
+    }
+    
 }

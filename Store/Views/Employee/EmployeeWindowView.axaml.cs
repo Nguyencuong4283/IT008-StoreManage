@@ -1,11 +1,9 @@
-using System.Linq;
-using Avalonia;
+using System;
+using Avalonia.Threading;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.VisualTree;
 using Avalonia.Markup.Xaml;
-using CommunityToolkit.Mvvm.ComponentModel;
 using Store.ViewModels.Employee;
 
 namespace Store.Views.Employee;
@@ -69,4 +67,5 @@ public partial class EmployeeWindowView : Window
                 : WindowState.Maximized;
         }
     }
+
 }
