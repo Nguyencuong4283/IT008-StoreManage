@@ -24,12 +24,31 @@ namespace Store.Services
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
+                
+                // Kiểm tra xem cột TongVon đã tồn tại chưa
+                var checkCmd = connection.CreateCommand();
+                checkCmd.CommandText = "PRAGMA table_info(HoaDon)";
+                bool hasTongVon = false;
+                
+                using (var reader = checkCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.GetString(1) == "TongVon")
+                        {
+                            hasTongVon = true;
+                            break;
+                        }
+                    }
+                }
+                
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
                 CREATE TABLE IF NOT EXISTS HoaDon (
                     MaHD TEXT PRIMARY KEY,
                     NgayLapHD TEXT NOT NULL,
                     TongTienHD REAL NOT NULL,
+                    TongVon REAL DEFAULT 0,
                     GiamGiaHD REAL DEFAULT 0,
                     MaKH TEXT NOT NULL,
                     MaUser TEXT NOT NULL,
@@ -39,6 +58,22 @@ namespace Store.Services
                     FOREIGN KEY (MaUser) REFERENCES Users(MaNV)
                 );";
                 cmd.ExecuteNonQuery();
+                
+                // Thêm cột TongVon nếu chưa có
+                if (!hasTongVon)
+                {
+                    var alterCmd = connection.CreateCommand();
+                    alterCmd.CommandText = "ALTER TABLE HoaDon ADD COLUMN TongVon REAL DEFAULT 0";
+                    try
+                    {
+                        alterCmd.ExecuteNonQuery();
+                        Console.WriteLine("Đã thêm cột TongVon vào bảng HoaDon");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Lỗi khi thêm cột TongVon: {ex.Message}");
+                    }
+                }
             }
         }
 
@@ -53,12 +88,13 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
             INSERT INTO HoaDon 
-            (MaHD,NgayLapHD, TongTienHD, GiamGiaHD, MaKH, MaUser, SoHD, TrangThaiHD)
-            VALUES ($MaHD, $NgayLapHD, $TongTienHD, $GiamGiaHD, $MaKH, $MaUser, $SoHD, $TrangThaiHD);
+            (MaHD, NgayLapHD, TongTienHD, TongVon, GiamGiaHD, MaKH, MaUser, SoHD, TrangThaiHD)
+            VALUES ($MaHD, $NgayLapHD, $TongTienHD, $TongVon, $GiamGiaHD, $MaKH, $MaUser, $SoHD, $TrangThaiHD);
         ";
                 cmd.Parameters.AddWithValue("$MaHD", hd.MaHD);
                 cmd.Parameters.AddWithValue("$NgayLapHD", hd.NgayLapHD.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("$TongTienHD", (double)hd.TongTienHD);
+                cmd.Parameters.AddWithValue("$TongVon", (double)hd.TongVon);
                 cmd.Parameters.AddWithValue("$GiamGiaHD", (double)hd.GiamGiaHD);
                 cmd.Parameters.AddWithValue("$MaKH", hd.MaKH);
                 cmd.Parameters.AddWithValue("$MaUser", hd.MaUser);
@@ -98,7 +134,7 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
                 SELECT 
-                    h.MaHD, h.NgayLapHD, h.TongTienHD, h.GiamGiaHD, 
+                    h.MaHD, h.NgayLapHD, h.TongTienHD, h.TongVon, h.GiamGiaHD, 
                     h.MaKH, h.MaUser, h.SoHD, h.TrangThaiHD,
                     k.TenKH, k.SDT, k.DiaChi, k.GioiTinh, k.Hang, k.GhiChu, k.TongMua,
                     u.HoTen as TenUser
@@ -116,24 +152,25 @@ namespace Store.Services
                             MaHD = reader.GetString(0),
                             NgayLapHD = DateTime.Parse(reader.GetString(1)),
                             TongTienHD = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2),
-                            GiamGiaHD = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
-                            MaKH = reader.GetString(4),
-                            MaUser = reader.GetString(5),
-                            SoHD = reader.GetInt32(6),
-                            TrangThaiHD = reader.GetString(7),
+                            TongVon = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
+                            GiamGiaHD = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4),
+                            MaKH = reader.GetString(5),
+                            MaUser = reader.GetString(6),
+                            SoHD = reader.GetInt32(7),
+                            TrangThaiHD = reader.GetString(8),
                             // Load thông tin KhachHang
-                            KhachHang = reader.IsDBNull(8) ? null : new KhachHang
+                            KhachHang = reader.IsDBNull(9) ? null : new KhachHang
                             {
-                                MaKH = reader.GetString(4),
-                                TenKH = reader.GetString(8),
-                                SDT = reader.IsDBNull(9) ? "" : reader.GetString(9),
-                                DiaChi = reader.IsDBNull(10) ? "" : reader.GetString(10),
-                                GioiTinh = reader.IsDBNull(11) ? "" : reader.GetString(11),
-                                Hang = reader.IsDBNull(12) ? "" : reader.GetString(12),
-                                GhiChu = reader.IsDBNull(13) ? "" : reader.GetString(13),
-                                TongMua = reader.IsDBNull(14) ? 0 : reader.GetDecimal(14)
+                                MaKH = reader.GetString(5),
+                                TenKH = reader.GetString(9),
+                                SDT = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                                DiaChi = reader.IsDBNull(11) ? "" : reader.GetString(11),
+                                GioiTinh = reader.IsDBNull(12) ? "" : reader.GetString(12),
+                                Hang = reader.IsDBNull(13) ? "" : reader.GetString(13),
+                                GhiChu = reader.IsDBNull(14) ? "" : reader.GetString(14),
+                                TongMua = reader.IsDBNull(15) ? 0 : reader.GetDecimal(15)
                             },
-                            TenUser = reader.IsDBNull(15) ? "" : reader.GetString(15)
+                            TenUser = reader.IsDBNull(16) ? "" : reader.GetString(16)
                         };
                         hoaDons.Add(hd);
                     }
@@ -152,7 +189,7 @@ namespace Store.Services
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
                 SELECT 
-                    h.MaHD, h.NgayLapHD, h.TongTienHD, h.GiamGiaHD, 
+                    h.MaHD, h.NgayLapHD, h.TongTienHD, h.TongVon, h.GiamGiaHD, 
                     h.MaKH, h.MaUser, h.SoHD, h.TrangThaiHD,
                     k.TenKH, k.SDT, k.DiaChi, k.GioiTinh, k.Hang, k.GhiChu, k.TongMua,
                     u.HoTen as TenUser
@@ -171,24 +208,25 @@ namespace Store.Services
                             MaHD = reader.GetString(0),
                             NgayLapHD = DateTime.Parse(reader.GetString(1)),
                             TongTienHD = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2),
-                            GiamGiaHD = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
-                            MaKH = reader.GetString(4),
-                            MaUser = reader.GetString(5),
-                            SoHD = reader.GetInt32(6),
-                            TrangThaiHD = reader.GetString(7),
+                            TongVon = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3),
+                            GiamGiaHD = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4),
+                            MaKH = reader.GetString(5),
+                            MaUser = reader.GetString(6),
+                            SoHD = reader.GetInt32(7),
+                            TrangThaiHD = reader.GetString(8),
                             // Load thông tin KhachHang
-                            KhachHang = reader.IsDBNull(8) ? null : new KhachHang
+                            KhachHang = reader.IsDBNull(9) ? null : new KhachHang
                             {
-                                MaKH = reader.GetString(4),
-                                TenKH = reader.GetString(8),
-                                SDT = reader.IsDBNull(9) ? "" : reader.GetString(9),
-                                DiaChi = reader.IsDBNull(10) ? "" : reader.GetString(10),
-                                GioiTinh = reader.IsDBNull(11) ? "" : reader.GetString(11),
-                                Hang = reader.IsDBNull(12) ? "" : reader.GetString(12),
-                                GhiChu = reader.IsDBNull(13) ? "" : reader.GetString(13),
-                                TongMua = reader.IsDBNull(14) ? 0 : reader.GetDecimal(14)
+                                MaKH = reader.GetString(5),
+                                TenKH = reader.GetString(9),
+                                SDT = reader.IsDBNull(10) ? "" : reader.GetString(10),
+                                DiaChi = reader.IsDBNull(11) ? "" : reader.GetString(11),
+                                GioiTinh = reader.IsDBNull(12) ? "" : reader.GetString(12),
+                                Hang = reader.IsDBNull(13) ? "" : reader.GetString(13),
+                                GhiChu = reader.IsDBNull(14) ? "" : reader.GetString(14),
+                                TongMua = reader.IsDBNull(15) ? 0 : reader.GetDecimal(15)
                             },
-                            TenUser = reader.IsDBNull(15) ? "" : reader.GetString(15)
+                            TenUser = reader.IsDBNull(16) ? "" : reader.GetString(16)
                         };
                     }
                 }
@@ -209,6 +247,7 @@ namespace Store.Services
                 UPDATE HoaDon SET
                     NgayLapHD = $NgayLapHD,
                     TongTienHD = $TongTienHD,
+                    TongVon = $TongVon,
                     GiamGiaHD = $GiamGiaHD,
                     MaKH = $MaKH,
                     MaUser = $MaUser,
@@ -218,6 +257,7 @@ namespace Store.Services
 
                 cmd.Parameters.AddWithValue("$NgayLapHD", hd.NgayLapHD.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("$TongTienHD", (double)hd.TongTienHD);
+                cmd.Parameters.AddWithValue("$TongVon", (double)hd.TongVon);
                 cmd.Parameters.AddWithValue("$GiamGiaHD", (double)hd.GiamGiaHD);
                 cmd.Parameters.AddWithValue("$MaKH", hd.MaKH);
                 cmd.Parameters.AddWithValue("$MaUser", hd.MaUser);
@@ -312,6 +352,64 @@ namespace Store.Services
                 var result = cmd.ExecuteScalar();
                 var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
                 System.Diagnostics.Debug.WriteLine($"[Service] GetTongTienThangNam() = {total}");
+                return total;
+            }
+        }
+
+        public static decimal GetToTalBenefit()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT IFNULL(SUM(TongTienHD - TongVon - GiamGiaHD), 0) 
+                    FROM HoaDon 
+                    WHERE TrangThaiHD = 'Đã thanh toán'";
+                var result = cmd.ExecuteScalar();
+                var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
+                System.Diagnostics.Debug.WriteLine($"[Service] GetToTalBenefit() = {total}");
+                return total;
+            }
+        }
+
+        // Lợi nhuận hôm nay
+        public static decimal GetTodayBenefit()
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT IFNULL(SUM(TongTienHD - TongVon - GiamGiaHD), 0) 
+                    FROM HoaDon 
+                    WHERE date(NgayLapHD) = date('now') 
+                    AND TrangThaiHD = 'Đã thanh toán'";
+                var result = cmd.ExecuteScalar();
+                var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
+                System.Diagnostics.Debug.WriteLine($"[Service] GetTodayBenefit() = {total}");
+                return total;
+            }
+        }
+
+        // Lợi nhuận theo tháng/năm
+        public static decimal GetBenefitByMonthYear(int thang, int nam)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT IFNULL(SUM(TongTienHD - TongVon - GiamGiaHD), 0) 
+                    FROM HoaDon 
+                    WHERE strftime('%m', NgayLapHD) = $thang 
+                    AND strftime('%Y', NgayLapHD) = $nam 
+                    AND TrangThaiHD = 'Đã thanh toán'";
+                cmd.Parameters.AddWithValue("$thang", thang.ToString("D2"));
+                cmd.Parameters.AddWithValue("$nam", nam.ToString());
+                var result = cmd.ExecuteScalar();
+                var total = result != DBNull.Value && result != null ? Convert.ToDecimal(result) : 0;
+                System.Diagnostics.Debug.WriteLine($"[Service] GetBenefitByMonthYear({thang}/{nam}) = {total}");
                 return total;
             }
         }

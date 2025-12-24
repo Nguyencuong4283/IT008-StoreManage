@@ -24,7 +24,6 @@ namespace Store.ViewModels.Product
         [ObservableProperty] private string maSP;
         [ObservableProperty] private string tenSP;
         [ObservableProperty] private decimal giaSP;
-        [ObservableProperty] private int soLuongSP = 1;
         [ObservableProperty] private string loaiSP = "Khác";
         [ObservableProperty] private string kichThuocSP = "M";
         [ObservableProperty] private string moTaSP;
@@ -63,7 +62,7 @@ namespace Store.ViewModels.Product
                     MaSP = MaSP,
                     TenSP = TenSP,
                     GiaSP = GiaSP,
-                    SoLuongSP = SoLuongSP,
+                    SoLuongSP = 0,
                     LoaiSP = LoaiSP,
                     KichThuocSP = KichThuocSP,
                     MoTaSP = MoTaSP,
@@ -79,7 +78,7 @@ namespace Store.ViewModels.Product
                 // Reset form
                 TenSP = "";
                 GiaSP = 0;
-                SoLuongSP = 0;
+                
                 LoaiSP = "";
                 KichThuocSP = "";
                 MoTaSP = "";
@@ -156,17 +155,6 @@ namespace Store.ViewModels.Product
                 GiaSP -= 1000;
         }
 
-        [RelayCommand]
-        private void IncreaseNumberOfProduct()
-        {
-            SoLuongSP++;
-        }
-
-        [RelayCommand]
-        private void DecreaseNumberOfProduct()
-        {
-            if (SoLuongSP > 1)
-                SoLuongSP--;
-        }
+       
     }
 }

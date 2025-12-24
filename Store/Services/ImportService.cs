@@ -107,9 +107,11 @@ public class ImportService
             var cmdUpdate = connection.CreateCommand();
             cmdUpdate.CommandText = @"
             UPDATE SanPham
-            SET SoLuongSP = SoLuongSP + $SL
+            SET SoLuongSP = SoLuongSP + $SL,
+                GiaNhap = $GiaNhap
             WHERE MaSP = $MaSP";
             cmdUpdate.Parameters.AddWithValue("$SL", ct.SoLuong);
+            cmdUpdate.Parameters.AddWithValue("$GiaNhap", ct.DonGia);
             cmdUpdate.Parameters.AddWithValue("$MaSP", ct.MaSP);
             cmdUpdate.ExecuteNonQuery();
         }
@@ -241,24 +243,43 @@ public class ImportService
         using (var connection = new SqliteConnection($"Data Source={dbPath}"))
         {
             connection.Open();
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = @"
-                SELECT MaNhapKho FROM Import
-                ORDER BY MaNhapKho DESC
-                LIMIT 1";
+            
+            string newId;
+            bool isUnique = false;
+            int attempts = 0;
+            
+            do
+            {
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT MaNhapKho FROM Import
+                    ORDER BY MaNhapKho DESC
+                    LIMIT 1";
 
-            var result = cmd.ExecuteScalar();
-            if (string.IsNullOrEmpty(result?.ToString()))
-            {
-                return "NK001";
-            }
-            else
-            {
-                var lastMaNK = result.ToString()!;
-                var lastNumber = int.Parse(lastMaNK.Substring(2));
-                return $"NK{(lastNumber + 1).ToString("D3")}";
-            }
+                var result = cmd.ExecuteScalar();
+                if (string.IsNullOrEmpty(result?.ToString()))
+                {
+                    newId = "NK001";
+                }
+                else
+                {
+                    var lastMaNK = result.ToString()!;
+                    var lastNumber = int.Parse(lastMaNK.Substring(2));
+                    newId = $"NK{(lastNumber + 1 + attempts).ToString("D3")}";
+                }
+                
+                // Kiểm tra xem ID có tồn tại không
+                var checkCmd = connection.CreateCommand();
+                checkCmd.CommandText = "SELECT COUNT(*) FROM Import WHERE MaNhapKho = $MaNK";
+                checkCmd.Parameters.AddWithValue("$MaNK", newId);
+                
+                var count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                isUnique = (count == 0);
+                attempts++;
+                
+            } while (!isUnique && attempts < 100); // Giới hạn số lần thử
+            
+            return newId;
         }
     }
-
 }

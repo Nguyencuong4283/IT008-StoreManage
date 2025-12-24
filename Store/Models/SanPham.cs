@@ -8,6 +8,8 @@ namespace Store.Models
         public string MaSP { get; set; }
         public string TenSP { get; set; } = string.Empty;
         public decimal GiaSP { get; set; }
+        public decimal GiaNhap { get; set; }
+
         public int SoLuongSP { get; set; }
         public string? HinhAnhDuongDan { get; set; } // 🔹 lưu đường dẫn ảnh trong CSDL
         public Bitmap? HinhAnhSP { get; set; }        // 🔹 dùng để hiển thị trên UI

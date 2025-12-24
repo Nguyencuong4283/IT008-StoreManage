@@ -186,33 +186,9 @@
                                         Foreground="{DynamicResource TextPrimary}"
                                         Grid.Column="0"
                                         Padding="12,10"
-                                        Text="{Binding SoLuongSP, Mode=TwoWay}"
-                                        VerticalContentAlignment="Center" />
-                                    <Button
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Command="{Binding IncreaseNumberOfProductCommand}"
-                                        Content="▲"
-                                        Cursor="Hand"
-                                        FontSize="12"
-                                        Foreground="{DynamicResource TextSecondary}"
-                                        Grid.Column="1"
-                                        Height="48"
-                                        VerticalContentAlignment="Center"
-                                        Width="35" />
-                                    <Button
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Command="{Binding DecreaseNumberOfProductCommand}"
-                                        Content="▼"
-                                        CornerRadius="0,8,8,0"
-                                        Cursor="Hand"
-                                        FontSize="12"
-                                        Foreground="{DynamicResource TextSecondary}"
-                                        Grid.Column="2"
-                                        Height="48"
-                                        VerticalContentAlignment="Center"
-                                        Width="35" />
+                                        TextAlignment="Center"
+
+                                   >0</TextBox>
                                 </Grid>
                             </Border>
                         </StackPanel>

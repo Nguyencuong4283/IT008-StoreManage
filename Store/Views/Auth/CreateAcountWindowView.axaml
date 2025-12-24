@@ -1,13 +1,13 @@
 ﻿<Window
     Background="Transparent"
-    Height="800"
+    Height="700"
     SystemDecorations="None"
     Title="CreateAcountWindowView"
     TransparencyLevelHint="transparent"
-    Width="1200"
+    Width="1000"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="800"
-    d:DesignWidth="1200"
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
     mc:Ignorable="d"
     x:Class="Store.Views.Auth.CreateAcountWindowView"
     x:DataType="vm:CreateAcountWindowViewModel"
@@ -22,9 +22,12 @@
     </Window.DataContext>
     <Border
         Background="{DynamicResource BgCard}"
-        BoxShadow="0 8 32 0 #15000000"
-        CornerRadius="16"
-        Margin="70,0,70,50">
+         BorderBrush="{DynamicResource BorderColor}"
+        BorderThickness="2"
+        BoxShadow="0 10 40 5 #40000000"
+        ClipToBounds="True"
+        CornerRadius="20"
+       >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 
             <Grid RowDefinitions="50,*">
@@ -137,7 +140,7 @@
                                         ItemsSource="{Binding DanhSachGioiTinh}"
                                         PlaceholderText="Chọn giới tính"
                                         SelectedItem="{Binding GioiTinh, Mode=TwoWay}"
-                                        Width="300" />
+                                        Width="270" />
                                 </StackPanel>
                             </Grid>
 
@@ -148,7 +151,7 @@
                                         Classes="calendar"
                                         HorizontalAlignment="Left"
                                         SelectedDate="{Binding NgaySinh, Mode=TwoWay}"
-                                        Width="300" />
+                                        Width="270" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" Margin="8,0,0,0">

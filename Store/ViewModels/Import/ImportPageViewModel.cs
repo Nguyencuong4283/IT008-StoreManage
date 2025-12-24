@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Store.Messages;
 using Store.Models;
+using Store.Helpers;
 using Store.Services;
 using Store.Views;
 using Store.Views.Import;
@@ -121,8 +122,7 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     [RelayCommand]
     public void CreateImport()
     {
-        var createImportWindowView = new CreateImportWindowView();
-        createImportWindowView.Show();
+        WindowManager.ShowCreateImportWindow();
     }
 
     [RelayCommand]
@@ -130,9 +130,7 @@ public partial class ImportPageViewModel : ViewModelBase, IRecipient<ImportChang
     {
         if (import != null)
         {
-            var importDetailWindow = new ImportDetailWindowView();
-            importDetailWindow.DataContext = new ImportDetailWindowViewModel(import);
-            importDetailWindow.Show();
+            WindowManager.ShowImportDetailWindow(import);
         }
     }
 

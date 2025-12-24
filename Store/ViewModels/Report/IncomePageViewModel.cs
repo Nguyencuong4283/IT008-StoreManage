@@ -15,6 +15,7 @@ public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChang
 {
     [ObservableProperty] private int totalOrders;
     [ObservableProperty] private double totalIncome;
+    [ObservableProperty] private decimal  totalBenefit;
 
     int _currentYear = DateTime.Now.Year;
     
@@ -79,6 +80,7 @@ public partial class IncomePageViewModel : ViewModelBase, IRecipient<HoaDonChang
             
             TotalOrders = stats.TotalOrders;
             TotalIncome = stats.TotalIncome;
+            TotalBenefit = OrderService.GetToTalBenefit();
     }
     
     //===== Xử lý khi nhận message HoaDon thay đổi =====//

@@ -22,6 +22,8 @@ namespace Store.ViewModels.Product
         [ObservableProperty] private Bitmap hinhAnhSP;
         [ObservableProperty] private string tenSP;
         [ObservableProperty] private decimal giaSP;
+        [ObservableProperty] private decimal giaNhap;
+
         [ObservableProperty] private int soLuongSP;
         [ObservableProperty] private string maSP;
         [ObservableProperty] private string loaiSP;
@@ -33,7 +35,11 @@ namespace Store.ViewModels.Product
             // Constructor mặc định cho Design.DataContext
         }
         SanPham SP { get; set; }
-        
+        public void SetProduct(SanPham sanpham)
+        {
+            SP = sanpham;
+        }
+
         public ProductDetailWindowViewModel(SanPham sanPham)
         {
             if (sanPham != null)
@@ -41,6 +47,9 @@ namespace Store.ViewModels.Product
                 HinhAnhSP = sanPham.HinhAnhSP;
                 TenSP = sanPham.TenSP;
                 GiaSP = sanPham.GiaSP;
+
+                GiaNhap = sanPham.GiaNhap;
+
                 SoLuongSP = sanPham.SoLuongSP;
                 MaSP = sanPham.MaSP;
                 LoaiSP = sanPham.LoaiSP;
