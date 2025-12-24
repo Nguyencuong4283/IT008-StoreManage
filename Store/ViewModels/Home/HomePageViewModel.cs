@@ -148,6 +148,7 @@ public partial class HomePageViewModel : ViewModelBase,
         {
             System.Diagnostics.Debug.WriteLine($"[HomePageViewModel] Lỗi load hóa đơn: {ex.Message}\n{ex.StackTrace}");
         }
+
     }
 }
 /*using CommunityToolkit.Mvvm.ComponentModel;

@@ -22,6 +22,7 @@ namespace Store.ViewModels.Import
         [ObservableProperty] private int soLuong = 1;
         [ObservableProperty] private decimal donGia;
         [ObservableProperty] private decimal tongTien;
+        [ObservableProperty] private decimal donGiaNhap = 0;
 
         public Window? ParentWindow { get; set; }
 
@@ -52,6 +53,30 @@ namespace Store.ViewModels.Import
             {
                 DonGia = value.GiaSP;
             }
+        }
+
+        [RelayCommand]
+        private void IncreasePrice()
+        {
+
+
+            if (SanPhamDuocChon == null)
+            {
+                System.Diagnostics.Debug.WriteLine("Chưa chọn sản phẩm");
+                return;
+            }
+            if (DonGiaNhap < SanPhamDuocChon.GiaSP - 1000)
+            {
+                DonGiaNhap += 1000;
+            }
+            
+        }
+
+        [RelayCommand]
+        private void DecreasePrice()
+        {
+            if (DonGiaNhap >= 2000)
+                DonGiaNhap -= 1000;
         }
 
         [RelayCommand]
@@ -93,7 +118,7 @@ namespace Store.ViewModels.Import
             try
             {
                 // Tính thành tiền
-                decimal thanhTien = DonGia * SoLuong;
+                decimal thanhTien = DonGiaNhap * SoLuong;
 
                 // Kiểm tra sản phẩm đã tồn tại trong chi tiết nhập kho chưa
                 var chiTietTonTai = ChiTietList.FirstOrDefault(ct => ct.MaSP == SanPhamDuocChon.MaSP);
@@ -102,7 +127,7 @@ namespace Store.ViewModels.Import
                 {
                     // Nếu đã có, cập nhật số lượng và thành tiền
                     chiTietTonTai.SoLuong += SoLuong;
-                    chiTietTonTai.DonGia = DonGia;
+                    chiTietTonTai.DonGia = DonGiaNhap;
                     chiTietTonTai.ThanhTien = chiTietTonTai.SoLuong * chiTietTonTai.DonGia;
                     
                     // Xóa và thêm lại để trigger UI update
@@ -120,7 +145,7 @@ namespace Store.ViewModels.Import
                         MaNK = MaNhapKho,
                         MaSP = SanPhamDuocChon.MaSP,
                         SoLuong = SoLuong,
-                        DonGia = DonGia,
+                        DonGia = DonGiaNhap,
                         ThanhTien = thanhTien,
                         SanPham = SanPhamDuocChon // Gán thông tin sản phẩm để hiển thị
                     };
@@ -134,6 +159,7 @@ namespace Store.ViewModels.Import
                 // Reset form
                 SoLuong = 1;
                 DonGia = 0;
+                DonGiaNhap = 0;
                 SanPhamDuocChon = null;
             }
             catch (Exception ex)
@@ -173,6 +199,15 @@ namespace Store.ViewModels.Import
             
             try
             {
+                // Tạo lại MaNhapKho để đảm bảo unique
+                MaNhapKho = ImportService.GenerateNewImportID();
+                
+                // Cập nhật MaNK cho tất cả chi tiết
+                foreach (var chiTiet in ChiTietList)
+                {
+                    chiTiet.MaNK = MaNhapKho;
+                }
+                
                 // Tạo phiếu nhập kho
                 var nk = new Models.Import
                 {

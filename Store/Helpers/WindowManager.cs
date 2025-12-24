@@ -3,9 +3,11 @@ using Store.Models;
 using Store.ViewModels.Bill;
 using Store.ViewModels.Customer;
 using Store.ViewModels.Import;
+using Store.ViewModels.Product;
 using Store.Views;
 using Store.Views.Auth;
 using Store.Views.Bill;
+using Store.Views.Product;
 using Store.Views.Customer;
 using Store.Views.Import;
 using Store.Views.Manager;
@@ -102,6 +104,26 @@ namespace Store.Helpers
             var window = new ImportDetailWindowView
             {
                 DataContext = new ImportDetailWindowViewModel(phieuNhap)
+            };
+            _openWindows[key] = window;
+            window.Closed += (_, __) => _openWindows.Remove(key);
+            window.Show();
+        }
+        public static void ShowProductDetailWindow(SanPham sp)
+        {
+            const string key = "ProductDetailWindow";
+            if (_openWindows.TryGetValue(key, out var existingWindow))
+            {
+                if (existingWindow.DataContext is ProductDetailWindowViewModel vm)
+                {
+                    vm.SetProduct(sp); // cập nhật dữ liệu mới
+                }
+                existingWindow.Activate();
+                return;
+            }
+            var window = new ProductDetailWindowView
+            {
+                DataContext = new ProductDetailWindowViewModel(sp)
             };
             _openWindows[key] = window;
             window.Closed += (_, __) => _openWindows.Remove(key);

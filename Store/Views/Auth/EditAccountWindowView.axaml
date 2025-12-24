@@ -1,12 +1,12 @@
 ﻿<Window
     Background="Transparent"
-    Height="800"
+    Height="700"
     SystemDecorations="None"
     Title="EditAccountWindowView"
-    Width="1200"
+    Width="1000"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="800"
-    d:DesignWidth="1200"
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
     mc:Ignorable="d"
     x:Class="Store.Views.Auth.EditAccountWindowView"
     x:DataType="vm:EditAccountWindowViewModel"
@@ -22,11 +22,12 @@
 
     <Border
         Background="{DynamicResource BgPage}"
-        BoxShadow="0 10 40 5 #30000000"
+       
+        BorderBrush="{DynamicResource BorderColor}"
+        BorderThickness="2"
+        BoxShadow="0 10 40 5 #40000000"
         ClipToBounds="True"
-        CornerRadius="16"
-        Height="800"
-        Width="1200">
+        CornerRadius="20">
 
         <Grid>
             <Button
@@ -43,7 +44,7 @@
                 Background="{DynamicResource BgCard}"
                 BoxShadow="0 8 32 0 #15000000"
                 CornerRadius="16"
-                Margin="70,50,70,50">
+               >
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid ColumnDefinitions="360,*" Margin="40">
@@ -110,7 +111,7 @@
                                         ItemsSource="{Binding DanhSachChucVu}"
                                         PlaceholderText="Chọn giới tính"
                                         SelectedItem="{Binding ChucVu, Mode=TwoWay}"
-                                        Width="300" />
+                                        Width="270" />
                                 </StackPanel>
                             </Grid>
 
@@ -139,7 +140,7 @@
                                         Classes="calendar"
                                         HorizontalAlignment="Left"
                                         SelectedDate="{Binding NgaySinh, Mode=TwoWay}"
-                                        Width="300" />
+                                        Width="270" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" Margin="8,0,0,0">
@@ -179,8 +180,8 @@
                                 HorizontalAlignment="Stretch">
                                 Cập nhật
                             </Button>
-                            <StackPanel
-                                Margin="0,30,0,0"
+                            <StackPanel 
+                                Margin="0,30,0,24"
                                 Orientation="Horizontal"
                                 Spacing="10"
                                 VerticalAlignment="Center">
@@ -190,7 +191,8 @@
                                     FontSize="16"
                                     Height="44"
                                     Padding="12,8"
-                                    Width="616">
+                                    Width="555"
+                                    >
                                     🗑️ Xóa
                                 </Button>
                             </StackPanel>

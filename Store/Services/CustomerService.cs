@@ -31,7 +31,7 @@ namespace Store.Services
                     GioiTinh TEXT NOT NULL,
                     DiaChi TEXT CHECK(DiaChi <> ''),
                     Hang TEXT,
-                    GhiChu TEXT,
+                    GhiChu TEXT NULL,
                     TongMua REAL,
                     IsDelete INTEGER DEFAULT 0
                 );";

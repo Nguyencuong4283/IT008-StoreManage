@@ -1,13 +1,13 @@
 ﻿<Window
     Background="Transparent"
-    Height="800"
+    Height="670"
     SystemDecorations="None"
     Title="Create Product"
     TransparencyLevelHint="transparent"
-    Width="650"
+    Width="530"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="800"
-    d:DesignWidth="650"
+    d:DesignHeight="670"
+    d:DesignWidth="530"
     mc:Ignorable="d"
     x:Class="Store.Views.Customer.CreateCustomerWindowView"
     x:DataType="vm:CreateCustomerWindowViewModel"
@@ -40,7 +40,7 @@
                 Background="{DynamicResource BgCard}"
                 BoxShadow="0 8 32 0 #20000000"
                 CornerRadius="16"
-                Margin="60,70,60,60"
+                
                 Padding="50,40">
                 <StackPanel>
                     <TextBlock

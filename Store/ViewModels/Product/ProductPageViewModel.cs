@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Store.Messages;
+using Store.Helpers;
 using Store.Models;
 using Store.Services;
 using Store.Views.Product;
@@ -82,19 +83,18 @@ public partial class ProductPageViewModel : ViewModelBase, IRecipient<SanPhamCha
     [RelayCommand]
     private void ThemSanPhamButton()
     {
-        CreateProductWindowView createProductWindowView = new();
-        createProductWindowView.Show();
+        WindowManager.ShowCreateProductWindow();
         LoadProduct();
     }
 
     [RelayCommand]
     private void XemChiTietSanPham(SanPham sanPham)
     {
-        var detailWindow = new ProductDetailWindowView
+        if (sanPham == null)
         {
-            DataContext = new ProductDetailWindowViewModel(sanPham)
-        };
-        detailWindow.Show();
+            return;
+        }
+        WindowManager.ShowProductDetailWindow(sanPham);
     }
 
     //===== Tìm kiếm và lọc sản phẩm =====//

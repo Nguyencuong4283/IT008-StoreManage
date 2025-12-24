@@ -73,8 +73,19 @@
                             FontWeight="Bold"
                             Foreground="{DynamicResource PrimaryColor}"
                             Margin="0,0,0,20">
+                            <Run FontSize="18" Text="Giá bán: "  />
                             <Run Text="{Binding GiaSP}" />
-                            <Run FontSize="18" Text=" ₫" />
+                            <Run FontSize="18" Text=" ₫    "  />
+                        </TextBlock>
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Foreground="red"
+                            Margin="0,0,0,20">
+                            <Run FontSize="14" Text="Giá nhập: "  />
+                            <Run Text="{Binding GiaNhap}" Foreground="Red"/>
+                            <Run FontSize="16" Text=" ₫"  />
+
                         </TextBlock>
 
                         <Separator

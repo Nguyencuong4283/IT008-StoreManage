@@ -30,6 +30,8 @@ namespace Store.ViewModels.Bill
 
     [ObservableProperty] private decimal tongThanhTien;
 
+        private decimal tongVon;
+
     public Window? ParentWindow { get; set; }
 
     [ObservableProperty] private string thoiGianHienTai = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -119,6 +121,7 @@ namespace Store.ViewModels.Bill
                 NgayLapHD = DateTime.Now,
                 TongTienHD = TongThanhTien,
                 GiamGiaHD = TongGiamGia,
+                TongVon = tongVon,
                 MaKH = KhachHangDuocChon.MaKH,
                 MaUser = NhanVienDuocChon.MaNV,
                 SoHD = SoHD,
@@ -354,9 +357,11 @@ namespace Store.ViewModels.Bill
         TongTriGia = ChiTietHoaDons.Sum(ct => ct.DonGia * ct.SoLuong);
         TongGiamGia = ChiTietHoaDons.Sum(ct => ct.DonGia * ct.SoLuong * ct.KhuyenMai / 100);
         TongThanhTien = ChiTietHoaDons.Sum(ct => ct.ThanhTien);
-    }
+        tongVon = ChiTietHoaDons.Sum(ct => ProductService.GetProduct(ct.MaSP).GiaNhap * ct.SoLuong);
 
-    [RelayCommand]
+        }
+
+        [RelayCommand]
     private void XoaChiTiet()
     {
         ChiTietHoaDons.Clear();

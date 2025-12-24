@@ -106,7 +106,7 @@
                             FontSize="28"
                             FontWeight="Bold"
                             Foreground="{DynamicResource Warning}"
-                            Text="0" />
+                            Text="{Binding TotalBenefit}"/>
                         <TextBlock
                             FontSize="16"
                             Foreground="{DynamicResource TextSecondary}"

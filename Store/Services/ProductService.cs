@@ -42,16 +42,17 @@ namespace Store.Services
                             MaSP TEXT PRIMARY KEY,
                             TenSP TEXT NOT NULL,
                             GiaSP REAL NOT NULL,
+                            GiaNhap REAL  NULL,
                             SoLuongSP INTEGER NOT NULL,
                             HinhAnhDuongDan TEXT,
                             KichThuocSP TEXT NOT NULL,
                             LoaiSP TEXT NOT NULL,
-                            MoTaSP TEXT,
+                            MoTaSP TEXT NULL,
                             IsDelete INTEGER DEFAULT 0
                         );
                         
-                        INSERT INTO SanPham_new (MaSP, TenSP, GiaSP, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete)
-                        SELECT MaSP, TenSP, GiaSP, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete
+                        INSERT INTO SanPham_new (MaSP, TenSP, GiaSP,GiaNhap, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete)
+                        SELECT MaSP, TenSP, GiaSP,GiaNhap, SoLuongSP, HinhAnhDuongDan, KichThuocSP, LoaiSP, MoTaSP, IsDelete
                         FROM SanPham;
                         
                         DROP TABLE SanPham;
@@ -72,11 +73,12 @@ namespace Store.Services
                         MaSP TEXT PRIMARY KEY,
                         TenSP TEXT NOT NULL,
                         GiaSP REAL NOT NULL,
+                        GiaNhap  REAL NULL,
                         SoLuongSP INTEGER NOT NULL,
                         HinhAnhDuongDan TEXT,
                         KichThuocSP TEXT NOT NULL,
                         LoaiSP TEXT NOT NULL,
-                        MoTaSP TEXT,
+                        MoTaSP TEXT NULL,
                         IsDelete INTEGER DEFAULT 0
                     );";
                     cmd.ExecuteNonQuery();
@@ -101,6 +103,7 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$MaSP", newMaSP);
                 cmd.Parameters.AddWithValue("$TenSP", sp.TenSP);
                 cmd.Parameters.AddWithValue("$GiaSP", (double)sp.GiaSP);
+                cmd.Parameters.AddWithValue("GiaNhap", (double)sp.GiaNhap);
                 cmd.Parameters.AddWithValue("$SoLuongSP", sp.SoLuongSP);
                 cmd.Parameters.AddWithValue("$HinhAnhDuongDan", sp.HinhAnhDuongDan ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("$KichThuocSP", sp.KichThuocSP);
@@ -121,11 +124,13 @@ namespace Store.Services
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText =
-                    "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan FROM SanPham";
+                    "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan, GiaNhap FROM SanPham WHERE MaSP = $MaSP";
+                
+                cmd.Parameters.AddWithValue("$MaSP", MaSP);
 
                 using (var reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read())
+                    if (reader.Read())
                     {
                         var sp = new SanPham
                         {
@@ -136,8 +141,11 @@ namespace Store.Services
                             LoaiSP = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             KichThuocSP = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             MoTaSP = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                            HinhAnhDuongDan = reader.IsDBNull(7) ? "" : reader.GetString(7),
+                            GiaNhap = reader.IsDBNull(8) ? 0 : reader.GetDecimal(8),
                         };
 
+                        // Xử lý hình ảnh
                         if (!reader.IsDBNull(7))
                         {
                             try
@@ -151,10 +159,7 @@ namespace Store.Services
                             }
                         }
 
-                        if (MaSP == sp.MaSP)
-                        {
-                            return sp;
-                        }
+                        return sp;
                     }
 
                     return null;
@@ -185,7 +190,7 @@ namespace Store.Services
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText =
-                    "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan, IsDelete FROM SanPham";
+                    "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan, IsDelete, GiaNhap FROM SanPham";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -200,7 +205,9 @@ namespace Store.Services
                             LoaiSP = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             KichThuocSP = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             MoTaSP = reader.IsDBNull(6) ? "" : reader.GetString(6),
-                            IsDelete = reader.IsDBNull(8) ? 0 : reader.GetInt32(8)
+                            HinhAnhDuongDan = reader.IsDBNull(7) ? "" : reader.GetString(7),
+                            IsDelete = reader.IsDBNull(8) ? 0 : reader.GetInt32(8),
+                            GiaNhap = reader.IsDBNull(9) ? 0 : reader.GetDecimal(9)
                         };
 
                         if (!reader.IsDBNull(7))
@@ -257,7 +264,7 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-
+        //Cajp nhat so luong
         public static void TruSoLuongSanPham(string maSP, int soLuongTru)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -278,6 +285,31 @@ namespace Store.Services
                 if (rows == 0)
                 {
                     throw new Exception("Số lượng sản phẩm không đủ hoặc mã sản phẩm không tồn tại");
+                }
+            }
+        }
+        //Caajp nhat sl $ gia
+        public static void NhapSanPham(string maSP, int soLuongCong, decimal giaNhap)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+        UPDATE SanPham
+        SET SoLuongSP = SoLuongSP + $SoLuongCong,
+            GiaNhap = $GiaNhap
+        WHERE MaSP = $MaSP";
+
+                cmd.Parameters.AddWithValue("$SoLuongCong", soLuongCong);
+                cmd.Parameters.AddWithValue("$GiaNhap", giaNhap);
+                cmd.Parameters.AddWithValue("$MaSP", maSP);
+
+                int rows = cmd.ExecuteNonQuery();
+                if (rows == 0)
+                {
+                    throw new Exception("Mã sản phẩm không tồn tại");
                 }
             }
         }

@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Store.Messages;
 using Store.Models;
 using Store.Services;
+using Store.Helpers;
 using Store.Views.Customer;
 
 namespace Store.ViewModels.Customer;
@@ -63,18 +64,18 @@ public partial class CustomerPageViewModel : ViewModelBase, IRecipient<KhachHang
     [RelayCommand]
     public void CreateCustomerButton()
     {
-        var createCustomerWindowView = new CreateCustomerWindowView();
-        createCustomerWindowView.Show();
+
+        WindowManager.ShowCreateCustomerWindow();
     }
 
     [RelayCommand]
     public void DetailButtonCommand(KhachHang khachHang)
     {
-        var detailWindow = new CustomerDetailWindowView
+        if(khachHang == null)
         {
-            DataContext = new CustomerDetailWindowViewModel(khachHang)
-        };
-        detailWindow.Show();
+            return;
+        }
+        WindowManager.ShowCustomerDetailWindow(khachHang);
     }
     //private void XemChiTietSanPham(SanPham sanPham)
     //{

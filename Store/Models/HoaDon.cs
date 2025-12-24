@@ -11,6 +11,7 @@ namespace Store.Models
         public string   MaHD { get; set; }
         public DateTime NgayLapHD { get; set; }
         public decimal  TongTienHD { get; set; }
+        public decimal  TongVon { get; set; }
         public decimal  GiamGiaHD { get; set; }
         public string     MaKH { get; set; }
         public string      MaUser { get; set; }
@@ -25,6 +26,8 @@ namespace Store.Models
             set => KhachHang = KhachHang;
         }
 
+        // Tính lợi nhuận
+        public decimal LoiNhuan => TongTienHD - TongVon - GiamGiaHD;
 
         public HoaDon() { }
     }
