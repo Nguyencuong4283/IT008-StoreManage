@@ -29,9 +29,9 @@ public partial class OrderPageViewModel : ViewModelBase,
     [ObservableProperty] private ObservableCollection<HoaDon> hoaDons = new();
     public ObservableCollection<string> DanhSachBoLoc { get; } = new()
     { "Tất cả",
-     "TenKH",
-     "NgayLapHD",
-     "TongTienHD"
+     "Tên Khách Hàng",
+     "Ngày Lập HĐ",
+     "Tổng Tiền HĐ"
     };
 
 
@@ -111,12 +111,25 @@ public partial class OrderPageViewModel : ViewModelBase,
         {
             string keyword = searchKeyword.ToLower().Trim();
 
-            // Tìm kiếm đa năng: Số HĐ hoặc Tên Khách Hàng
-            query = query.Where(x => 
-                    x.SoHD.ToString().Contains(keyword) || 
-                    (x.TenKH != null && x.TenKH.ToLower().Contains(keyword)) ||
-                    (x.TenUser != null && x.TenUser.ToLower().Contains(keyword)) 
-            );
+            switch (SelectedFilterBy)
+            {
+                case "Tên Khách Hàng":
+                    query = query.Where(hd => hd.TenKH != null && hd.TenKH.ToLower().Contains(keyword));
+                    break;
+                case "Ngày Lập HĐ":
+                    query = query.Where(hd => hd.NgayLapHD.ToString("dd/MM/yyyy").Contains(keyword));
+                    break;
+                case "Tổng Tiền HĐ":
+                    query = query.Where(hd => hd.TongTienHD.ToString().Contains(keyword));
+                    break;
+                default:
+                    query = query.Where(hd =>
+                        (hd.TenKH != null && hd.TenKH.ToLower().Contains(keyword)) ||
+                        hd.NgayLapHD.ToString("dd/MM/yyyy").Contains(keyword) ||
+                        hd.TongTienHD.ToString().Contains(keyword)
+                    );
+                    break;
+            }
         }
 
         // Cập nhật lại danh sách hiển thị
