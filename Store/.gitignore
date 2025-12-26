@@ -32,3 +32,4 @@ appsettings.*.json
 Thumbs.db
 /Models/Import.cs
 /Services/ImportService.cs
+Store/publish/
