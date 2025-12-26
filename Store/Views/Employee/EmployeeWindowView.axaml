@@ -108,7 +108,7 @@
                         Margin="20,0"
                         MaxWidth="500" />
 
-                    <Grid Column="2">
+                    <Grid Grid.Column="2">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 FontSize="16"

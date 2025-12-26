@@ -63,22 +63,11 @@
                                 Spacing="20">
                                 <StackPanel>
                                     <TextBlock Classes="label" Text="Nhân viên" />
-                                    <ComboBox
-                                        Classes="modern-combo"
-                                        HorizontalAlignment="Stretch"
-                                        ItemsSource="{Binding DanhSachNhanVien, Mode=TwoWay}"
-                                        PlaceholderText="Chọn nhân viên"
-                                        SelectedItem="{Binding NhanVienDuocChon, Mode=TwoWay}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding MaNV_HoTen}" />
-
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                        <Interaction.Behaviors>
-                                            <FocusOnAttachedBehavior />
-                                        </Interaction.Behaviors>
-                                    </ComboBox>
+                                    <TextBox
+                                        Classes="modern-input"
+                                        IsReadOnly="True"
+                                        IsTabStop="False"
+                                        Text="{Binding NhanVien}" />
                                 </StackPanel>
 
                                 <StackPanel>
@@ -154,21 +143,79 @@
                                             BorderBrush="{DynamicResource BorderColor}"
                                             BorderThickness="1.5"
                                             CornerRadius="8">
+                                           <Grid ColumnDefinitions="40,*,40">
+                                            <Button
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding GiamCommand}"
+                                                Grid.Column="0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                                -
+                                            </Button>
                                             <TextBox
                                                 Background="Transparent"
                                                 BorderThickness="0"
                                                 FontSize="15"
+                                                IsReadOnly="True"
                                                 Foreground="{DynamicResource TextPrimary}"
+                                                Grid.Column="1"
                                                 Padding="12,10"
                                                 Text="{Binding SoLuong, Mode=TwoWay}"
+                                                TextAlignment="Center"
                                                 VerticalContentAlignment="Center" />
-
+                                            <Button
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding TangCommand}"
+                                                Grid.Column="2"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                                +
+                                            </Button>
+                                        </Grid>
                                         </Border>
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                         <TextBlock Classes="label" Text="Khuyến mãi (%)" />
-                                        <TextBox Classes="modern-input" Text="{Binding KhuyenMai}" />
+                                          <Border
+                                            Background="{DynamicResource BgInput}"
+                                            BorderBrush="{DynamicResource BorderColor}"
+                                            BorderThickness="1.5"
+                                            CornerRadius="8">
+                                           <Grid ColumnDefinitions="40,*,40">
+                                            <Button
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding GiamKMCommand}"
+                                                Grid.Column="0"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                                -
+                                            </Button>
+                                            <TextBox
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                FontSize="15"
+                                                IsReadOnly="True"
+                                                Foreground="{DynamicResource TextPrimary}"
+                                                Grid.Column="1"
+                                                Padding="12,10"
+                                                Text="{Binding KhuyenMai, Mode=TwoWay}"
+                                                TextAlignment="Center"
+                                                VerticalContentAlignment="Center" />
+                                            <Button
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding TangKMCommand}"
+                                                Grid.Column="2"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                                +
+                                            </Button>
+                                        </Grid>
+                                        </Border>
                                     </StackPanel>
                                 </Grid>
 

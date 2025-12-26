@@ -20,6 +20,7 @@ public partial class CreateBillWindowView : Window
         }
 
         this.Opened += OnWindowOpened;
+        this.Closing += OnWindowClosing;
 
         if (DataContext is CreateBillWindowViewModel vm)
         {
@@ -48,6 +49,15 @@ public partial class CreateBillWindowView : Window
             {
                 vm.NotificationManager = NotificationManager;
             }
+        }
+    }
+
+    private void OnWindowClosing(object? sender, CancelEventArgs e)
+    {
+        if (DataContext is CreateBillWindowViewModel vm)
+        {
+            vm.OnWindowClosing();
+            vm.Cleanup();
         }
     }
 }

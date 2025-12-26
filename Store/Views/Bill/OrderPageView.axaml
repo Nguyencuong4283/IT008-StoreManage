@@ -1,144 +1,213 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
-             xmlns:vm="clr-namespace:Store.ViewModels.Bill"
-             x:DataType="vm:OrderPageViewModel"
-             x:Class="Store.Views.Bill.OrderPageView">
-   
+﻿<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="Store.Views.Bill.OrderPageView"
+    x:DataType="vm:OrderPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Store.ViewModels.Bill"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Design.DataContext>
-       <vm:OrderPageViewModel/>
+        <vm:OrderPageViewModel />
     </Design.DataContext>
-    
-    <Border CornerRadius="16" Background="{DynamicResource BgPage}" Margin="10" BoxShadow="0 4 20 0 #30000000">
+
+    <Border
+        Background="{DynamicResource BgPage}"
+        BoxShadow="0 4 20 0 #30000000"
+        CornerRadius="16"
+        Margin="10">
         <Grid RowDefinitions="Auto,Auto,*">
-            <Border Grid.Row="0" Background="{DynamicResource BgCard}" CornerRadius="16,16,0,0" Padding="20,20,20,15">
+            <Border
+                Background="{DynamicResource BgCard}"
+                CornerRadius="16,16,0,0"
+                Grid.Row="0"
+                Padding="20,20,20,15">
                 <Grid ColumnDefinitions="*,Auto">
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Danh sách hóa đơn" Classes="header" Foreground="{DynamicResource TextPrimary}" Margin="0,0,0,5"/>
-                        <TextBlock Text="Quản lý thông tin hóa đơn" Classes="body" Foreground="{DynamicResource TextSecondary}"/>
+                        <TextBlock
+                            Classes="header"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Margin="0,0,0,5"
+                            Text="Danh sách hóa đơn" />
+                        <TextBlock
+                            Classes="body"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Text="Quản lý thông tin hóa đơn" />
                     </StackPanel>
-                    
-                    <Button Grid.Column="1" 
-                            Classes="primary"
-                            Height="42"
-                            Padding="24,0"
-                            Command="{Binding CreateBillButtonCommand}"
-                            VerticalAlignment="Center">
+
+                    <Button
+                        Classes="primary"
+                        Command="{Binding CreateBillButtonCommand}"
+                        Grid.Column="1"
+                        Height="42"
+                        Padding="24,0"
+                        VerticalAlignment="Center">
                         + Tạo hóa đơn
                     </Button>
                 </Grid>
             </Border>
 
-            <Border Grid.Row="1" Padding="20,15" BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,1,0,1">
+            <Border
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,1,0,1"
+                Grid.Row="1"
+                Padding="20,15">
                 <StackPanel Orientation="Horizontal" Spacing="12">
-                    <Border CornerRadius="8" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1.5">
-                        <ComboBox Background="{DynamicResource BgInput}"
-                                  BorderThickness="0"
-								          ItemsSource="{Binding DanhSachBoLoc}"
-                                  Width="180"
-                                  PlaceholderForeground="{DynamicResource TextPlaceholder}"
-                                  Foreground="{DynamicResource TextPrimary}"
 
-                                  FontSize="14"
-                                  PlaceholderText="Bộ lọc"
-                                  Padding="12,8"
-                                  CornerRadius="8"/>
+                    <Border
+                        BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1.5"
+                        CornerRadius="8">
+                        <ComboBox
+                            Background="{DynamicResource BgInput}"
+                            BorderThickness="0"
+                            CornerRadius="8"
+                            FontSize="14"
+                            Foreground="{DynamicResource TextPrimary}"
+                            ItemsSource="{Binding DanhSachBoLoc}"
+                            Padding="12,8"
+                            PlaceholderForeground="{DynamicResource TextPlaceholder}"
+                            PlaceholderText="Bộ lọc"
+                            SelectedItem="{Binding SelectedFilterBy}"
+                            Width="180" />
                     </Border>
-                    
-                    <Border CornerRadius="8" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1.5">
-                        <TextBox Background="{DynamicResource BgInput}"
-                                 Foreground="{DynamicResource TextPrimary}"
-                                 CaretBrush="{DynamicResource PrimaryColor}"
-                                 BorderThickness="0"
-                                 Width="400" 
-                                 FontSize="14"
-                                 Watermark="🔍 Tìm kiếm hoá đơn..."
-                                 Text="{Binding SearchKeyword}"
-                                 Padding="12,8"
-                                 CornerRadius="8"/>
+
+                    <Border
+                        BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1.5"
+                        CornerRadius="8">
+                        <TextBox
+                            Background="{DynamicResource BgInput}"
+                            BorderThickness="0"
+                            CaretBrush="{DynamicResource PrimaryColor}"
+                            CornerRadius="8"
+                            FontSize="14"
+                            Foreground="{DynamicResource TextPrimary}"
+                            Padding="12,8"
+                            Text="{Binding SearchKeyword}"
+                            Watermark="🔍 Tìm kiếm hoá đơn..."
+                            Width="400" />
                     </Border>
                 </StackPanel>
             </Border>
-          
-          <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Padding="16,8,16,16" Background="Transparent">
-             <Grid>
-                <ItemsControl ItemsSource="{Binding HoaDons}"
-                           IsVisible="{Binding HoaDons.Count}">
-                   <ItemsControl.ItemTemplate>
-                      <DataTemplate>
-                            <Border Classes="card" BoxShadow="0 2 8 0 #20000000" Margin="0 10 0 10">
-                               <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                                  <Border Grid.Column="0"
-                                        Background="{DynamicResource BgHover}"
-                                        CornerRadius="10"
-                                        Width="50"
-                                        Height="50"
-                                        VerticalAlignment="Center"
-                                        Margin="0,0,15,0">
-                                     <TextBlock Text="  📋  " FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                  </Border>
 
-                                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                     <TextBlock FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}">
-                                        <Run>Số hóa đơn : </Run>
-                                        <Run  Text="{Binding SoHD}"></Run>
-                                     </TextBlock>
-                                     <TextBlock  FontSize="13" Foreground="{DynamicResource TextSecondary}" Margin="0,5,0,0">
-                                         <Run Text="Tên Khách hàng: "/>
-                                        <Run Text="{Binding TenKH}" />
-                                         
-                                     </TextBlock>
-                                  </StackPanel>
+            <ScrollViewer
+                Background="Transparent"
+                Grid.Row="2"
+                Padding="16,8,16,16"
+                VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <ItemsControl IsVisible="{Binding HoaDons.Count}" ItemsSource="{Binding HoaDons}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    BoxShadow="0 2 8 0 #20000000"
+                                    Classes="card"
+                                    Margin="0,10,0,10">
+                                    <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                                        <Border
+                                            Background="{DynamicResource BgHover}"
+                                            CornerRadius="10"
+                                            Grid.Column="0"
+                                            Height="50"
+                                            Margin="0,0,15,0"
+                                            VerticalAlignment="Center"
+                                            Width="50">
+                                            <TextBlock
+                                                FontSize="24"
+                                                HorizontalAlignment="Center"
+                                                Text="  📋  "
+                                                VerticalAlignment="Center" />
+                                        </Border>
 
-                                  <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="20,0">
-                                     <TextBlock Text="{Binding NgayLapHD}" FontSize="12" Foreground="{DynamicResource TextSecondary}" TextAlignment="Right"/>
-                                     
-                                     <TextBlock   FontSize="16" FontWeight="Bold" Foreground="{DynamicResource PrimaryColor}" TextAlignment="Right" Margin="0,5,0,0">
-                                        <Run Text="{Binding TongTienHD}"/>
-                                          <Run Text=" ₫"/>
-                                     </TextBlock>
-                                  </StackPanel>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock
+                                                FontSize="15"
+                                                FontWeight="SemiBold"
+                                                Foreground="{DynamicResource TextPrimary}">
+                                                <Run>Số hóa đơn :</Run>
+                                                <Run Text="{Binding SoHD}" />
+                                            </TextBlock>
+                                            <TextBlock
+                                                FontSize="13"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Margin="0,5,0,0">
+                                                <Run Text="Tên Khách hàng: " />
+                                                <Run Text="{Binding TenKH}" />
 
-                                  <Button Grid.Column="3"
-                                        Command="{Binding $parent[ItemsControl].((vm:OrderPageViewModel)DataContext).ChiTietButtonCommand}"
-                                        CommandParameter="{Binding}"
-                                        Classes="secondary"
-                                        Padding="12,8"
-                                        VerticalAlignment="Center">
-                                     Chi tiết
-                                  </Button>
-                               </Grid>
-                            </Border>
-                      </DataTemplate>
-                   </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                
-                <Border Background="{DynamicResource BgCard}" 
-                      CornerRadius="12" 
-                      Padding="60,80"
-                      IsVisible="{Binding !HoaDons.Count}">
-                   <StackPanel HorizontalAlignment="Center" Spacing="15">
-                      <TextBlock Text="📋" FontSize="64" HorizontalAlignment="Center"/>
-                      <TextBlock Text="Chưa có hóa đơn nào" 
-                               FontSize="18" 
-                               FontWeight="SemiBold"
-                               Foreground="{DynamicResource TextPrimary}"
-                               HorizontalAlignment="Center"/>
-                      <TextBlock Text="Tạo hóa đơn đầu tiên để bắt đầu giao dịch" 
-                               FontSize="14" 
-                               Foreground="{DynamicResource TextSecondary}"
-                               HorizontalAlignment="Center"/>
-                      <Button Command="{Binding CreateBillButtonCommand}"
-                            Classes="primary" 
-                            Margin="75,10,0,0">
-                         + Tạo hóa đơn
-                      </Button>
-                   </StackPanel>
-                </Border>
-             </Grid>
-          </ScrollViewer>
-       </Grid>
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel
+                                            Grid.Column="2"
+                                            Margin="20,0"
+                                            VerticalAlignment="Center">
+                                            <TextBlock
+                                                FontSize="12"
+                                                Foreground="{DynamicResource TextSecondary}"
+                                                Text="{Binding NgayLapHD}"
+                                                TextAlignment="Right" />
+
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource PrimaryColor}"
+                                                Margin="0,5,0,0"
+                                                TextAlignment="Right">
+                                                <Run Text="{Binding TongTienHD}" />
+                                                <Run Text=" ₫" />
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                        <Button
+                                            Classes="secondary"
+                                            Command="{Binding $parent[ItemsControl].((vm:OrderPageViewModel)DataContext).ChiTietButtonCommand}"
+                                            CommandParameter="{Binding}"
+                                            Grid.Column="3"
+                                            Padding="12,8"
+                                            VerticalAlignment="Center">
+                                            Chi tiết
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Border
+                        Background="{DynamicResource BgCard}"
+                        CornerRadius="12"
+                        IsVisible="{Binding !HoaDons.Count}"
+                        Padding="60,80">
+                        <StackPanel HorizontalAlignment="Center" Spacing="15">
+                            <TextBlock
+                                FontSize="64"
+                                HorizontalAlignment="Center"
+                                Text="📋" />
+                            <TextBlock
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="{DynamicResource TextPrimary}"
+                                HorizontalAlignment="Center"
+                                Text="Chưa có hóa đơn nào" />
+                            <TextBlock
+                                FontSize="14"
+                                Foreground="{DynamicResource TextSecondary}"
+                                HorizontalAlignment="Center"
+                                Text="Tạo hóa đơn đầu tiên để bắt đầu giao dịch" />
+                            <Button
+                                Classes="primary"
+                                Command="{Binding CreateBillButtonCommand}"
+                                Margin="75,10,0,0">
+                                + Tạo hóa đơn
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
     </Border>
 </UserControl>

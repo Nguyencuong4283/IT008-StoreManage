@@ -13,6 +13,8 @@
     +Đối tượng sử dụng : Nhân viên + Quản lí
     +Tính năng : Thực hiện các yêu cầu trong quản lí cửa hàng quần áo .
 
+# Hướng dẫn sử dụng 
+
 
 
 # Hướng dẫn cấu hình Email để sử dụng tính năng quên mật khẩu (gửi email)

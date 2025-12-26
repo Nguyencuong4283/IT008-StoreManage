@@ -1,7 +1,7 @@
 <Window
     Background="Transparent"
     Height="600"
-    Icon="/Assets/avalonia-logo.ico"
+  
     SystemDecorations="None"
     Title="ShopQuality - Đăng nhập"
     TransparencyLevelHint="transparent"
