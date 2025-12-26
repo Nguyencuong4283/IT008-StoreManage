@@ -16,8 +16,6 @@
         <AvaloniaResource Include="Assets\**" />
 		<AvaloniaResource Include="Assets\images\AnhMau_1.png" />
 		<AvaloniaResource Include="Assets\images\AnhMau_2.png" />
-		<None Remove="Assets\images\appicon.png" />
-		<AvaloniaResource Include="Assets\images\appicon.png" />
     </ItemGroup>
 
     <ItemGroup>
