@@ -5,7 +5,7 @@
 
 ## 2. Công nghệ sử dụng
 - **Ngôn ngữ lập trình:** C#
-- **Nền tảng:** .NET 6.0 (Avalonia UI Framework)
+- **Nền tảng:** .NET 9.0 (Avalonia UI Framework)
 - **Cơ sở dữ liệu:** SQLite
 - **Công cụ phát triển:** Visual Studio 2022
 - **Kiến trúc:** MVVM Pattern
