@@ -81,9 +81,9 @@
                     <Grid RowDefinitions="15,*">
 
                         <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
-                            <Button Classes="MacBtn CloseBtn" Click="CloseBtn" />
-                            <Button Classes="MacBtn MinBtn" Click="MinimizeBtn" />
-                            <Button Classes="MacBtn MaxBtn" Click="MaximizeBtn" />
+                            <Button Classes="MacBtn CloseBtn" Click="CloseBtn" IsTabStop="False" />
+                            <Button Classes="MacBtn MinBtn" Click="MinimizeBtn" IsTabStop="False" />
+                            <Button Classes="MacBtn MaxBtn" Click="MaximizeBtn" IsTabStop="False" />
                         </StackPanel>
 
                         <StackPanel
@@ -107,7 +107,7 @@
                         Margin="20,0"
                         MaxWidth="500" />
 
-                    <Grid Column="2">
+                    <Grid Grid.Column="2">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 FontSize="16"
@@ -128,12 +128,13 @@
                 BorderBrush="{DynamicResource BorderColor}"
                 BorderThickness="0,0,1,0"
                 Grid.Column="0"
-                Grid.Row="1">
+                Grid.Row="1"
+                KeyboardNavigation.TabNavigation="Cycle">
 
-                <Grid RowDefinitions="*,Auto">
+                <Grid RowDefinitions="*,Auto" KeyboardNavigation.TabNavigation="Cycle">
                     <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="12" Spacing="4">
-                            <Button Classes="sidebar" Command="{Binding GoHomeCommand}">
+                        <StackPanel Margin="12" Spacing="4" KeyboardNavigation.TabNavigation="Cycle" >
+                            <Button Classes="sidebar" Command="{Binding GoHomeCommand}" TabIndex="1" Name="HomeButton">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -146,7 +147,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoBillCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoBillCommand}" TabIndex="2">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -159,7 +160,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoProductCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoProductCommand}" TabIndex="3">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -172,7 +173,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoCustomerCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoCustomerCommand}" TabIndex="4">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -185,7 +186,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoIncomeCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoIncomeCommand}" TabIndex="5">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -198,7 +199,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoHistoryCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoHistoryCommand}" TabIndex="6">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -211,7 +212,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoEmployeeCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoEmployeeCommand}" TabIndex="7">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -224,7 +225,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Classes="sidebar" Command="{Binding GoAccountSettingCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoAccountSettingCommand}" TabIndex="8">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -247,7 +248,7 @@
                         Grid.Row="1"
                         Padding="12">
                         <StackPanel>
-                            <Button Classes="sidebar" Click="LogoutButton_Click">
+                            <Button Classes="sidebar" Click="LogoutButton_Click" TabIndex="9">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"
@@ -259,7 +260,7 @@
                                         VerticalAlignment="Center" />
                                 </StackPanel>
                             </Button>
-                            <Button Classes="sidebar" Command="{Binding GoSettingCommand}">
+                            <Button Classes="sidebar" Command="{Binding GoSettingCommand}" TabIndex="10">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <TextBlock
                                         FontSize="18"

@@ -1,6 +1,7 @@
 <Window
     Background="Transparent"
     Height="600"
+  
     SystemDecorations="None"
     Title="ShopQuality - Đăng nhập"
     TransparencyLevelHint="transparent"

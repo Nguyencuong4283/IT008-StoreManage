@@ -2,7 +2,10 @@
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.LogicalTree;
 using Store.ViewModels.Manager;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Store.Views.Manager;
 
@@ -12,6 +15,22 @@ public partial class AdminWindowView : Window
     {
         InitializeComponent();
         DataContext = new AdminWindowViewModel();
+        
+        // Set focus to first button when window is loaded
+        this.Loaded += OnWindowLoaded;
+    }
+    
+    private async void OnWindowLoaded(object? sender, RoutedEventArgs e)
+    {
+        // Delay để đảm bảo UI đã render xong
+        await Task.Delay(100);
+        
+        // Tìm button đầu tiên có name HomeButton
+        var firstButton = this.FindControl<Button>("HomeButton");
+        if (firstButton != null)
+        {
+            firstButton.Focus();
+        }
     }
     
     private Window? GetParentWindow(Control control)

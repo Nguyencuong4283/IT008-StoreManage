@@ -53,7 +53,6 @@ public partial class MainWindowViewModel : ViewModelBase
             if (list == null || list.Count == 0)
             {
                 KiemTraDangNhap = "Không tìm thấy tài khoản nào trong hệ thống!";
-                return;
             }
             
             foreach (var user in list)
@@ -98,9 +97,36 @@ public partial class MainWindowViewModel : ViewModelBase
                     return; 
                 }
             }
-            
-            // Chỉ hiển thị thông báo lỗi nếu không tìm thấy user phù hợp
-            KiemTraDangNhap = "Tên đăng nhập hoặc mật khẩu không đúng!";
+            // Tài khoản test dùng để cập nhật quyền cho nhân viên
+            if (tenDangNhap == "admin" && matKhau == "123456")
+            {
+                
+                var adminWindow = new AdminWindowView();
+                var adminVM = new AdminWindowViewModel();
+                adminWindow.DataContext = adminVM;
+                adminWindow.Show();
+                // Đóng MainWindow hiện tại
+                if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                    && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                {
+                    mainWindow.Close();
+                }
+                return;
+            }
+            else if(tenDangNhap == "user" &&  matKhau =="123456")
+            {
+                var staffWindow = new EmployeeWindowView();
+                staffWindow.Show();
+                if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
+                      && desktop.MainWindow is Avalonia.Controls.Window mainWindow)
+                {
+                    mainWindow.Close();
+                }
+                return;
+
+            }
+                // Chỉ hiển thị thông báo lỗi nếu không tìm thấy user phù hợp
+                KiemTraDangNhap = "Tên đăng nhập hoặc mật khẩu không đúng!";
         }
         catch (Exception ex)
         {

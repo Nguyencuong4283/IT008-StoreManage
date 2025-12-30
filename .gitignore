@@ -27,3 +27,5 @@ Store/bin/
 Store/obj/
 # Chặn idea
 .idea/
+
+Store/publish/
